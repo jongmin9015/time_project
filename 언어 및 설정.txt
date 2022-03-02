@@ -10,6 +10,10 @@ DB
 
 https://github.com/jongmin9015/time_project.git
 
+
+프로젝트 버전
+
+
 톰캣 버전
 - Apache Tomcat v8.5
 jre 버전
