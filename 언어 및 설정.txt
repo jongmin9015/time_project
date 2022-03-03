@@ -57,3 +57,6 @@ ibatis core
 
 mybatis spring
 - 1.2.4
+
+spring-security
+- 5.0.6.RELEASE
