@@ -1,0 +1,125 @@
+@charset "utf-8";
+body{
+    width: 100%;
+    padding-top:20px;
+}
+
+#warp{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+/* User menu CSS */
+#user_menu{
+    display: flex;
+    justify-content: space-between;
+    justify-content: right;
+    padding: 0px;
+    width: 1200px;
+}
+.list_menu{
+    float:right;
+
+}
+.list_menu > li {
+    float: left;
+    width: 70px;
+    text-align: center;
+}
+.menu_join a {
+    color: blueviolet;
+}
+.sub {
+    display :none
+}
+
+/* Main Logo */
+
+#headerLogo {
+    width: 10%;
+    position:relative;
+    height:63px;
+    margin:0 auto
+}
+
+/* header */
+
+#gnbMenu{
+    position:absolute;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    top: 80px; 
+    width: 1200px;
+    z-index: 5;
+}
+#gnbMenu.sticky{
+    position:fixed;
+    top: 0;
+}
+
+.menu_main li {
+    font-size: 19x;
+    float: left;
+    width: 70px;
+    text-align: center;
+
+}
+
+#gnbMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.gnb {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.gnb li {
+    padding: 20px 30px;
+    font-size: 18px;
+}
+
+
+/* footer */
+.footer-top{
+    margin: 0;
+}
+.inner_footer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.cc_view {
+    margin: 25px;
+    display: flex;
+}
+.foo_list, .p_txt{
+    position: absolute;
+    left: 300px;
+}
+.company {
+    position: absolute;
+    left: 1200px;
+    margin: 10px;
+}
+.list_l{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.list_sns{
+    margin-top: 15px;
+    display: flex;
+}
+
+.footer_cc{
+    margin-left: 30px;
+}
