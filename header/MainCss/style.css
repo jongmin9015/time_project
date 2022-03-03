@@ -1,0 +1,209 @@
+body{
+    width: 1200px;
+    padding-top:20px;
+}
+/* User menu CSS */
+#user_menu{
+    display: flex;
+    justify-content: space-between;
+    justify-content: right;
+    padding: 0px;
+    width: 1200px;
+}
+.list_menu{
+    float:right;
+
+}
+.list_menu > li {
+    float: left;
+    width: 70px;
+    text-align: center;
+}
+.menu_join a {
+    color: blueviolet;
+}
+.sub {
+    display :none
+}
+
+/* Main Logo */
+
+#headerLogo {
+    width: 10%;
+    position:relative;
+    height:63px;
+    margin:0 auto
+}
+
+/* header */
+
+#gnbMenu{
+    position:absolute;
+    justify-content: space-between;
+    align-items: center;
+    top: 80px; 
+    width: 1200px;
+}
+#gnbMenu.sticky{
+    position:fixed;
+    top: 0;
+}
+
+.menu_main li {
+    font-size: 19x;
+    float: left;
+    width: 70px;
+    text-align: center;
+
+}
+
+#gnbMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.gnb {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.gnb li {
+    padding: 20px 30px;
+    font-size: 18px;
+}
+
+#qnb{
+    position:fixed;
+    z-index:1;
+    right:20px;
+    top:70px;
+    width:80px;
+    font:normal 12px/16px "Noto Sans";
+    color:#333;
+    letter-spacing:-0.3px;
+    transition:top 0.2s;
+}
+
+    /* sidebar */
+    #qnb{
+        position:fixed;
+        z-index:1;
+        right:20px;
+        top:70px;
+        width:80px;
+        font:normal 12px/16px "Noto Sans";
+        color:#333;
+        letter-spacing:-0.3px;
+        transition:top 0.2s;
+    }
+    .goods-goods_view #qnb{
+        top:20px;
+    }
+    /* 배너 */
+    #qnb .bnr_qnb{
+        padding-bottom:7px;
+    }
+    #qnb .bnr_qnb .thumb{
+        width:80px;
+        height:120px;
+        vertical-align:top;
+    }
+    /* 메뉴 */    
+    #qnb .side_menu{
+        width:80px;
+        border:1px solid #ddd;
+        border-top:0 none;
+        background-color:#fff;
+    }
+    #qnb .link_menu{display:block;
+        height:29px;
+        padding-top:5px;
+        border-top:1px solid #ddd;
+        text-align:center;
+    }
+    #qnb .link_menu:hover,
+    #qnb .link_menu.on{
+        color:#5f0080;
+    }
+    /* 최근본상품 */
+    #qnb .side_recent{
+        position:relative;
+        margin-top:6px;
+        border:1px solid #ddd;
+        background-color:#fff;
+    }
+    #qnb .side_recent .tit{
+        display:block;
+        padding:22px 0 6px;
+        text-align:center;
+    }
+    #qnb .side_recent .list_goods{
+        overflow:hidden;
+        position:relative;
+        width:60px;
+        margin:0 auto;
+    }
+    #qnb .side_recent .list{
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    #qnb .side_recent .link_goods{
+        display:block;
+        overflow:hidden;
+        width:60px;
+        height:80px;
+        padding:1px 0 2px;
+    }
+    #qnb .side_recent .btn{
+        display:block;
+        overflow:hidden;
+        width:100%;
+        height:17px;
+        border:0 none;
+        font-size:0;
+        line-height:0;
+        text-indent:-9999px;
+    }
+    /* Up down btn */
+    #qnb .side_recent .btn_up{
+        position:absolute;
+        left:0;
+        top:0;
+    }
+
+    /* footer */
+
+    .footer-top{
+        margin: 0;
+    }
+    .inner_footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cc_view {
+        margin: 25px;
+        display: flex;
+    }
+    .list, .txt{
+        position: absolute;
+        left: 175px;
+    }
+    .company {
+        
+        margin: 10px;
+    }
+    .list_l{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .list_sns{
+        margin-top: 15px;
+        display: flex;
+    }
