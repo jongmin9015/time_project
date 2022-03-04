@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"상품소개 :: 장보기"</title>
+    <link rel="stylesheet" href="css/marketKurly.css">
+    <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+<div id="wrap">
+ <div id="pos_scroll" ></div><!--포탈스크롤-->
+ 
+ <div id="container" >
+                        <!--해더-->
+                        <script>
+                            $(document).ready(function() {
+                                var wind = $(window),
+                                header = $('#gnbMenu'),
+                                headerOffsetTop = header.offset().top;
+                    
+                                console.log(headerOffsetTop);
+                                console.log(wind.scrollTop());
+                                wind.scroll(function() {
+                                   if(wind.scrollTop()>= headerOffsetTop) {
+                                    header.addClass('sticky');
+                                   } else {
+                                    header.removeClass('sticky');
+                                  }
+                                });
+                            });
+                        </script>
+                        <!-- User Menu -->
+                        <div id="user_menu">
+                            <ul class="list_menu">
+                                <li class="menu_join">
+                                    <a href="signup_f.html" class="link_menu">회원가입</a>
+                                </li>
+                                <li class="menu_login">
+                                    <a href="login_f.html" class="link_menu">로그인</a>
+                                </li>
+                                <li class="menu_center">
+                                    <a href="#" class="link_menu">고객센터</a>
+                                    <ul class="sub">
+                                        <li>
+                                            <a href="#">공지사항</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">자주하는 질문</a>
+                                        </li>
+                                        <li><a href="#">1:1 문의</a></li>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>    
+                        </div>
+                    
+                        <!-- HEADER -->
+                    
+                        <!-- Main Logo -->
+                        <div id="headerLogo" class="layout-wrapper">
+                            <h1 class="logo">
+                            <a href="/" class="link_main">
+                            <span id="gnbLogoContainer"></span>
+                            <i class="fa-brands fa-html5"></i>
+                            </a>
+                        </div>
+                        <!-- header -->
+                        <div id="gnbMenu" class="">
+                            <ul class="gnb">
+                                <li class="menu1">
+                                    <a href="marketKurly.html">
+                                        <span class="txt">메뉴 1</span>
+                                    </a>
+                                </li>
+                                <li class="menu2">
+                                    <a href="commodity1.html" class="link new ">
+                                        <span class="txt">메뉴 2</span>
+                                    </a>
+                                </li>
+                                <li class="menu3">
+                                    <a href="marketKurly.html" class="link best ">
+                                        <span class="txt">메뉴 3</span>
+                                    </a>
+                                </li>
+                                <li class="menu4">
+                                    <a href="marketKurly.html" class="link bargain ">
+                                        <span class="txt">메뉴 4</span>
+                                    </a>
+                                </li>
+                                <li class="lst">
+                                    <a href="marketKurly.html" class="link event ">
+                                        <span class="txt">메뉴 5</span>
+                                    </a>
+                                </li>
+                            </ul> 
+                    
+                        <div id="side_search" class="gnb_search">
+                            <form action="">
+                               <input name="sword" type="text" id="sword" value="" required="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">
+                               <a href="#">
+                                   <i class="fa-solid fa-magnifying-glass"></i>
+                               </a>
+                           </form>
+                        </div> 
+                    
+                    
+                        <div class="cart">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                                <a href="cart.html">장바구니</a>
+                        </div>
+                    </div>
+                    <!-- HEADER -->
+                    
+                        <!-- sidebar -->
+                        <div id="qnb" class="quick-navigation" style="top: 280px;">
+                    
+                            <div class="bnr_qnb" id="brnQuick">
+                            </div>
+                            
+                            <div class="side_menu">
+                                <a href="#" class="link_menu ">등급별 혜택</a>
+                                <a href="#" class="link_menu ">레시피</a>
+                                <a href="#" class="link_menu ">베스트 후기</a>
+                            </div>
+                            <div class="side_recent">
+                                <strong class="tit">최근 본 상품</strong>
+                                <div class="list_goods" data-height="209" style="height: 80px;">
+                                    <ul class="list"><li><a class="link_goods" href="#" alt=""></a></li></ul>
+                                </div>
+                                <button type="button" class="btn_up"><i class="fa-solid fa-angle-up"></i></button>
+                                <button type="button" class="btn_down"><i class="fa-solid fa-angle-down"></i></button>
+                            </div>
+                        </div>
+                        <!-- sidebar -->
+                    
+                        <div>
+                           
+                        </div>
+                    
+                        
+    <div id="content" > <!--컨텐츠-->
+        <div id="main" ><!--메인-->
+            <!--리모컨 -->
+    <div class="page_aticle" >
+        <div id="lnbMenu" class="lnb_menu" > <!--상단배너 이미지 start-->
+            <div id="bnrCategory" class="bnr_category link"  style="display: block;">
+                <div class="thumb" style="text-align: center"; >
+                    <img src="img/show_img.webp" alt="상단배너">
+                </div>
+            </div> <!--상단배너 이미지 end-->
+            
+            <div class="inner_lnb" > <!--카테고리 매뉴 start-->
+                <h3 class="tit">생활용품·리빙·캠핑</h3>
+                <ul class="list on">
+                    <li data-start="124" data-end="188">
+                        <a class="on">전체보기</a>
+                    </li>
+                    <li data-start="298" data-end="368"><a class="">휴지·티슈</a>
+                    </li>
+                    <li data-start="454" data-end="548"><a class="">여성·위생용품</a>
+                    </li>
+                    <li data-start="634" data-end="728"><a class="">세제·청소용품</a>
+                    </li>
+                    <li data-start="790" data-end="908"><a class="">화훼·인테리어소품</a>
+                    </li><li data-start="982" data-end="1088"><a class="">의약외품·마스크</a>
+                    </li><li data-start="1174" data-end="1268"><a class="">생활잡화·문구</a>
+                    </li><li data-start="1384" data-end="1448"><a class="">캠핑용품</a>
+                    </li><li class="bg">
+                    </li>
+                </ul>
+            </div> <!--카테고리 매뉴 end-->
+        </div>
+    
+
+    
+        <div id="goodsList" class="page_section section_goodslist" >
+            <div class="list_ability"  style="display: block;">
+                <div class="sort_menu" >
+                    <div >
+                        <p class="count">
+                            <span class="inner_count"> 상품 총 100개  </span> <!--상품갯수-->
+                        </p> 
+                        <div class="select_type" >
+                            <a class="name_select">추천순</a>
+                             <ul class="list">
+                                 <li class="">
+                                     <a class="on">추천순</a>
+                                     <div class="recommend" >
+                                         <div id="layerRecommend" class="layer_recommend" >
+                                             <p class="desc">검색어 적합성과 소비자 인기도(판매량, 판매금액<br> 조회수 등)를 종합적으로 고려한 순서입니다.
+                                            </p>
+                                            </div>
+                                        </div>
+                                        
+                                </li>
+                                <li class="">
+                                <a class="">신상품순</a>
+                                </li>
+                                <li class="">
+                                    <a class="">판매량순</a>
+                                </li>
+                                <li class="">
+                                    <a class="">혜택순</a> 
+                                </li>
+                                <li class="">
+                                    <a class="">낮은 가격순</a>
+                                </li>
+                                <li class="">
+                                    <a class="">높은 가격순</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list_goods" > <!--상품진열-->
+                <div class="inner_listgoods" >
+                    <ul class="list">
+                        <li>  <!--상품 틀 복사해서 사용하기-->
+                            <div class="item" >
+                                <div class="thumb" >
+                                    <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                        <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                    </a> 
+                                    <div class="group_btn" >
+                                </div>
+                            </div> 
+                            <a class="info">
+                                <span class="name">상품 이름1(날자,수령)
+                                </span> <span class="cost">
+                                    <span class="price">00000원</span> 
+                                    </span>
+                                    <span class="desc">0월 00일 (요일) 수령</span>
+                                     <span class="tag">
+                                        <!--제품 유의사항 적는곳-->
+                                 </span>
+                                </a>
+                            </div>
+                        </li> <!--복사 끝-->
+                        
+                        <!--테스트복사-->
+                              <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <!---->
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn">
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                            <li>  <!--상품 틀 복사해서 사용하기-->
+                                <div class="item" >
+                                    <div class="thumb" >
+                                        <a class="img" style="background-image: url(img/goods_Flower.jpg);"> <!--사용할 상품 원본이미지 백그라운드에 두기-->
+                                            <img src="img/goods_Flower.jpg" alt="상품 이미지"> <!--상품이미지 올리기 -->
+                                        </a> 
+                                        <div class="group_btn" >
+                                    </div>
+                                </div> 
+                                <a class="info">
+                                    <span class="name">상품 이름1(날자,수령)
+                                    </span> <span class="cost">
+                                        <span class="price">00000원</span> 
+                                        </span>
+                                        <span class="desc">0월 00일 (요일) 수령</span>
+                                         <span class="tag">
+                                            <!--제품 유의사항 적는곳-->
+                                     </span>
+                                    </a>
+                                </div>
+                            </li> <!--복사 끝-->
+                        <!--테스트 복사-->
+                </div>
+            </div>
+        </div>
+        
+            <!--페이지 단축바 start-->
+            <div class="layout-pagination">
+                <div class="pagediv" >
+                    <!--아직 이해 못한 부분 
+                    이해 못한부분 백 부분 페이지 관련 css코드 작동 할수있도록 
+                    마지막 페이지랑 눌럿을때 누른페이지가 버튼이 비활성화되는기준을 layout-pagination-number __active 로잡고
+                                                                    활성화되면  layout-pagination-number 처리해주는 부분.
+            Vue.component('list-goods-paging',{ 
+            props:['idx', 'pageCount', 'totalPageCount'],  
+            template:'\
+            <span>\
+            <a v-if="pageCount != idx+totalPageCount" class="layout-pagination-button layout-pagination-number" @click="$emit(\'on-move-list\', idx+totalPageCount)">{{ idx+totalPageCount }}</a>\
+            <strong v-if="pageCount == idx+totalPageCount" class="layout-pagination-button layout-pagination-number __active">{{ idx+totalPageCount }}</strong>\
+            </span>\'});
+                    -->
+                    <a href="#" class="layout-pagination-button layout-pagination-first-page">맨 앞 페이지로 가기</a> <!--맨앞페이지 주소-->
+                     <a href="#" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>  <!--페이지 넘김-->
+                      <span><strong class="layout-pagination-button layout-pagination-number __active">1</strong></span> <!--버튼기능 class로 지정하기 본인페이지-->
+                      <span><a class="layout-pagination-button layout-pagination-number">2</a></span> <!--버튼 기능 class 지정하기 페이지ur-->
+                      <span><a class="layout-pagination-button layout-pagination-number">3</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">4</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">5</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">6</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">7</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">8</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">9</a></span>
+                      <span><a class="layout-pagination-button layout-pagination-number">10</a></span>
+                    <a href="#" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a><!--페이지 넘김-->
+                    <a href="#" class="layout-pagination-button layout-pagination-last-page">맨끝 페이지로 가기</a><!--맨뒤 페이지 주소-->
+                </div>
+            </div>
+        </div>
+        <!-- 필요해 보여서 남기는 스크립트 기능은
+        페이지 단축바 눌럿을때 이전페이지가 상품페이지면
+        상품리스트 페이지로 돌아와지는기능 (추정)-->
+        <!-- <script type="text/javascript">  
+            $(document).ready(function(){
+              var categoryNo = null;
+              if(sessionStorage.getItem('goodsListReferrer') && sessionStorage.getItem('goodsListReferrer') === 'goodsView'){
+                //이전페이지가 상품상세일경우
+                lnbMenu.referrer = true;
+                goodsList.referrer = true;
+                if(sessionStorage.getItem('gListCategoryNo') && '918' != '029' && '918' != '038'){
+                  categoryNo = sessionStorage.getItem('gListCategoryNo');
+                }else{
+                  categoryNo = "918";
+                }
+              }else{
+                lnbMenu.referrer = false;
+                goodsList.referrer = false;
+                categoryNo = "918";
+              }
+          -----------------------------------------이부분이 호출부분
+              // 카테고리 호출
+              lnbMenu.getCategoryNum = categoryNo;
+          
+              // 상품목록노출
+              goodsList.pageType="list"; // 일반
+              goodsList.type = "pc";
+          
+              lnbMenu.update();
+            });
+          </script>
+           -->                         
+    </div> 
+</div>
+
+</div>
+<div class="footer-top"><!--풋터-->
+    <div class="inner_footer">
+
+        <div class="footer_cc">
+    
+            <h2 class="tit_cc">고객행복센터</h2>
+    
+            <div class="cc_view">
+    
+                <h3><span class="tit">0000-0000</span></h3>
+    
+                <dl class="list">
+    
+                    <dt>365고객센터</dt>
+    
+                    <dt>오전 7시 - 오후 7시</dt>
+    
+                </dl>
+    
+            </div>
+    
+    
+            <div class="cc_view cc_kakao">
+    
+                <h3><a class="tit" href="#none">카카오톡 문의</a></h3>
+    
+                
+    
+                <dl class="list">
+    
+                    <dt>365고객센터</dt>
+    
+                    <dt>오전 7시 - 오후 7시</dt>
+    
+                </dl>
+    
+            </div>
+    
+            <div class="cc_view cc_qna">
+    
+                <h3><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/mypage_qna_register.php?mode=add_qna', 'select_bottom_onebyone_button')" class="tit">1:1 문의</a></h3>
+    
+    
+                <dl class="list">
+    
+                    <dt>24시간 접수 가능</dt>
+    
+                    <dt>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dt>
+    
+                </dl>
+    
+            </div>
+    
+            <div class="cc_view cc_bulkorder">
+    
+                <h3><a href="#" class="tit">대량주문 문의</a></h3>
+    
+                <p class="txt">회원분은 고객센터로 문의바랍니다 <br>비회원의 경우 메일로 문의 바랍니다.</p>
+    
+            </div>
+    
+        </div>
+    
+        <div class="company">
+    
+    
+            <ul class="list_l">
+    
+                <li><a class="link" href="#">컬리소개</a></li>
+    
+                <li><a class="link" href="#">컬리소개영상</a></li>
+    
+                <li><a class="link" href="#" target="_blank">인재채용</a></li>
+    
+                <li><a class="link" href="#">이용약관</a></li>
+    
+                <li><a class="link emph" href="#">개인정보처리방침</a></li>
+    
+                <li><a class="link" href="#">이용안내</a></li>
+    
+            </ul>
+    
+            법인명 (상호) : 주식회사 컬리 <span class="bar">I</span> 사업자등록번호 : 261-81-23567 <a href="#" target="_blank" class="link">사업자정보 확인</a>
+    
+            <br>
+    
+    
+            통신판매업 : 제 2018-서울강남-01646 호 <span class="bar">I</span> 개인정보보호책임자 : 이원준
+    
+    
+            <br>
+    
+            주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동) <span class="bar">I</span> 대표이사 : 김슬아
+    
+            <br>
+    
+            입점문의 : <a href="#" target="_blank" class="link">입점문의하기</a> <span class="bar">I</span> 마케팅제휴 : <a href="#" class="link">메일</a>
+    
+            <br>
+    
+            채용문의 : <a href="#" class="link">메일</a>
+    
+            <br>
+    
+            팩스: 070 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a href="#" class="link">메일</a>
+    
+    
+            <br>
+    
+            대량주문 문의 : <a href="#" class="link">메일</a>
+    
+            <br>
+    
+            <ul class="list_sns">
+    
+                <li>
+    
+                    <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+    
+                </li>
+    
+                <li>
+    
+                    <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+    
+                </li>
+    
+                <li>
+    
+                    <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+    
+                </li>
+    
+            </ul>
+    
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+</body>
+</html>
