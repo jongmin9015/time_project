@@ -1,4 +1,4 @@
-package timeProject;
+package com.tis.jdbctest;
 
 import static org.junit.Assert.assertNotNull;
 

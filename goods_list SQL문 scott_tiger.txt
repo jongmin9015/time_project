@@ -1,0 +1,33 @@
+create table tbl_goods(
+    goodsNo number(20) not null,
+    goodsCategory varchar2(20) not null,
+    goodsName varchar2(200) not null,
+    goodsContent varchar2(2000) not null,
+    goodsPrice number(20) not null,
+    goodsUnit varchar2(20) not null,
+    goodsWeight varchar2(20) not null,
+    goodsDelivery varchar2(50) not null,
+    goodsPackage varchar2(100) not null,
+    goodsAllergy varchar2(1000) not null,
+    goodsImage varchar2(200) default 'noimage.jpg',
+    goodsRegdate date default sysdate,
+    goodsUpdatedate date default sysdate,
+    CONSTRAINT pk_goods primary key (goodsNo)
+);
+
+create sequence seq_goods 
+start with 1
+increment by 1;
+
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올케어]올케어 마늘의 왕', '진하게 농축해 담은 흑마늘', 48000, '1박스', '70ml*30포', '샛별배송/택배배송', '상온/종이포장', '없음', 'health1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올케어]올케어 마늘의 여왕', '진하게 농축해 담은 흑마늘', 48000, '1박스', '70ml*30포', '샛별배송/택배배송', '상온/종이포장', '없음', 'health2.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올가비오]새싹보리 분말', '어린 새싹의 초록빛 생기', 9900, '1통', '80g', '샛별배송/택배배송', '상온/종이포장', '본 제품은 우유,계란,메밀,땅콩,대두,밀 등알 사용한 제품과 같은 시설에서 제조하고 있습니다', 'health3.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올가비오]대마종자유', '간편하게 섭취하는 식물성 오일', 13900, '1통', '1000ml*30캡', '샛별배송/택배배송', '상온/종이포장', '쇠고기함유', 'health4.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올가비오]유기농 여주환', '쌉사름함 없이 즐기는 여주', 13200, '1통', '120g', '샛별배송/택배배송', '상온/종이포장', '없음', 'health5.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'health', '[올가비오]유기농 작두콩', '환으로 만들어 오래 즐기는 콩', 13200, '1통', '120g', '샛별배송/택배배송', '상온/종이포장', '없음', 'health6.jpg');
