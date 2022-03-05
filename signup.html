@@ -11,7 +11,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 </head>
-<body>    
+<body>
+    <script>
+        $(document).ready(function(){
+            $("#header").load("/header.html");
+            $("#footer").load("/footer.html");
+        });
+    </script>
+    <div id="header"></div>
     <div id="warp">            
         <section>
             <div class="signup_inner">
@@ -138,5 +145,6 @@
         document.querySelector("#show").addEventListener("click", show);
         document.querySelector("#close").addEventListener("click", close);
     </script>
+    <div id="footer"></div>
 </body>
 </html>

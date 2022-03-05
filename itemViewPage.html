@@ -11,6 +11,13 @@
     <title>itemViewPage</title>
 </head>
 <body>
+    <script>
+        $(document).ready(function(){
+            $("#header").load("/header.html");
+            $("#footer").load("/footer.html");
+        });
+    </script>
+    <div id="header"></div>
     <div id="wrap">
         <!-- itemView 상단 상품이미지 및 구매수량, 구매 -->
         <div class="itemView_inner">
@@ -273,5 +280,6 @@
             </div>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
 </html>
