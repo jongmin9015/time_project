@@ -1,5 +1,7 @@
 package timeProject;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.sql.Connection;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,16 +25,11 @@ public class JdbcTest {
 		try {
 			conn = sqlsession.openSession().getConnection();
 			System.out.println("연결성공");
+			assertNotNull(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("실패");
-		} finally {
-			try {
-				conn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
+		} 
 	}
 
 }
