@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,11 @@
     <title>itemList page</title>
 </head>
 <body>
+
+    <div id="header">
+   		<%@ include file="../../includes/header.jsp"  %>
+    </div>
+    
     <div id="wrap">
         <!-- itemList 시작 -->
         <div class="itemList_inner">
@@ -47,165 +53,34 @@
                     <li><a href="#" class="itemList_sort_menu_list_atag">높은 가격순</a></li>
                 </ul>
             </div>
-
+            
+            
             <!-- itemList 리스트 -->
             <div class="itemList_list_div">
                 <ul class="itemList_list">
+                
+                <c:forEach items="${goodsList}" var="goods">
                     <li>
                         <div class="itemList_item">
                             <div class="itemList_img_div">
                                 <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
+                                    <img src="/resources/images/shop/goods/${goods.goodsImage}" alt="#">
                                 </a>
                                 <div class="itemList_cartBtn_div">
                                     <a href="#" class="itemList_cartBtn"></a>
                                 </div>
                             </div>
                             <a href="#" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
+                                <span class="itemList_info item_name">${goods.goodsName}</span>
+                                <span class="itemList_info item_price">${goods.goodsPrice}</span>
+                                <span class="itemList_info item_desc">${goods.goodsContent}</span>
                             </a>
                         </div>
                     </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>                            
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="itemList_item">
-                            <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
-                                    <img src="https://via.placeholder.com/500" alt="">
-                                </a>
-                                <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>>
-                                </div>
-                            </div>
-                            <a href="" class="itmeList_info">
-                                <span class="itemList_info item_name">[상품]이름을 적으세요</span>
-                                <span class="itemList_info item_price">9,500원</span>
-                                <span class="itemList_info item_desc">상품 설명란</span>
-                            </a>
-                        </div>
-                    </li>
+                </c:forEach>                             
                 </ul>
             </div>
+
 
             <!-- itemList 페이지리스트 -->
             <div class="itemList_page_div">
@@ -230,6 +105,10 @@
 
         </div>
         <!-- itemList 끝 -->
+    </div>
+    
+    <div id="footer">
+   		<%@ include file="../../includes/footer.jsp"  %>
     </div>
 </body>
 </html>

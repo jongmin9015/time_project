@@ -13,6 +13,10 @@
     <title>itemList page</title>
 </head>
 <body>
+
+   	<div id="header">
+   		<%@ include file="../../includes/header.jsp"  %>
+    </div>
     <div id="wrap">
         <!-- itemList 시작 -->
         <div class="itemList_inner">
@@ -99,6 +103,10 @@
 
         </div>
         <!-- itemList 끝 -->
+    </div>
+    
+    <div id="footer">
+   		<%@ include file="../../includes/footer.jsp"  %>
     </div>
 </body>
 </html>

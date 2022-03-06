@@ -30,14 +30,12 @@ public class GoodsController {
 
 		String path =  request.getServletPath();
 		String category = path.substring(path.indexOf("_") + 1); 
-		log.info("get goods_list......................" + category);
-		
+
 		GoodsVO vo = new GoodsVO();
 		vo.setGoodsCategory(category);
 		
-		if(category.startsWith("health")) {
 		model.addAttribute("goodsList", goodsService.getList(vo));
-		}
+		log.info("get goods_list......................" + category);
 	}
 
 }
