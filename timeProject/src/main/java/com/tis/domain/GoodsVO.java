@@ -20,4 +20,12 @@ public class GoodsVO {
 	private String goodsImage;
 	private Date goodsRegdate;
 	private Date goodsUpdatedate;
+	
+	
+	private String categoryTitle;
+	private String categoryMain;
+	private String categorySub;
+	private String categorySubTitle;
+	
+
 }

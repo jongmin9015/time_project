@@ -70,17 +70,17 @@
         <div id="gnbMenu" class="">
             <ul class="gnb">
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_health">
+                    <a href="/shop/goods/goods_list?category=health">
                         <span class="txt">건강식품</span>
                     </a>
                 </li>
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_noodle" class="link new ">
+                    <a href="/shop/goods/goods_list?category=noodle" class="link new ">
                         <span class="txt">누들</span>
                     </a>
                 </li>
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_salad" class="link best ">
+                    <a href="/shop/goods/goods_list?category=salad" class="link best ">
                         <span class="txt">샐러드</span>
                     </a>
                 </li>

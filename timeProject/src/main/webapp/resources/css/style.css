@@ -332,10 +332,11 @@ link {
     margin: 15px 0;
 }
 
-.itemList_subList_tit{
+.itemList_subList_tit a{
     font-size: 14px;
     color: #333;
     cursor: pointer;
+    text-decoration: none;
 }
 .itemList_subList_tit_on{
     font-size: 14px;
@@ -552,7 +553,7 @@ link {
 .itemView_main_img{
     width: 430px;
     height: 552px;
-    background-image: url(../images/1641807591969y0.jpg);
+/*     background-image: url(../images/1641807591969y0.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
 }
