@@ -8,11 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <title>itemList page</title>
 </head>
 <body>
+
+   	<div id="header">
+   		<%@ include file="../../includes/header.jsp"  %>
+    </div>
     <div id="wrap">
         <!-- itemList 시작 -->
         <div class="itemList_inner">
@@ -23,19 +28,21 @@
                     <img src="/resources/images/health_main.png" alt="health">
                 </div>                
 
+
+
                 <div class="itemList_tit_div">
-                    <h3 class="itemList_tit">건강식품</h3>
+                	<c:forEach items="${categorys}" var="category" end="0">
+                    <h3 class="itemList_tit"><c:out value="${category.categoryMain}"/></h3>
+                    </c:forEach>
                 </div>
                 <div class="itemList_lnb_div clear">
                     <ul class="itemList_subList">
-                        <li><a href="#" class="itemList_subList_tit_on">전체보기</a></li>
-                        <li><a href="#" class="itemList_subList_tit">영양제</a></li>
-                        <li><a href="#" class="itemList_subList_tit">유산균</a></li>
-                        <li><a href="#" class="itemList_subList_tit">홍삼</a></li>
-                        <li><a href="#" class="itemList_subList_tit">건강즙</a></li>
-                        <li><a href="#" class="itemList_subList_tit">건강환</a></li>
-                        <li><a href="#" class="itemList_subList_tit">다이어트</a></li>
-                        <li><a href="#" class="itemList_subList_tit">유아동</a></li>
+                        <li ><a href='/shop/goods/goods_list?category=${categoryMain}' class="itemList_subList_tit_on">전체보기</a></li>    
+                                   
+                        <c:forEach items="${categorys}" var="category">
+                        <li class="itemList_subList_tit"><a href="${category.categorySubTitle}"><c:out value="${category.categorySub}"/></a></li>
+                        </c:forEach>
+                        
                     </ul>
                 </div>
             </div>
@@ -56,21 +63,23 @@
                 
                 <c:forEach items="${goodsList}" var="goods">
                     <li>
-                        <div class="itemList_item">
+                   	 	<a class="move" href='<c:out value="${goods.goodsNo}"/>'>
+                        <div class="itemList_item" >
                             <div class="itemList_img_div">
-                                <a href="#" class="itemList_img">
+                                <div class="itemList_img">
                                     <img src="/resources/images/shop/goods/${goods.goodsImage}" alt="#">
-                                </a>
+                                </div>
                                 <div class="itemList_cartBtn_div">
                                     <a href="#" class="itemList_cartBtn"></a>
                                 </div>
                             </div>
-                            <a href="#" class="itmeList_info">
+  							<!--<a href="#" class="itmeList_info"> -->
                                 <span class="itemList_info item_name">${goods.goodsName}</span>
                                 <span class="itemList_info item_price">${goods.goodsPrice}</span>
                                 <span class="itemList_info item_desc">${goods.goodsContent}</span>
-                            </a>
+                            <!--</a> -->
                         </div>
+                    	</a>
                     </li>
                 </c:forEach>                             
                 </ul>
@@ -95,10 +104,36 @@
                     <a href="#" class="itemList_move_f itemList_last"><i class="fa-solid fa-angles-right"></i></a>
                 </div>
             </div>
-
-
         </div>
         <!-- itemList 끝 -->
+        <form action="/shop/goods/goods_sublist" id="actionForm">
+        </form>
+    </div>
+    
+    
+<script>
+	$(document).ready(function() {
+		
+		const actionForm = $("#actionForm");
+		
+		$(".move").on("click", function(e) {
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='goodsNo' value='"+$(this).attr("href")+"'>");
+			actionForm.attr("action", "/shop/goods/goods_detail");
+			actionForm.submit();
+		})
+		
+		$(".itemList_subList_tit a").on("click", function(e) {
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
+			actionForm.submit();
+		})
+
+		
+	})
+</script>
+    <div id="footer">
+   		<%@ include file="../../includes/footer.jsp"  %>
     </div>
 </body>
 </html>
