@@ -37,9 +37,7 @@
                 </div>
                 <div class="itemList_lnb_div clear">
                     <ul class="itemList_subList">
-                        <li><a href='/shop/goods/goods_list?category=${categoryMainTitle}' 
-                        class="itemList_subList_tit${categoryMain == null ? "" : "_on"}">전체보기</a></li>    
-                                   
+                        <li><a href='/shop/goods/goods_list?category=${categoryMainTitle}' class="itemList_allList_tit${categorySubTitle == null ? "_on" : ""}">전체보기</a></li>                   
                         <c:forEach items="${categorys}" var="category">
                         <li>
                         <a href="${category.categorySubTitle}"
@@ -130,7 +128,7 @@
 		$(".itemList_subList_tit").on("click", function(e) {
 			e.preventDefault();
 			actionForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
-			$("#itemlist_All").attr("class", "itemList_subList_tit");
+			$("#itemlist_All").remove("")
 			actionForm.submit();
 		})
 		
