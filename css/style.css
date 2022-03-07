@@ -1231,47 +1231,119 @@ link {
 
 
 /* 임시 index page 시작 */
-.index_main_inner{
-    width: 1050px;
-    margin: 0 auto;
+@charset "utf-8";
+body {
+    margin: 0;
+    padding: 0;
+}
+.main_inner{
+    width: 1200px;
+    margin-bottom: 200px;
     overflow: hidden;
 }
 
 
-.index_main_tit_box{
+.main_tit_box{
     text-align: center;
-    margin: 60px 0;
+    margin-top: 90px;
     color: #333;
 }
 
-.index_main_content_list{
+.main_content_list{
     overflow: hidden;
-    margin-bottom: 30px;
 }
 
-.index_main_content_list li{
+.main_content_list li{
     float: left;
     margin-left: 10px;
     margin-bottom: 30px;
 }
 
-.index_img_box{
-    width: 249px;
+.img_box{
+    margin-left: 3px;
+    top : 0;
+    width: 280px;
     height: 320px;
     overflow: hidden;
     position: relative;
 }
 
-.index_img_box img{
+.img_box img{
     width: 100%;
 }
 
-.index_img_box a{
+.img_box > a{
     position: absolute;
-    right: 10px;
+    display: flex;
+    right: 0px;
     bottom: 0px;
     font-size: 40px;
     color: rgba(128, 136, 248, 60%);
 }
+
+.product {
+    margin-top: 30px;
+}
+
+.product > h3 > a {
+    
+    font-size: 18px;
+    color: #333;
+}
+
+.price > p {
+    font-size: 22px;
+}
+.main_img_box {
+    width: 1200px;
+    height: 234px;
+    overflow: hidden; 
+    position: relative;
+}
+.main_img_box img {
+    width: 100%;
+}
+
+.main_img_box button { 
+    position: absolute; top: 50%;
+    transform: translateY(-50%);
+    border: none; padding: 5px;
+    background-color: #505900; color: #fff; 
+}
+.main_img_box .prevBtn { 
+    left: 0; 
+}
+.main_img_box .nextBtn {
+     right: 0; 
+    }
+
+.slider { 
+    padding: 0;
+    list-style: none;
+    height: 234px;
+}
+.slider li {
+    float: left;
+    width: 1200px;
+    height: 234px;
+}
+
+/* .dot { 
+    padding: 0;
+    list-style: none;
+    width: 100px;
+    margin: 10px auto; }
+.dot li {
+    width: 10px;
+    height: 10px; 
+    background-color: #ccc;
+    float: left;
+    margin: 5px;
+    font-size: 0px;
+    border-radius: 50%;
+}
+.dot li.on {
+    background-color: crimson;
+}           */
 
 /* 임시 index page 끝 */
