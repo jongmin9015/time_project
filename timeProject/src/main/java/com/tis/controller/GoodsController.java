@@ -31,10 +31,11 @@ public class GoodsController {
 	
 	// 상품 리스트
 	@RequestMapping(value = "goods_list", method = RequestMethod.GET)
-	public String goodsList(Model model, @RequestParam("category")String categoryTitle, Criteria cri) {
+	public String goodsList(Model model, @RequestParam("category")String categoryTitle, Criteria cri, String priceSort) {
 
 
 		GoodsVO goods = new GoodsVO(cri);
+		goods.setPriceSort(priceSort);
 		goods.setGoodsCategory(categoryTitle);
 		
 		CategoryVO category = new CategoryVO();
@@ -45,17 +46,19 @@ public class GoodsController {
 		model.addAttribute("categoryMainTitle", categoryTitle);
 		model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalMain(categoryTitle)));
 		model.addAttribute("total", goodsService.getGoodsTotalMain(categoryTitle));
+		model.addAttribute("priceSort",priceSort);
 		log.info("get goods_list......................" + categoryTitle);
 		return "shop/goods/goods_list";
 	}
 	
 	// 상품 서브 리스트
 	@RequestMapping(value = "goods_sublist", method = RequestMethod.GET)
-	public String goodsSubList(Model model,@RequestParam("category")String categorySubTitle, Criteria cri) {
+	public String goodsSubList(Model model,@RequestParam("category")String categorySubTitle, Criteria cri, String priceSort) {
 
 
 		GoodsVO goods = new GoodsVO(cri);
 		goods.setCategorySubTitle(categorySubTitle);
+		goods.setPriceSort(priceSort);
 		List<GoodsVO> goodsList = goodsService.getGoodsSubListWithPaging(goods);
 	
 		Optional<GoodsVO> vo = goodsList.stream().findAny();
@@ -70,6 +73,7 @@ public class GoodsController {
 			model.addAttribute("categorySubTitle", categorySubTitle);
 			model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalSub(categorySubTitle)));
 			model.addAttribute("total", goodsService.getGoodsTotalSub(categorySubTitle));
+			model.addAttribute("priceSort", priceSort);
 		}		
 		log.info("get goods_sublist......................" + categorySubTitle);
 		return "shop/goods/goods_list";

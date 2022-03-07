@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="itemView_price_div">
-                        <span class="itemView_price"><c:out value="${goods.goodsPrice}"/></span>
+                        <span class="itemView_price"><fmt:formatNumber value="${goods.goodsPrice}" pattern="###,###,###"/></span>
                         <span class="itemView_price_won">원</span>
                     </div>
 

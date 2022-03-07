@@ -343,6 +343,7 @@ link {
     font-size: 14px;
     color: #5f0080;
     font-weight: 700;
+    pointer-events: none
 }
 
 .itemList_subList_tit:hover{
@@ -404,6 +405,7 @@ link {
     font-size: 12px;
     letter-spacing: -.3px;
     font-weight: 700;
+    pointer-events: none
 }
 
 .itemList_sort_menu_list_atag:hover{
@@ -551,6 +553,7 @@ link {
     height: 30px;
     border: 1px solid #ddd;
     cursor: default;
+    pointer-events: none
 }
 /* itemList Page 끝 */
 
