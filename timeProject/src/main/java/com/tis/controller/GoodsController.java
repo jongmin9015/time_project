@@ -57,13 +57,14 @@ public class GoodsController {
 		
 		List<GoodsVO> goodsList = goodsService.getGoodsSubList(goods);
 	
-		Optional<GoodsVO> result = goodsList.stream().findAny();
-		if(result.isPresent()) {
+		Optional<GoodsVO> vo = goodsList.stream().findAny();
+		if(vo.isPresent()) {
 			String categoryTitle = goodsList.stream().findAny().get().getCategoryTitle();
 			CategoryVO category = new CategoryVO();
 			category.setCategoryTitle(categoryTitle);
 			model.addAttribute("categorys", goodsService.getCategory(category));
-			model.addAttribute("categoryMain", categoryTitle);
+			model.addAttribute("categoryMainTitle", categoryTitle);
+			model.addAttribute("categorySubTitle", categorySubTitle);
 		}
 		
 		model.addAttribute("goodsList", goodsList);

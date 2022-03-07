@@ -332,7 +332,7 @@ link {
     margin: 15px 0;
 }
 
-.itemList_subList_tit a{
+.itemList_subList_tit{
     font-size: 14px;
     color: #333;
     cursor: pointer;

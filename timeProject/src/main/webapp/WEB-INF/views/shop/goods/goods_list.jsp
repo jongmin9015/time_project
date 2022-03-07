@@ -37,10 +37,14 @@
                 </div>
                 <div class="itemList_lnb_div clear">
                     <ul class="itemList_subList">
-                        <li ><a href='/shop/goods/goods_list?category=${categoryMain}' class="itemList_subList_tit_on">전체보기</a></li>    
+                        <li><a href='/shop/goods/goods_list?category=${categoryMainTitle}' 
+                        class="itemList_subList_tit${categoryMain == null ? "" : "_on"}">전체보기</a></li>    
                                    
                         <c:forEach items="${categorys}" var="category">
-                        <li class="itemList_subList_tit"><a href="${category.categorySubTitle}"><c:out value="${category.categorySub}"/></a></li>
+                        <li>
+                        <a href="${category.categorySubTitle}"
+                         class="itemList_subList_tit${category.categorySubTitle == categorySubTitle ? "_on" : "" }">
+                         <c:out value="${category.categorySub}"/></a></li>
                         </c:forEach>
                         
                     </ul>
@@ -123,11 +127,14 @@
 			actionForm.submit();
 		})
 		
-		$(".itemList_subList_tit a").on("click", function(e) {
+		$(".itemList_subList_tit").on("click", function(e) {
 			e.preventDefault();
 			actionForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
+			$("#itemlist_All").attr("class", "itemList_subList_tit");
 			actionForm.submit();
 		})
+		
+		$("#itemlist_All")
 
 		
 	})
