@@ -62,7 +62,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
+			<version>1.2.17</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.mail</groupId>
@@ -175,10 +175,6 @@
 			<version>3.5.9</version>
 		</dependency>
 
-		<!-- ibatis core -->
-		<!-- <dependency> <groupId>org.apache.ibatis</groupId> <artifactId>ibatis-core</artifactId> 
-			<version>3.0</version> </dependency> -->
-
 		<!-- mybatis spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -230,7 +226,12 @@
 			<version>1.16</version>
 		</dependency>
 
-
+		<!-- Orai18n  -->
+		<dependency>
+			<groupId>com.oracle.database.nls</groupId>
+			<artifactId>orai18n</artifactId>
+			<version>21.5.0.0</version>
+		</dependency>
 
 
 

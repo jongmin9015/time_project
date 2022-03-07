@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>    
+    <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            $("#header").load("/header.html");
+            $("#footer").load("/footer.html");
+        });
+    </script>
+    <div id="header"></div>
+    <div id="warp">         
+        <section>
+            <div class="login_inner">
+                <h3 class="login_h3">로그인</h3>                
+                <div class="login_formBox">
+                    <form action="#">                        
+                        <input class="login_formBox_input" type="text" id="id" name="id" placeholder="아이디를 입력해 주세요."><br>
+                        <input class="login_formBox_input" type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요."><br>
+                        
+                        <br>
+                        <button type="submit" class="login_loginBtn">로그인</button>
+                    </form>
+                    <a href="signup.html" class="login_signupBtn">회원가입</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
