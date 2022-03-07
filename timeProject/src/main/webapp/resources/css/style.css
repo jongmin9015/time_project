@@ -338,6 +338,7 @@ link {
     cursor: pointer;
     text-decoration: none;
 }
+
 .itemList_subList_tit_on{
     font-size: 14px;
     color: #5f0080;
@@ -345,6 +346,23 @@ link {
 }
 
 .itemList_subList_tit:hover{
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    font-weight: 700;
+}
+.itemList_allList_tit{
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+}
+.itemList_allList_tit_on{
+    font-size: 14px;
+    color: #5f0080;
+    font-weight: 700;
+}
+.itemList_allList_tit:hover{
     font-size: 14px;
     color: #333;
     cursor: pointer;

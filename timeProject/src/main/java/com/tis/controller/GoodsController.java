@@ -41,7 +41,7 @@ public class GoodsController {
 		
 		model.addAttribute("goodsList", goodsService.getGoodsList(goods));
 		model.addAttribute("categorys", goodsService.getCategory(category));
-		model.addAttribute("categoryMain", categoryTitle);
+		model.addAttribute("categoryMainTitle", categoryTitle);
 		
 		log.info("get goods_list......................" + categoryTitle);
 		return "shop/goods/goods_list";
