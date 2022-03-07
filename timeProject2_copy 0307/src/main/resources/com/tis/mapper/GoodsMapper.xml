@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tis.mapper.GoodsMapper">
+	
+	<!-- 상품 리스트 조회 -->
+	<select id="getGoodsList" resultType="com.tis.domain.GoodsVO">
+		SELECT * 
+		FROM tbl_goods g left join tbl_category c
+		ON g.goodsCategory = c.categorySubTitle
+		WHERE categoryTitle = #{goodsCategory}
+	</select>
+	
+	<!-- 상품 서브리스트 조회 -->
+ 	<select id="getGoodsSubList" resultType="com.tis.domain.GoodsVO">
+		SELECT * 
+		FROM tbl_goods g left join tbl_category c
+		ON g.goodsCategory = c.categorySubTitle
+		WHERE goodsCategory = #{categorySubTitle}
+	</select>
+	
+	<!-- 상품 상세 조회 -->
+	<select id="getGoodsDetail" resultType="com.tis.domain.GoodsVO">
+		SELECT * 
+		FROM tbl_goods 
+		WHERE goodsNo = #{goodsNo}
+	</select>
+	
+	<!-- 카테고리 조회 -->
+	<select id="getCategory" resultType="com.tis.domain.CategoryVO">
+		SELECT * 
+		FROM tbl_category 
+		WHERE categoryTitle = #{categoryTitle}
+	</select>
+	
+	<select id="getGoodsListWithPaging" resultType="com.tis.domain.GoodsVO">
+		<![CDATA[
+		SELECT *
+		FROM ( SELECT /*+ INDEX_DESC (tbl_goods pk_goods) */
+			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice
+		       ,goodsUnit,goodsWeight,goodsDelivery,goodsPackage,goodsAllergy,goodsImage
+		       FROM tbl_goods g LEFT JOIN ON tbl_category c
+		       ON g.goodsCategory = c.categorySubTitle  
+		       WHERE rownum <= #{cri.pageNum} * #{cri.amount} 
+		      )
+		WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
+		AND categoryTitle = #{goods.goodsCategory}      
+		]]>	       			
+	</select>
+
+	
+</mapper>

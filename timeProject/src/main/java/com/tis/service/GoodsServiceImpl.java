@@ -18,17 +18,16 @@ public class GoodsServiceImpl implements GoodsService {
 	
 	private final GoodsMapper goodsMapper;
 	
-
-	// 상품 리스트 조회
+	// 상품 리스트 조회 WITH PAGING
 	@Override
-	public List<GoodsVO> getGoodsList(GoodsVO goods) {
-		return goodsMapper.getGoodsList(goods);
+	public List<GoodsVO> getGoodsListWithPaging(GoodsVO goods) {
+		return goodsMapper.getGoodsListWithPaging(goods);
 	}
 	
 	// 상품 서브 리스트 조회
 	@Override
-	public List<GoodsVO> getGoodsSubList(GoodsVO goods) {
-		return goodsMapper.getGoodsSubList(goods);
+	public List<GoodsVO> getGoodsSubListWithPaging(GoodsVO goods) {
+		return goodsMapper.getGoodsSubListWithPaging(goods);
 	}
 
 	// 상품 상세 조회
@@ -40,6 +39,18 @@ public class GoodsServiceImpl implements GoodsService {
 	// 상품 카테고리 조회
 	public List<CategoryVO> getCategory(CategoryVO category) {
 		return goodsMapper.getCategory(category);
+	}
+
+
+
+	// 상품 총 갯수 조회
+	@Override
+	public int getGoodsTotalMain(String categoryTitle) {
+		return goodsMapper.getGoodsTotalMain(categoryTitle);
+	}
+	@Override
+	public int getGoodsTotalSub(String categorySubTitle) {
+		return goodsMapper.getGoodsTotalSub(categorySubTitle);
 	}
 
 

@@ -51,7 +51,7 @@
 
             <!-- itemList 솔트메뉴 -->
             <div class="itemList_sort_menu">
-                <span class="itemList_count">총 45개</span>
+                <span class="itemList_count">총 ${total}개</span>
                 <ul class="itemList_sort_menu_list">
                     <li><a href="#" class="itemList_sort_menu_list_atag_on">추천순</a></li>
                     <li><a href="#" class="itemList_sort_menu_list_atag">낮은 가격순</a></li>
@@ -65,7 +65,7 @@
                 
                 <c:forEach items="${goodsList}" var="goods">
                     <li>
-                   	 	<a class="move" href='<c:out value="${goods.goodsNo}"/>'>
+                   	 	<a class="goods_detail" href='<c:out value="${goods.goodsNo}"/>'>
                         <div class="itemList_item" >
                             <div class="itemList_img_div">
                                 <div class="itemList_img">
@@ -87,28 +87,47 @@
                 </ul>
             </div>
 
+
+				
             <!-- itemList 페이지리스트 -->
             <div class="itemList_page_div">
                 <div class="itemList_page_div_box">
-                    <a href="#" class="itemList_move_f itemList_first"><i class="fa-solid fa-angles-left"></i></a>
-                    <a href="#" class="itemList_move_f itemList_pre"><i class="fa-solid fa-angle-left"></i></a>
-                    <a href="#" class="itemList_move itemList_num_on">1</a>
-                    <a href="#" class="itemList_move itemList_num">2</a>
-                    <a href="#" class="itemList_move itemList_num">3</a>
-                    <a href="#" class="itemList_move itemList_num">4</a>
-                    <a href="#" class="itemList_move itemList_num">5</a>
-                    <a href="#" class="itemList_move itemList_num">6</a>
-                    <a href="#" class="itemList_move itemList_num">7</a>
-                    <a href="#" class="itemList_move itemList_num">8</a>
-                    <a href="#" class="itemList_move itemList_num">9</a>
-                    <a href="#" class="itemList_move itemList_num">10</a>
-                    <a href="#" class="itemList_move_f itemList_naxt"><i class="fa-solid fa-angle-right"></i></a>
-                    <a href="#" class="itemList_move_f itemList_last"><i class="fa-solid fa-angles-right"></i></a>
+                	<c:if test="${pageMaker.prev}">
+                		<a href="1" class="itemList_move_f itemList_first"><i class="fa-solid fa-angles-left"></i></a>
+                  	 	<a href="${pageMaker.startPage - 1}" class="itemList_move_f itemList_pre"><i class="fa-solid fa-angle-left"></i></a>
+                	</c:if>	
+                	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                		<a href="${num}" class="itemList_move itemList_num${num == pageMaker.cri.pageNum ? "_on" : ""}" >${num}</a>
+                	</c:forEach>
+                	<c:if test="${pageMaker.next}">
+                		 <a href="${pageMaker.endPage + 1}" class="itemList_move_f itemList_naxt"><i class="fa-solid fa-angle-right"></i></a>
+                  		 <a href="${pageMaker.realEnd}" class="itemList_move_f itemList_last"><i class="fa-solid fa-angles-right"></i></a>
+                	</c:if>             
                 </div>
-            </div>
+            </div>    
         </div>
         <!-- itemList 끝 -->
-        <form action="/shop/goods/goods_sublist" id="actionForm">
+        
+        <!-- 페이징 처리 -->
+        <c:choose>
+        	<c:when test="${category.categorySubTitle == categorySubTitle}">
+        	   	<form action="/shop/goods/goods_list" id="item_listPage_Form" method="get">
+       		 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+       		 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+       		 		<input type="hidden" name="category" value="${categoryMainTitle}">
+       		    </form>
+        	</c:when>
+        	<c:otherwise>
+	        	<form action="/shop/goods/goods_sublist" id="item_listPage_Form" method="get">
+       		 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+       		 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+       		 		<input type="hidden" name="category" value="${categoryMainTitle}">
+       		    </form>
+        	</c:otherwise>
+        </c:choose>
+   
+   		<!-- Sub 메뉴 이동 -->
+        <form action="/shop/goods/goods_sublist" id="item_list_Form" me>
         </form>
     </div>
     
@@ -116,24 +135,30 @@
 <script>
 	$(document).ready(function() {
 		
-		const actionForm = $("#actionForm");
+		const item_listForm = $("#item_list_Form");
+		const item_listPageForm = $("#item_listPage_Form");
 		
-		$(".move").on("click", function(e) {
+		// 상품 상세 이동
+		$(".goods_detail").on("click", function(e) {
 			e.preventDefault();
-			actionForm.append("<input type='hidden' name='goodsNo' value='"+$(this).attr("href")+"'>");
-			actionForm.attr("action", "/shop/goods/goods_detail");
-			actionForm.submit();
-		})
+			item_listForm.append("<input type='hidden' name='goodsNo' value='"+$(this).attr("href")+"'>");
+			item_listForm.attr("action", "/shop/goods/goods_detail");
+			item_listForm.submit();
+		});
 		
+		// Sub 메뉴 이동 
 		$(".itemList_subList_tit").on("click", function(e) {
 			e.preventDefault();
-			actionForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
-			$("#itemlist_All").remove("")
-			actionForm.submit();
-		})
+			item_listForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
+			item_listForm.submit();
+		});
 		
-		$("#itemlist_All")
-
+		// 페이징 처리
+		$(".itemList_page_div_box a").on("click", function(e) {
+			e.preventDefault();
+ 			item_listPageForm.find("input[name='pageNum']").val($(this).attr("href"))
+			item_listPageForm.submit(); 
+		});
 		
 	})
 </script>

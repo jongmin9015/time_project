@@ -23,6 +23,10 @@ create sequence seq_goods
 start with 1
 increment by 1;
 
+
+
+
+
 <상품 : 건강식품>
 
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
@@ -58,6 +62,16 @@ insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPri
 values (seq_goods.nextval,'pastanoodle', '[천일식품]사누끼 우동면', '다가수 방식이라 촉촉 탱글한', 5150, '1팩', '230g X 5개입', '샛별배송/택배배송', '냉동/스티로폼', '-밀 함유', 'noodle6.jpg'); 
 
 
+
+
+
+
+
+
+
+
+
+
 <상품 : 샐러드>
 
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
@@ -72,6 +86,53 @@ insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPri
 values (seq_goods.nextval,'saladchicken', '[어게인리프레쉬]샐러드 7종', '내 취향에 맞는 샐러드 고르기', 5900, 'PK', '옵션별 상이', '샛별배송/택배배송', '냉장/스티로폼', '-연어샐러드:우유,호두,잣,대두,아황산류 함유', 'salad5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
 values (seq_goods.nextval,'saladchicken', '[홍루이젠]대만 샌드위치 3종', '호밀빵으로 더한 고소함', 2300, '1개', '옵션별 상이', '샛별배송/택배배송', '냉장/스티로폼', '-햄 샌드위치:대두,밀,우유,달걀,돼지고기,쇠고기,조개류(굴)닭고기함유', 'salad6.jpg');
+
+<상품 : 샐러드 도시락>
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '[탄단지]가벼운 한식 도시락', '다채로운 한식메뉴로 즐기는 도시락!', 4200, '1팩', '200g', '샛별배송/택배배송', '냉동/스티로폼', '(굴) 함유 쇠고기,돼지고기,메밀,땅콩,게,잣을 사용한 제품과 같은 제조시설에서 제조', 'lunchbox1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '[마이비밀]라이킷 식단관리 도시락', '언제 어디서든 손쉬운 식단 관리', 3600, '1팩', '옵션별로 상이', '샛별배송/택배배송', '냉동/스티로폼', '없음', 'lunchbox2.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '[햇반쿡반]노릇노릇 구운 주먹밥','간편하게 챙겨먹는 한 끼 주먹밥', 6900, '1팩', '100gX5개입', '샛별배송/택배배송', '냉동/스티로폼', '-플레인,블랙페퍼:닭고기,대두,밀,조개류(굴)함유', 'lunchbox3.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '닭가슴살 곤약 볶음밥', '부담없이 맛있게 즐기는 한 끼', 2200, '1팩', '200g', '샛별배송/택배배송', '냉동/스티로폼', '-훈제:닭고기 함유, 블랙페퍼:닭고기,대두 함유', 'lunchbox4.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '[청정원]라이틀리 곤약 볶음밥', '가볍지만 알차게 즐기는 볶음밥', 2500, '1봉', '200G', '샛별배송/택배배송', '냉동/스티로폼', '-연어샐러드:우유,호두,잣,대두,아황산류 함유', 'lunchbox5.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'lunchbox', '[고온어다이어트]시즌3 도시락 5종', '맛과 식감을 모두 고려한 메뉴 구성', 3500, '1팩', '옵션별 상이', '샛별배송/택배배송', '냉동/스티로폼', '-햄 샌드위치:대두,밀,우유,달걀,돼지고기,쇠고기,조개류(굴)닭고기함유', 'lunchbox6.jpg');
+
+
+<상품 : 샐러드 간편식>
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[로컬식탁]부산 비빔당면', '집에서 만나는 시장의 별미', 9900, '1팩', '325g', '샛별배송/택배배송', '냉장/스티로폼', '(굴) 함유 쇠고기,돼지고기,메밀,땅콩,게,잣을 사용한 제품과 같은 제조시설에서 제조', 'pasta1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[더플랜]목련 어묵 우동', '[극한직업 어묵편 방송]탱글한 어묵이 담긴 우동 한그릇', 4000, '1개', '313g', '샛별배송/택배배송', '냉동/스티로폼', '없음', 'pasta2.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[이연복의 목란]짬뽕 2인분','매콤한 불맛이 담긴 한 그릇', 13200, '1팩', '중화면(250gX2개입)', '샛별배송/택배배송', '냉동/스티로폼', '-플레인,블랙페퍼:닭고기,대두,밀,조개류(굴)함유', 'pasta3.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[전주 베테랑]칼국수', '베테랑의 대표메뉴를 집에서', 5600, '1팩', '196.5g', '샛별배송/택배배송', '냉동/스티로폼', '-훈제:닭고기 함유, 블랙페퍼:닭고기,대두 함유', 'pasta4.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[마이하노이]고기폭탄 쌀국수', '신사동 가로수길,하노이식 정통 쌀국수집', 6900, '1팩', '750g', '샛별배송/택배배송', '냉동/스티로폼', '-연어샐러드:우유,호두,잣,대두,아황산류 함유', 'pasta5.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pasta', '[이연복의 목란]짜장면 2인분', '대가가 선보이는 한 그릇', 9800, '1팩', '1040g', '샛별배송/택배배송', '냉동/스티로폼', '-햄 샌드위치:대두,밀,우유,달걀,돼지고기,쇠고기,조개류(굴)닭고기함유', 'pasta6.jpg');
+
+
+<상품 : 샐러드 카테고리 4종>
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'snack', '[로컬식탁]부산 물떡,어묵꼬치', '부산의 별미 분식', 5900, '1봉', '400g', '샛별배송/택배배송', '냉동/스티로폼', '(굴) 함유 쇠고기,돼지고기,메밀,땅콩,게,잣을 사용한 제품과 같은 제조시설에서 제조', 'snack1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'pizza', '[서울마님]간편 간식 떡구이', '다양한 토핑으로 채운 떡귀', 1900, '3개', '1개 120g', '샛별배송/택배배송', '냉동/스티로폼', '없음', 'pizza1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'poached', '[미트클레버]한돈 떡갈비','간편하게 즐기는 도톰한 떡갈비', 3100, '1팩', '120g', '샛별배송/택배배송', '냉동/스티로폼', '-플레인,블랙페퍼:닭고기,대두,밀,조개류(굴)함유', 'poached1.jpg');
+insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+values (seq_goods.nextval,'soup', '[순수람]채소를 담은 자연주의 채담카레', '새싹이 듬뿍, 카레의 건강한 변신!', 1960, '1봉', '160g', '샛별배송/택배배송', '냉장/스티로폼', '-훈제:닭고기 함유, 블랙페퍼:닭고기,대두 함유', 'soup1.jpg');
+
+
+
+
+
+
+
 
 
 
@@ -88,6 +149,7 @@ alter table tbl_category
 add constraint pk_category primary key (categorySubTitle);
 
 
+<카테고리 테이블>
 
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
 values ('salad', '샐러드.간편식', '샐러드.닭가슴살', 'saladchicken');
