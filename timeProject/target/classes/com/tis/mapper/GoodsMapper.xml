@@ -5,41 +5,56 @@
 <mapper namespace="com.tis.mapper.GoodsMapper">
 	
 	<!--상품 리스트 조회 WITH PAGING  -->
-	<select id="getGoodsListWithPaging" resultType="com.tis.domain.GoodsVO">
+ 	<select id="getGoodsListWithPaging" resultType="com.tis.domain.GoodsVO">
 		<![CDATA[
-		SELECT  goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice
-		       ,goodsUnit,goodsWeight,goodsDelivery,goodsPackage,goodsAllergy,goodsImage
-		       ,categorymain,categorysub,categorysubtitle,categorytitle
+		SELECT 
+			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
 		FROM ( SELECT /*+ INDEX_DESC (tbl_goods pk_goods) */
-			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice
-		       ,goodsUnit,goodsWeight,goodsDelivery,goodsPackage,goodsAllergy,goodsImage
-		       ,categorymain,categorysub,categorysubtitle,categorytitle
-		       FROM tbl_goods g LEFT JOIN tbl_category c
-		       ON g.goodsCategory = c.categorySubTitle  
-		       WHERE categoryTitle = #{goodsCategory}
+			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
+		       FROM 
+		            (SELECT * 
+		             FROM tbl_goods g LEFT JOIN tbl_category c
+		             ON g.goodsCategory = c.categorySubTitle
+		]]>
+		    		<if test='priceSort != null and (priceSort eq "asc".toString())'>
+						ORDER BY goodsPrice ASC
+					</if>
+					<if test='priceSort != null and (priceSort eq "desc".toString())'>
+						ORDER BY goodsPrice DESC
+					</if>
+	    <![CDATA[)	           
+       		   WHERE categoryTitle = #{goodsCategory}
 		       AND rownum <= #{cri.pageNum} * #{cri.amount} 
 		      )
 		WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
-		]]>
+		 ]]>
 	</select>
+
 	
 	<!-- 상품 서브리스트 조회 -->
- 	<select id="getGoodsSubListWithPaging" resultType="com.tis.domain.GoodsVO">
- 		<![CDATA[
-		SELECT  goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice
-		       ,goodsUnit,goodsWeight,goodsDelivery,goodsPackage,goodsAllergy,goodsImage
-		       ,categorymain,categorysub,categorysubtitle,categorytitle
+	<select id="getGoodsSubListWithPaging" resultType="com.tis.domain.GoodsVO">
+		<![CDATA[
+		SELECT 
+			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
 		FROM ( SELECT /*+ INDEX_DESC (tbl_goods pk_goods) */
-			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice
-		       ,goodsUnit,goodsWeight,goodsDelivery,goodsPackage,goodsAllergy,goodsImage
-		       ,categorymain,categorysub,categorysubtitle,categorytitle
-		       FROM tbl_goods g LEFT JOIN tbl_category c
-		       ON g.goodsCategory = c.categorySubTitle  
-		       WHERE goodsCategory = #{categorySubTitle}
+			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
+		       FROM 
+		            (SELECT * 
+		             FROM tbl_goods g LEFT JOIN tbl_category c
+		             ON g.goodsCategory = c.categorySubTitle
+		]]>
+		    		<if test='priceSort != null and (priceSort eq "asc".toString())'>
+						ORDER BY goodsPrice ASC
+					</if>
+					<if test='priceSort != null and (priceSort eq "desc".toString())'>
+						ORDER BY goodsPrice DESC
+					</if>
+	    <![CDATA[) 		           
+       		   WHERE goodsCategory = #{categorySubTitle}
 		       AND rownum <= #{cri.pageNum} * #{cri.amount} 
 		      )
 		WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
-		]]>
+		 ]]>
 	</select>
 	
 	<!-- 상품 상세 조회 -->
@@ -73,5 +88,6 @@
 		ON g.goodsCategory = c.categorySubTitle
 		WHERE goodsCategory = #{categorySubTitle}		
 	</select>
+	
 	
 </mapper>

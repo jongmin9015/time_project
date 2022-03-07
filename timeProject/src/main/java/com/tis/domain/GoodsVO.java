@@ -20,7 +20,7 @@ public class GoodsVO {
 	private String goodsImage;
 	private Date goodsRegdate;
 	private Date goodsUpdatedate;
-	
+	 	
 	
 	private String categoryTitle;
 	private String categoryMain;
@@ -28,6 +28,8 @@ public class GoodsVO {
 	private String categorySubTitle;
 	
 	private Criteria cri;
+	
+	private String priceSort;
 	
 	public GoodsVO() {
 		

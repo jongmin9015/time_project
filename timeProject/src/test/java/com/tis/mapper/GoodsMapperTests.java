@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.tis.domain.CategoryVO;
+import com.tis.domain.Criteria;
 import com.tis.domain.GoodsVO;
 import com.tis.service.GoodsService;
 
@@ -33,8 +34,12 @@ public class GoodsMapperTests {
 //	}
 //	
 	@Test
-	public void goodsDetail() {
-
+	public void test() {
+		Criteria cri = new Criteria();
+		GoodsVO vo = new GoodsVO(cri);
+		vo.setPriceSort("desc");
+		vo.setGoodsCategory("health");
+		mapper.getGoodsListWithPaging(vo);
 	}
 	
 

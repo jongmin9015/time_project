@@ -37,10 +37,11 @@
                 </div>
                 <div class="itemList_lnb_div clear">
                     <ul class="itemList_subList">
-                        <li><a href='/shop/goods/goods_list?category=${categoryMainTitle}' class="itemList_allList_tit${categorySubTitle == null ? "_on" : ""}">전체보기</a></li>                   
+                        <li><a href='/shop/goods/goods_list?category=${categoryMainTitle}' 
+                        class="itemList_allList_tit${categorySubTitle == null ? "_on" : ""}">전체보기</a></li>                   
                         <c:forEach items="${categorys}" var="category">
                         <li>
-                        <a href="${category.categorySubTitle}"
+                        <a href="${category.categorySubTitle}" 
                          class="itemList_subList_tit${category.categorySubTitle == categorySubTitle ? "_on" : "" }">
                          <c:out value="${category.categorySub}"/></a></li>
                         </c:forEach>
@@ -53,9 +54,9 @@
             <div class="itemList_sort_menu">
                 <span class="itemList_count">총 ${total}개</span>
                 <ul class="itemList_sort_menu_list">
-                    <li><a href="#" class="itemList_sort_menu_list_atag_on">추천순</a></li>
-                    <li><a href="#" class="itemList_sort_menu_list_atag">낮은 가격순</a></li>
-                    <li><a href="#" class="itemList_sort_menu_list_atag">높은 가격순</a></li>
+                    <li><a href="" class="itemList_sort_menu_list_atag">추천순</a></li>
+                    <li><a href="asc" class="itemList_sort_menu_list_atag${priceSort == 'asc' ? "_on" : ""}">낮은 가격순</a></li>
+                    <li><a href="desc" class="itemList_sort_menu_list_atag${priceSort == 'desc' ? "_on" : ""}"">높은 가격순</a></li>
                 </ul>
             </div>
 
@@ -77,7 +78,8 @@
                             </div>
   							<!--<a href="#" class="itmeList_info"> -->
                                 <span class="itemList_info item_name">${goods.goodsName}</span>
-                                <span class="itemList_info item_price">${goods.goodsPrice}</span>
+                                <span class="itemList_info item_price">
+                                <fmt:formatNumber value="${goods.goodsPrice}" pattern="###,###,###"/></span>
                                 <span class="itemList_info item_desc">${goods.goodsContent}</span>
                             <!--</a> -->
                         </div>
@@ -86,22 +88,23 @@
                 </c:forEach>                             
                 </ul>
             </div>
-
-
-				
+		
             <!-- itemList 페이지리스트 -->
             <div class="itemList_page_div">
                 <div class="itemList_page_div_box">
                 	<c:if test="${pageMaker.prev}">
                 		<a href="1" class="itemList_move_f itemList_first"><i class="fa-solid fa-angles-left"></i></a>
-                  	 	<a href="${pageMaker.startPage - 1}" class="itemList_move_f itemList_pre"><i class="fa-solid fa-angle-left"></i></a>
+                  	 	<a href="${pageMaker.startPage - 1}" class="itemList_move_f itemList_pre">
+                  	 	<i class="fa-solid fa-angle-left"></i></a>
                 	</c:if>	
                 	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                 		<a href="${num}" class="itemList_move itemList_num${num == pageMaker.cri.pageNum ? "_on" : ""}" >${num}</a>
                 	</c:forEach>
                 	<c:if test="${pageMaker.next}">
-                		 <a href="${pageMaker.endPage + 1}" class="itemList_move_f itemList_naxt"><i class="fa-solid fa-angle-right"></i></a>
-                  		 <a href="${pageMaker.realEnd}" class="itemList_move_f itemList_last"><i class="fa-solid fa-angles-right"></i></a>
+                		 <a href="${pageMaker.endPage + 1}" class="itemList_move_f itemList_naxt">
+                		 <i class="fa-solid fa-angle-right"></i></a>
+                  		 <a href="${pageMaker.realEnd}" class="itemList_move_f itemList_last">
+                  		 <i class="fa-solid fa-angles-right"></i></a>
                 	</c:if>             
                 </div>
             </div>    
@@ -115,13 +118,15 @@
        		 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
        		 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
        		 		<input type="hidden" name="category" value="${categoryMainTitle}">
+       		 		<input type="hidden" name="priceSort" value="${priceSort}">
        		    </form>
         	</c:when>
         	<c:otherwise>
 	        	<form action="/shop/goods/goods_sublist" id="item_listPage_Form" method="get">
        		 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
        		 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-       		 		<input type="hidden" name="category" value="${categoryMainTitle}">
+       		 		<input type="hidden" name="category" value="${categorySubTitle}">
+       		 		<input type="hidden" name="priceSort" value="${priceSort}">
        		    </form>
         	</c:otherwise>
         </c:choose>
@@ -131,9 +136,9 @@
         </form>
     </div>
     
-    
+    <input type="hidden" name="priceSort" value='<c:out value="'++'"/>'>
 <script>
-	$(document).ready(function() {
+$(document).ready(function() {
 		
 		const item_listForm = $("#item_list_Form");
 		const item_listPageForm = $("#item_listPage_Form");
@@ -160,7 +165,17 @@
 			item_listPageForm.submit(); 
 		});
 		
-	})
+		// 가격순 정렬
+		
+		
+ 		$(".itemList_sort_menu_list a").on("click", function(e) {
+			e.preventDefault();
+			var priceSort = $(this).attr("href");
+ 			item_listPageForm.find("input[name='pageNum']").val("1");
+ 			item_listPageForm.find("input[name='priceSort']").val(priceSort);
+ 			item_listPageForm.submit();
+		}) 
+})//ready
 </script>
     <div id="footer">
    		<%@ include file="../../includes/footer.jsp"  %>
