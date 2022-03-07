@@ -32,11 +32,10 @@ public class GoodsMapperTests {
 //		goodsService.getGoodsSubList(vo).forEach(goods -> log.info(goods));
 //	}
 //	
-//	@Test
-//	public void goodsDetail() {
-//		log.info(goodsService.getGoodsDetail(18L));
-//		
-//	}
+	@Test
+	public void goodsDetail() {
+
+	}
 	
 
 	

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tis.domain.CategoryVO;
+import com.tis.domain.Criteria;
 import com.tis.domain.GoodsVO;
+import com.tis.domain.PageDTO;
 import com.tis.service.GoodsService;
 
 import lombok.AllArgsConstructor;
@@ -29,46 +31,46 @@ public class GoodsController {
 	
 	// 상품 리스트
 	@RequestMapping(value = "goods_list", method = RequestMethod.GET)
-	public String goodsList(Model model,@RequestParam("category")String categoryTitle) {
+	public String goodsList(Model model, @RequestParam("category")String categoryTitle, Criteria cri) {
 
 
-		GoodsVO goods = new GoodsVO();
+		GoodsVO goods = new GoodsVO(cri);
 		goods.setGoodsCategory(categoryTitle);
 		
 		CategoryVO category = new CategoryVO();
 		category.setCategoryTitle(categoryTitle);
 		
-		
-		model.addAttribute("goodsList", goodsService.getGoodsList(goods));
+		model.addAttribute("goodsList", goodsService.getGoodsListWithPaging(goods));
 		model.addAttribute("categorys", goodsService.getCategory(category));
 		model.addAttribute("categoryMainTitle", categoryTitle);
-		
+		model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalMain(categoryTitle)));
+		model.addAttribute("total", goodsService.getGoodsTotalMain(categoryTitle));
 		log.info("get goods_list......................" + categoryTitle);
 		return "shop/goods/goods_list";
 	}
 	
 	// 상품 서브 리스트
 	@RequestMapping(value = "goods_sublist", method = RequestMethod.GET)
-	public String goodsSubList(Model model,@RequestParam("category")String categorySubTitle) {
+	public String goodsSubList(Model model,@RequestParam("category")String categorySubTitle, Criteria cri) {
 
 
-		GoodsVO goods = new GoodsVO();
+		GoodsVO goods = new GoodsVO(cri);
 		goods.setCategorySubTitle(categorySubTitle);
-		
-		List<GoodsVO> goodsList = goodsService.getGoodsSubList(goods);
+		List<GoodsVO> goodsList = goodsService.getGoodsSubListWithPaging(goods);
 	
 		Optional<GoodsVO> vo = goodsList.stream().findAny();
+		
 		if(vo.isPresent()) {
 			String categoryTitle = goodsList.stream().findAny().get().getCategoryTitle();
 			CategoryVO category = new CategoryVO();
 			category.setCategoryTitle(categoryTitle);
+			model.addAttribute("goodsList", goodsList);
 			model.addAttribute("categorys", goodsService.getCategory(category));
 			model.addAttribute("categoryMainTitle", categoryTitle);
 			model.addAttribute("categorySubTitle", categorySubTitle);
-		}
-		
-		model.addAttribute("goodsList", goodsList);
-	
+			model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalSub(categorySubTitle)));
+			model.addAttribute("total", goodsService.getGoodsTotalSub(categorySubTitle));
+		}		
 		log.info("get goods_sublist......................" + categorySubTitle);
 		return "shop/goods/goods_list";
 	}
