@@ -5,16 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
+    <script src="js/javascript.js" defer></script>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>cart Page</title>
 </head>
-<body>
+<body>    
     <script>
         $(document).ready(function(){
+            $("#tmpBtn").trigger("click");
+        });
+    </script>
+    <script>        
+        $(document).ready(function(){            
             $("#header").load("/header.html");
             $("#footer").load("/footer.html");
+
         });
     </script>
     <div id="header"></div>
@@ -23,16 +30,17 @@
             <div class="cartPage_tit_div">
                 <h2 class="cartPage_tit">장바구니</h2>
             </div>
-            <form action="#">
+            <form action="#" name="cart_item_list">
+                <button type="button" id="tmpBtn" onclick="getAllListCnt()"></button>
                 <div class="cartPage_main_div">
 
                     <div class="cartPage_div_left">                        
                         <div class="cartPage_select_menu_div cartPage_select_menu_div_top">
-                            <label class="cartPage_checkbox_label">
-                                <input type="checkbox" name="checkAll">
+                            <label class="cartPage_checkbox_label" onclick="getCheckedCnt()">
+                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
                                 <span class="cartPage_checkbox_span"></span>
                                 <span class="cartPage_checkAll_span cartPage_checkAll_span_top">
-                                    전체선택(0/1)
+                                    전체선택(<span id="cartPage_item_select_num1">0</span>/<span id="cartPage_item_all_num1">0</span>)
                                 </span>
                             </label>
                             <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_top">
@@ -45,7 +53,63 @@
                                 <li>
                                     <div class="cartPage_item">
                                         <label class="cartPage_item_chkItem_label">
-                                            <input type="checkbox" name="chkItem">
+                                            <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                            <span class="cartPage_item_chkItem_span"></span>
+                                        </label>
+                                        <div class="cartPage_item_img_div">
+                                            <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                                <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                            </a>
+                                        </div>
+                                        <div class="cartPage_item_name_div">
+                                            <a href="#" class="cartPage_item_name">
+                                                [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                            </a>
+                                        </div>
+                                        <div class="cartPage_item_count_div">
+                                            <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                            <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                        <div class="cartPage_item_price_div">
+                                            <span class="cartPage_item_price">48,000</span>
+                                            <span class="cartPage_item_price_won">원</span>
+                                        </div>
+                                        <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cartPage_item">
+                                        <label class="cartPage_item_chkItem_label">
+                                            <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                            <span class="cartPage_item_chkItem_span"></span>
+                                        </label>
+                                        <div class="cartPage_item_img_div">
+                                            <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                                <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                            </a>
+                                        </div>
+                                        <div class="cartPage_item_name_div">
+                                            <a href="#" class="cartPage_item_name">
+                                                [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                            </a>
+                                        </div>
+                                        <div class="cartPage_item_count_div">
+                                            <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                            <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                            <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                        <div class="cartPage_item_price_div">
+                                            <span class="cartPage_item_price">48,000</span>
+                                            <span class="cartPage_item_price_won">원</span>
+                                        </div>
+                                        <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cartPage_item">
+                                        <label class="cartPage_item_chkItem_label">
+                                            <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
                                             <span class="cartPage_item_chkItem_span"></span>
                                         </label>
                                         <div class="cartPage_item_img_div">
@@ -74,11 +138,11 @@
                         </div>
 
                         <div class="cartPage_select_menu_div cartPage_select_menu_div_bottom">
-                            <label class="cartPage_checkbox_label">
-                                <input type="checkbox" name="checkAll">
+                            <label class="cartPage_checkbox_label"  onclick="getCheckedCnt()">
+                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
                                 <span class="cartPage_checkbox_span"></span>
                                 <span class="cartPage_checkAll_span cartPage_checkAll_span_bottom">
-                                    전체선택(0/1)
+                                    전체선택(<span id="cartPage_item_select_num2">0</span>/<span id="cartPage_item_all_num2">0</span>)
                                 </span>
                             </label>
                             <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_bottom">
