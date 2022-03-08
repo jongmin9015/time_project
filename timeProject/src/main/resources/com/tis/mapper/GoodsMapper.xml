@@ -9,10 +9,11 @@
 		<![CDATA[
 		SELECT 
 			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
-		FROM ( SELECT /*+ INDEX_DESC (tbl_goods pk_goods) */
+		FROM ( SELECT
 			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
 		       FROM 
-		            (SELECT * 
+		            (SELECT
+		             goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categoryTitle
 		             FROM tbl_goods g LEFT JOIN tbl_category c
 		             ON g.goodsCategory = c.categorySubTitle
 		]]>
@@ -21,6 +22,9 @@
 					</if>
 					<if test='priceSort != null and (priceSort eq "desc".toString())'>
 						ORDER BY goodsPrice DESC
+					</if>
+					<if test='priceSort != null and (priceSort eq "new".toString())'>
+						ORDER BY goodsregDate DESC
 					</if>
 	    <![CDATA[)	           
        		   WHERE categoryTitle = #{goodsCategory}
@@ -30,16 +34,16 @@
 		 ]]>
 	</select>
 
-	
 	<!-- 상품 서브리스트 조회 -->
 	<select id="getGoodsSubListWithPaging" resultType="com.tis.domain.GoodsVO">
 		<![CDATA[
 		SELECT 
 			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
-		FROM ( SELECT /*+ INDEX_DESC (tbl_goods pk_goods) */
+		FROM ( SELECT 
 			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
 		       FROM 
-		            (SELECT * 
+		            (SELECT
+		             goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
 		             FROM tbl_goods g LEFT JOIN tbl_category c
 		             ON g.goodsCategory = c.categorySubTitle
 		]]>
@@ -48,6 +52,9 @@
 					</if>
 					<if test='priceSort != null and (priceSort eq "desc".toString())'>
 						ORDER BY goodsPrice DESC
+					</if>
+					<if test='priceSort != null and (priceSort eq "new".toString())'>
+						ORDER BY goodsregDate DESC
 					</if>
 	    <![CDATA[) 		           
        		   WHERE goodsCategory = #{categorySubTitle}
@@ -64,19 +71,10 @@
 		WHERE goodsNo = #{goodsNo}
 	</select>
 	
-	<!-- 카테고리 조회 -->
-	<select id="getCategory" resultType="com.tis.domain.CategoryVO">
-		SELECT * 
-		FROM tbl_category 
-		WHERE categoryTitle = #{categoryTitle}
-	</select>
-	
-
-
 	<!-- 메인 상품 총 갯수 조회-->
 	<select id="getGoodsTotalMain" resultType="int">
 		SELECT count(*)
-		From tbl_goods g LEFT JOIN tbl_category c
+		FROM tbl_goods g LEFT JOIN tbl_category c
 		ON g.goodsCategory = c.categorySubTitle
 		WHERE categoryTitle = #{categoryTitle}		
 	</select>
@@ -84,10 +82,9 @@
 	<!-- 서브 상품 총 갯수 조회 -->
 	<select id="getGoodsTotalSub" resultType="int">
 		SELECT count(*)
-		From tbl_goods g LEFT JOIN tbl_category c
+		FROM tbl_goods g LEFT JOIN tbl_category c
 		ON g.goodsCategory = c.categorySubTitle
 		WHERE goodsCategory = #{categorySubTitle}		
 	</select>
-	
 	
 </mapper>
