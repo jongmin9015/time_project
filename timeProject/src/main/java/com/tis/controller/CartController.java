@@ -1,5 +1,6 @@
 package com.tis.controller;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,8 +45,34 @@ public class CartController {
 	
 	// 장바구니 이동
 	@RequestMapping(value = "/move", method = RequestMethod.GET)
-	public String moveCart() {
+	public String moveCart(Model model) {
 		
+		CartVO cart = new CartVO();
+		cart.setMemberId("guest");
+		int deliveryFee = 3000;
+		int totalPrice = 0;
+		
+		List<GoodsVO> cartList = cartService.getCarList(cart);
+		if (cartList.isEmpty()) {
+			deliveryFee = 0;
+		}
+	
+		for (GoodsVO goods : cartList) {
+			totalPrice += goods.getGoodsPrice() * goods.getCartCount();
+		}
+			
+		if (totalPrice < 20000 && totalPrice > 0) {
+			int freeDelivery = 20000 - totalPrice;
+			DecimalFormat df = new DecimalFormat("###,###,###");		
+			model.addAttribute("deliveryMessage", df.format(freeDelivery) +"원 추가 주문 시, 무료배송");
+		} else {
+			deliveryFee = 0;
+		}
+		
+		model.addAttribute("cartTotal", cartService.getCartTotal(cart));
+		model.addAttribute("cartList", cartList);
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("deliveryFee", deliveryFee);
 		
 		
 		log.info("move to cart..........................");
@@ -61,15 +89,17 @@ public class CartController {
 	}
 	
 	// 장바구니 담기
-	@RequestMapping(value = "/put", method = RequestMethod.POST, produces = "application/text; charset=utf8")
-	public ResponseEntity<String> put(@RequestParam("goodsNo")Long goodsNo,CartVO cart, Model model) {
+	@RequestMapping(value = "/put", method = RequestMethod.POST
+			, consumes = "application/json", produces = "application/text; charset=utf8")
+	public ResponseEntity<String> put(@RequestBody CartVO cart, Model model) {
 		
-		cart.setGoodsNo(goodsNo);
-		cart.setCartCount(1);
-		if(cart.getMemberId() == null)
-		cart.setCartId("guest");
-		cartService.insertCart(cart);
-		log.info("post goods in cart........................" + goodsNo);
+		if (cartService.getCartForCheck(cart) == null) {
+			cartService.insertCart(cart);
+			log.info("post goods in cart........................" + cart.getGoodsNo());
+		} else {
+			return new ResponseEntity<String>("이미 장바구에 있습니다.", HttpStatus.OK);
+		}
+
 		return new ResponseEntity<String>("장바구니에 담겼습니다.", HttpStatus.OK);
 	}
 }

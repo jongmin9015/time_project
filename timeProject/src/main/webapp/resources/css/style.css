@@ -1402,7 +1402,7 @@ body {
     display: none;
 }
 .cartPage_inner{
-    width: 1050px;
+    width: 1070px;
     margin: 0 auto;
     margin-top: 180px;
 }
@@ -1426,7 +1426,7 @@ body {
 
 .cartPage_div_left{
     float: left;
-    width: 742px;
+    width: 740px;
     overflow: hidden;
 }
 
@@ -1549,6 +1549,12 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     margin-left: 140px;
     font-weight: 700;
 }
+.cartPage_item_empty{
+    height: 131px;
+    line-height: 131px;
+    font-weight: 700;
+    text-align: center;
+}
 
 .cartPage_item_name{
     font-size: 16px;
@@ -1583,7 +1589,7 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
 }
 
 .cartPage_item_count_input{
-    width: 35px;
+    width: 42px;
     height: 30px;
     padding-left: 10px;
     margin: 0 -13px 0 -12px;
@@ -1591,6 +1597,7 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     border-left: none;
     border-right: none;
     outline: none;
+    text-align: center;
 }
 
 .cartPage_item_price_div{
@@ -1629,7 +1636,9 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
 
 /* cart Page - 배송정보 및 결제 */
 .cartPage_div_right{
+	margin-top: 50px;
     float: right;
+    width: 315px;
 }
 
 .cartPage_delivery_div{
@@ -1643,6 +1652,12 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     margin-bottom: 8px;
     color: #333;
     font-weight: 700;
+}
+.cartPage_deliveryMessage {
+	font-weight: 600;
+    font-size: 12px;
+    letter-spacing: -.3px;
+    color: #5f0080;
 }
 .cartPage_address_div{}
 .cartPage_address{
@@ -1680,6 +1695,13 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     font-weight: 500;
     vertical-align: 1px;
 }
+.cartPage_amount_delivery_num{}
+.cartPage_amount_delivery_won{
+    font-size: 16px;
+    font-weight: 500;
+    vertical-align: 1px;
+}
+
 
 .cartPage_amount_list_total{
     border-top: 1px solid #eee;
@@ -1702,8 +1724,23 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     border-radius: 3px;
     cursor: pointer;
 }
+.cartPage_empty_btn{
+    font-size: 16px;
+    height: 56px;
+    padding-bottom: 2px;
+    line-height: 54px;
+    color: #fff;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    font-weight: 900;
+    width: 100%;
+    border-radius: 3px;
+    pointer-events: none
+}
 
 /* cart Page 끝*/
+
+
 
 /* goodsList Cart Modal */
 .goodsList_cart_div{
@@ -1729,7 +1766,6 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     font-size: 14px;
  	
 }
-
 .goodsList_cart_price{
     width: 128px;
     font-weight: 800;
@@ -1739,7 +1775,6 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     float: left;
     padding-top: 5px;
 }
-
 .goodsList_amount_div {
 	margin-top: 30px;
 }
@@ -1752,8 +1787,6 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     color: #4c4c4c;
     font-weight: 700;
 }
-
-
 .goodsList_amount_price{
     float: right;
     font-size: 26px;
@@ -1769,23 +1802,18 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     font-weight: 500;
     vertical-align: 1px;
 }
-
 .goodsList_amount_list_total{
 
     padding: 30px 0 30px 0;
 }
-
 .goodsList_btn_div{
-	
 }
-
 .goodsList_close_btn_div{
     text-align: center;
     margin-top: 20px;
     width: 49%;
     float: left;
 }
-
 .goodsList_submit_btn_div{
     text-align: center;
     margin-top: 20px;
@@ -1817,14 +1845,10 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     width: 100%;
     border-radius: 3px;
     cursor: pointer;
-  
 }
-
 .goodsList_count_div{
     float: right;
-    
 }
-
 .modal_overlay {
 	position: fixed;
 	overflow: hidden;
@@ -1839,4 +1863,6 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
 .hidden {
 	height:100%; min-height:100%; overflow:hidden !important; touch-action:none;
 }
+/* goodsList Cart Modal 끝*/
+
 

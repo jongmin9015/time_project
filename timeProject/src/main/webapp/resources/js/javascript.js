@@ -152,11 +152,14 @@ function get(goodsNo, callback, error) {
 		}
 	})
 }
-function put(goodsNo, callback, error) {
+
+// 모달창에서 장바구니 담기
+function put(cart, callback, error) {
 	$.ajax({
 		url : '/shop/cart/put',
 		type : 'POST',
-		data : {goodsNo : goodsNo},
+		data : JSON.stringify(cart),
+		contentType : "application/json; charset=utf-8",
 		dataType : 'text',
 		success : function(result) {
 			if(callback){

@@ -21,14 +21,21 @@ public class GoodsVO {
 	private Date goodsRegdate;
 	private Date goodsUpdatedate;
 	 	
-	
+	// CategoryVO
 	private String categoryTitle;
 	private String categoryMain;
 	private String categorySub;
 	private String categorySubTitle;
 	
+	// CartVO
+	private String cartId;
+	private String memberId;
+	private int cartCount;
+	
+	// 페이징 처리
 	private Criteria cri;
 	
+	// 상품 리스트 정렬
 	private String priceSort;
 	
 	public GoodsVO() {
