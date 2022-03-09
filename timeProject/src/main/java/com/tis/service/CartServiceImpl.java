@@ -1,8 +1,11 @@
 package com.tis.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.tis.domain.CartVO;
+import com.tis.domain.GoodsVO;
 import com.tis.mapper.CartMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,10 +22,24 @@ public class CartServiceImpl implements CartService {
 		cartMapper.insertCart(cart);
 	}
 	
-	// 장바구니 조회 WITH MEMBER
+	// 장바구니 조회 FOR CHECK
 	@Override
-	public CartVO getCartWithMember(CartVO cart) {
-		return cartMapper.getCartWithMember(cart);
+	public CartVO getCartForCheck(CartVO cart) {
+		return cartMapper.getCartForCheck(cart);
 	}
+
+	// 장바구니 리스트 조회
+	@Override
+	public List<GoodsVO> getCarList(CartVO cart) {
+		return cartMapper.getCartList(cart);
+	}
+
+	// 장바구니 총 갯수
+	@Override
+	public int getCartTotal(CartVO cartVO) {
+		return cartMapper.getCartTotal(cartVO);
+	}
+	
+	
 
 }

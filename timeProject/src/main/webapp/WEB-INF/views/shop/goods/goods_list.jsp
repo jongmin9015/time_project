@@ -223,13 +223,17 @@ $(document).ready(function() {
 		let goodsNo = "";
 		
 		$(".itemList_cartBtn_div a").on("click", function(e) {
+			
+			// 모달창 ON 스크롤 막기
 			e.preventDefault();
 			$("body").addClass("hidden");
 			modal.fadeIn();	
 			
 			goodsNo = $(this).attr("href");
-				
+			
+			// 상품 조회 WITH GOODS NO
  			get(goodsNo, function(goods) {
+ 				
  				const goodsPrice = goods.goodsPrice.toLocaleString();
 				$(".goodsList_cart_tit").html(goods.goodsName);
 				$(".goodsList_cart_price").html(goodsPrice);		
@@ -241,6 +245,7 @@ $(document).ready(function() {
 		let count = $(".itemView_count_input").attr("value")
 	
 		$(".itemViewUp").on("click", function() {
+			
 			const price = stringNumberToInt($(".goodsList_cart_price").html());
 			$(".itemView_count_input").val(++count);
 			let total = price * count;
@@ -249,6 +254,7 @@ $(document).ready(function() {
 		
 		// 모달창 내부 수량 카운트 DOWN
 		$(".itemViewDown").on("click", function() {
+			
 			const price = stringNumberToInt($(".goodsList_cart_price").html());
 			if (count > 0) {
 			$(".itemView_count_input").val(--count);	
@@ -258,16 +264,35 @@ $(document).ready(function() {
 		})
 		
 		// 모달창 종료시 창 닫고 수량 카운트 초기화
-		$(".goodsList_close_btn, .goodsList_submit_btn").on("click", function() {
+		$(".goodsList_close_btn").on("click", function() {
+			
 			modal.fadeOut();
 			$("body").removeClass("hidden");
 			$(".itemView_count_input").val(1);
 			count = 1;
 		})
+		
+		// 로그인된 아이디 정보
+		const memberId = 'guest';
+		
+		// 장바구니 담기
  		$(".goodsList_submit_btn").on("click", function() {
-			put(goodsNo, function(result) {
+ 			
+ 			let cart = {
+ 					goodsNo : goodsNo,
+ 					memberId : memberId,
+ 					cartCount : count
+ 			};
+ 			
+			put(cart, function(result) {
 				alert(result);
 			})
+			
+			// 모달창 OFF 스크롤 기능 복구 COUNT 초기화
+			modal.fadeOut();
+			$("body").removeClass("hidden");
+			$(".itemView_count_input").val(1);
+			count = 1;
 		}) 
 })//ready
 </script>

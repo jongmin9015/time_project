@@ -24,15 +24,20 @@ public class CartMapperTests {
 //		CartVO cart = new CartVO();
 //		cart.setGoodsNo(85L);
 //		cart.setCartCount(1);
-//		if(cart.getMemberId() == null)
+//		if(cart.getMemberId() == null) {
 //		cart.setMemberId("guest");
+//		}
 //		cartService.insertCart(cart);
 //	}
 	@Test
 	public void test2() {
 		CartVO cart = new CartVO();
 		cart.setMemberId("guest");
-		cartService.getCartWithMember(cart);
+		cart.setGoodsNo(105L);
+		
+		log.info(cartService.getCartForCheck(cart).getGoodsNo());
+		
+
 	}
 
 }
