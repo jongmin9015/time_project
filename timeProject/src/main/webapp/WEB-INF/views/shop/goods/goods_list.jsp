@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources/js/javascript.js" defer></script>
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <title>itemList page</title>
@@ -25,7 +26,7 @@
             <!-- itemList 상단 서브메뉴 -->
             <div class="itemList_lnb_inner">                
                 <div class="itemlList_main_img_div">
-                    <img src="/resources/images/health_main.png" alt="health">
+                    <img src="/resources/images/${categoryMainTitle}_main.png" alt="health">
                 </div>                
 
 
@@ -54,7 +55,7 @@
             <div class="itemList_sort_menu">
                 <span class="itemList_count">총 ${total}개</span>
                 <ul class="itemList_sort_menu_list">
-                    <li><a href="" class="itemList_sort_menu_list_atag">추천순</a></li>
+                    <li><a href="new" class="itemList_sort_menu_list_atag${priceSort == 'new' ? "_on" : ""}">신상품순</a></li>
                     <li><a href="asc" class="itemList_sort_menu_list_atag${priceSort == 'asc' ? "_on" : ""}">낮은 가격순</a></li>
                     <li><a href="desc" class="itemList_sort_menu_list_atag${priceSort == 'desc' ? "_on" : ""}"">높은 가격순</a></li>
                 </ul>
@@ -66,15 +67,15 @@
                 
                 <c:forEach items="${goodsList}" var="goods">
                     <li>
-                   	 	<a class="goods_detail" href='<c:out value="${goods.goodsNo}"/>'>
+                   	 	<a class="goods_detail" href="${goods.goodsNo}">
                         <div class="itemList_item" >
                             <div class="itemList_img_div">
                                 <div class="itemList_img">
                                     <img src="/resources/images/shop/goods/${goods.goodsImage}" alt="#">
                                 </div>
                                 <div class="itemList_cartBtn_div">
-                                    <a href="#" class="itemList_cartBtn"></a>
-                                </div>
+                                    <a href='${goods.goodsNo}' class="itemList_cartBtn"></a>
+                                </div>	
                             </div>
   							<!--<a href="#" class="itmeList_info"> -->
                                 <span class="itemList_info item_name">${goods.goodsName}</span>
@@ -136,7 +137,49 @@
         </form>
     </div>
     
-    <input type="hidden" name="priceSort" value='<c:out value="'++'"/>'>
+		
+<!--Modal Overlay -->		
+<div class="modal_overlay">			
+	<div class="goodsList_cart_div modal">
+           <dl class="goodsList_amount_list clear">
+               <dt class="goodsList_cart_tit">
+                 	<!-- 상품 제목 -->              	
+               </dt>
+           </dl>
+               <li class="clear">
+                   <span class="goodsList_cart_price">
+                   		<!-- 상품 가격 -->
+                   </span>
+                   <div class="goodsList_count_div">
+                       <span class="itemView_item_count">
+                           <button class="itemView_btn itemViewDown"><i class="fa-solid fa-minus"></i></button>
+                           <input type="number" readonly="readonly" onfocus="this.blur()" class="itemView_count_input" value="1">
+                           <button class="itemView_btn itemViewUp"><i class="fa-solid fa-plus"></i></button>
+                       </span>
+                   </div>
+               </li>
+        <div class="goodsList_amount_div">
+           <dl class="goodsList_amount_list goodsList_amount_list_total">
+               <dt class="goodsList_amount_tit">
+                                            합계
+              </dt>
+                <dd class="goodsList_amount_price">
+                   <span class="goodsList_amount_price_num"></span>
+                   <span class="goodsList_amount_price_won">원</span>
+               </dd>
+               
+           </dl>
+       </div>
+       	<div class="goodsList_btn_div">
+        	<div class="goodsList_close_btn_div">
+            	<button type="button" class="goodsList_close_btn">취소</button>
+     	  	</div>
+        	<div class="goodsList_submit_btn_div">
+            	<button type="submit" class="goodsList_submit_btn">장바구니 담기</button>
+     	  	</div>
+		</div>
+	</div>
+</div>
 <script>
 $(document).ready(function() {
 		
@@ -151,7 +194,7 @@ $(document).ready(function() {
 			item_listForm.submit();
 		});
 		
-		// Sub 메뉴 이동 
+		// SUB 메뉴 이동 
 		$(".itemList_subList_tit").on("click", function(e) {
 			e.preventDefault();
 			item_listForm.append("<input type='hidden' name='category' value='"+$(this).attr("href")+"'>");
@@ -166,14 +209,65 @@ $(document).ready(function() {
 		});
 		
 		// 가격순 정렬
-		
-		
  		$(".itemList_sort_menu_list a").on("click", function(e) {
 			e.preventDefault();
 			var priceSort = $(this).attr("href");
  			item_listPageForm.find("input[name='pageNum']").val("1");
  			item_listPageForm.find("input[name='priceSort']").val(priceSort);
  			item_listPageForm.submit();
+		});
+		
+		// 모달창
+		const modal = $(".modal_overlay");
+
+		let goodsNo = "";
+		
+		$(".itemList_cartBtn_div a").on("click", function(e) {
+			e.preventDefault();
+			$("body").addClass("hidden");
+			modal.fadeIn();	
+			
+			goodsNo = $(this).attr("href");
+				
+ 			get(goodsNo, function(goods) {
+ 				const goodsPrice = goods.goodsPrice.toLocaleString();
+				$(".goodsList_cart_tit").html(goods.goodsName);
+				$(".goodsList_cart_price").html(goodsPrice);		
+				$(".goodsList_amount_price_num").html(goodsPrice);
+			}); 		
+		})
+				
+		// 모달창 내부 수량 카운트 UP
+		let count = $(".itemView_count_input").attr("value")
+	
+		$(".itemViewUp").on("click", function() {
+			const price = stringNumberToInt($(".goodsList_cart_price").html());
+			$(".itemView_count_input").val(++count);
+			let total = price * count;
+			$(".goodsList_amount_price_num").html(priceToString(total));
+		})
+		
+		// 모달창 내부 수량 카운트 DOWN
+		$(".itemViewDown").on("click", function() {
+			const price = stringNumberToInt($(".goodsList_cart_price").html());
+			if (count > 0) {
+			$(".itemView_count_input").val(--count);	
+			let total = price * count;
+			$(".goodsList_amount_price_num").html(priceToString(total));
+			}
+		})
+		
+		// 모달창 종료시 창 닫고 수량 카운트 초기화
+		$(".goodsList_close_btn, .goodsList_submit_btn").on("click", function() {
+			modal.fadeOut();
+			$("body").removeClass("hidden");
+			$(".itemView_count_input").val(1);
+			count = 1;
+		})
+ 		$(".goodsList_submit_btn").on("click", function() {
+			put(goodsNo, function(result) {
+				alert(result);
+			})
 		}) 
 })//ready
 </script>

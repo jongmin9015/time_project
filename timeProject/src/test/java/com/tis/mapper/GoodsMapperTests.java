@@ -33,13 +33,17 @@ public class GoodsMapperTests {
 //		goodsService.getGoodsSubList(vo).forEach(goods -> log.info(goods));
 //	}
 //	
+//	@Test
+//	public void test() {
+//		Criteria cri = new Criteria();
+//		GoodsVO vo = new GoodsVO(cri);
+//		vo.setPriceSort("desc");
+//		vo.setGoodsCategory("health");
+//		mapper.getGoodsListWithPaging(vo);
+//	}
 	@Test
-	public void test() {
-		Criteria cri = new Criteria();
-		GoodsVO vo = new GoodsVO(cri);
-		vo.setPriceSort("desc");
-		vo.setGoodsCategory("health");
-		mapper.getGoodsListWithPaging(vo);
+	public void getNo() {
+		mapper.getGoodsDetail(101L);
 	}
 	
 

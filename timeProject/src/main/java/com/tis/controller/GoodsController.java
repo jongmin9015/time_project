@@ -15,6 +15,7 @@ import com.tis.domain.CategoryVO;
 import com.tis.domain.Criteria;
 import com.tis.domain.GoodsVO;
 import com.tis.domain.PageDTO;
+import com.tis.service.CategoryService;
 import com.tis.service.GoodsService;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +28,8 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class GoodsController {
 	
-	private GoodsService goodsService;
+	private final GoodsService goodsService;
+	private final CategoryService categoryService;
 	
 	// 상품 리스트
 	@RequestMapping(value = "goods_list", method = RequestMethod.GET)
@@ -42,7 +44,7 @@ public class GoodsController {
 		category.setCategoryTitle(categoryTitle);
 		
 		model.addAttribute("goodsList", goodsService.getGoodsListWithPaging(goods));
-		model.addAttribute("categorys", goodsService.getCategory(category));
+		model.addAttribute("categorys", categoryService.getCategory(category));
 		model.addAttribute("categoryMainTitle", categoryTitle);
 		model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalMain(categoryTitle)));
 		model.addAttribute("total", goodsService.getGoodsTotalMain(categoryTitle));
@@ -68,7 +70,7 @@ public class GoodsController {
 			CategoryVO category = new CategoryVO();
 			category.setCategoryTitle(categoryTitle);
 			model.addAttribute("goodsList", goodsList);
-			model.addAttribute("categorys", goodsService.getCategory(category));
+			model.addAttribute("categorys", categoryService.getCategory(category));
 			model.addAttribute("categoryMainTitle", categoryTitle);
 			model.addAttribute("categorySubTitle", categorySubTitle);
 			model.addAttribute("pageMaker", new PageDTO(cri, goodsService.getGoodsTotalSub(categorySubTitle)));

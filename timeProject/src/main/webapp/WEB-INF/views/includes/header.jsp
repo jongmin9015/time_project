@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>    
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/resources/css/reset.css?after">
-    <link rel="stylesheet" href="/resources/css/style.css?after">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 </head>
@@ -107,7 +107,7 @@
 
 
             <div class="cart">
-                <a href="">
+                <a href="/shop/cart/move">
                         <i class="fa-solid fa-basket-shopping"></i>
                 장바구니</a>
             </div>

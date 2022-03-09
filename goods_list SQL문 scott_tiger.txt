@@ -194,3 +194,26 @@ insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubT
 values ('noodle', '면.양념.요리', '양념.액젓.장류', 'seasoning');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
 values ('noodle', '면.양념.요리', '식초.소스.드레싱', 'dressing');
+
+
+< 장바구니 테이블 >
+create table tbl_cart(
+    cartId varchar2(20),
+    memberId varchar2(20),
+    goodsNo number(20),
+    cartCount number(20),
+    constraint pk_cart primary key(cartId),
+    foreign key (memberId) REFERENCES tbl_member (memberId),
+    foreign key (goodsNo) REFERENCES tbl_goods (goodsNo)
+
+);
+create SEQUENCE seq_cart
+START WITH 1
+INCREMENT by 1;
+
+< 임시 회원 테이블 >
+create table tbl_member(
+    memberId varchar2(20),
+    memberPw varchar2(100),
+    CONSTRAINT pk_member PRIMARY key (memberId)
+);
