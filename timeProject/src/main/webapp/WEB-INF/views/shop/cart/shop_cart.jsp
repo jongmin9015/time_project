@@ -35,7 +35,7 @@
                     <div class="cartPage_div_left">                        
                         <div class="cartPage_select_menu_div cartPage_select_menu_div_top">
                             <label class="cartPage_checkbox_label" onclick="getCheckedCnt()">
-                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
+                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall"  >
                                 <span class="cartPage_checkbox_span"></span>
                                 <span class="cartPage_checkAll_span cartPage_checkAll_span_top">
                                     전체선택(<span id="cartPage_item_select_num1">0</span>/<span id="cartPage_item_all_num1">${cartTotal}</span>)
@@ -68,6 +68,8 @@
                                             <span class="cartPage_item_chkItem_span"></span>
                                         </label>
                                         <div class="cartPage_item_img_div">
+                                        
+                                        
                                             <a href="/shop/goods/goods_detail?goodsNo=${goods.goodsNo}" class="cartPage_item_img_tag">
                                                 <img src="/resources/images/shop/goods/${goods.goodsImage}" class="cartPage_item_img" alt="cartimg">
                                             </a>
@@ -84,7 +86,6 @@
                                             <input type="hidden" class="goodsPrice_hidden" name="goodsPrice" value="${goods.goodsPrice}">
                                         </div>
                                         <div class="cartPage_item_price_div cart_input_div">
-
                                             <span class="cartPage_item_price goodsPriceCount">
                                            		<fmt:formatNumber pattern="###,###,###" value="${goods.goodsPrice * goods.cartCount}"></fmt:formatNumber>
                                             </span>
@@ -100,7 +101,7 @@
 
                         <div class="cartPage_select_menu_div cartPage_select_menu_div_bottom">
                             <label class="cartPage_checkbox_label"  onclick="getCheckedCnt()">
-                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall" checked="checked">
+                                <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
                                 <span class="cartPage_checkbox_span"></span>
                                 <span class="cartPage_checkAll_span cartPage_checkAll_span_bottom">
                                     전체선택(<span id="cartPage_item_select_num2">0</span>/<span id="cartPage_item_all_num2">${cartTotal}</span>)
@@ -182,81 +183,93 @@
     
     </div>
 <script>
-
-	let count = 0;
 	
+	// 전역 변수
+	const totalPriceTag = $(".totalPrice");
+	const amountPriceTag = $(".amountPrice");
+	const deleveryFeeTag = $(".cartPage_amount_delivery_num");
+	let deliveryFee = ${deliveryFee};
+	
+	
+	// 페이지 로드시 장바구니 전체상품 체크
+	const checkBox = $("input[name='cartPage_checkbox_item_list']");
+	checkBox.attr("checked", true);
+	const checkedCount = $("input[class='cartPage_item_count_check']:checked").length;
+	$("#cartPage_item_select_num1, #cartPage_item_select_num2").html(checkedCount);
+	
+
+	// 상품 체크 박스
+	checkBox.on("click", function() {
+		if ($(this).attr("checked") == "checked"){
+			$(this).attr("checked", false);
+ 			let goodsPriceCountTag = $(this).parent().nextAll(".cart_input_div").children(".goodsPriceCount")
+			let goodsPrice = stringNumberToInt(goodsPriceCountTag.html());
+			console.log(goodsPrice);
+		
+			let totalPrice = stringNumberToInt($(".totalPrice").html());
+			totalPriceTag.html(priceToString(totalPrice - goodsPrice)); 
+					
+			// 배송비 계산
+			deleivery(deliveryFee);
+			// 총 결제 금액
+			amountPrice();
+		} else {
+			$(this).attr("checked", true);
+ 			let goodsPriceCountTag = $(this).parent().nextAll(".cart_input_div").children(".goodsPriceCount")
+			let goodsPrice = stringNumberToInt(goodsPriceCountTag.html());
+			console.log(goodsPrice);
+			
+			let totalPrice = stringNumberToInt($(".totalPrice").html());
+			totalPriceTag.html(priceToString(totalPrice + goodsPrice)); 
+
+			// 배송비 계산
+			deleivery(deliveryFee);
+			// 총 결제 금액
+			amountPrice();
+		}
+	})
+
+	
+	
+	// 장바구니 상품별 수량 조절
 	$(".cartPage_count_up").on("click", function() {
 		
- 		count = $(this).prev(".cartPage_item_count_input").val();
+ 		let count = $(this).prev(".cartPage_item_count_input").val();
  		if (count == 99) return;
  		
  		const goodsPrice = parseInt($(this).nextAll("input[name='goodsPrice']").val());
 		goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount"); 	
 		
-		const totalPriceTag = $(".totalPrice");
-		const amountPriceTag = $(".amountPrice");
-		const deleveryFeeTag = $(".cartPage_amount_delivery_num");
-		let deliveryFee = ${deliveryFee};
-		const deleveryMessageTag = $(".cartPage_deliveryMessage");
-		let lackPrice = 0;
- 	
  		$(this).prev(".cartPage_item_count_input").val(++count);
 		goodsPriceCountTag.html(priceToString(goodsPrice * count));
-	
-		const totalPrice = stringNumberToInt(totalPriceTag.html()) + goodsPrice;
-		totalPriceTag.html(priceToString(totalPrice));
 		
-		if (totalPrice > 20000){
-			deleveryFeeTag.html(0);
-			deliveryFee = 0;
-			deleveryMessageTag.html("");
-		} else {
-			deliveryFee = ${deliveryFee};
-			deleveryFeeTag.html(priceToString(deliveryFee));
-			lackPrice = 20000 - totalPrice;
-			deleveryMessageTag.html(priceToString(lackPrice)+"원 추가 주문 시, 무료배송");
-		}
-		
-		deliveryFee = ${deliveryFee};
-		const amountPrice = stringNumberToInt(totalPriceTag.html()) + deliveryFee;
-		amountPriceTag.html(priceToString(amountPrice)); 
+		// 결제 금액
+		totalPriceTag.html(cartPrice());
+		// 배송비 계산
+		deleivery(deliveryFee);
+		// 총 결제 금액
+		amountPrice();
 		
 	})
 
-// 모달창 내부 수량 카운트 DOWN
+	// 모달창 내부 수량 카운트 DOWN
 	$(".cartPage_count_down").on("click", function() {
 		
-		count = $(this).next(".cartPage_item_count_input").val();
+		let count = $(this).next(".cartPage_item_count_input").val();
 		if (count == 1 || count == 99) return;
 		
  		const goodsPrice = parseInt($(this).nextAll("input[name='goodsPrice']").val());
 		const goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount");
-		const totalPriceTag = $(".totalPrice");
-		const amountPriceTag = $(".amountPrice");
-		const deleveryFeeTag = $(".cartPage_amount_delivery_num");
-		let deliveryFee = ${deliveryFee};
-		const deleveryMessageTag = $(".cartPage_deliveryMessage");
-		let lackPrice = 0;
 		
 		$(this).next(".cartPage_item_count_input").val(--count);
 		goodsPriceCountTag.html(priceToString(goodsPrice * count));
 	
-		const totalPrice = stringNumberToInt(totalPriceTag.html()) - goodsPrice;
-		totalPriceTag.html(priceToString(totalPrice));
-		console.log(totalPrice);
-		if (totalPrice > 20000){
-			deleveryFeeTag.html(0);
-			deliveryFee = 0;
-			deleveryMessageTag.html("");
-		} else {
-			deliveryFee = ${deliveryFee};
-			deleveryFeeTag.html(priceToString(deliveryFee));
-			lackPrice = 20000 - totalPrice;
-			deleveryMessageTag.html(priceToString(lackPrice)+"원 추가 주문 시, 무료배송");
-		}
-		
-		const amountPrice = stringNumberToInt(totalPriceTag.html()) + deliveryFee;
-		amountPriceTag.html(priceToString(amountPrice));
+		// 결제 금액
+		totalPriceTag.html(cartPrice());
+		// 배송비 계산
+		deleivery(deliveryFee);
+		// 총 결제 금액
+		amountPrice();
 	})
 
 
