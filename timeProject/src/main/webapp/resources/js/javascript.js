@@ -103,11 +103,11 @@ function login_check(){
 //장바구니 전체선택
 function selectAll(selectAll){
     const checkboxs = document.getElementsByName('cartPage_checkbox_item_list');
-
     checkboxs.forEach((checkbox) => {
         checkbox.checked = selectAll.checked;
     });
 };
+
 
 //장바구니 선택 갯수 카운트 및 상품 가격 합계
 function getCheckedCnt(){
@@ -174,8 +174,53 @@ function put(cart, callback, error) {
 	});
 }
 
+// 장바구니 결제 금액
+function cartPrice() {
+	let totalPrice = 0;
+	const goodsPrices = document.querySelectorAll(".goodsPriceCount");
 
+	goodsPrices.forEach((goodsPrice) => {
+		const checkBox = goodsPrice.parentNode.parentNode.firstChild.nextSibling.firstChild.nextSibling;
+		let checked = checkBox.getAttribute("checked")
+		if(checked == 'checked') {
+			totalPrice = totalPrice + stringNumberToInt(goodsPrice.innerText);
+		}
+		
+	})
+	
+	return priceToString(totalPrice);
+}
 
+// 장바구니 배송비
+function deleivery(deliveryFee) {
+	
+	const deleveryFeeTag = document.querySelector(".cartPage_amount_delivery_num");
+	const deleveryMessageTag = document.querySelector(".cartPage_deliveryMessage");
+	const totalPriceTag = document.querySelector(".totalPrice");
+	const originalDeliveryFee = deliveryFee;
+
+	if (stringNumberToInt(totalPriceTag.innerText) >= 20000 || stringNumberToInt(totalPriceTag.innerText) <= 0){
+		deliveryFee = 0;
+		deleveryFeeTag.innerText = deliveryFee;
+		deleveryMessageTag.innerText = "";	
+	} else {	
+		const lackPrice = 20000 - stringNumberToInt(totalPriceTag.innerText);
+		deliveryFee = originalDeliveryFee;
+		deleveryFeeTag.innerText = (priceToString(deliveryFee));
+		deleveryMessageTag.innerText = (priceToString(lackPrice)+"원 추가 주문 시, 무료배송");
+	}
+}
+// 장바구니 총 결제 금액
+function amountPrice() {
+	
+	const amountPriceTag = document.querySelector(".amountPrice");
+	const deleveryFeeTag = document.querySelector(".cartPage_amount_delivery_num");
+	const totalPriceTag = document.querySelector(".totalPrice");
+	const totalPrice = stringNumberToInt(totalPriceTag.innerText);
+	const deleveryFee = stringNumberToInt(deleveryFeeTag.innerText);
+	const amountPrice = totalPrice + deleveryFee;
+	amountPriceTag.innerText = priceToString(amountPrice);
+}
 
 // 콤마 숫자형 문자열을 정수로 변환
 function stringNumberToInt(stringNumber){
