@@ -5,7 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>장바구니</title>
-<link rel="stylesheet" href="css/cart.css" />
 <link rel="stylesheet" href="maincss/reset.css">
 <link rel="stylesheet" href="maincss/style.css">
 <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
@@ -15,105 +14,182 @@
 </head>
 <body class="shopping-cart">
   <div id="header"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12">
-          <div class="product-table">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>상품</th>
-                  <th>수량</th>
-                  <th class="text-center">가격</th>
-                  <th class="text-center">합계</th>
-                  <th> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="col-sm-8 col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/5.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 1</a></h4>
-                        <span>상태 : </span><span class="text-success">재고 있음</span> </div>
-                    </div></td>
-                  <td class="col-sm-1 col-md-1" style="text-align: center"><input class="form-control" value="3" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/2.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전가기기 2</a></h4>
-                        <span>상태: </span><span class="text-danger">품절</span> </div>
-                    </div></td>
-                  <td class="col-md-1" style="text-align: center"><input class="form-control" value="2" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-sm-8 col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/3.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 3</a></h4>
-                        <span>상태: </span><span class="text-success">재고 있음</span> </div>
-                    </div></td>
-                  <td class="col-sm-1 col-md-1" style="text-align: center"><input class="form-control" value="3" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/4.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 4</a></h4>
-                        <span>상태: </span><span class="text-danger">품절</span> </div>
-                    </div></td>
-                  <td class="col-md-1" style="text-align: center"><input class="form-control" value="2" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="shopping-cart-cart">
-            <table>
-              <tbody>
-                <tr>
-                  <td><h5>배송지</h5></td>
-                  <td class="text-right"></td>
-                </tr>
-                <tr>
-                  <td ><p>서울시 강남구 청담동 현대힐스테이트 100동 900호</p></td>
-                </tr>
-                  <td><h4>상품가격</h4></td>
-                  <td class="text-right"><h4>4000</h4></td>
-                </tr>
-                <tr>
-                  <td><h4>할인가격</h4></td>
-                  <td class="text-right"><h4>-500</h4></td>
-                </tr>
-                <tr>
-                  <td><h5>배송비</h5></td>
-                  <td class="text-right"><h4>2500</h4></td>
-                </tr>
-                <tr>
-                  <td><h3>결제예정금액</h3></td>
-                  <td class="text-right"><h4>6000</h4></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="button">결제하기</button>
-          </div>
+  <div id="warp">
+    <div class="cartPage_inner clear">
+        <div class="cartPage_tit_div">
+            <h2 class="cartPage_tit">장바구니</h2>
         </div>
-      </div>
+        <form action="#" name="cart_item_list">
+            <button type="button" id="tmpBtn" onclick="getAllListCnt()"></button>
+            <div class="cartPage_main_div">
+
+                <div class="cartPage_div_left">                        
+                    <div class="cartPage_select_menu_div cartPage_select_menu_div_top">
+                        <label class="cartPage_checkbox_label" onclick="getCheckedCnt()">
+                            <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
+                            <span class="cartPage_checkbox_span"></span>
+                            <span class="cartPage_checkAll_span cartPage_checkAll_span_top">
+                                전체선택(<span id="cartPage_item_select_num1">0</span>/<span id="cartPage_item_all_num1">0</span>)
+                            </span>
+                        </label>
+                        <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_top">
+                            선택삭제
+                        </a>
+                    </div>
+
+                    <div class="cartPage_itemList_div">
+                        <ul class="cartPage_itemList_list">
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cartPage_select_menu_div cartPage_select_menu_div_bottom">
+                        <label class="cartPage_checkbox_label"  onclick="getCheckedCnt()">
+                            <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
+                            <span class="cartPage_checkbox_span"></span>
+                            <span class="cartPage_checkAll_span cartPage_checkAll_span_bottom">
+                                전체선택(<span id="cartPage_item_select_num2">0</span>/<span id="cartPage_item_all_num2">0</span>)
+                            </span>
+                        </label>
+                        <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_bottom">
+                            선택삭제
+                        </a>
+                    </div>
+
+
+                </div>
+
+                <div class="cartPage_div_right">
+                    <div class="cartPage_delivery_div">
+                        <h3 class="cartPage_delivery_tit">배송지</h3>
+                        <div class="cartPage_address_div">
+                            <p class="cartPage_address">
+                                서울특별시 영등포구 선유로 130
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cartPage_amount_div">
+                        <dl class="cartPage_amount_list clear">
+                            <dt class="cartPage_amount_tit">
+                                상품금액
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">48,000</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                        <dl class="cartPage_amount_list clear">
+                            <dt class="cartPage_amount_tit">
+                                배송비
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">0</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                        <dl class="cartPage_amount_list cartPage_amount_list_total">
+                            <dt class="cartPage_amount_tit">
+                                결제예정금액
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">48,000</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="cartPage_submit_btn_div">
+                        <button type="submit" class="cartPage_submit_btn">주문하기</button>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </form>
     </div>
-  </div>
+
 </div>
 <div id="footer"></div>
 </body>
