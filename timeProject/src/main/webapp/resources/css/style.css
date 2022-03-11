@@ -189,14 +189,14 @@ li:hover .submenu {
 .tit_cc {
     margin: 18px;
     margin-left: 32px;
-    font-size: 19px;
+    font-size: 17px;
 }
 
 .tit {
     display: block;
     width: 150px;
     height: 40px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight:600;
     text-align: center;
     display: table-cell; 
@@ -204,7 +204,7 @@ li:hover .submenu {
 }
 .cc_view>h3>span {
     
-    font-size: 27px;
+    font-size: 17px;
 }
 
 .cc_view>h3>a {
@@ -222,18 +222,19 @@ li:hover .submenu {
     left: 5%;
 }
 .foo_list {
-	font-size: 14px;
+	margin-top: 10px;
+	font-size: 12px;
 	font-weight: 600; 
 }
 .foo_list > dd {
 	padding-top: 5px;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 400; 
 	color: #333
 }
 .p_txt {
 	padding-top: 5px;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 400; 
 	color: #333
 }
@@ -260,12 +261,11 @@ li:hover .submenu {
 
 .footer_cc{
     position: absolute;
-    margin-left: 30px;
-    right: 55%;
+    right: 57%;
 }
 
 .company{
-    color :gray
+    color :gray;
 }
 .list_l>li>.link {
     color: black
@@ -301,6 +301,7 @@ li > .link {
     text-align: center;
     margin-top: 90px;
     color: #333;
+    margin-bottom: 50px;
 }
 
 
@@ -376,25 +377,33 @@ li > .link {
 .product {
     margin-left: 25px;
     margin-top: 30px;
+    padding: 0;
 }
 
 .product > h3 > a {
-    
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
+    font-weight: 400;
+    
 }
 
-.price > p {
-    font-size: 22px;
+.index_item_name {
+	font-size: 16px;
+    color: #333;
+    line-height: 29px;
+    font-weight: 400;
+    display: -webkit-box;
 }
 .main_img_box {
     width: 1200px;
-    height: 234px;
+    height: 300px;
     overflow: hidden; 
     position: relative;
+
 }
 .main_img_box img {
     width: 100%;
+    height: 300px;
 }
 
 .main_img_box button { 
@@ -402,24 +411,22 @@ li > .link {
     transform: translateY(-50%);
     border: none; padding: 5px;
    	color: #fff;
-   	background-color: rgba(255,255,150,0.1);
+   	background-color: rgba(0,0,0,0.1);
     width: 50px;
     height:50px;
     border-radius: 50%;
     font-size: 20px;
     font-weight: 700;
-    
-
 }
-.slide:hover .prevBtn{
 
-}
 
 .main_img_box .prevBtn { 
     left: 0; 
+    margin-left: 20px;
 }
 .main_img_box .nextBtn {
      right: 0; 
+     margin-right: 20px;
     }
 
 .slider { 

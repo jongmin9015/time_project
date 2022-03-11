@@ -87,4 +87,10 @@
 		WHERE goodsCategory = #{categorySubTitle}		
 	</select>
 	
+	<!-- 메인 홈페이지 상품 리스트 -->
+	<select id="getMainGoodsList" resultType="com.tis.domain.GoodsVO">
+		SELECT *
+		FROM tbl_goods		
+	</select>
+	
 </mapper>
