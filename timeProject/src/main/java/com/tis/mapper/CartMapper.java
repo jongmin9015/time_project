@@ -19,4 +19,6 @@ public interface CartMapper {
 	// 장바구니 총 갯수
 	int getCartTotal(CartVO cart);
 	
+	// 장바구니 상품 삭제
+	int deleteCart(Long cartNo);
 }

@@ -198,7 +198,7 @@ values ('noodle', '면.양념.요리', '식초.소스.드레싱', 'dressing');
 
 < 장바구니 테이블 >
 create table tbl_cart(
-    cartId varchar2(20),
+    cartId number(10),
     memberId varchar2(20),
     goodsNo number(20),
     cartCount number(20),
