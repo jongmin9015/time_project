@@ -40,6 +40,12 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.getCartTotal(cartVO);
 	}
 	
+	// 장바구니 상품 삭제
+	@Override
+	public int deleteCart(Long cartNo) {
+		return cartMapper.deleteCart(cartNo);
+	}
+	
 	
 
 }

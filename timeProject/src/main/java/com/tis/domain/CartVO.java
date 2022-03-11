@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CartVO {
 	
-	private String cartId;
+	private Long cartNo;
 	private String memberId;
 	private Long goodsNo;
 	private int cartCount;

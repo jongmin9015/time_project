@@ -6,29 +6,37 @@
 	
 	<!-- 장바구니 담기 -->
 	<insert id="insertCart">
-		INSERT INTO tbl_cart (cartId, memberId, goodsNo, cartCount)
+		INSERT INTO tbl_cart (cartNo, memberId, goodsNo, cartCount)
 		VALUES (seq_cart.nextval, #{memberId}, #{goodsNo}, #{cartCount})
 	</insert>
 
 	<!-- 장바구니 중복 조회 -->
 	<select id="getCartForCheck" resultType="com.tis.domain.CartVO">
-		SELECT cartId, memberId, c.goodsNo, cartCount
+		SELECT cartNo, memberId, c.goodsNo, cartCount
 		FROM tbl_cart c LEFT JOIN tbl_goods g
 		ON c.goodsNo = g.goodsNo
 		WHERE memberId = #{memberId} 
 		AND c.goodsNo = #{goodsNo} 
 	</select>	
 	
+	<!-- 장바구니 리스트 조회 -->
 	<select id="getCartList" resultType="com.tis.domain.GoodsVO">
-		SELECT g.goodsNo, goodsName, goodsPrice, goodsImage, cartId, memberId, cartCount
+		SELECT g.goodsNo, goodsName, goodsPrice, goodsImage, cartNo, memberId, cartCount
 		FROM tbl_goods g LEFT JOIN tbl_cart c
 		ON g.goodsNo = c.goodsNo
 		WHERE memberId = #{memberId}
 	</select>
 	
+	<!-- 장바구니 총 갯수 -->
 	<select id="getCartTotal" resultType="int">
 		SELECT count(*)
 		FROM tbl_cart
 		WHERE memberId = #{memberId}
 	</select>
+	
+	<!-- 장바구니 상품 삭제 -->
+	<delete id="deleteCart">
+		DELETE FROM tbl_cart
+		WHERE cartNo = #{cartNo}
+	</delete>
 </mapper>

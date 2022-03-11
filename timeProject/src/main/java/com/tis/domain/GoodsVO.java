@@ -28,7 +28,7 @@ public class GoodsVO {
 	private String categorySubTitle;
 	
 	// CartVO
-	private String cartId;
+	private Long cartNo;
 	private String memberId;
 	private int cartCount;
 	

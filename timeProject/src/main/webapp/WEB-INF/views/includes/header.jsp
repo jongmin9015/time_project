@@ -11,52 +11,35 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script type="/resources/js/header.js"></script>
 </head>
 <body>
 
-    <script>
-        $(document).ready(function() {
-            var wind = $(window),
-            header = $('#gnbMenu'),
-            headerOffsetTop = header.offset().top;
-
-            console.log(headerOffsetTop);
-            console.log(wind.scrollTop());
-            wind.scroll(function() {
-               if(wind.scrollTop()>= headerOffsetTop) {
-                header.addClass('sticky');
-               } else {
-                header.removeClass('sticky');
-              }
-            });
-        });
-    </script>
-    <div id="warp">
+        <div id="warp">
         <!-- User Menu -->
-        <div id="user_menu">
-            <ul class="list_menu">
-                <li class="menu_join">
-                    <a href="signup.html" class="link_menu">회원가입</a>
-                </li>
-                <li class="menu_login">
-                    <a href="login.html" class="link_menu">로그인</a>
-                </li>
-                <li class="menu_center">
-                    <a href="#" class="link_menu">고객센터</a>
-                    <ul class="sub">
-                        <li>
-                            <a href="#">공지사항</a>
-                        </li>
-                        <li>
-                            <a href="#">자주하는 질문</a>
-                        </li>
-                        <li><a href="#">1:1 문의</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>    
-        </div>
+	        <div id="user_menu">
+	            <ul class="list_menu">
+	                <li class="menu_join">
+	                    <a href="#" class="link_menu">회원가입</a>
+	                </li>
+	                <li class="menu_login">
+	                    <a href="#" class="link_menu">로그인</a>
+	                </li>
+	                <li class="menu_center">
+	                    <a href="#" class="link_menu">고객센터</a>
+	                    <ul class="sub">
+	                        <li>
+	                            <a href="#">공지사항</a>
+	                        </li>
+	                        <li>
+	                            <a href="#">자주하는 질문</a>
+	                        </li>
+	                        <li><a href="#">1:1 문의</a></li>
+	                        
+	                    </ul>
+	                </li>
+	            </ul>    
+	        </div>
 
         <!-- Main Logo -->
         <div id="headerLogo" class="layout-wrapper">
@@ -70,30 +53,51 @@
         <div id="gnbMenu" class="">
             <ul class="gnb">
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_list?category=health">
+                    <a href="/shop/goods/goods_list?category=health" class="link health_food ">
                         <span class="txt">건강식품</span>
                     </a>
+                    <ul class="health_food submenu">
+                        <a href="/shop/goods/goods_sublist?category=nutrients"><li>영양제</li></a>
+                        <a href="/shop/goods/goods_sublist?category=lacto"><li>유산균</li></a>
+                        <a href="/shop/goods/goods_sublist?category=ginseng"><li>홍삼</li></a>
+                        <a href="/shop/goods/goods_sublist?category=healthdrink"><li>건강즙</li></a>
+                        <a href="/shop/goods/goods_sublist?category=healthpowder"><li>건강환</li></a>
+                        <a href="/shop/goods/goods_sublist?category=diet"><li>다이어트</li></a>
+                        <a href="/shop/goods/goods_sublist?category=child"><li>유아동</li></a>
+                    </ul>
                 </li>
+                
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_list?category=noodle" class="link new ">
-                        <span class="txt">누들</span>
+                    <a href="/shop/goods/goods_list?category=noodle" class="link noodle ">
+                        <span class="txt">면·양념·오일</span>
                     </a>
+                    <ul class="noodel submenu">
+                        <a href="/shop/goods/goods_sublist?category=pastanoodle"><li>파스타·면류</li></a>
+                        <a href="/shop/goods/goods_sublist?category=dressing"><li>식초·소스·드레싱</li></a>
+                        <a href="/shop/goods/goods_sublist?category=seasoning"><li>양념·액정·장류</li></a>
+                        <a href="/shop/goods/goods_sublist?category=oil"><li>식용유·참기름·오일</li></a>
+                        <a href="/shop/goods/goods_sublist?category=spice"><li>소금·설탕</li></a>
+                        <a href="/shop/goods/goods_sublist?category=flour"><li>밀가루·가루·믹스</li></a>
+                    </ul>
                 </li>
                 <li class="gbnMenulist">
-                    <a href="/shop/goods/goods_list?category=salad" class="link best ">
-                        <span class="txt">샐러드</span>
+                    <a href="/shop/goods/goods_list?category=salad" class="link salad ">
+                        <span class="txt">샐러드·간편식</span>
                     </a>
+                    <ul class="salad submenu">
+                        <a href="/shop/goods/goods_sublist?category=saladchicken"><li>샐러드·닭가슴살</li></a>
+                        <a href="/shop/goods/goods_sublist?category=lunchbox"><li>도시락·밥류</li></a>
+                        <a href="/shop/goods/goods_sublist?category=pasta"><li>파스타·면류</li></a>
+                        <a href="/shop/goods/goods_sublist?category=snack"><li>떡볶이·튀김·순대</li></a>
+                        <a href="/shop/goods/goods_sublist?category=pizza"><li>피자·핫도그·만두</li></a>
+                        <a href="/shop/goods/goods_sublist?category=poached"><li>폭림·떡갈비·안주</li></a>
+                    </ul>
                 </li>
                 <li class="gbnMenulist">
-                    <a href="/event" class="link bargain ">
+                    <a href="#" class="link event ">
                         <span class="txt">이벤트</span>
                     </a>
                 </li>
-                <!-- <li class="gbnMenulist">
-                    <a href="#" class="link event ">
-                        <span class="txt">메뉴 5</span>
-                    </a>
-                </li> -->
             </ul> 
 
             <div id="sidequir_search" class="gnb_search">
@@ -107,11 +111,30 @@
 
 
             <div class="cart">
-                <a href="/shop/cart/move">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                장바구니</a>
+                <a href="" class="cart_icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+    			</a>
             </div>
         </div>
         <!-- HEADER -->
+        
+        
+<script>
+    $(document).ready(function() {
+        var wind = $(window),
+        header = $('#gnbMenu'),
+        headerOffsetTop = header.offset().top;
+
+        console.log(headerOffsetTop);
+        console.log(wind.scrollTop());
+        wind.scroll(function() {
+           if(wind.scrollTop()>= headerOffsetTop) {
+            header.addClass('sticky');
+           } else {
+            header.removeClass('sticky');
+          }
+        });
+    });
+</script>
 </body>
 </html>

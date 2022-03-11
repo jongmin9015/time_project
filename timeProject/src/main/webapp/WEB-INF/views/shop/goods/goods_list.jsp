@@ -29,8 +29,6 @@
                     <img src="/resources/images/${categoryMainTitle}_main.png" alt="health">
                 </div>                
 
-
-
                 <div class="itemList_tit_div">
                 	<c:forEach items="${categorys}" var="category" end="0">
                     <h3 class="itemList_tit"><c:out value="${category.categoryMain}"/></h3>
@@ -181,7 +179,7 @@
 	</div>
 </div>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 		
 		const item_listForm = $("#item_list_Form");
 		const item_listPageForm = $("#item_listPage_Form");

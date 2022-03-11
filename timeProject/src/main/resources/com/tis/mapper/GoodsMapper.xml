@@ -38,12 +38,12 @@
 	<select id="getGoodsSubListWithPaging" resultType="com.tis.domain.GoodsVO">
 		<![CDATA[
 		SELECT 
-			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
+			    goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categoryTitle
 		FROM ( SELECT 
-			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
+			   rownum rn,goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categoryTitle
 		       FROM 
 		            (SELECT
-		             goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categorytitle
+		             goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage,categoryTitle
 		             FROM tbl_goods g LEFT JOIN tbl_category c
 		             ON g.goodsCategory = c.categorySubTitle
 		]]>

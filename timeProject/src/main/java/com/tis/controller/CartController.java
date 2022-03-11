@@ -35,11 +35,9 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequestMapping("/shop/cart")
-@SessionAttributes("goods")
 @AllArgsConstructor
 public class CartController {
 
-	
 	private final GoodsService goodsService;
 	private final CartService cartService;
 	
@@ -89,8 +87,8 @@ public class CartController {
 	}
 	
 	// 장바구니 담기
-	@RequestMapping(value = "/put", method = RequestMethod.POST
-			, consumes = "application/json", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/put", method = RequestMethod.POST,
+			        consumes = "application/json", produces = "application/text; charset=utf8")
 	public ResponseEntity<String> put(@RequestBody CartVO cart, Model model) {
 		
 		if (cartService.getCartForCheck(cart) == null) {
@@ -101,5 +99,15 @@ public class CartController {
 		}
 
 		return new ResponseEntity<String>("장바구니에 담겼습니다.", HttpStatus.OK);
+	}
+	
+	// 장바구니 삭제
+	@RequestMapping(value = "/{cartNo}", method = RequestMethod.DELETE,
+					produces = "application/text; charset=utf8")
+	public ResponseEntity<String> remove(@PathVariable("cartNo")Long cartNo){
+		
+			cartService.deleteCart(cartNo);
+			log.info("delete goods at cart........................" + cartNo);
+		return new ResponseEntity<String>("장바구니에서 상품을 삭제했습니다.", HttpStatus.OK);
 	}
 }
