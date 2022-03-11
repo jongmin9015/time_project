@@ -23,4 +23,6 @@ public interface GoodsMapper {
 	int getGoodsTotalMain(String categoryTitle);
 	int getGoodsTotalSub(String categorySubTitle);
 	
+	// 메인 홈페이지 상품 리스트
+	List<GoodsVO> getMainGoodsList();
 }

@@ -47,6 +47,13 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsMapper.getGoodsTotalSub(categorySubTitle);
 	}
 
+	// 메인 홈페이지 상품 리스트
+	@Override
+	public List<GoodsVO> getMainGoodsList() {
+		// TODO Auto-generated method stub
+		return goodsMapper.getMainGoodsList();
+	}
+
 
 
 
