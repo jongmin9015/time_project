@@ -5,358 +5,192 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>장바구니</title>
-<link rel="stylesheet" href="css/cart.css" />
 <link rel="stylesheet" href="maincss/reset.css">
 <link rel="stylesheet" href="maincss/style.css">
 <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/index.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body class="shopping-cart"> 
-    <script>
-      $(document).ready(function() {
-          var wind = $(window),
-          header = $('#gnbMenu'),
-          headerOffsetTop = header.offset().top;
-
-          console.log(headerOffsetTop);
-          console.log(wind.scrollTop());
-          wind.scroll(function() {
-             if(wind.scrollTop()>= headerOffsetTop) {
-              header.addClass('sticky');
-             } else {
-              header.removeClass('sticky');
-            }
-          });
-      });
-  </script>
-  <div id="wrap">
-
-  
-      <!-- User Menu -->
-    <div id="user_menu">
-          <ul class="list_menu">
-              <li class="menu_join">
-                  <a href="#" class="link_menu">회원가입</a>
-              </li>
-              <li class="menu_login">
-                  <a href="#" class="link_menu">로그인</a>
-              </li>
-              <li class="menu_center">
-                  <a href="#" class="link_menu">고객센터</a>
-                  <ul class="sub">
-                      <li>
-                          <a href="#">공지사항</a>
-                      </li>
-                      <li>
-                          <a href="#">자주하는 질문</a>
-                      </li>
-                      <li><a href="#">1:1 문의</a></li>
-                      
-                  </ul>
-              </li>
-          </ul>    
-    </div>
-
-      <!-- HEADER -->
-
-      <!-- Main Logo -->
-      <div id="headerLogo" class="layout-wrapper">
-          <h1 class="logo">
-          <a href="/" class="link_main">
-              <span id="gnbLogoContainer"></span>
-              <i class="fa-brands fa-html5"></i>
-          </a>
-      </div>
-      <!-- header -->
-      <div id="gnbMenu" class="">
-          <ul class="gnb">
-              <li class="menu1">
-                  <a href="#">
-                      <span class="txt">메뉴 1</span>
-                  </a>
-              </li>
-              <li class="menu2">
-                  <a href="#" class="link new ">
-                      <span class="txt">메뉴 2</span>
-                  </a>
-              </li>
-              <li class="menu3">
-                  <a href="#" class="link best ">
-                      <span class="txt">메뉴 3</span>
-                  </a>
-              </li>
-              <li class="menu4">
-                  <a href="#" class="link bargain ">
-                      <span class="txt">메뉴 4</span>
-                  </a>
-              </li>
-              <li class="lst">
-                  <a href="#" class="link event ">
-                      <span class="txt">메뉴 5</span>
-                  </a>
-              </li>
-          </ul> 
-
-          <div id="side_search" class="gnb_search">
-              <form action="">
-                  <input name="sword" type="text" id="sword" value="" required="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">
-                  <a href="#">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                  </a>
-              </form>
-          </div> 
-
-
-          <div class="cart">
-                  <i class="fa-solid fa-basket-shopping"></i>
-                  <a href="">장바구니</a>
-          </div>
-      </div>
-      <!-- HEADER -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12">
-          <div class="product-table">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>상품</th>
-                  <th>수량</th>
-                  <th class="text-center">가격</th>
-                  <th class="text-center">합계</th>
-                  <th> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="col-sm-8 col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/5.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 1</a></h4>
-                        <span>상태 : </span><span class="text-success">재고 있음</span> </div>
-                    </div></td>
-                  <td class="col-sm-1 col-md-1" style="text-align: center"><input class="form-control" value="3" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/2.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전가기기 2</a></h4>
-                        <span>상태: </span><span class="text-danger">품절</span> </div>
-                    </div></td>
-                  <td class="col-md-1" style="text-align: center"><input class="form-control" value="2" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-sm-8 col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/3.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 3</a></h4>
-                        <span>상태: </span><span class="text-success">재고 있음</span> </div>
-                    </div></td>
-                  <td class="col-sm-1 col-md-1" style="text-align: center"><input class="form-control" value="3" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-                <tr>
-                  <td class="col-md-6"><div class="media"> <a class="thumbnail pull-left" href="#"> <img class="media-object" src="images/it_service/4.jpg" alt="#"></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">전자기기 4</a></h4>
-                        <span>상태: </span><span class="text-danger">품절</span> </div>
-                    </div></td>
-                  <td class="col-md-1" style="text-align: center"><input class="form-control" value="2" type="email">
-                  </td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-sm-1 col-md-1 text-center"><p class="price_table">1000</p></td>
-                  <td class="col-md-1"><button type="button" class="btn-close bt_main" aria-label="Close"></button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="shopping-cart-cart">
-            <table>
-              <tbody>
-                <tr>
-                  <td><h5>배송지</h5></td>
-                  <td class="text-right"></td>
-                </tr>
-                <tr>
-                  <td ><p>서울시 강남구 청담동 현대힐스테이트 100동 900호</p></td>
-                </tr>
-                  <td><h4>상품가격</h4></td>
-                  <td class="text-right"><h4>4000</h4></td>
-                </tr>
-                <tr>
-                  <td><h4>할인가격</h4></td>
-                  <td class="text-right"><h4>-500</h4></td>
-                </tr>
-                <tr>
-                  <td><h5>배송비</h5></td>
-                  <td class="text-right"><h4>2500</h4></td>
-                </tr>
-                <tr>
-                  <td><h3>결제예정금액</h3></td>
-                  <td class="text-right"><h4>6000</h4></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="button">결제하기</button>
-          </div>
+<body class="shopping-cart">
+  <div id="header"></div>
+  <div id="warp">
+    <div class="cartPage_inner clear">
+        <div class="cartPage_tit_div">
+            <h2 class="cartPage_tit">장바구니</h2>
         </div>
-      </div>
+        <form action="#" name="cart_item_list">
+            <button type="button" id="tmpBtn" onclick="getAllListCnt()"></button>
+            <div class="cartPage_main_div">
+
+                <div class="cartPage_div_left">                        
+                    <div class="cartPage_select_menu_div cartPage_select_menu_div_top">
+                        <label class="cartPage_checkbox_label" onclick="getCheckedCnt()">
+                            <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
+                            <span class="cartPage_checkbox_span"></span>
+                            <span class="cartPage_checkAll_span cartPage_checkAll_span_top">
+                                전체선택(<span id="cartPage_item_select_num1">0</span>/<span id="cartPage_item_all_num1">0</span>)
+                            </span>
+                        </label>
+                        <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_top">
+                            선택삭제
+                        </a>
+                    </div>
+
+                    <div class="cartPage_itemList_div">
+                        <ul class="cartPage_itemList_list">
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cartPage_item">
+                                    <label class="cartPage_item_chkItem_label">
+                                        <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                        <span class="cartPage_item_chkItem_span"></span>
+                                    </label>
+                                    <div class="cartPage_item_img_div">
+                                        <a href="itemViewPage.html" class="cartPage_item_img_tag">
+                                            <img src="images/shop/goods/health1.jpg" class="cartPage_item_img" alt="cartimg">
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_name_div">
+                                        <a href="#" class="cartPage_item_name">
+                                            [올케어] 마늘의 왕(30포) (쇼핑백 증정)
+                                        </a>
+                                    </div>
+                                    <div class="cartPage_item_count_div">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_down"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="number" class="cartPage_item_count cartPage_item_count_input" readonly="readonly" value="1">
+                                        <button type="button" class="cartPage_item_count cartPage_item_btn cartPage_count_up"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="cartPage_item_price_div">
+                                        <span class="cartPage_item_price">48,000</span>
+                                        <span class="cartPage_item_price_won">원</span>
+                                    </div>
+                                    <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cartPage_select_menu_div cartPage_select_menu_div_bottom">
+                        <label class="cartPage_checkbox_label"  onclick="getCheckedCnt()">
+                            <input type="checkbox" name="cartPage_checkbox_item_list" onclick="selectAll(this)" value="selectall">
+                            <span class="cartPage_checkbox_span"></span>
+                            <span class="cartPage_checkAll_span cartPage_checkAll_span_bottom">
+                                전체선택(<span id="cartPage_item_select_num2">0</span>/<span id="cartPage_item_all_num2">0</span>)
+                            </span>
+                        </label>
+                        <a href="#" class="cartPage_select_menu_delBtn cartPage_select_menu_delBtn_bottom">
+                            선택삭제
+                        </a>
+                    </div>
+
+
+                </div>
+
+                <div class="cartPage_div_right">
+                    <div class="cartPage_delivery_div">
+                        <h3 class="cartPage_delivery_tit">배송지</h3>
+                        <div class="cartPage_address_div">
+                            <p class="cartPage_address">
+                                서울특별시 영등포구 선유로 130
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cartPage_amount_div">
+                        <dl class="cartPage_amount_list clear">
+                            <dt class="cartPage_amount_tit">
+                                상품금액
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">48,000</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                        <dl class="cartPage_amount_list clear">
+                            <dt class="cartPage_amount_tit">
+                                배송비
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">0</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                        <dl class="cartPage_amount_list cartPage_amount_list_total">
+                            <dt class="cartPage_amount_tit">
+                                결제예정금액
+                            </dt>
+                            <dd class="cartPage_amount_price">
+                                <span class="cartPage_amount_price_num">48,000</span>
+                                <span class="cartPage_amount_price_won">원</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="cartPage_submit_btn_div">
+                        <button type="submit" class="cartPage_submit_btn">주문하기</button>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </form>
     </div>
-  </div>
+
 </div>
-
-<footer>
-  <div class="footer-top">
-
-      <div class="inner_footer">
-  
-          <div class="footer_cc">
-  
-              <h2 class="tit_cc">고객행복센터</h2>
-  
-              <div class="cc_view">
-  
-                  <h3><span class="tit">0000-0000</span></h3>
-  
-                  <dl class="foo_list">
-  
-                      <dt>365고객센터</dt>
-  
-                      <dt>오전 7시 - 오후 7시</dt>
-  
-                  </dl>
-  
-              </div>
-
-  
-              <div class="cc_view cc_kakao">
-  
-                  <h3><a class="tit" href="#none">카카오톡 문의</a></h3>
-
-                  
-  
-                  <dl class="foo_list">
-  
-                      <dt>365고객센터</dt>
-  
-                      <dt>오전 7시 - 오후 7시</dt>
-  
-                  </dl>
-  
-              </div>
-  
-              <div class="cc_view cc_qna">
-  
-                  <h3><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/mypage_qna_register.php?mode=add_qna', 'select_bottom_onebyone_button')" class="tit">1:1 문의</a></h3>
-  
-  
-                  <dl class="foo_list">
-  
-                      <dt>24시간 접수 가능</dt>
-  
-                      <dt>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dt>
-  
-                  </dl>
-  
-              </div>
-  
-              <div class="cc_view cc_bulkorder">
-  
-                  <h3><a href="#" class="tit">대량주문 문의</a></h3>
-  
-                  <p class="p_txt">비회원의 경우 메일로 문의 바랍니다.</p>
-  
-              </div>
-  
-          </div>
-  
-          <div class="company">
-  
-  
-              <ul class="list_l">
-  
-                  <li><a class="link" href="#">컬리소개</a></li>
-  
-                  <li><a class="link" href="#">컬리소개영상</a></li>
-  
-                  <li><a class="link" href="#" target="_blank">인재채용</a></li>
-  
-                  <li><a class="link" href="#">이용약관</a></li>
-  
-                  <li><a class="link emph" href="#">개인정보처리방침</a></li>
-  
-                  <li><a class="link" href="#">이용안내</a></li>
-  
-              </ul>
-  
-              법인명 (상호) : 주식회사 컬리 <span class="bar">I</span> 사업자등록번호 : 261-81-23567 <a href="#" target="_blank" class="link">사업자정보 확인</a>
-  
-              <br>
-  
-  
-              통신판매업 : 제 2018-서울강남-01646 호 <span class="bar">I</span> 개인정보보호책임자 : 이원준
-  
-  
-              <br>
-  
-              주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동) <span class="bar">I</span> 대표이사 : 김슬아
-  
-              <br>
-  
-              입점문의 : <a href="#" target="_blank" class="link">입점문의하기</a> <span class="bar">I</span> 마케팅제휴 : <a href="#" class="link">메일</a>
-  
-              <br>
-  
-              채용문의 : <a href="#" class="link">메일</a>
-  
-              <br>
-  
-              팩스: 070 - 0000 - 0000 <span class="bar">I</span> 이메일 : <a href="#" class="link">메일</a>
-  
-  
-              <br>
-  
-              대량주문 문의 : <a href="#" class="link">메일</a>
-  
-              <br>
-  
-              <ul class="list_sns">
-  
-                  <li>
-  
-                      <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
-  
-                  </li>
-  
-                  <li>
-  
-                      <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a>
-  
-                  </li>
-  
-                  <li>
-  
-                      <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-youtube fa-2xl"></i></a>
-  
-                  </li>
-  
-              </ul>
-  
-          </div>
-  
-      </div>
-  </div>
-</footer>
+<div id="footer"></div>
 </body>
 </html>
