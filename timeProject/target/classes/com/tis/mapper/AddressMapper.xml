@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tis.mapper.AddressMapper">
+	
+	<!-- 배송지 생성 -->
+	<insert id="insertAddress">
+		INSERT INTO tbl_address (address,addressSub, zipcode, memberId)
+		VALUES (#{address},#{addressSub}, #{zipcode}, #{memberId})
+	</insert>
+	
+	<!-- 배송지 조회 -->
+	<select id="getAddress" resultType="com.tis.domain.AddressVO">
+		SELECT address, addressSub, zipcode, memberId
+		FROM tbl_address
+		WHERE memberId = #{memberId}
+	</select>
+	
+	<!-- 배송지 삭제 -->
+	<delete id="deleteAddress">
+		DELETE FROM tbl_address
+		WHERE memberId = #{memberId}
+	</delete>
+	
+	<!-- 배송지 변경 -->
+	<update id="updateAddress">
+		UPDATE tbl_address
+		SET address = #{address}, addressSub = #{addressSub}, zipcode = #{zipcode}
+		WHERE memberId = #{memberId}
+	</update>
+</mapper>

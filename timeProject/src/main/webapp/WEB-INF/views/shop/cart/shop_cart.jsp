@@ -12,23 +12,19 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <title>cart Page</title>
 </head>
 <body>    
-<!--      <script>
-        $(document).ready(function(){
-            $("#tmpBtn").trigger("click");
-        });
-    </script>  -->
    	<div id="header">
    		<%@ include file="../../includes/header.jsp"  %>
     </div>
+    
     <div id="warp">
         <div class="cartPage_inner clear">
             <div class="cartPage_tit_div">
                 <h2 class="cartPage_tit">장바구니</h2>
             </div>
+            
             <form action="#" name="cart_item_list">
                <!--  <button type="button" id="	" onclick="getAllListCnt()"></button> -->
                 <div class="cartPage_main_div">
@@ -62,11 +58,10 @@
                                 <li>
                                     <div class="cartPage_item">
                                         <label class="cartPage_item_chkItem_label">
-                                            <input type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
+                                            <input data-goodsno="${goods.goodsNo}" data-goodscount="${goods.cartCount}" type="checkbox" class="cartPage_item_count_check" name="cartPage_checkbox_item_list" onclick="getCheckedCnt()">
                                             <span class="cartPage_item_chkItem_span"></span>
                                         </label>
-                                        <div class="cartPage_item_img_div">
-                                                           
+                                        <div class="cartPage_item_img_div">                                                        
                                             <a href="/shop/goods/goods_detail?goodsNo=${goods.goodsNo}" class="cartPage_item_img_tag">
                                                 <img src="/resources/images/shop/goods/${goods.goodsImage}" class="cartPage_item_img" alt="cartimg">
                                             </a>
@@ -89,9 +84,9 @@
                                             <span class="cartPage_item_price_won">원</span>
                                         </div>
                                        <a href="${goods.cartNo}" class="cartNo"> <button type="button" class="cartPage_item_delBtn"><i class="fa-solid fa-x"></i></button></a>
+                                       
                                     </div>
                                 </li>
-
     						</c:forEach>                              
                             </ul>
                         </div>
@@ -116,8 +111,26 @@
                            
                             <div class="cartPage_address_div">
                                 <p class="cartPage_address">	
-                                    서울특별시 영등포구 선유로 130
+                                	${address.address}
                                 </p>
+                                <p class="cartPage_address">	
+                                	${address.addressSub}
+                                </p>
+                       	    <c:choose>
+                                <c:when test="${address == null}">                                                    
+                               		 <div class="cartPage_address_input_btn_div">
+	                           		 	<button class="cartPage_address_input_btn" onclick="showPopUp()" >
+	                           		 	<i class="fa-solid fa-magnifying-glass"></i>배송지를 검색하세요</button>
+	                       	    	</div>                       	    
+	                       	    </c:when>
+	                       	    <c:otherwise>
+	                       	    	 <div class="cartPage_address_input_btn_div">
+                           		 		<button class="cartPage_address_input_btn" onclick="showPopUpdate()" >
+                           		 		<i class="fa-solid fa-magnifying-glass"></i> 배송지 변경</button>
+                       	    		</div>
+	                       	    </c:otherwise>
+							</c:choose>
+								
                             </div>
                         </div>
                         <div class="cartPage_amount_div">
@@ -164,36 +177,37 @@
 	                       	    </div>
                       		</c:when>
                       		
-                      		<c:otherwise>
+                      		<c:otherwise>	
                       			<div class="cartPage_submit_btn_div">
                       				<c:forEach items="${cartList}" var="cart" end="0">
-                      					<a href="/shop/order/move?memberId=${cart.memberId}">
-                           					<button  type="button" class="cartPage_submit_btn">주문하기</button>                 				
+                      					<a href="#">
+                           					<button  type="button" class="cartPage_submit_btn" onclick="insertOrder()">주문하기</button>                 				
                            				</a>
                            			</c:forEach>
-                        		</div>
+                        		</div>                   					
                       		</c:otherwise>    
                         </c:choose>
-                        
-                        
+
                     </div>
                 </div>
             </form>
         </div>
     
     </div>
-     <button onclick="kakaoPost()"></button>
+<form action="/shop/order/move" method="post" class="order_moveForm">
+    <input type="hidden" name="memberId" value="${memberId}">	
+    <input type="hidden" name="deliveryFee" value="">	
+ </form>
 <script>
 	
 	// 전역 변수
 	const totalPriceTag = $(".totalPrice");
-	const amountPriceTag = $(".amountPrice");
-	const deleveryFeeTag = $(".cartPage_amount_delivery_num");
 	const checkBox = $("input[name='cartPage_checkbox_item_list']");
 	const checkAllBox = $(".checkAll");
 	let deliveryFee = ${deliveryFee};
+	let memberId = "${memberId}" || "${sessionId}";
+	console.log(memberId);
 	
-
 	// 페이지 로드시 장바구니 전체상품 체크	
 	checkBox.attr("checked", true);
 	let checkedCount = $("input[class='cartPage_item_count_check']:checked").length;
@@ -206,7 +220,7 @@
 		if ($(this).attr("checked") == "checked"){   
 			
 			// 전체 체크 박스
-			if ($(this).attr("class") == "checkAll"){
+			if ($(this).attr("class") == "checkAll" && checkAllBox.attr("checked") == "checked"){
 				
 				checkedCount = $("input[class='cartPage_item_count_check']:checked").length;
 				
@@ -237,7 +251,7 @@
 		
 			checkedCount = $("input[class='cartPage_item_count_check']:checked").length;
 			
-			if (checkedCount != checkedAllCount) {
+			if (checkedCount != checkedAllCount ) {
 				
 				checkAllBox.attr("checked", false);
 				return;
@@ -247,7 +261,7 @@
 		} else {
 					
 			 // 전체 체크 박스
-			if ($(this).attr("class") == "checkAll"){	
+			if ($(this).attr("class") == "checkAll" && checkAllBox.attr("checked") != "checked"){	
 				
 				let cnt = $("input[class='cartPage_item_count_check']:checked").length;
 				
@@ -275,6 +289,15 @@
 			deleivery(deliveryFee);
 			// 총 결제 금액
 			amountPrice();
+			
+			checkedCount = $("input[class='cartPage_item_count_check']:checked").length;
+			
+			if (checkedCount != checkedAllCount) {
+				
+				checkAllBox.attr("checked", false);
+				} else {
+				checkAllBox.attr("checked", true);
+				}	
 
 		};
 
@@ -288,6 +311,9 @@
  		const goodsPrice = parseInt($(this).nextAll("input[name='goodsPrice']").val());
 		goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount"); 			
  		$(this).prev(".cartPage_item_count_input").val(++count);
+ 		const dataCountTag = $(this).parent().prevAll(".cartPage_item_chkItem_label").children(".cartPage_item_count_check");
+ 		dataCountTag.data("goodscount", count);
+ 		
 		goodsPriceCountTag.html(priceToString(goodsPrice * count));	
 	
 		// 결제 금액
@@ -296,6 +322,20 @@
 		deleivery(deliveryFee);
 		// 총 결제 금액
 		amountPrice();
+		
+		// 장바구니 수량 업데이트
+		const cartNo = $(this).parent().nextAll(".cartNo").attr("href");
+		const cart = {
+				cartCount : count,
+				cartNo : cartNo
+		};
+		
+		$.ajax({
+			url : "/shop/cart/update",
+			type : 'put',
+			data : JSON.stringify(cart),
+			contentType : "application/json; charset=utf-8"
+		});
 		
 	});
 	
@@ -308,13 +348,29 @@
 		const goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount");	
 		$(this).next(".cartPage_item_count_input").val(--count);
 		goodsPriceCountTag.html(priceToString(goodsPrice * count));	
-		
+ 		const dataCountTag = $(this).parent().prevAll(".cartPage_item_chkItem_label").children(".cartPage_item_count_check");
+ 		dataCountTag.data("goodscount", count);
+ 		
 		// 결제 금액
 		totalPriceTag.html(cartPrice());
 		// 배송비 계산
 		deleivery(deliveryFee);
 		// 총 결제 금액
 		amountPrice();
+		
+		// 장바구니 수량 업데이트
+		const cartNo = $(this).parent().nextAll(".cartNo").attr("href");
+		const cart = {
+				cartCount : count,
+				cartNo : cartNo
+		};
+		
+		$.ajax({
+			url : "/shop/cart/update",
+			type : 'put',
+			data : JSON.stringify(cart),
+			contentType : "application/json; charset=utf-8"
+		});
 	});
 	
 	// 장바구니 삭제

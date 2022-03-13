@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources/js/javascript.js" defer></script>
     <link rel="stylesheet" href="/resources/css/reset.css?detail">
     <link rel="stylesheet" href="/resources/css/style.css?detail">
     <title>itemViewPage</title>
@@ -77,7 +78,7 @@
                             </div>
                         </div>
                         <div class="itemView_buyBtn_div">
-                            <a href="#" class="itemView_buyBtn">구매 하기</a>
+                            <a href="#" class="itemView_buyBtn">장바구니 담기</a>
                         </div>
                     </div>
                 </div>                

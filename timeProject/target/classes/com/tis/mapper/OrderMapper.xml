@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tis.mapper.OrderMapper">
+	
+	<!-- 오더 작성 -->
+	<insert id="insertOrder">
+		INSERT INTO tbl_order (memberId, goodsNo, goodsCount)
+		VALUES (#{memberId}, #{goodsNo}, #{goodsCount})
+	</insert>
+	
+	<!-- 오더 리스트 조회 -->
+	<select id="getOrderList" resultType="com.tis.domain.GoodsVO">
+		SELECT memberId, g.goodsNo, goodsCount, goodsName, goodsImage, goodsPrice
+		FROM tbl_goods g LEFT JOIN tbl_order o
+		ON g.goodsNo = o.goodsNo
+		WHERE memberId = #{memberId}
+	</select>
+</mapper>

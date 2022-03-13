@@ -32,6 +32,10 @@ public class GoodsVO {
 	private String memberId;
 	private int cartCount;
 	
+	// OrderVO
+	private int goodsCount;
+	
+	
 	// 페이징 처리
 	private Criteria cri;
 	

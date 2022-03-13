@@ -46,6 +46,12 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.deleteCart(cartNo);
 	}
 	
+	// 장바구니 수량 업데이트
+	@Override
+	public int updateCount(CartVO cart) {
+		return cartMapper.updateCount(cart);
+	}
+	
 	
 
 }
