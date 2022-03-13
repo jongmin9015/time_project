@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/326f61a68e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/javascript.js" defer></script>
-    <link rel="stylesheet" href="resources/css/reset.css">
-    <link rel="stylesheet" href="resourcrescss/style.css">
+    <script src="/resources/js/javascript.js" defer></script>
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <title>payPage</title>
 </head>
 <body>
@@ -35,40 +35,30 @@
             </div>
             <div class="payPage_item_list_div">                
                 <ul class="payPage_item_list">
-                    <li class="clear">
-                        <div class="payPage_item_list_thumb">
-                            <img src="images/shop/goods/health1.jpg" alt="상품이미지">
-                        </div>
-                        <div class="payPage_item_list_name">
-                            [올케어] 마늘의 왕 (30포) (쇼핑백 증정)
-                        </div>
-                        <div class="payPage_tiem_list_ea">
-                            <span class="payPage_item_list_ea_num">1</span>
-                            개
-                        </div>
-                        <div class="payPage_item_list_info_price">
-                            <span class="payPage_item_list_info_span_div">                                
-                                <span class="payPage_item_list_price" data-value="9500">9,502원</span>
-                            </span>
-                        </div>
-                    </li>
-                    <li class="clear">
-                        <div class="payPage_item_list_thumb">
-                            <img src="images/shop/goods/health1.jpg" alt="상품이미지">
-                        </div>
-                        <div class="payPage_item_list_name">
-                            [올케어] 마늘의 왕 (30포) (쇼핑백 증정)
-                        </div>
-                        <div class="payPage_tiem_list_ea">
-                            <span class="payPage_item_list_ea_num">1</span>
-                            개
-                        </div>
-                        <div class="payPage_item_list_info_price">
-                            <span class="payPage_item_list_info_span_div">                                
-                                <span class="payPage_item_list_price" data-value="9500">9,500원</span>
-                            </span>
-                        </div>
-                    </li>
+                
+                	<c:forEach items="${orderGoodsList}" var="goods">
+                	
+	                    <li class="clear">
+	                        <div class="payPage_item_list_thumb">
+	                            <img src="/resources/images/shop/goods/${goods.goodsImage}" alt="${goods.goodsImage}">
+	                        </div>
+	                        <div class="payPage_item_list_name">
+	                            ${goods.goodsName}
+	                        </div>
+	                        <div class="payPage_tiem_list_ea">
+	                            <span class="payPage_item_list_ea_num">${goods.goodsCount}</span>
+	                            개
+	                        </div>
+	                        <div class="payPage_item_list_info_price">
+	                            <span class="payPage_item_list_info_span_div">                                
+	                                <span class="payPage_item_list_price" data-value="${goods.goodsPrice * goods.goodsCount}">
+	                                <fmt:formatNumber pattern="###,###,###" value="${goods.goodsPrice * goods.goodsCount}"></fmt:formatNumber>
+	                                </span>
+	                            </span>
+	                        </div>
+	                    </li>
+	                    
+                    </c:forEach>
                 </ul>
             </div>
             <!-- payPage 주문자 정보 -->
@@ -87,20 +77,20 @@
                         <table class="payPage_order_table">
                             <tr class="payPage_order_fst">
                                 <th>보내는 분</th>
-                                <td>홍길동</td>
+                                <td>${member.memberName}</td>
                                 <input type="hidden" name="order_name" value="홍길동">
                             </tr>
                             <tr>
                                 <th>휴대폰</th>
                                 <td>
-                                    01012345678
+                                    ${member.phone}
                                     <input type="hidden" name="order_phone" value="01012345678">
                                 </td>
                             </tr>
                             <tr>
                                 <th>이메일</th>
                                 <td>
-                                    test1234@naver.com
+                                    ${member.email}
                                     <input type="hidden" name="order_email" value="test1234@naer.com">
                                     <p class="payPage_order_txt_desc">
                                         정보 변경은 마이컬리 > 개인정보 수정 메뉴에서 가능합니다.
@@ -129,7 +119,7 @@
                                 <div class="payPage_addrinfo_div">
                                     <span class="payPage_addrinfo_default" id="addrDefault" data-text="기본배송지">기본배송지</span> <br>                              
                                     <span class="payPage_addrinfo">
-                                        서울특별시 영등포구 선유로 130 (지번 : 양평동 3가 5-4번지), 에이스하이테크시티3차 2층
+                                        ${address.address} ${address.addressSub} 
                                     </span>
                                 </div>
                             </div>
@@ -139,7 +129,7 @@
                                 </h3>
                                 <div class="payPage_receiving_div">                                    
                                     <div class="payPage_receiving_info">
-                                        홍길동, 010-1234-5678
+                                        ${member.memberName}, ${member.phone}
                                     </div>
                                     <div class="payPage_receiving_place_div">                                    
                                         <span class="payPage_receiving_place">문 앞</span>
@@ -154,7 +144,7 @@
                             </div>                            
                         </div>
                         <div class="payPage_banner_img_div">
-                            <img src="images/payPage/banner-order-paper_1050_107.webp" alt="배너이미지" class="payPage_banner_img">
+                            <img src="/resources/images/shop/order/banner-order-paper_1050_107.webp" alt="배너이미지" class="payPage_banner_img">
                         </div>
                         <!-- payPage 포인트 -->
                         <div class="payPage_pay_inner clear">
@@ -192,7 +182,7 @@
                                                     <div class="payPage_pay_select_first">
                                                         <label class="payPage_kakaopay" id="kakaopayment" onclick="cardaddClass(this)">
                                                             <input type="radio" value="kakao-pay" checked="checked" name="pay-select" onclick="cardCheck(this.value)">
-                                                            <img src="images/payPage/ico_kakao-pay.webp" alt="kakao-pay" class="kakaopay-logo">
+                                                            <img src="/resources/images/shop/order/ico_kakao-pay.webp" alt="kakao-pay" class="kakaopay-logo">
                                                         </label>
                                                     </div>
                                                     <ul class="payPage_pay_select_menu_list clear">
@@ -338,12 +328,14 @@
                                     <dl class="payPage_orderitem_amount clear">
                                         <dt class="payPage_orderitem_amount_tit">배송비</dt>
                                         <dd class="payPage_orderitem_price payPage_orderitem_delivery_area">
-                                            <span class="payPage_orderitem_delivery_price">2,501</span>
+                                            <span class="payPage_orderitem_delivery_price">
+                                            	<fmt:formatNumber pattern="###,###,###" value="${deliveryFee}"></fmt:formatNumber>
+                                            </span>
                                             원
                                         </dd>
                                     </dl>
                                     <dl class="payPage_orderitem_amount clear">
-                                        <dt class="payPage_orderitem_amount_tit">적입금사용</dt>
+                                        <dt class="payPage_orderitem_amount_tit">적립금사용</dt>
                                         <dd class="payPage_orderitem_price payPage_orderitem_point_area">
                                             <span class="payPage_orderitem_point_num">1 원</span>
                                             <input type="hidden" name="payPage_point" size="12" value="0" readonly>

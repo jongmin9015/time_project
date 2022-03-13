@@ -194,174 +194,147 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document)
-				.ready(
-						function() {
+	
+	
+	
+	
+<script>
 
-							const item_listForm = $("#item_list_Form");
-							const item_listPageForm = $("#item_listPage_Form");
+$(document).ready(function() {
+	
+	let sessionId = "${sessionId}";
+	
+	console.log(sessionId);
 
-							// 상품 상세 이동
-							$(".goods_detail")
-									.on(
-											"click",
-											function(e) {
-												e.preventDefault();
-												item_listForm
-														.append("<input type='hidden' name='goodsNo' value='"
-																+ $(this).attr(
-																		"href")
-																+ "'>");
-												item_listForm
-														.attr("action",
-																"/shop/goods/goods_detail");
-												item_listForm.submit();
-											});
+	const item_listForm = $("#item_list_Form");
+	const item_listPageForm = $("#item_listPage_Form");
 
-							// SUB 메뉴 이동 
-							$(".itemList_subList_tit")
-									.on(
-											"click",
-											function(e) {
-												e.preventDefault();
-												item_listForm
-														.append("<input type='hidden' name='category' value='"
-																+ $(this).attr(
-																		"href")
-																+ "'>");
-												item_listForm.submit();
-											});
+	// 상품 상세 이동
+	$(".goods_detail").on("click", function(e) {
+		
+		e.preventDefault();
+		item_listForm.append("<input type='hidden' name='goodsNo' value='" + $(this).attr("href") + "'>");
+		item_listForm.attr("action","/shop/goods/goods_detail");
+		item_listForm.submit();
+		
+	});
 
-							// 페이징 처리
-							$(".itemList_page_div_box a").on(
-									"click",
-									function(e) {
-										e.preventDefault();
-										item_listPageForm.find(
-												"input[name='pageNum']").val(
-												$(this).attr("href"))
-										item_listPageForm.submit();
-									});
+	// SUB 메뉴 이동 
+	$(".itemList_subList_tit").on("click", function(e) {
+		
+		e.preventDefault();
+		item_listForm.append("<input type='hidden' name='category' value='" + $(this).attr("href") + "'>");
+		item_listForm.submit();		
+		
+	});
 
-							// 가격순 정렬
-							$(".itemList_sort_menu_list a").on(
-									"click",
-									function(e) {
-										e.preventDefault();
-										var priceSort = $(this).attr("href");
-										item_listPageForm.find(
-												"input[name='pageNum']").val(
-												"1");
-										item_listPageForm.find(
-												"input[name='priceSort']").val(
-												priceSort);
-										item_listPageForm.submit();
-									});
+	// 페이징 처리
+	$(".itemList_page_div_box a").on("click", function(e) {
+		
+		e.preventDefault();
+		item_listPageForm.find("input[name='pageNum']").val($(this).attr("href"))
+		item_listPageForm.submit();
+		
+	});
 
-							// 모달창
-							const modal = $(".modal_overlay");
+	// 가격순 정렬
+	$(".itemList_sort_menu_list a").on("click", function(e) {
+		
+		e.preventDefault();
+		var priceSort = $(this).attr("href");
+		item_listPageForm.find("input[name='pageNum']").val("1");
+		item_listPageForm.find("input[name='priceSort']").val(priceSort);
+		item_listPageForm.submit();
+		
+	});
 
-							let goodsNo = "";
+	// 모달창
+	const modal = $(".modal_overlay");
 
-							$(".itemList_cartBtn_div a").on(
-									"click",
-									function(e) {
+	let goodsNo = "";
 
-										// 모달창 ON 스크롤 막기
-										e.preventDefault();
-										$("body").addClass("hidden");
-										modal.fadeIn();
+	$(".itemList_cartBtn_div a").on("click", function(e) {
 
-										goodsNo = $(this).attr("href");
+		// 모달창 ON 스크롤 막기
+		e.preventDefault();
+		$("body").addClass("hidden");
+		modal.fadeIn();	
+		goodsNo = $(this).attr("href");
 
-										// 상품 조회 WITH GOODS NO
-										get(goodsNo, function(goods) {
+		// 상품 조회 WITH GOODS NO
+		get(goodsNo, function(goods) {
 
-											const goodsPrice = goods.goodsPrice
-													.toLocaleString();
-											$(".goodsList_cart_tit").html(
-													goods.goodsName);
-											$(".goodsList_cart_price").html(
-													goodsPrice);
-											$(".goodsList_amount_price_num")
-													.html(goodsPrice);
-										});
-									})
+			const goodsPrice = goods.goodsPrice.toLocaleString();
+			$(".goodsList_cart_tit").html(goods.goodsName);
+			$(".goodsList_cart_price").html(goodsPrice);
+			$(".goodsList_amount_price_num").html(goodsPrice);
+			
+		});
+		
+	});
 
-							// 모달창 내부 수량 카운트 UP
-							let count = $(".itemView_count_input")
-									.attr("value")
+	// 모달창 내부 수량 카운트 UP
+	let count = $(".itemView_count_input").attr("value")
 
-							$(".itemViewUp")
-									.on(
-											"click",
-											function() {
+	$(".itemViewUp").on("click", function() {
 
-												const price = stringNumberToInt($(
-														".goodsList_cart_price")
-														.html());
-												$(".itemView_count_input").val(
-														++count);
-												let total = price * count;
-												$(".goodsList_amount_price_num")
-														.html(
-																priceToString(total));
-											})
+		const price = stringNumberToInt($(".goodsList_cart_price").html());
+		$(".itemView_count_input").val(++count);
+		let total = price * count;
+		$(".goodsList_amount_price_num").html(priceToString(total));
+		
+	});
 
-							// 모달창 내부 수량 카운트 DOWN
-							$(".itemViewDown")
-									.on(
-											"click",
-											function() {
+	// 모달창 내부 수량 카운트 DOWN
+	$(".itemViewDown").on("click", function() {
 
-												const price = stringNumberToInt($(
-														".goodsList_cart_price")
-														.html());
-												if (count > 0) {
-													$(".itemView_count_input")
-															.val(--count);
-													let total = price * count;
-													$(
-															".goodsList_amount_price_num")
-															.html(
-																	priceToString(total));
-												}
-											})
+		const price = stringNumberToInt($(".goodsList_cart_price").html());
+		if (count > 0) {
+			
+			$(".itemView_count_input").val(--count);
+			let total = price * count;
+			$(".goodsList_amount_price_num").html(priceToString(total));
+		}
+		
+	});
 
-							// 모달창 종료시 창 닫고 수량 카운트 초기화
-							$(".goodsList_close_btn").on("click", function() {
+	// 모달창 종료시 창 닫고 수량 카운트 초기화
+	$(".goodsList_close_btn").on("click", function() {
 
-								modal.fadeOut();
-								$("body").removeClass("hidden");
-								$(".itemView_count_input").val(1);
-								count = 1;
-							})
+		modal.fadeOut();
+		$("body").removeClass("hidden");
+		$(".itemView_count_input").val(1);
+		count = 1;
+		
+	});
 
-							// 로그인된 아이디 정보
-							const memberId = 'guest';
+	// 로그인된 아이디 정보
+	const memberId = "${memberId}" || "${sessionId}";
 
-							// 장바구니 담기
-							$(".goodsList_submit_btn").on("click", function() {
+	// 장바구니 담기
+	$(".goodsList_submit_btn").on("click", function() {
 
-								let cart = {
-									goodsNo : goodsNo,
-									memberId : memberId,
-									cartCount : count
-								};
+		let cart = {
+			goodsNo : goodsNo,
+			memberId : memberId,
+			cartCount : count
+		};
 
-								put(cart, function(result) {
-									alert(result);
-								})
+		put(cart, function(result) {
+			alert(result);
+		})
 
-								// 모달창 OFF 스크롤 기능 복구 COUNT 초기화
-								modal.fadeOut();
-								$("body").removeClass("hidden");
-								$(".itemView_count_input").val(1);
-								count = 1;
-							})
-						})//ready
-	</script>
+		// 모달창 OFF 스크롤 기능 복구 COUNT 초기화
+		modal.fadeOut();
+		$("body").removeClass("hidden");
+		$(".itemView_count_input").val(1);
+		count = 1;
+		
+	});
+	
+	
+})//ready
+</script>
 	<div id="footer">
 		<%@ include file="../../includes/footer.jsp"%>
 	</div>

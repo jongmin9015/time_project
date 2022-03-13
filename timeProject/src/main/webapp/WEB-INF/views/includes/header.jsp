@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="/resources/js/header.js"></script>
+    <script type="/resources/js/javascript.js" defer></script>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 	        <div id="user_menu">
 	            <ul class="list_menu">
 	                <li class="menu_join">
-	                    <a href="#" class="link_menu">회원가입</a>
+	                    <a href="#" class="link_menu menu_join">회원가입</a>
 	                </li>
 	                <li class="menu_login">
 	                    <a href="#" class="link_menu">로그인</a>
@@ -94,7 +94,7 @@
                     </ul>
                 </li>
                 <li class="gbnMenulist">
-                    <a href="#" class="link event ">
+                    <a href="/event" class="link event ">
                         <span class="txt">이벤트</span>
                     </a>
                 </li>
@@ -111,7 +111,7 @@
 
 
             <div class="cart">
-                <a href="" class="cart_icon">
+                <a href="/shop/cart/move" class="cart_icon">
                         <i class="fa-solid fa-cart-shopping"></i>
     			</a>
             </div>
@@ -119,22 +119,29 @@
         <!-- HEADER -->
         
         
-<script>
-    $(document).ready(function() {
+<!-- <script>
+$(document).ready(function() {
+	
         var wind = $(window),
         header = $('#gnbMenu'),
         headerOffsetTop = header.offset().top;
 
-        console.log(headerOffsetTop);
-        console.log(wind.scrollTop());
+/*         console.log(headerOffsetTop);
+        console.log(wind.scrollTop()); */
+        
         wind.scroll(function() {
+        	
            if(wind.scrollTop()>= headerOffsetTop) {
+        	   
             header.addClass('sticky');
+            
            } else {
+        	   
             header.removeClass('sticky');
           }
         });
-    });
-</script>
+        
+});//ready
+</script> -->
 </body>
 </html>

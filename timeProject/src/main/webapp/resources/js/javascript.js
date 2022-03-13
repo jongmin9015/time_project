@@ -1,3 +1,89 @@
+// Header 메뉴바 고정
+$(document).ready(function() {
+	
+    var wind = $(window),
+    header = $('#gnbMenu'),
+    headerOffsetTop = header.offset().top;
+
+
+    wind.scroll(function() {
+    	
+       if(wind.scrollTop()>= headerOffsetTop) {
+        header.addClass('sticky');
+        
+       } else {
+        header.removeClass('sticky');
+      }
+       
+    });
+});
+
+// 인덱스 Java Script
+$(document).ready(function(){
+
+    
+    let totalNum = $(".main_img_box img").length;
+    let imgWidth = $(".slider li").width();
+    let imgTotalWidth = imgWidth * totalNum;
+
+    let roll = setInterval(next, 10000);
+    
+    init()
+    
+    $(".nextBtn").click(function(){
+        clearInterval(roll);
+        next();
+    });
+
+    $(".prevBtn").click(function(){
+        clearInterval(roll);
+        prev();
+    });
+
+    function init() {
+    $(".page span:first").text(1);
+    $(".page span:last").text(totalNum); 
+    $(".slider").width( imgTotalWidth );
+    }
+
+    $(".main_img_box > button").mouseleave(function(){
+        let roll = setInterval(next, 1000);
+    });
+
+    function next() {
+        $(".slider").stop().animate({marginLeft: -imgWidth}, 500, "swing", function(){
+            $(".slider>li:first").appendTo(".slider");
+            $(".slider").css({marginLeft: 0});
+            let num = $(".slider>li:first").children("img").attr("alt");
+            $(".page span:first").text(num);
+        });
+    }
+    function prev() {
+        $(".slider").css({marginLeft: -imgWidth}); 
+        $(".slider>li:last").prependTo(".slider");
+        $(".slider").animate({marginLeft: 0}, 500, "swing", function(){
+            let num = $(".slider>li:first").children("img").attr("alt");
+            $(".page span:first").text(num);
+        });
+    }
+
+
+    $('.main_content_list').bxSlider({  
+
+        minSlides: 4,
+
+        maxSlides: 4,
+      
+        slideWidth: 300,
+
+        pager : false,
+
+        HideControlOnEnd : true
+      
+    });
+
+});
+
 //회원가입 유효성
 function signupform_check(){
     var id = document.getElementById("userid");
@@ -247,17 +333,68 @@ function selectRemove(){
 	})
 }
 
-// 카카오 주소 검색 API
-function kakaoPost() {
-	console.log("KAKAO");
+// 배송지 입력
+function showPopUp() { 
+	//창 크기 지정 
+	const width = 500; 
+	const height = 500; 
+	//pc화면기준 가운데 정렬
+	const left = (window.screen.width / 2) - (width/2); 
+	const top = (window.screen.height / 4); 
+	//윈도우 속성 지정
+	const windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes'; 
+	//연결하고싶은url
+	const url = '/address/cart?memberId=' + memberId;
 
-    new daum.Postcode({
-        oncomplete: function(data) {
-            document.querySelector(".cartPage_address").innerText = data.address;
-        }
-    }).open();
-
+	//등록된 url 및 window 속성 기준으로 팝업창을 연다. 
+	window.open(url, "hello popup", windowStatus); 
 }
+
+//배송지 입력 (배송지 변경)
+function showPopUpdate() { 
+	//창 크기 지정 
+	const width = 500; 
+	const height = 500; 
+	//pc화면기준 가운데 정렬
+	const left = (window.screen.width / 2) - (width/2); 
+	const top = (window.screen.height / 4); 
+	//윈도우 속성 지정
+	const windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes'; 
+	//연결하고싶은url
+	const url = '/address/cart?memberId=' + memberId +'&form=update';
+
+	//등록된 url 및 window 속성 기준으로 팝업창을 연다. 
+	window.open(url, "hello popup", windowStatus); 
+}
+
+function insertOrder() {
+	const query = 'input[class="cartPage_item_count_check"]:checked';
+    const selectedElements = document.querySelectorAll(query);
+    selectedElements.forEach((checkGoods) => {
+    	const checkGood = checkGoods.dataset;
+    	
+    	const order = {
+    		memberId : memberId,
+    		goodsNo : checkGood.goodsno,
+    		goodsCount : checkGood.goodscount    		
+    	}
+    	
+    	$.ajax({
+    		url : "/shop/order/insert",
+    		type : "post",
+    		data : JSON.stringify(order),
+    		contentType : "application/json; charset=utf-8",
+    	});   	
+    });
+    const deliveryFee = document.querySelector(".cartPage_amount_delivery_num").innerText;
+    const orderForm = document.querySelector(".order_moveForm")
+    const deliveryForm = document.querySelector("input[name='deliveryFee']");
+    deliveryForm.value = deliveryFee;
+    console.log(deliveryFee);
+    console.log(deliveryForm.value);
+    orderForm.submit();
+}
+
 
 //itemView 상세페이지 탭메뉴 classadd
 $(document).ready(function(){

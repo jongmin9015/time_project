@@ -39,4 +39,11 @@
 		DELETE FROM tbl_cart
 		WHERE cartNo = #{cartNo}
 	</delete>
+	
+	<!-- 장바구니 수량 업데이트 -->
+	<update id="updateCount">
+		UPDATE tbl_cart
+		SET cartCount = #{cartCount}
+		WHERE cartNo = #{cartNo}	
+	</update>
 </mapper>
