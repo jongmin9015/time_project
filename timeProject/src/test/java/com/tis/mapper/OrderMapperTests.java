@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.tis.domain.CategoryVO;
 import com.tis.domain.Criteria;
 import com.tis.domain.GoodsVO;
+import com.tis.domain.OrderVO;
 import com.tis.service.GoodsService;
 import com.tis.service.OrderService;
 
@@ -28,7 +29,18 @@ public class OrderMapperTests {
 
 	@Test
 	public void getNo() {
-		orderService.getOrderList("40AED2E43B754289A63812C0AEACB386");
+		OrderVO order = new OrderVO();
+		order.setMemberId("C45F744B2D5A1F0A8891BBAFCC85E17A");
+		order.setDeliveryFee(3000);
+		order.setDeliveryLocation("door");
+		order.setDeliveryMessage("seven");
+		order.setDeliveryName("김지수");
+		order.setDeliveryPhone("91923823");
+		order.setOrderName("김지수");
+		order.setOrderPhone("0202131");
+		order.setEntrancePw("12324");
+		orderService.updateOrder(order);
+		System.out.println(order);
 	}
 	
 

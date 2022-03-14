@@ -49,30 +49,11 @@ public class OrderController {
 		model.addAttribute("orderGoodsList", orderGoodsList);
 		model.addAttribute("member", member);
 		model.addAttribute("address", address);
+		model.addAttribute("memberId", order.getMemberId());
 		model.addAttribute("deliveryFee", order.getDeliveryFee());
 		
-		log.info("move to cartorder.........................." + order.getMemberId());
+		log.info("move to order.........................." + order.getMemberId());
 		return "/shop/order/shop_order";
-	}
-	
-	// 결제 페이지 이동
-	@RequestMapping(value = "/move", method = RequestMethod.PUT,
-					consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> moveOrderDelivery(Model model, @RequestBody OrderVO order) {
-		
-		
-		List<GoodsVO> orderGoodsList = orderService.getOrderList(order.getMemberId());
-		
-		MemberVO member = memberService.getMember(order.getMemberId());
-		AddressVO address = addressService.getAddress(order.getMemberId());
-		
-		model.addAttribute("orderGoodsList", orderGoodsList);
-		model.addAttribute("member", member);
-		model.addAttribute("address", address);
-		model.addAttribute("deliveryFee", order.getDeliveryFee());
-		
-		log.info("move to deliveryorder.........................." + order.getMemberId());
-		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
 	// 오더 생성
@@ -87,8 +68,9 @@ public class OrderController {
     
     // 배송지 상세입력 폼 이동
     @RequestMapping(value = "/delivery", method = RequestMethod.GET)
-    public String deliveryAddress(@ModelAttribute("orderName") String orderName,@ModelAttribute("orderPhone") String orderPhone) {
+    public String deliveryAddress(Model model, OrderVO order) {
     	
+    	model.addAttribute("order", order);
     	log.info("move to delivery.........................."); 
     	return "/shop/order/order_delivery";
     }

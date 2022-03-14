@@ -551,6 +551,7 @@ $(document).ready(function(){
     payBtn.value = totalPrice.toLocaleString() + "원 결제하기";
 });
 
+// 배송지 설정 팝업
 function showPopUpDelivery() { 
 	//창 크기 지정 
 	const width = 500; 
@@ -561,8 +562,7 @@ function showPopUpDelivery() {
 	//윈도우 속성 지정
 	const windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes'; 
 	//연결하고싶은url
-	const url = '/shop/order/delivery?orderName=' + orderName +"&orderPhone=" + orderPhone + "&memberId=" + memberId + "&deliveryFee=" + deliveryFee;
-
+	const url = '/shop/order/delivery?orderName=' + orderName +"&orderPhone=" + orderPhone;
 	//등록된 url 및 window 속성 기준으로 팝업창을 연다. 
 	window.open(url, "hello popup", windowStatus); 
 }
@@ -584,7 +584,7 @@ function locationAddClass(v){
     };
 };
 
-//결제페이지 배송지 설정
+// 결제페이지 배송지 설정
 function messageAddClass(v){
     let messageRadio = document.querySelectorAll('.message_simple_radio');   
 
@@ -631,6 +631,7 @@ function noticeDisplay(value) {
 	}
 }
 
+// 주문자 정보와 동일
 function sameOrder(value) {
 	const sameBtn = document.querySelector(".delivery_sameBtn");
 	const nameInput = document.querySelector(".orderName");
@@ -647,6 +648,39 @@ function sameOrder(value) {
 		sameBtn.value = "x";
 	}
 }
+
+// 배송지 정보 페이지 입력
+function deliveryInfo() {
+	const deliveryLocationTag = opener.document.querySelector(".payPage_receiving_txt");
+	const deliveryMessageTag = opener.document.querySelector(".payPage_receiving_message_time");
+	const deliveryNameTag = opener.document.querySelector(".payPage_receiving_name");
+	const deliveryPhoneTag = opener.document.querySelector(".payPage_receiving_phone");
+	const entrancePwTag = opener.document.querySelector("input[name='entrancePw']");
+	
+	const deliveryName = document.querySelector("input[name='deliveryName']").value;
+	const deliveryPhone = document.querySelector("input[name='deliveryPhone']").value;	
+	const entrancePw = document.querySelector("input[name='entrancePw']").value;
+	let deliveryMessage = document.querySelector("input[name='deliveryMessage']:checked").dataset.name;
+	let deliveryLocation = document.querySelector("input[name='deliveryLocation']:checked").dataset.name;
+	
+
+	deliveryLocationTag.innerText = deliveryLocation;
+	deliveryMessageTag.innerText = deliveryMessage;
+	deliveryNameTag.innerText = deliveryName;
+	deliveryPhoneTag.innerText = deliveryPhone;
+	entrancePwTag.value = entrancePw;
+	
+	window.close();
+	
+}
+
+// 배송지 정보 입력창 닫기
+function closePopUp() {
+	window.close();
+}
+
+
+
 
 // 콤마 숫자형 문자열을 정수로 변환
 function stringNumberToInt(stringNumber){

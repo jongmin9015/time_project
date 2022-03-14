@@ -159,19 +159,19 @@
                                 </h3>
                                 <div class="payPage_receiving_div">                                    
                                     <div class="payPage_receiving_info">
-                                        ${member.memberName}&nbsp;&nbsp;&nbsp;${member.phone}
-                                    
+                                        <span class="payPage_receiving_name">${member.memberName}</span>
+                                    	<span class="payPage_receiving_phone">${member.phone}</span>
                                     </div>
                                    
                                     <div class="payPage_receiving_place_div">                                    
-                                        <span class="payPage_receiving_place">문 앞</span>
-                                        <span class="payPage_receiving_txt">기타(안전한 배송 바랍니다.)</span>
+                                        <span class="payPage_receiving_place">배송지역</span>
+                                        <span class="payPage_receiving_txt"></span>
                                     </div>
                                     <div class="payPage_receiving_message_div">                                    
                                         <span class="payPage_receiving_message_tit">배송완료 메시지</span>
-                                        <span class="payPage_receiving_message_time">배송 직후</span>
+                                        <span class="payPage_receiving_message_time"></span>
                                     </div>
-                                     <button type="button" class="payPage_subaddress_update_Btn" id="btnUpdateSubAddress" onclick="showPopUpDelivery()">수정</button>
+                                     <button type="button" class="payPage_subaddress_update_Btn" id="btnUpdateSubAddress" onclick="showPopUpDelivery()">입력</button>
                                 </div>
                               
                             </div>                            
@@ -370,7 +370,7 @@
                                     <dl class="payPage_orderitem_amount clear">
                                         <dt class="payPage_orderitem_amount_tit">적립금사용</dt>
                                         <dd class="payPage_orderitem_price payPage_orderitem_point_area">
-                                            <span class="payPage_orderitem_point_num">1 원</span>
+                                            <span class="payPage_orderitem_point_num">1000 원</span>
                                             <input type="hidden" name="payPage_point" size="12" value="0" readonly>
                                         </dd>
                                     </dl>
@@ -433,13 +433,15 @@
         </div>
     </div>
 
+	<form>
+		<input type="hidden" name="entrancePw">
+	</form>
     <div id="footer">
    		<%@ include file="../../includes/footer.jsp"  %>
     </div>
     
     
 <script>
-
 
 	let orderName = document.querySelector("input[name='orderName']").value;
 	let orderPhone = document.querySelector("input[name='orderPhone']").value;

@@ -2937,13 +2937,14 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     vertical-align: -2px;
 }
 .payPage_subaddress_update_Btn{
-    margin-left: 190px;
+    margin-left: 188px;
     border: 1px solid #ddd;
+    border-radius: 3px;
     color: #333;
     display: block;
     width: 60px;
     height: 30px;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 3px;
     background-color: #fff;
     font-weight: bold;

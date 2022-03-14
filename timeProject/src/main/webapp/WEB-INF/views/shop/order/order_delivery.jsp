@@ -15,10 +15,7 @@
     <title>delivery</title>
 </head>
 <body>
-	<div class="delivery_input_div">
-		<form action="/shop/order/delivery" method="post" class="deliveryForm">
-		    <input type="hidden" name="memberId" value="${memberId}">	
-  			<input type="hidden" name="deliveryFee" value="">	
+	<div class="delivery_input_div">	
 			<div class="delivery_tit">
 				<span class="delivery_tit_info">배송정보</span>			
 				<label class="delivery_tit_same">
@@ -43,25 +40,25 @@
                  <ul class="delivery_info_locaion_select_list">
                      <li class="door">
                          <label class="delivery_info_locaion_radio" onclick="locationAddClass(this)">
-                             <input type="radio" name="deliveryLocation" value="door" onclick="noticeDisplay(this.value)">
+                             <input type="radio" name="deliveryLocation" data-name="문 앞" value="door" onclick="noticeDisplay(this.value)">
                              &nbsp;&nbsp;문 앞
                          </label>
                      </li>
                      <li class="security">
                          <label class="delivery_info_locaion_radio" onclick="locationAddClass(this)">
-                             <input type="radio" name="deliveryLocation" value="security" onclick="noticeDisplay(this.value)">
+                             <input type="radio" name="deliveryLocation" data-name="경비실" value="security" onclick="noticeDisplay(this.value)">
                              &nbsp;&nbsp;경비실
                          </label>
                      </li>
                      <li class="post">
                          <label class="delivery_info_locaion_radio" onclick="locationAddClass(this)">
-                             <input type="radio" name="deliveryLocation" value="post" onclick="noticeDisplay(this.value)">
+                             <input type="radio" name="deliveryLocation" data-name="택배함" value="post" onclick="noticeDisplay(this.value)">
                              &nbsp;&nbsp;택배함
                          </label>
                      </li>
                      <li class="etc">
                          <label class="delivery_info_locaion_radio" onclick="locationAddClass(this)">
-                             <input type="radio" name="deliveryLocation" value="etc" onclick="noticeDisplay(this.value)">
+                             <input type="radio" name="deliveryLocation" value="etc" data-name="기타 장소" onclick="noticeDisplay(this.value)">
                              &nbsp;&nbsp;기타 장소
                          </label>
                      </li>
@@ -80,13 +77,13 @@
                  <ul class="delivery_info_message_select_list">
                      <li class="now">
                          <label class="message_simple_radio" onclick="messageAddClass(this)">
-                             <input type="radio" name="deliveryMessage" value="now">
+                             <input type="radio" name="deliveryMessage" value="now" data-name="배송 직후">
                              &nbsp;&nbsp;배송 직후
                          </label>
                      </li>
                      <li class="seven">
-                         <label class="message_simple_radio" onclick="messageAddClass(this)">
-                             <input type="radio" name="deliveryMessage" value="seven">
+                         <label class="message_simple_radio" onclick="messageAddClass(this)" >
+                             <input type="radio" name="deliveryMessage" value="seven" data-name="오전 7시">
                              &nbsp;&nbsp;오전 7시
                          </label>
                      </li>
@@ -115,58 +112,18 @@
 			
 			<div class="delivery_btn_div">
 				<div class="delivery_close_btn_div">
-					<button type="close" class="delivery_close_btn">취소</button>
+					<button type="button" class="delivery_close_btn" onclick="closePopUp()">취소</button>
 				</div>
 				<div class="delivery_submit_btn_div">
-					<button type="button" class="delivery_submit_btn">저장</button>
+					<button type="button" class="delivery_submit_btn" onclick="deliveryInfo()">저장</button>
 				</div>
 			</div>
-		</form>
 	</div>
 	
 <script>
-	const orderName = '${orderName}';
-	const orderPhone= '${orderPhone}';
-	
-	$(".delivery_close_btn").on("click", function() {
-		window.close();
-	})
-	
-	$(".delivery_submit_btn").on("click", function() {
-		
-		const deliveryName = $("input[name='deliveryName']").val();
-		const deliveryPhone = $("input[name='deliveryPhone']").val();
-		const deliveryLocation = $("input[name='deliveryLocation']").val();
-		const deliveryMessage = $("input[name='deliveryMessage']").val();
-		const entrancePw = $("input[name='entrancePw']").val();
-		const memberId = memberId;
-		const deliveryFee = deliveryFee;
-	
- 		const order = {
- 				orderName : orderName,
- 				orderPhone : orderPhone,
- 				deliveryName : deliveryName,
-				deliveryPhone : deliveryPhone,
-				deliveryLocation : deliveryLocation,
-				deliveryMessage : deliveryMessage,
-				entrancePw : entrancePw,
-				memberId : memberId,
-				deliveryFee : deliveryFee
-		};
-		 
-		$.ajax({
-			
-			url : "/shop/order/move/delivery",
-			type : "put",
-			data : JSON.stringify(order),
-			dataType : "json",
-			contentType : "application/json; charset=utf-8",
-			success : function() {							
-				opener.location.href.reload();	
-				window.close();
-			}		
-		});	
-	})
+
+	const orderName = '${order.orderName}';
+	const orderPhone= '${order.orderPhone}';
 
 </script>
 </body>
