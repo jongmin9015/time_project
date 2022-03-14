@@ -3457,3 +3457,132 @@ input[name="notice_search[word]"]{
     outline: none;
 }
 /* notice 끝 */
+
+/* noticeView 시작 */
+.noticeView_inner{
+    width: 1050px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+/* noticeView 타이틀 */
+.noticeView_tit_div{
+    width: 1050px;
+    margin: 0 auto;
+    padding: 50px 0 51px;
+}
+.noticeView_tit{
+    font-weight: 700;
+    font-size: 28px;
+    color: #333;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.noticeView_sub{
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    text-align: center;
+}
+
+/* noticeView table */
+.noticeView_table{
+    width: 100%;
+    table-layout: fixed;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #f4f4f4;
+    color: #333;
+    line-height: 180%;
+    margin-top: 20px;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.noticeView_table th{
+    width: 130px;
+    padding: 13px 0 13px 20px;
+    background-color: #f7f5f8;
+    text-align: left;
+}
+.noticeView_table td{
+    width: auto;
+    padding: 13px 0 13px 23px;
+    border-top: 1px solid #f4f4f4;
+}
+tr.noticeView_etcArea td{
+    margin: 0;
+    padding: 0;
+}
+tr.noticeView_etcArea ul{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #f4f4f4;
+}
+tr.noticeView_etcArea ul li{
+    float: left;
+}
+.noticeView_th{
+    float: left;
+    padding: 13px 0 13px 20px;
+    width: 130px;
+    background-color: #f7f5f8;
+}
+.noticeView_td{
+    float: left;
+    padding: 13px 0 13px 20px;
+    width: 180px;
+}
+.noticeView_contents{
+    width: 1030px;
+}
+/* noticeView 목록버튼 */
+.noticeView_listBtn_div{
+    margin-top: 30px;
+}
+.noticeView_listBtn_div a{
+    float: right;
+    width: 150px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    color: #fff;
+    border: 1px solid #5f0080;
+    font-size: 13px;
+}
+.noticeView_listBtn_div a:hover{
+    background-color: #5f0080;
+}
+/* noticeView 이전글 다음글 */
+.noticeView_move_div{
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    margin: 20px 0;
+}
+.noticeView_move_div li{
+    padding: 0 20px;
+    border-bottom: 1px solid #f4f4f4;
+    line-height: 140%;
+    color: #333;
+}
+.noticeView_move_div li a, .noticeView_move_div li strong{
+    float: left;
+    padding: 10px;
+    font-size: 12px;
+}
+.noticeView_prev strong{
+    width: 6%;
+    border-right: 1px solid #f4f4f4;
+    font-weight: 400;
+    background: url(../images/notice/ico_move_prev.webp) no-repeat 0 18px;
+}
+.noticeView_next strong{
+    width: 6%;
+    border-right: 1px solid #f4f4f4;
+    font-weight: 400;
+    background: url(../images/notice/ico_move_next.webp) no-repeat 0 18px;
+}
+/* noticeView 끝 */
