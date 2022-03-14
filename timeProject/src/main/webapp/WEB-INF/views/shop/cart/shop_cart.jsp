@@ -110,7 +110,7 @@
                             <h3 class="cartPage_delivery_tit">배송지</h3>
                            
                             <div class="cartPage_address_div">
-                                <p class="cartPage_address">	
+                                <p class="cartPage_address address_input">	
                                 	${address.address}
                                 </p>
                                 <p class="cartPage_address">	
@@ -120,13 +120,13 @@
                                 <c:when test="${address == null}">                                                    
                                		 <div class="cartPage_address_input_btn_div">
 	                           		 	<button class="cartPage_address_input_btn" onclick="showPopUp()" >
-	                           		 	<i class="fa-solid fa-magnifying-glass"></i>배송지를 검색하세요</button>
+	                           		 	<i class="fa-solid fa-magnifying-glass"></i>&nbsp;배송지를 검색하세요</button>
 	                       	    	</div>                       	    
 	                       	    </c:when>
 	                       	    <c:otherwise>
 	                       	    	 <div class="cartPage_address_input_btn_div">
                            		 		<button class="cartPage_address_input_btn" onclick="showPopUpdate()" >
-                           		 		<i class="fa-solid fa-magnifying-glass"></i> 배송지 변경</button>
+                           		 		<i class="fa-solid fa-magnifying-glass"></i>&nbsp;배송지 변경</button>
                        	    		</div>
 	                       	    </c:otherwise>
 							</c:choose>
@@ -206,7 +206,6 @@
 	const checkAllBox = $(".checkAll");
 	let deliveryFee = ${deliveryFee};
 	let memberId = "${memberId}" || "${sessionId}";
-	console.log(memberId);
 	
 	// 페이지 로드시 장바구니 전체상품 체크	
 	checkBox.attr("checked", true);

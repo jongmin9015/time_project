@@ -316,6 +316,9 @@ function amountPrice() {
 	const deleveryFee = stringNumberToInt(deleveryFeeTag.innerText);
 	const amountPrice = totalPrice + deleveryFee;
 	amountPriceTag.innerText = priceToString(amountPrice);
+	
+	const addressInput = document.querySelector(".address_input");
+	
 }
 
 // 장바구니 선택 삭제
@@ -367,7 +370,16 @@ function showPopUpdate() {
 	window.open(url, "hello popup", windowStatus); 
 }
 
+// 장바구니에서 주문하기
 function insertOrder() {
+	
+	const addressInput = document.querySelector(".cartPage_address");
+	
+	if (addressInput.innerText == ""){
+		alert("배송지를 입력하세요");
+		return;
+	}
+	
 	const query = 'input[class="cartPage_item_count_check"]:checked';
     const selectedElements = document.querySelectorAll(query);
     selectedElements.forEach((checkGoods) => {
@@ -383,20 +395,20 @@ function insertOrder() {
     		url : "/shop/order/insert",
     		type : "post",
     		data : JSON.stringify(order),
-    		contentType : "application/json; charset=utf-8",
+    		dateType : "json",
+    		contentType : "application/json; charset=UTF-8"
     	});   	
     });
     const deliveryFee = document.querySelector(".cartPage_amount_delivery_num").innerText;
     const orderForm = document.querySelector(".order_moveForm")
     const deliveryForm = document.querySelector("input[name='deliveryFee']");
-    deliveryForm.value = deliveryFee;
-    console.log(deliveryFee);
-    console.log(deliveryForm.value);
+    deliveryForm.value = stringNumberToInt(deliveryFee);
+    
     orderForm.submit();
 }
 
 
-//itemView 상세페이지 탭메뉴 classadd
+//itemView 상세페이지 탭메뉴
 $(document).ready(function(){
     document.getElementsByClassName('itemView_tab_menu_tit')[0].onclick = function(){click1()};
     function click1(){
@@ -538,6 +550,103 @@ $(document).ready(function(){
     orderTotalPrice.innerHTML = totalPrice.toLocaleString();
     payBtn.value = totalPrice.toLocaleString() + "원 결제하기";
 });
+
+function showPopUpDelivery() { 
+	//창 크기 지정 
+	const width = 500; 
+	const height = 500; 
+	//pc화면기준 가운데 정렬
+	const left = (window.screen.width / 2) - (width/2); 
+	const top = (window.screen.height / 4); 
+	//윈도우 속성 지정
+	const windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes'; 
+	//연결하고싶은url
+	const url = '/shop/order/delivery?orderName=' + orderName +"&orderPhone=" + orderPhone + "&memberId=" + memberId + "&deliveryFee=" + deliveryFee;
+
+	//등록된 url 및 window 속성 기준으로 팝업창을 연다. 
+	window.open(url, "hello popup", windowStatus); 
+}
+
+// 결제페이지 배송지 설정
+function locationAddClass(v){
+    let locationRadio = document.querySelectorAll('.delivery_info_locaion_radio');   
+
+    v.onclick = function(){
+    
+        for (let i = 0; i < locationRadio.length; i++) {
+            if (v == locationRadio[i]) {
+            	locationRadio[i].classList.add('delivery_info_locaion_radio_on');
+            }else{
+            	locationRadio[i].classList.remove('delivery_info_locaion_radio_on');
+            };            
+        };
+        
+    };
+};
+
+//결제페이지 배송지 설정
+function messageAddClass(v){
+    let messageRadio = document.querySelectorAll('.message_simple_radio');   
+
+    v.onclick = function(){
+    
+        for (let i = 0; i < messageRadio.length; i++) {
+            if (v == messageRadio[i]) {
+            	messageRadio[i].classList.add('message_simple_radio_on');
+            }else{
+            	messageRadio[i].classList.remove('message_simple_radio_on');
+            };            
+        };
+        
+    };
+};
+
+// 결제페이지 배송지 설정 NOTICE
+function noticeDisplay(value) {	
+	const door = document.querySelector(".delivery_entrance");
+	const security = document.querySelector(".delivery_notice_security");
+	const post = document.querySelector(".delivery_notice_post");
+	const etc = document.querySelector(".delivery_notice_etc");
+	
+	if(value == "security") {
+		door.style.display = "none";
+		security.style.display = "block";
+		post.style.display = "none";
+		etc.style.display = "none";
+	} else if (value == "post") {
+		door.style.display = "none";
+		security.style.display = "none";
+		post.style.display = "block";
+		etc.style.display = "none";
+	} else if (value == "etc") {
+		door.style.display = "none";
+		security.style.display = "none";
+		post.style.display = "none";
+		etc.style.display = "block";
+	} else if (value == "door") {
+		door.style.display = "block";
+		security.style.display = "none";
+		post.style.display = "none";
+		etc.style.display = "none";
+	}
+}
+
+function sameOrder(value) {
+	const sameBtn = document.querySelector(".delivery_sameBtn");
+	const nameInput = document.querySelector(".orderName");
+	const phoneInput = document.querySelector(".orderPhone");
+	
+	
+	if (value == "x") {
+		nameInput.setAttribute("value", orderName);
+		phoneInput.setAttribute("value", orderPhone);
+		sameBtn.value = "y";
+	} else if (value == "y"){
+		nameInput.setAttribute("value", "");
+		phoneInput.setAttribute("value", "");
+		sameBtn.value = "x";
+	}
+}
 
 // 콤마 숫자형 문자열을 정수로 변환
 function stringNumberToInt(stringNumber){

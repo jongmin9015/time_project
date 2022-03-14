@@ -237,5 +237,15 @@ create table tbl_address(
 create table tbl_order(
     memberId varchar2(200),
     goodsNo number(20),
-    goodsCount number(10)
+    goodsCount number(10),
+    orderName varchar2(200),
+    orderPhone varchar2(30),
+    deliveryName varchar2(200),
+    deliveryPhone varchar2(30),
+    deliveryLocation varchar2(20),
+    deliveryMessage varchar2(200),
+    entrancePw varchar2(10),
+    deliveryFee number(10),
+    CONSTRAINT pk_order PRIMARY key (goodsNo)
 );
+
