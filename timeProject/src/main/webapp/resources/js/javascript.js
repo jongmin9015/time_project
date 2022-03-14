@@ -549,3 +549,24 @@ function stringNumberToInt(stringNumber){
 function priceToString(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
+// notice form
+function notice_search_frm(){
+	if(document.getElementById("notice_input_box").value == ''){
+		alert("검색어를 입력해주세요.")
+		return false;
+	}
+	document.getElementById('notice_frm').submit();
+}
+//notice page click addClass
+function notice_page_addClass(v){
+    let num = document.querySelectorAll('.notice_page_num');
+    for (let i = 0; i < num.length; i++) {
+        if(v == num[i]){
+            num[i].classList.add('notice_page_on');
+        }else if(v != num[i]){
+            num[i].classList.remove('notice_page_on');
+        }
+        
+    }
+}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,9 +103,9 @@
             </ul> 
 
             <div id="sidequir_search" class="gnb_search">
-                <form action="">
-                    <input name="sword" type="text" id="sword" value="" reed="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">
-                    <a href="#" >
+                <form id="search_frm" action="/shop/goods/goods_list/">
+                    <input name="sword" type="text" id="sword" value="" reed="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">                    
+                    <a href="#" onclick="return search_form()">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
                 </form>
