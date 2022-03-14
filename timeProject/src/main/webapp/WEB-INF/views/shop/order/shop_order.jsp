@@ -74,35 +74,65 @@
                         </h2>
                     </div>
                     <div class="payPage_order_table_div">
-                        <table class="payPage_order_table">
-                            <tr class="payPage_order_fst">
-                                <th>보내는 분</th>
-                                <td>${member.memberName}</td>
-                                <input type="hidden" name="order_name" value="홍길동">
-                            </tr>
-                            <tr>
-                                <th>휴대폰</th>
-                                <td>
-                                    ${member.phone}
-                                    <input type="hidden" name="order_phone" value="01012345678">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>이메일</th>
-                                <td>
-                                    ${member.email}
-                                    <input type="hidden" name="order_email" value="test1234@naer.com">
-                                    <p class="payPage_order_txt_desc">
-                                        정보 변경은 마이컬리 > 개인정보 수정 메뉴에서 가능합니다.
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
+                     
+                        <c:choose>
+                        	<c:when test="${member == null}">
+			                       <table class="payPage_order_table">
+			                            <tr class="payPage_order_fst">
+			                                <th>보내는 분</th>
+			                                <td>
+												<input type="text" name="orderName" id="orderName" placeholder="이름을 입력해주세요" 
+												class="payPage_user_input" value="" >
+											</td>
+			                                
+			                            </tr>
+			                            <tr>
+			                                <th>휴대폰</th>
+			                                <td>
+			                                    <input type="text" name="orderPhone" id="orderPhone" placeholder="숫자만 입력해주세요" 
+			                                    class="payPage_user_input" value="">
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <th>이메일</th>
+			                                <td>
+			                                    <input type="text" name="orderEmail" placeholder="예)spring@java.com" class="payPage_user_input" >
+			                                </td>
+			                            </tr>
+			                        </table>	
+                        	</c:when>
+                        	
+                        	<c:otherwise>
+			                       <table class="payPage_order_table">
+			                            <tr class="payPage_order_fst">
+			                                <th>보내는 분</th>
+			                                <td>${member.memberName}</td>
+			                                <input type="hidden" name="orderName" value="${member.memberName}">
+			                            </tr>
+			                            <tr>
+			                                <th>휴대폰</th>
+			                                <td>
+			                                    ${member.phone}
+			                                    <input type="hidden" name="orderPhone" value="${member.phone}">
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <th>이메일</th>
+			                                <td>
+			                                    ${member.email}
+			                                    <input type="hidden" name="orderEmail" value="${member.email}">
+			                                    <p class="payPage_order_txt_desc">
+			                                        정보 변경은 마이컬리 > 개인정보 수정 메뉴에서 가능합니다.
+			                                    </p>
+			                                </td>
+			                            </tr>
+			                        </table>
+                        	</c:otherwise>
+                        
+                        </c:choose>
+                       
                     </div>
-                    <input type="hidden" name="">
-                    <input type="hidden" name="">
-                    <input type="hidden" name="">
-                    <input type="hidden" name="">
+
 
                     <div class="payPage_address_inner">
                         <!-- payPage 배송정보 -->
@@ -129,18 +159,21 @@
                                 </h3>
                                 <div class="payPage_receiving_div">                                    
                                     <div class="payPage_receiving_info">
-                                        ${member.memberName}, ${member.phone}
+                                        <span class="payPage_receiving_name">${member.memberName}</span>
+                                    	<span class="payPage_receiving_phone">${member.phone}</span>
                                     </div>
+                                   
                                     <div class="payPage_receiving_place_div">                                    
-                                        <span class="payPage_receiving_place">문 앞</span>
-                                        <span class="payPage_receiving_txt">기타(안전한 배송 바랍니다.)</span>
+                                        <span class="payPage_receiving_place">배송지역</span>
+                                        <span class="payPage_receiving_txt"></span>
                                     </div>
                                     <div class="payPage_receiving_message_div">                                    
                                         <span class="payPage_receiving_message_tit">배송완료 메시지</span>
-                                        <span class="payPage_receiving_message_time">배송 직후</span>
+                                        <span class="payPage_receiving_message_time"></span>
                                     </div>
+                                     <button type="button" class="payPage_subaddress_update_Btn" id="btnUpdateSubAddress" onclick="showPopUpDelivery()">입력</button>
                                 </div>
-                                <!-- <button type="button" class="payPage_subaddress_update_Btn" id="btnUpdateSubAddress">수정</button> -->
+                              
                             </div>                            
                         </div>
                         <div class="payPage_banner_img_div">
@@ -337,7 +370,7 @@
                                     <dl class="payPage_orderitem_amount clear">
                                         <dt class="payPage_orderitem_amount_tit">적립금사용</dt>
                                         <dd class="payPage_orderitem_price payPage_orderitem_point_area">
-                                            <span class="payPage_orderitem_point_num">1 원</span>
+                                            <span class="payPage_orderitem_point_num">1000 원</span>
                                             <input type="hidden" name="payPage_point" size="12" value="0" readonly>
                                         </dd>
                                     </dl>
@@ -400,8 +433,29 @@
         </div>
     </div>
 
+	<form>
+		<input type="hidden" name="entrancePw">
+	</form>
     <div id="footer">
    		<%@ include file="../../includes/footer.jsp"  %>
     </div>
+    
+    
+<script>
+
+	let orderName = document.querySelector("input[name='orderName']").value;
+	let orderPhone = document.querySelector("input[name='orderPhone']").value;
+	const memberId = "${memberId}";
+	const deliveryFee = "${deliveryFee}";
+	
+	$("#orderName").on("propertychange change keyup paste input", function() {
+		orderName = $(this).val();
+	});
+	$("#orderPhone").on("propertychange change keyup paste input", function() {
+		orderPhone = $(this).val();
+	});
+	
+	
+</script>
 </body>
 </html>

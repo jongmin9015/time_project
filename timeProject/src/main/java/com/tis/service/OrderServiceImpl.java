@@ -27,5 +27,11 @@ public class OrderServiceImpl implements OrderService {
 	public List<GoodsVO> getOrderList(String memberId) {
 		return orderMapper.getOrderList(memberId);
 	}
+	
+	// 오더 리스트에 배송지 설정추가
+	@Override
+	public int updateOrder(OrderVO order) {
+		return orderMapper.updateOrder(order);
+	}
 
 }

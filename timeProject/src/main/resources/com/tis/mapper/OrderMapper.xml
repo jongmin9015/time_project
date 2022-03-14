@@ -17,4 +17,11 @@
 		ON g.goodsNo = o.goodsNo
 		WHERE memberId = #{memberId}
 	</select>
+	
+	<!-- 오더 리스트에 배송지 설정추가 -->
+	<update id="updateOrder">
+		UPDATE tbl_order
+		SET orderName = #{orderName}, orderPhone = #{orderPhone}, deliveryName = #{deliveryName}, deliveryPhone = #{deliveryPhone}, deliveryLocation = #{deliveryLocation}, deliveryMessage = #{deliveryMessage}, entrancePw = #{entrancePw}, deliveryFee = #{deliveryFee}	
+		WHERE memberId = #{memberId}
+		</update>
 </mapper>

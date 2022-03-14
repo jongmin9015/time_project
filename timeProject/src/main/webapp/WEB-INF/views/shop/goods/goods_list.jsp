@@ -232,7 +232,7 @@ $(document).ready(function() {
 	$(".itemList_page_div_box a").on("click", function(e) {
 		
 		e.preventDefault();
-		item_listPageForm.find("input[name='pageNum']").val($(this).attr("href"))
+		item_listPageForm.find("input[name='pageNum']").val($(this).attr("href"));
 		item_listPageForm.submit();
 		
 	});
