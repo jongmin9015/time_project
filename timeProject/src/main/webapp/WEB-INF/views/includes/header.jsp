@@ -28,10 +28,10 @@
 	                    <a href="#" class="link_menu">로그인</a>
 	                </li>
 	                <li class="menu_center">
-	                    <a href="#" class="link_menu">고객센터</a>
+	                    <a href="/board/board_list" class="link_menu">고객센터</a>
 	                    <ul class="sub">
 	                        <li>
-	                            <a href="#">공지사항</a>
+	                            <a href="/board/board_list?num=1">공지사항</a>
 	                        </li>
 	                        <li>
 	                            <a href="#">자주하는 질문</a>

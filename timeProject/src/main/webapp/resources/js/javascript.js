@@ -570,3 +570,14 @@ function notice_page_addClass(v){
         
     }
 }
+
+//noticewriter 등록 버튼
+function noticeWriter_form(){
+    document.getElementById('noticewriter_frm').submit();
+}
+
+//noticeView textarea 공백제거
+$(document).ready(function(){
+    document.querySelector('.noticeView_inp_content').value.trim();
+    document.querySelector('.noticeWrite_inp_content').value.trim();
+});

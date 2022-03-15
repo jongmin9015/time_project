@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tis.mapper.BoardMapper">
+	<!-- 게시물 목록 -->
+	<select id="getBoardList" resultType="com.tis.domain.BoardVO">
+		SELECT
+				bno,title,content,writer,regdate,viewcnt
+		FROM
+				tbl_board
+	</select>
+	
+	<!-- 게시물 작성 -->
+ 	<insert id="boardWrite" parameterType="com.tis.domain.BoardVO"> 		
+		insert into tbl_board(bno, title, content, writer)
+			values (SEQ_BOARD.nextval, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<!-- 게시물 조회 -->
+	<select id="boardView" parameterType="int" resultType="com.tis.domain.BoardVO">
+		SELECT
+				bno,title,content,writer,regdate,viewcnt
+		FROM
+				tbl_board
+		where
+				bno = #{bno}
+	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="boardmodify" parameterType="com.tis.domain.BoardVO">
+		update tbl_board
+			set
+				title = #{title},
+				content = #{content},
+				writer = #{writer}
+			where bno = #{bno}
+	</update>
+	
+	<!-- 게시글 총 갯수 조회 -->
+	<select id="getBoardTotal" resultType="int">
+		SELECT count(bno)
+		FROM tbl_board
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.tis.domain.BoardVO">
+	 	select
+	  		bno, title, writer, regDate, viewCnt
+	 	from tbl_board
+	 	order by bno desc
+	  		limit #{displayPost}, #{postNum}
+	</select>
+</mapper>

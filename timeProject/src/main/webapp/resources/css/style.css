@@ -3397,7 +3397,7 @@ input[name="ordAgree"]:checked+.payPage_check_span_ico{
 .notice_table_second_tr td{
     padding: 20px 0;
     padding-left: 10px;
-    text-align: left;
+    text-align: center;
     color: #999;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -3538,9 +3538,28 @@ tr.noticeView_etcArea ul li{
 .noticeView_contents{
     width: 1030px;
 }
+.noticeView_inp_content{
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 10px;
+    color: #333;
+    resize: none;
+    outline: none;
+}
 /* noticeView 목록버튼 */
 .noticeView_listBtn_div{
     margin-top: 30px;
+}
+.noticeView_listBtn_div a:last-child{
+    margin-right: 10px;
+    color: #333;
+    border: 1px solid #795b8f;
+    background-color: #fff;
+}
+.noticeView_listBtn_div a:last-child:hover{
+    background-color: #5f0080;
+    border: 1px solid #5f0080;
+    color: #fff;
 }
 .noticeView_listBtn_div a{
     float: right;
@@ -3586,3 +3605,49 @@ tr.noticeView_etcArea ul li{
     background: url(../images/notice/ico_move_next.webp) no-repeat 0 18px;
 }
 /* noticeView 끝 */
+
+/* boardwrite 시작 noticeView랑 중첩 */
+.noticeWrite_inp{
+    padding: 5px;
+    outline: none;
+    width: 350px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+.noticeWrite_inp_writer{
+    width: 200px;
+}
+.noticeWrite_inp_content{
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 10px;
+    color: #333;
+    resize: none;
+}
+div.noticeView_listBtn_div>.noticeWrite_backBtn{
+    margin-right: 10px;
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    color: #333;
+}
+div.noticeView_listBtn_div>.noticeWrite_backBtn:hover{
+    color: #fff;
+    background-color: #5f0080;
+}
+.noticeWrite_submitBtn{
+    float: right;
+    width: 150px;
+    line-height: 37px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #795b8f;
+    color: #fff;
+    background-color: #795b8f;
+    cursor: pointer;
+}
+.noticeWrite_submitBtn:hover{
+    background-color: #5f0080;
+}
+
+
+/* boardwrite 끝 */
