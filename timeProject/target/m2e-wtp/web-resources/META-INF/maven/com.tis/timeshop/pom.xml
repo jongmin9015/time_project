@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -140,12 +141,13 @@
 			<version>1.4</version>
 		</dependency>
 
-		<!-- HikariCP  -->
+		<!-- HikariCP -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>2.7.4</version>
 		</dependency>
+
 
 		<!-- AOP -->
 		<dependency>
@@ -168,6 +170,7 @@
 			<version>2.9.7</version>
 		</dependency>
 
+
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -181,6 +184,7 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.7</version>
 		</dependency>
+
 
 		<!-- Spring Security -->
 		<dependency>
@@ -226,13 +230,12 @@
 			<version>1.16</version>
 		</dependency>
 
-		<!-- Orai18n  -->
+		<!-- Orai18n -->
 		<dependency>
 			<groupId>com.oracle.database.nls</groupId>
 			<artifactId>orai18n</artifactId>
 			<version>21.5.0.0</version>
 		</dependency>
-
 
 
 
@@ -277,6 +280,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 
 </project>

@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 
 body{
@@ -2512,6 +2513,7 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
 .address_search_main {
 	height: 50px;
 	padding: 10px;
+	margin-bottom: 20px;
 }
 .address {
 	height: 45px;
@@ -2711,7 +2713,6 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     line-height: 35px;
     letter-spacing: -1px;
 }
-
 
 .payPage_inner{
     width: 1050px;
@@ -2937,13 +2938,14 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
     vertical-align: -2px;
 }
 .payPage_subaddress_update_Btn{
-    margin-left: 190px;
+    margin-left: 188px;
     border: 1px solid #ddd;
+    border-radius: 3px;
     color: #333;
     display: block;
     width: 60px;
     height: 30px;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 3px;
     background-color: #fff;
     font-weight: bold;
@@ -3352,8 +3354,249 @@ input[name="ordAgree"]:checked+.payPage_check_span_ico{
     font-size: 22px;
     line-height: 28px;
 }
+
+.payPage_user_input {
+	margin-top: -10px;	
+	height: 45px;
+	width: 270px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	color: #555;
+	font-size: 14px;
+	padding-left: 20px;
+	font-weight: 600;
+}
+
+
 /* payPage 끝 */
 
+
+
+/* pay_delivery 시작*/
+
+.delivery_input_div {
+	width: 500px;
+	padding: 30px;
+	
+	
+}
+
+.delivery_tit {
+	width: 600px;
+	margin: 0 20px;
+	margin-bottom: 30px;
+}
+
+.delivery_tit_info {
+	font-size: 28px;
+	font-weight: 700;;
+	margin-left: -20px;
+	letter-spacing: 2px;
+}
+.delivery_tit_same {	
+	font-size: 15px;
+	font-weight: 500;
+	left: 100px;
+	margin-left: 120px;
+	
+}
+input[name="same"] {
+	z-index: -3;
+    opacity: 0;
+    position: absolute;
+}
+
+input[name="same"]+.delivery_same_checkBtn{
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    top: 7px;
+    border: 0;
+    background: url(../images/shop/order/ico_checkbox.svg) 
+    no-repeat 50% 50%;
+    background-size: 24px 24px;
+}
+input[name="same"]:checked+.delivery_same_checkBtn{
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    top: 3px;
+    border: 0;
+    background: url(../images/shop/order/ico_checkbox_checked.svg) no-repeat 50% 50%;
+    background-size: 24px 24px;
+}
+.delivery_same_checkBtn_text {
+	display:inline-block;
+	top:-10px;
+}
+
+.delivery_input_tit {
+	font-size: 16px;
+	font-weight: 600;
+	color: #333;
+}
+.delivery_input_text {
+	margin: 10px 0;
+	height: 40px;
+	width: 400px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	color: #555;
+	font-size: 14px;
+	padding-left: 20px;
+	font-weight: 600;
+}
+
+.delivery_input_sub {
+	color: red;
+	margin-left: -4px;
+	margin-bottom: -20px;
+}
+
+
+.delivery_info_locaion_radio {
+	display: inline-block;
+    padding: 0 18px 0 27px;
+    background: #fff url(../images/shop/order/ico_radio_off_x2.webp) no-repeat 0 2px;
+    background-size: 20px 21px;
+    font-size: 16px;
+    font-weight:600;
+    line-height: 22px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.delivery_info_locaion_radio_on{
+    background: #fff url(../images/shop/order/ico_radio_on_x2.webp) no-repeat 0 2px;
+    background-size: 20px 21px;
+
+}
+
+
+input[name="deliveryLocation"] {
+	display: none;
+}
+
+.delivery_info_locaion_select_list{
+    list-style: none;
+} 
+.delivery_info_locaion_select_list li{
+    width: 300px;
+    height: 45px;
+    padding-top: 20px;
+
+}
+
+.delivery_info_locaion {
+	margin-bottom: 20px;
+}
+
+
+
+.delivery_message_div {
+	margin: 30px 0;
+}
+.delivery_info_message {
+	margin-bottom: 30px;
+}
+
+input[name="deliveryMessage"] {
+	display: none;
+}
+
+.message_simple_radio {
+	display: inline-block;
+    padding: 0 18px 0 27px;
+    background: #fff url(../images/shop/order/ico_radio_off_x2.webp) no-repeat 0 2px;
+    background-size: 20px 21px;
+    font-size: 16px;
+    font-weight:600;
+    line-height: 22px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+.message_simple_radio_on{
+    background: #fff url(../images/shop/order/ico_radio_on_x2.webp) no-repeat 0 2px;
+    background-size: 20px 21px;
+
+}
+
+.delivery_info_message_select_list{
+    list-style: none;
+    
+} 
+.delivery_info_message_select_list li{
+    width: 150px;
+    height : 45px;
+    display: inline-block;
+}
+
+.notice_check {
+	font-size: 12px;
+	font-weight: 700;
+	color: #5f0080;
+}
+.notice_attention {
+	font-size: 10px;
+	font-weight: 700;
+	color: #5f0080;
+}
+
+.delivery_notice_back {
+	width: 430px;
+	margin: 12px 0 10px;
+    padding: 16px;
+    border-radius: 3px;
+    background-color: rgba(95,0,128,.04);
+	
+}
+.delivery_notice_door, .delivery_notice_security, .delivery_notice_post, .delivery_notice_etc {
+	display: none;
+}
+
+.delivery_close_btn_div{
+    text-align: center;
+    margin-top: 20px;
+    width: 49%;
+    float: left;
+}
+.delivery_submit_btn_div{
+    text-align: center;
+    margin-top: 20px;
+    width: 49%;
+    float: right;
+}
+.delivery_close_btn{
+    font-size: 16px;
+    height: 56px;
+    padding-bottom: 2px;
+    line-height: 54px;
+    color: #000000;
+    border: 1px solid #ccc;
+    background-color : #ffffff;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.delivery_submit_btn{
+    font-size: 16px;
+    height: 56px;
+    padding-bottom: 2px;
+    line-height: 54px;
+    color: #fff;
+    border: 1px solid #5f0080;
+    background-color: #5f0080;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.delivery_entrance {
+	display: none;
+}
+/* pay_delivery 끝*/
 
 /* notice 시작 */
 .notice_inner{

@@ -35,7 +35,6 @@ public class GoodsController {
 	@RequestMapping(value = "goods_list", method = RequestMethod.GET)
 	public String goodsList(Model model, @RequestParam("category")String categoryTitle, Criteria cri, String priceSort) {
 
-
 		GoodsVO goods = new GoodsVO(cri);
 		goods.setPriceSort(priceSort);
 		goods.setGoodsCategory(categoryTitle);
