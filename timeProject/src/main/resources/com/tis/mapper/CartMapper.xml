@@ -3,7 +3,6 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tis.mapper.CartMapper">
-	
 	<!-- 장바구니 담기 -->
 	<insert id="insertCart">
 		INSERT INTO tbl_cart (cartNo, memberId, goodsNo, cartCount)
@@ -26,6 +25,7 @@
 		ON g.goodsNo = c.goodsNo
 		WHERE memberId = #{memberId}
 	</select>
+
 	
 	<!-- 장바구니 총 갯수 -->
 	<select id="getCartTotal" resultType="int">

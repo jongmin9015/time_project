@@ -69,6 +69,13 @@
 					<span class="delivery_input_sub">*</span><br>
 					<input type="text" name="entrancePw" class="delivery_input_text" placeholder="공동현관 비밀번호">
 			</div>
+			
+            <div class="delivery_location_etc">
+					<span class="delivery_input_tit">기타 장소</span>
+					<span class="delivery_input_sub">*</span><br>
+					<input type="text" name="etcLocation" class="delivery_input_text" placeholder="장소를 입력해주세요">
+			</div>
+			
             <div class="delivery_info_message">
             	<div class="delivery_message_div">
 	             	<span class="delivery_input_tit">배송 완료 메시지 전송</span>
@@ -115,7 +122,7 @@
 					<button type="button" class="delivery_close_btn" onclick="closePopUp()">취소</button>
 				</div>
 				<div class="delivery_submit_btn_div">
-					<button type="button" class="delivery_submit_btn" onclick="deliveryInfo()">저장</button>
+					<button type="button" class="delivery_submit_btn" onclick="deliveryInsertInfo()">저장</button>
 				</div>
 			</div>
 	</div>
@@ -124,6 +131,7 @@
 
 	const orderName = '${order.orderName}';
 	const orderPhone= '${order.orderPhone}';
+
 
 </script>
 </body>

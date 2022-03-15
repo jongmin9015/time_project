@@ -28,10 +28,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderMapper.getOrderList(memberId);
 	}
 	
-	// 오더 리스트에 배송지 설정추가
+	// 오더 생성전 삭제
 	@Override
-	public int updateOrder(OrderVO order) {
-		return orderMapper.updateOrder(order);
+	public int deleteOrder(String memberId) {
+		return orderMapper.deleteOrder(memberId);
 	}
 
 }

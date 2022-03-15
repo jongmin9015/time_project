@@ -6,8 +6,8 @@
 	
 	<!-- 오더 작성 -->
 	<insert id="insertOrder">
-		INSERT INTO tbl_order (memberId, goodsNo, goodsCount)
-		VALUES (#{memberId}, #{goodsNo}, #{goodsCount})
+		INSERT INTO tbl_order (memberId, goodsNo, goodsCount, deliveryFee)
+		VALUES (#{memberId}, #{goodsNo}, #{goodsCount}, #{deliveryFee})
 	</insert>
 	
 	<!-- 오더 리스트 조회 -->
@@ -18,10 +18,9 @@
 		WHERE memberId = #{memberId}
 	</select>
 	
-	<!-- 오더 리스트에 배송지 설정추가 -->
-	<update id="updateOrder">
-		UPDATE tbl_order
-		SET orderName = #{orderName}, orderPhone = #{orderPhone}, deliveryName = #{deliveryName}, deliveryPhone = #{deliveryPhone}, deliveryLocation = #{deliveryLocation}, deliveryMessage = #{deliveryMessage}, entrancePw = #{entrancePw}, deliveryFee = #{deliveryFee}	
+	<!-- 오더 생성전 삭제 -->
+	<delete id="deleteOrder">
+		DELETE FROM tbl_order
 		WHERE memberId = #{memberId}
-		</update>
+	</delete>
 </mapper>

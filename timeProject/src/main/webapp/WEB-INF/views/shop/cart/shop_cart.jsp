@@ -201,7 +201,7 @@
 <script>
 	
 	// 전역 변수
-	const totalPriceTag = $(".totalPrice");
+	let totalPriceTag = $(".totalPrice");
 	const checkBox = $("input[name='cartPage_checkbox_item_list']");
 	const checkAllBox = $(".checkAll");
 	let deliveryFee = ${deliveryFee};
@@ -303,18 +303,20 @@
 	});
 	
 	// 장바구니 상품별 수량 조절
-	$(".cartPage_count_up").on("click", function() {
+	$(".cartPage_count_up").on("click", function(e) {
 		
  		let count = $(this).prev(".cartPage_item_count_input").val();
  		if (count == 99) return;	
  		const goodsPrice = parseInt($(this).nextAll("input[name='goodsPrice']").val());
 		goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount"); 			
- 		$(this).prev(".cartPage_item_count_input").val(++count);
- 		const dataCountTag = $(this).parent().prevAll(".cartPage_item_chkItem_label").children(".cartPage_item_count_check");
- 		dataCountTag.data("goodscount", count);
- 		
-		goodsPriceCountTag.html(priceToString(goodsPrice * count));	
+ 		$(this).prev(".cartPage_item_count_input").val(++count);			
+		goodsPriceCountTag.html(priceToString(goodsPrice * count));		
 	
+		let el = e.currentTarget;
+		let dataCountTag = el.parentElement.previousElementSibling.previousElementSibling.previousElementSibling;
+		let data = dataCountTag.firstElementChild.dataset.goodscount = count;
+	
+		
 		// 결제 금액
 		totalPriceTag.html(cartPrice());
 		// 배송비 계산
@@ -335,6 +337,7 @@
 			data : JSON.stringify(cart),
 			contentType : "application/json; charset=utf-8"
 		});
+
 		
 	});
 	
@@ -347,9 +350,11 @@
 		const goodsPriceCountTag = $(this).parent().next(".cart_input_div").children(".goodsPriceCount");	
 		$(this).next(".cartPage_item_count_input").val(--count);
 		goodsPriceCountTag.html(priceToString(goodsPrice * count));	
- 		const dataCountTag = $(this).parent().prevAll(".cartPage_item_chkItem_label").children(".cartPage_item_count_check");
- 		dataCountTag.data("goodscount", count);
  		
+		let el = e.currentTarget;
+		let dataCountTag = el.parentElement.previousElementSibling.previousElementSibling.previousElementSibling;
+		let data = dataCountTag.firstElementChild.dataset.goodscount = count;
+		
 		// 결제 금액
 		totalPriceTag.html(cartPrice());
 		// 배송비 계산
@@ -370,6 +375,10 @@
 			data : JSON.stringify(cart),
 			contentType : "application/json; charset=utf-8"
 		});
+
+/* 		setTimeout(function() {
+			location.reload();
+		},2000); */
 	});
 	
 	// 장바구니 삭제

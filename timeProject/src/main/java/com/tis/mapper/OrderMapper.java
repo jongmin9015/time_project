@@ -13,6 +13,6 @@ public interface OrderMapper {
 	// 오더 리스트 조회
 	List<GoodsVO> getOrderList(String memberId);
 	
-	// 오더 리스트에 배송지 설정추가
-	int updateOrder(OrderVO order);
+	// 오더 생성전 삭제
+	int deleteOrder(String memberId);
 }

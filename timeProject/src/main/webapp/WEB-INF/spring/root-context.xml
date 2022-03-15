@@ -18,6 +18,8 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${jdbc.driver}"></property>
 		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="connectionTimeout" value="58000"></property>
+		<property name="maxLifetime" value="508000"></property>
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>

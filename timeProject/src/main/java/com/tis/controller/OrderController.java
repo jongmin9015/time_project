@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,7 +41,6 @@ public class OrderController {
 	@RequestMapping(value = "/move", method = RequestMethod.POST)
 	public String moveOrderCart(Model model, OrderVO order) {
 		
-		
 		List<GoodsVO> orderGoodsList = orderService.getOrderList(order.getMemberId());
 		
 		MemberVO member = memberService.getMember(order.getMemberId());
@@ -52,7 +52,7 @@ public class OrderController {
 		model.addAttribute("memberId", order.getMemberId());
 		model.addAttribute("deliveryFee", order.getDeliveryFee());
 		
-		log.info("move to order.........................." + order.getMemberId());
+		log.info("move to order..........................");
 		return "/shop/order/shop_order";
 	}
 	
@@ -71,20 +71,19 @@ public class OrderController {
     public String deliveryAddress(Model model, OrderVO order) {
     	
     	model.addAttribute("order", order);
-    	log.info("move to delivery.........................."); 
+    	log.info("move to insert delivery.........................."); 
     	return "/shop/order/order_delivery";
     }
     
-    // 배송지 상세입력 폼 이동
-    @RequestMapping(value = "/delivery", method = RequestMethod.POST,
-    				consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public String insertAddress(@ModelAttribute("orderName") String orderName,@ModelAttribute("orderPhone") String orderPhone) {
-    	
-    	log.info("insert delivery location.........................."); 
-    	return "/shop/order/order_delivery";
+    // 오더 삭제
+    @RequestMapping(value = "/{memberId}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteOrder(@PathVariable String memberId){
+    
+    	System.out.println(memberId);
+    	orderService.deleteOrder(memberId);
+    	log.info("delete order............................");
+    	return new ResponseEntity<String>("success", HttpStatus.OK);
     }
     
-	 
-	
 
 }

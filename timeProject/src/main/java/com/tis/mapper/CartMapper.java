@@ -22,6 +22,9 @@ public interface CartMapper {
 	// 장바구니 상품 삭제
 	int deleteCart(Long cartNo);
 	
+	// 장바구니 상품 삭제
+	int deleteCartWithId(String memberId);
+	
 	// 장바구니 수량 업데이트
 	int updateCount(CartVO cart);
 }

@@ -39,7 +39,7 @@ public class OrderMapperTests {
 		order.setOrderName("김지수");
 		order.setOrderPhone("0202131");
 		order.setEntrancePw("12324");
-		orderService.updateOrder(order);
+	
 		System.out.println(order);
 	}
 	

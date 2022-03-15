@@ -89,7 +89,7 @@ public class CartController {
 		model.addAttribute("address", address);
 		
 		
-		log.info("move to cart.........................." + sessionId);
+		log.info("move to cart..........................");
 		return "shop/cart/shop_cart";
 	}
 	
@@ -109,21 +109,21 @@ public class CartController {
 		
 		if (cartService.getCartForCheck(cart) == null) {
 			cartService.insertCart(cart);
-			log.info("post goods in cart........................" + cart.getGoodsNo());
+			log.info("post goods in cart........................" );
 		} else {
 			return new ResponseEntity<String>("이미 장바구에 있습니다.", HttpStatus.OK);
 		}
 
 		return new ResponseEntity<String>("장바구니에 담겼습니다.", HttpStatus.OK);
-	}
+	}	
 	
 	// 장바구니 삭제
 	@RequestMapping(value = "/{cartNo}", method = RequestMethod.DELETE,
 					produces = "application/text; charset=utf8")
-	public ResponseEntity<String> removeCart(@PathVariable("cartNo")Long cartNo){
+	public ResponseEntity<String> deleteCart(@PathVariable("cartNo")Long cartNo){
 		
 		cartService.deleteCart(cartNo);
-		log.info("delete goods at cart........................" + cartNo);
+		log.info("delete goods at cart........................");
 		return new ResponseEntity<String>("장바구니에서 상품을 삭제했습니다.", HttpStatus.OK);
 	}
 	
