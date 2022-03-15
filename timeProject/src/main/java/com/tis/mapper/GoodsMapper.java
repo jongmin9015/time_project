@@ -25,4 +25,5 @@ public interface GoodsMapper {
 	
 	// 메인 홈페이지 상품 리스트
 	List<GoodsVO> getMainGoodsList();
+
 }

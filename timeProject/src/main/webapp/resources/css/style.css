@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 
 body{
@@ -3596,3 +3597,300 @@ input[name="deliveryMessage"] {
 	display: none;
 }
 /* pay_delivery 끝*/
+
+/* notice 시작 */
+.notice_inner{
+    width: 820px;
+    margin: 0 auto;
+}
+/* notice 타이틀 */
+.notice_head_tit_div{
+    padding: 5px 0 34px;
+}
+.notice_head_tit{
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+.notice_head_sub{
+    padding-left: 11px;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    vertical-align: 3px;
+}
+.notice_table_inner{
+    border-top: 2px solid #333;
+}
+
+/* notice 테이블 */
+.notice_table_fir_tr th{
+    padding: 20px 0;
+    vertical-align: middle;
+    font-size: 12px;
+}
+.notice_table_second_tr:first-child td{
+    border-top: 1px solid #333;
+}
+
+.notice_table_second_tr td{
+    padding: 20px 0;
+    padding-left: 10px;
+    text-align: center;
+    color: #999;
+    border-bottom: 1px solid #f4f4f4;
+}
+.notice_table_con_tit{
+    padding-left: 10px;
+    text-align: left;
+    color: #999;
+}
+
+/* notice 페이징 */
+.notice_page_inner{
+    margin: 60px 0 0;
+}
+.notice_page_div{
+    text-align: center;
+}
+.notice_page_div a {
+    border: 1px solid #ddd;
+    border-left: none;
+    font-size: 12px;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+    margin-left: -5px;   
+}
+.notice_page_on{
+    font-weight: 700;
+    background-color: #f4f4f4;
+}
+.notice_page_div a:first-child{
+    border-left: 1px solid #ddd;
+}
+
+/* notice 검색테이블 */
+.notice_search_table{
+    margin-top: 30px;
+    color: #2e2e2e;
+    font-size: 12px;
+    border-top: 1px solid #5e3d5a;
+    width: 100%;
+    height: 80px;
+}
+
+.notice_search_bt>a>img{
+    float: right;
+}
+input[name="notice_search[word]"]{
+    float: right;
+    height: 34px;
+    line-height: 34px;
+    width: 220px;
+    border: 1px solid #bfbfbf;
+    color: #000;
+    padding: 4px;
+    outline: none;
+}
+/* notice 끝 */
+
+/* noticeView 시작 */
+.noticeView_inner{
+    width: 1050px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+/* noticeView 타이틀 */
+.noticeView_tit_div{
+    width: 1050px;
+    margin: 0 auto;
+    padding: 50px 0 51px;
+}
+.noticeView_tit{
+    font-weight: 700;
+    font-size: 28px;
+    color: #333;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.noticeView_sub{
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    text-align: center;
+}
+
+/* noticeView table */
+.noticeView_table{
+    width: 100%;
+    table-layout: fixed;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #f4f4f4;
+    color: #333;
+    line-height: 180%;
+    margin-top: 20px;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.noticeView_table th{
+    width: 130px;
+    padding: 13px 0 13px 20px;
+    background-color: #f7f5f8;
+    text-align: left;
+}
+.noticeView_table td{
+    width: auto;
+    padding: 13px 0 13px 23px;
+    border-top: 1px solid #f4f4f4;
+}
+tr.noticeView_etcArea td{
+    margin: 0;
+    padding: 0;
+}
+tr.noticeView_etcArea ul{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #f4f4f4;
+}
+tr.noticeView_etcArea ul li{
+    float: left;
+}
+.noticeView_th{
+    float: left;
+    padding: 13px 0 13px 20px;
+    width: 130px;
+    background-color: #f7f5f8;
+}
+.noticeView_td{
+    float: left;
+    padding: 13px 0 13px 20px;
+    width: 180px;
+}
+.noticeView_contents{
+    width: 1030px;
+}
+.noticeView_inp_content{
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 10px;
+    color: #333;
+    resize: none;
+    outline: none;
+}
+/* noticeView 목록버튼 */
+.noticeView_listBtn_div{
+    margin-top: 30px;
+}
+.noticeView_listBtn_div a:last-child{
+    margin-right: 10px;
+    color: #333;
+    border: 1px solid #795b8f;
+    background-color: #fff;
+}
+.noticeView_listBtn_div a:last-child:hover{
+    background-color: #5f0080;
+    border: 1px solid #5f0080;
+    color: #fff;
+}
+.noticeView_listBtn_div a{
+    float: right;
+    width: 150px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    color: #fff;
+    border: 1px solid #5f0080;
+    font-size: 13px;
+}
+.noticeView_listBtn_div a:hover{
+    background-color: #5f0080;
+}
+/* noticeView 이전글 다음글 */
+.noticeView_move_div{
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    margin: 20px 0;
+}
+.noticeView_move_div li{
+    padding: 0 20px;
+    border-bottom: 1px solid #f4f4f4;
+    line-height: 140%;
+    color: #333;
+}
+.noticeView_move_div li a, .noticeView_move_div li strong{
+    float: left;
+    padding: 10px;
+    font-size: 12px;
+}
+.noticeView_prev strong{
+    width: 6%;
+    border-right: 1px solid #f4f4f4;
+    font-weight: 400;
+    background: url(../images/notice/ico_move_prev.webp) no-repeat 0 18px;
+}
+.noticeView_next strong{
+    width: 6%;
+    border-right: 1px solid #f4f4f4;
+    font-weight: 400;
+    background: url(../images/notice/ico_move_next.webp) no-repeat 0 18px;
+}
+/* noticeView 끝 */
+
+/* boardwrite 시작 noticeView랑 중첩 */
+.noticeWrite_inp{
+    padding: 5px;
+    outline: none;
+    width: 350px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+.noticeWrite_inp_writer{
+    width: 200px;
+}
+.noticeWrite_inp_content{
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 10px;
+    color: #333;
+    resize: none;
+}
+div.noticeView_listBtn_div>.noticeWrite_backBtn{
+    margin-right: 10px;
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    color: #333;
+}
+div.noticeView_listBtn_div>.noticeWrite_backBtn:hover{
+    color: #fff;
+    background-color: #5f0080;
+}
+.noticeWrite_submitBtn{
+    float: right;
+    width: 150px;
+    line-height: 37px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #795b8f;
+    color: #fff;
+    background-color: #795b8f;
+    cursor: pointer;
+}
+.noticeWrite_submitBtn:hover{
+    background-color: #5f0080;
+}
+
+
+/* boardwrite 끝 */
