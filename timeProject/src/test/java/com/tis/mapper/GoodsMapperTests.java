@@ -43,7 +43,12 @@ public class GoodsMapperTests {
 //	}
 	@Test
 	public void getNo() {
-		mapper.getGoodsDetail(101L);
+		Criteria cri = new Criteria();
+		GoodsVO goods = new GoodsVO(cri);
+		
+		goods.setKeyword("면");
+		mapper.getSearchList(goods);
+		
 	}
 	
 

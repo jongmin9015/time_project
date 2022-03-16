@@ -23,5 +23,9 @@ public interface GoodsService {
 	// 메인 홈페이지 상품 리스트
 	List<GoodsVO> getMainGoodsList();
 	
+	// 상품 검색
+	List<GoodsVO> getSearchList(GoodsVO goods);
 	
+	// 상품 검색 총 게시물 수
+	int getSearchListTotal(String keyword);
 }

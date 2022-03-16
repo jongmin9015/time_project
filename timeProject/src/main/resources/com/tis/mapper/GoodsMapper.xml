@@ -26,10 +26,12 @@
 					<if test='priceSort != null and (priceSort eq "new".toString())'>
 						ORDER BY goodsregDate DESC
 					</if>
+
+		       
 	    <![CDATA[)	           
        		   WHERE categoryTitle = #{goodsCategory}
 		       AND rownum <= #{cri.pageNum} * #{cri.amount} 
-		      )
+			   )
 		WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
 		 ]]>
 	</select>	
@@ -93,6 +95,37 @@
 	<select id="getMainGoodsList" resultType="com.tis.domain.GoodsVO">
 		SELECT *
 		FROM tbl_goods		
+	</select>
+	
+	<select id="getSearchList" resultType="com.tis.domain.GoodsVO">
+		<![CDATA[
+		SELECT goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
+		FROM ( SELECT rownum rn, goodsNo,goodsCategory,goodsName,goodsContent,goodsPrice,goodsImage
+			   FROM tbl_goods
+			   WHERE rownum <= #{cri.pageNum} * #{cri.amount}
+			   AND goodsName LIKE '%' || #{keyword} || '%'
+			   OR goodsContent LIKE '%' || #{keyword} || '%'		 
+		]]>	
+			<if test='priceSort != null and (priceSort eq "asc".toString())'>
+				ORDER BY goodsPrice ASC
+			</if>
+			<if test='priceSort != null and (priceSort eq "desc".toString())'>
+				ORDER BY goodsPrice DESC
+			</if>
+			<if test='priceSort != null and (priceSort eq "new".toString())'>
+				ORDER BY goodsregDate DESC
+			</if>
+		<![CDATA[   
+			  )
+		WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount}  
+		]]>
+	</select>
+	
+	<select id="getSearchListTotal" resultType="int">
+		SELECT count(*)
+		FROM tbl_goods
+	    WHERE goodsName LIKE '%' || #{keyword} || '%'
+        OR   goodsContent LIKE '%' || #{keyword} || '%'	
 	</select>
 	
 	

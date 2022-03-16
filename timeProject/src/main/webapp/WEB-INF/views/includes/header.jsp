@@ -103,11 +103,11 @@
             </ul> 
 
             <div id="sidequir_search" class="gnb_search">
-                <form id="search_frm" action="/shop/goods/goods_list/">
-                    <input name="sword" type="text" id="sword" value="" reed="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">                    
-                    <a href="#" onclick="return search_form()">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </a>
+                <form id="search_frm" action="/shop/goods/search_list/">
+                    <input name="keyword" type="text" id="sword" value="" reed="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search">                    
+	                    <span onclick="search_form()">
+	                        <i class="fa-solid fa-magnifying-glass"></i>
+	                    </span>          
                 </form>
             </div> 
 

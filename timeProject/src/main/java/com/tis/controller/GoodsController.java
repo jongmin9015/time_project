@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,15 +34,16 @@ public class GoodsController {
 	
 	// 상품 리스트
 	@RequestMapping(value = "goods_list", method = RequestMethod.GET)
-	public String goodsList(Model model, @RequestParam("category")String categoryTitle, Criteria cri, String priceSort) {
-
+	public String goodsList(@RequestParam("category")String categoryTitle, Criteria cri, String priceSort, Model model) {
+		
 		GoodsVO goods = new GoodsVO(cri);
 		goods.setPriceSort(priceSort);
 		goods.setGoodsCategory(categoryTitle);
-		
+	
 		CategoryVO category = new CategoryVO();
 		category.setCategoryTitle(categoryTitle);
 		
+
 		model.addAttribute("goodsList", goodsService.getGoodsListWithPaging(goods));
 		model.addAttribute("categorys", categoryService.getCategory(category));
 		model.addAttribute("categoryMainTitle", categoryTitle);
@@ -79,6 +81,27 @@ public class GoodsController {
 		log.info("get goods_sublist......................" + categorySubTitle);
 		return "shop/goods/goods_list";
 	}
+	
+	// 상품 검색
+	@RequestMapping(value = "/search_list", method = RequestMethod.GET)
+	public String search(String keyword, Criteria cri, String priceSort, Model model) {
+		
+		GoodsVO goods = new GoodsVO(cri);
+		goods.setKeyword(keyword);
+		goods.setPriceSort(priceSort);
+		
+		int total = goodsService.getSearchListTotal(keyword);	
+		
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("goodsList", goodsService.getSearchList(goods));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("total", total);
+		model.addAttribute("priceSort",goods.getPriceSort());
+		
+		log.info("search goodsList......................" + keyword);
+		return "shop/goods/goods_list";
+	}
+	
 	
 	// 상품 상세 조회
 	@RequestMapping(value = "/goods_detail", method = RequestMethod.GET)

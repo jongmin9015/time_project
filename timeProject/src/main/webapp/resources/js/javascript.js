@@ -19,6 +19,14 @@ $(document).ready(function() {
     });
 });
 
+// 전체 검색
+function search_form(){
+	const searchForm = document.querySelector('#search_frm');
+	const searchInput = document.querySelector("input[name='keyword']");
+	searchForm.submit();
+}
+
+
 // 인덱스 Java Script
 $(document).ready(function(){
 
@@ -500,23 +508,24 @@ function cardCheck(value){
 
     const payMethoInput = document.querySelector("input[name='payMethod']");
     payMethoInput.value = value;
+    console.log(payMethoInput.value);
     
     if (value == "kakaopay") {
         cardView.style.display = "none";
         simpleView.style.display = "none";
-        kakaopayView.classList.remove('payPage_kakaopay_on');
+        kakaopayView.classList.add('payPage_kakaopay_on');
     } else if(value == "c"){
         cardView.style.display = "block";
         simpleView.style.display = "none";
-        kakaopayView.classList.add('payPage_kakaopay_on');
+        kakaopayView.classList.remove('payPage_kakaopay_on');
     } else if(value == "phone"){
         cardView.style.display = "none";
         simpleView.style.display = "none";
-        kakaopayView.classList.add('payPage_kakaopay_on');
+        kakaopayView.classList.remove('payPage_kakaopay_on');
     } else if (value == "card"){
         cardView.style.display = "none";
         simpleView.style.display = "none";
-        kakaopayView.classList.add('payPage_kakaopay_on');
+        kakaopayView.classList.remove('payPage_kakaopay_on');
     }
     
     ;    

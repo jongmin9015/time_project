@@ -54,27 +54,10 @@
 	const payMethod = 'kakaopay' || "${payInfo.payMethod}";
 	const payId = "${payInfo.payId}";
 	
-	console.log(memberId);
-	console.log(orderGoodsName);
-	console.log(orderName);
-	console.log(orderPhone);
-	console.log(orderEmail);
-	console.log(deliveryPhone);
-	console.log(deliveryLocation);
-	console.log(deliveryMessage);
-	console.log(entrancePw);
-	console.log(etcLocation);
-	console.log(totalPrice);
-	console.log(address);
-	console.log(addressSub);
-	console.log(zipcode);
-	console.log(payMethod);
-	console.log(payId);
 	
-	let payResult = true;
 		
 	(function () {
-		var IMP = window.IMP; // 생략가능
+		var IMP = window.IMP;
 		IMP.init('imp63731846');
 
 		IMP.request_pay({
@@ -117,20 +100,5 @@
 				
 			});
 		}());
-	
-
-	
-		$.ajax({
-			url : '/shop/order/move',
-			data : {memberId : memberId},
-			type : 'post'
-
-		})
-		
-	
-	
-
-
-
 </script>
 </html>

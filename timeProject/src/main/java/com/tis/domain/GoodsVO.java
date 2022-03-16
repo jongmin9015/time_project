@@ -35,12 +35,14 @@ public class GoodsVO {
 	// OrderVO
 	private int goodsCount;
 	
-	
 	// 페이징 처리
 	private Criteria cri;
 	
 	// 상품 리스트 정렬
 	private String priceSort;
+	
+	// 상품 검색
+	private String keyword;
 	
 	public GoodsVO() {
 		
