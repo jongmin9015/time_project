@@ -20,10 +20,34 @@
 		<%@ include file="../../includes/header.jsp"%>
 	</div>
 	
-	<div id="wrap">
-		<!-- itemList 시작 -->
-		<div class="itemList_inner">
 
+	<div id="wrap">
+	
+		<!-- 검색 처리 -->
+		
+		
+		
+	<div class="itemList_inner">	
+		<c:choose>
+			<c:when test="${keyword != null}">
+			
+				<div class="search_inner">
+					<div class="search_tit_div">
+						<h2 class="search_tit">상품검색</h3>
+					</div>
+					<div class="saerch_option_div">
+					<form id="searchList_frm" action="/shop/goods/search_list/" method="get">
+						<span class="search_option_tit">검색조건</span>		
+							<input class="search_option_input" type="text" value="${keyword}" name="keyword" >	
+							<input type="hidden" name="priceSort" value="" class="searchList_sort">					
+						<button type="submit" class="search_option_btn" onclick="searchList_form()">검색하기</button>
+					</div>
+					</form>
+				</div>
+				
+			</c:when>
+
+			<c:otherwise>	
 			<!-- itemList 상단 서브메뉴 -->
 			<div class="itemList_lnb_inner">
 				<div class="itemlList_main_img_div">
@@ -31,44 +55,49 @@
 				</div>
 
 				<div class="itemList_tit_div">
+				
 					<c:forEach items="${categorys}" var="category" end="0">
 						<h3 class="itemList_tit">
 							<c:out value="${category.categoryMain}" />
 						</h3>
 					</c:forEach>
-				</div>
-				
+					
+				</div>			
 				<div class="itemList_lnb_div clear">
 					<ul class="itemList_subList">
 						<li>
 							<a href='/shop/goods/goods_list?category=${categoryMainTitle}' class="itemList_allList_tit${categorySubTitle == null ? "_on" : ""}">전체보기</a>
 						</li>
 						
-						<c:forEach items="${categorys}" var="category">
-							
+						<c:forEach items="${categorys}" var="category">				
 							<li>
 								<a href="${category.categorySubTitle}" class="itemList_subList_tit${category.categorySubTitle == categorySubTitle ? "_on" : "" }">
 									<c:out value="${category.categorySub}" />
-								</a>
-							
+								</a>							
 							</li>
-						</c:forEach>
-
+						</c:forEach>	
+						
 					</ul>
 				</div>
 			</div>
-
+			
+			</c:otherwise>
+		
+		</c:choose>
+	
+		<!-- itemList 시작 -->
+		
 			<!-- itemList 솔트메뉴 -->
 			<div class="itemList_sort_menu">
 				<span class="itemList_count">총 ${total}개</span>
 					<ul class="itemList_sort_menu_list">
-						<li>
+						<li class="liteList_solt_li">
 							<a href="new" class="itemList_sort_menu_list_atag${priceSort == 'new' ? "_on" : ""}">신상품순</a>
 						</li>
-						<li>
+						<li class="liteList_solt_li">
 							<a href="asc" class="itemList_sort_menu_list_atag${priceSort == 'asc' ? "_on" : ""}">낮은 가격순</a>
 						</li>
-						<li>
+						<li class="liteList_solt_li">
 							<a href="desc" class="itemList_sort_menu_list_atag${priceSort == 'desc' ? "_on" : ""}"">높은 가격순</a>
 						</li>
 					</ul>
@@ -242,9 +271,19 @@ $(document).ready(function() {
 		
 		e.preventDefault();
 		var priceSort = $(this).attr("href");
-		item_listPageForm.find("input[name='pageNum']").val("1");
-		item_listPageForm.find("input[name='priceSort']").val(priceSort);
-		item_listPageForm.submit();
+		const keyword = '${keyword}';
+		
+		if (keyword != "") {
+			$('.searchList_sort').val(priceSort);
+			$('#searchList_frm').submit();
+		} else {
+			item_listPageForm.find("input[name='pageNum']").val("1");
+			item_listPageForm.find("input[name='priceSort']").val(priceSort);
+			item_listPageForm.submit(); 
+		}
+		
+		
+
 		
 	});
 

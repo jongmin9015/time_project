@@ -53,6 +53,19 @@ public class GoodsServiceImpl implements GoodsService {
 		// TODO Auto-generated method stub
 		return goodsMapper.getMainGoodsList();
 	}
+
+	// 상품 검색
+	@Override
+	public List<GoodsVO> getSearchList(GoodsVO goods) {
+		return goodsMapper.getSearchList(goods);
+	}
+	
+	// 상품 검색 총 게시물 수
+	@Override
+	public int getSearchListTotal(String keyword) {
+		return goodsMapper.getSearchListTotal(keyword);
+	}
+	
 	
 
 }
