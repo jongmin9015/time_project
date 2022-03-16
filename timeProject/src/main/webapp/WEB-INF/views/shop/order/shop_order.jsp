@@ -478,8 +478,6 @@
 	let orderEmail = document.querySelector("input[name='orderEmail']").value;
 	let payMethod = document.querySelector("input[name='pay-select']").value;
 	
-	console.log(orderName);
-	console.log(orderPhone);
 	
 	$("#orderName").on("propertychange change keyup paste input", function() {
 		orderName = $(this).val();
@@ -505,12 +503,13 @@
 			$("input[name='orderPhone']").val(orderPhone);
 			$("input[name='orderEmail']").val(orderEmail);
 			$("input[name='payMetho']").val(payMethod);
+			
 			$("#payForm").submit();
 			
 			$("input[name='orderName']").val('');
 			$("input[name='orderPhone']").val('');
 			$("input[name='orderEmail']").val('');
-			$("..agreeCheck").prop('checked', false);
+			$(".agreeCheck").prop('checked', false);
 		}
 	
 	})

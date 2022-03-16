@@ -1557,6 +1557,8 @@ select[id="orderList"]{
     color: #fff;
     background-color: #5f0080;
     border-radius: 3px;
+    cursor: pointer;
+    border-style: none;
 }
 
 /* itemView 상품상세 시작 */
@@ -1574,20 +1576,26 @@ select[id="orderList"]{
     float: left;    
     text-align: center;
     box-sizing: border-box;    
-    color: #666;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: -.3px;
     background-color: #fafafa;
     border-left: none;
+    color: #333;
 }
 .itemView_tab_menu_tit{
     box-sizing: border-box;
     display: block;
-    width: 348px;
+    width: 338px;
     padding: 20px 0;
     border: 1px solid #eee;
     border-left: 0;
+    text-decoration: none;
+    color: #333;
+   
+}
+.itemView_tab_menu_tit:hover {
+	color: #5f0080;
 }
 .itemView_tab_menu_tit:first-child{
     border-left: 1px solid #eee;

@@ -429,31 +429,67 @@ function insertOrder() {
 
 
 
-
-// 장바구니 삭제
-
-
 //itemView 상세페이지 탭메뉴
 $(document).ready(function(){
     document.getElementsByClassName('itemView_tab_menu_tit')[0].onclick = function(){click1()};
     function click1(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('tab_menu_tit_on');
     };
     document.getElementsByClassName('itemView_tab_menu_tit')[1].onclick = function(){click2()};
     function click2(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('tab_menu_tit_on');
     };
     document.getElementsByClassName('itemView_tab_menu_tit')[2].onclick = function(){click3()};
     function click3(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('tab_menu_tit_on');
     };
 });
+
+// itemView Count Button
+function countBtn(btn) {
+
+	const countInput = document.querySelector('.itemView_count_input');
+	const priceTag = document.querySelector('.itemView_total_price');
+	const goodsPrice = document.querySelector('.itemView_price').innerText;
+	
+	if (btn.getAttribute('class') == 'itemView_btn itemViewDown') {
+		
+		let count = countInput.value;		
+		if (count == 1) return;	
+		countInput.value = count - 1;
+		const price =   stringNumberToInt(goodsPrice);
+		priceTag.innerText = priceToString(price * countInput.value);
+		
+	} else if (btn.getAttribute('class') == 'itemView_btn itemViewUp'){
+		
+		let count = countInput.value;		
+		countInput.value = parseInt(count) + 1;
+		const price =   stringNumberToInt(goodsPrice);
+		priceTag.innerText = priceToString(price * countInput.value);
+	}
+}
+
+// itemView 장바구니 담기
+function itemViewCart(){
+	
+	const count = document.querySelector('.itemView_count_input').value;
+	const cart = {
+			goodsNo : goodsNo,
+			memberId : memberId,
+			cartCount : count
+	}
+		
+	put(cart, function(result) {
+		alert(result);
+	});
+	
+}
 
 //payPage 선택별 결제창 보이기
 function cardCheck(value){
