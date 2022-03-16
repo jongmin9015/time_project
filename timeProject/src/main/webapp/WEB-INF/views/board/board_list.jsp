@@ -76,13 +76,13 @@
                             </td>
                         </tr>
                     </table>
-                    <div class="notice_page_inner">
+                    <div class="notice_page_inner">                    	
                         <div class="notice_page_div">
 	                            <a href="#" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angles-left"></i></a>
 	                            <a href="#" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angle-left"></i></a>
 	                        
-                        	<c:forEach begin="1" end="${pageNum }" var="num">         	  
-	                            <a onclick="notice_page_addClass(this)" href="/board/board_list?num=${num }" class="notice_page_btn notice_page_num">${num }</a>
+                        	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">         	  
+	                            <a href="${num }" class="notice_page_btn notice_page_num">${num }</a>
 	                        </c:forEach>
 	                            <a href="#" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angle-right"></i></a>
 	                            <a href="#" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angles-right"></i></a>
@@ -94,9 +94,9 @@
                                 검색어
                             </td>
                             <td class="notice_stxt">
-                                <input type="checkbox" name="notice_search[name]">이름
-                                <input type="checkbox" name="notice_search[subject]">제목
-                                <input type="checkbox" name="notice_search[content]">내용 &nbsp;
+                                <input type="checkbox" name="notice_search[name]" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>이름
+                                <input type="checkbox" name="notice_search[title]" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목
+                                <input type="checkbox" name="notice_search[content]" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용 &nbsp;
                             </td>
                             <td class="notice_input_txt">
                                 &nbsp;
@@ -105,17 +105,60 @@
                                 <a href="" onclick="return notice_search_frm()">
                                     <img src="/resources/images/notice/search.webp" alt="">
                                 </a>
-                                <input id="notice_input_box" type="text" name="notice_search[word]" value required>
+                                <input id="notice_input_box" type="text" name="notice_search[word]" value="${pageMaker.cri.keyword }" required>
+                                
                             </td>
                         </tr>
                     </table>
                 </div>
+                
             </form>
             
         </div>
+        <!-- 페이징처리 -->
+        <form id="boardListmoveForm" method="get" action="/board/board_list">
+	        <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+			<input type="hidden" name="type" value="${pageMaker.cri.type }">
+    	</form>
     </div>
+    <script>
+    	/* 페이징 번호 이동 작업 */
+    	$(document).ready(function() {
+    		$(".notice_page_div a").on("click", function(e) {
+    			
+    			e.preventDefault();
+    			$("input[name='pageNum']").val($(this).attr("href"));
+    			console.log($("input[name='pageNum']").val())
+    			boardListmoveForm.submit();
+    			
+    		});
+    		
+    		//검색
+    		$(".notice_search_bt a").on("click", function(e){
+    			e.preventDefault();
+    			let w = $(".notice_stxt checkbox").val();
+    			let keyword = $("input[name='notice_search[word]']").val();
+    			
+    			if(!type){
+    				alert("검색 종류를 선택하세요.");
+    				return false;
+    			}
+    			if(!keyword){
+    	            alert("키워드를 입력하세요.");
+    	            return false;
+    	        }      			
+    			$("input[name='type']").val(type);
+    			$("input[name='keyword']").val(keyword);
+    			$("input[name='pageNum']").val(1);
+    			boardListmoveForm.submit();
+    		});
+    	});
+    </script>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
     </div>
+    
 </body>
 </html>

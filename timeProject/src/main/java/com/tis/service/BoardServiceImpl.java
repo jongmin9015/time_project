@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.tis.domain.BoardVO;
+import com.tis.domain.Criteria;
 import com.tis.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,9 +20,10 @@ public class BoardServiceImpl implements BoardService {
 	
 	//게시글 목록
 	@Override
-	public List<BoardVO> getBoardList(int displayPost, int postNum) {
-		return boardMapper.getBoardList(displayPost, postNum);
+	public List<BoardVO> getBoardList(Criteria cri) {
+		return boardMapper.getBoardList(cri);
 	}
+	
 	
 	//게시글 조회
 	@Override
@@ -43,14 +45,11 @@ public class BoardServiceImpl implements BoardService {
 
 	//게시글 총 갯수
 	@Override
-	public int getBoardTotal() {
-		return boardMapper.getBoardTotal();
+	public int getBoardTotal(Criteria cri) {
+		return boardMapper.getBoardTotal(cri);
 	}
+
+
 	
-	//게시글 목록 + 페이징
-//	@Override
-//	public List<BoardVO> listPage(int displayPost, int postNum) {
-//		return boardMapper.listPage(displayPost, postNum);
-//	}
 	
 }

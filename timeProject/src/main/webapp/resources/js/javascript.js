@@ -704,17 +704,17 @@ function notice_search_frm(){
 	document.getElementById('notice_frm').submit();
 }
 //notice page click addClass
-function notice_page_addClass(v){
-    let num = document.querySelectorAll('.notice_page_num');
-    for (let i = 0; i < num.length; i++) {
-        if(v == num[i]){
-            num[i].classList.add('notice_page_on');
-        }else if(v != num[i]){
-            num[i].classList.remove('notice_page_on');
-        }
-        
-    }
-}
+//function notice_page_addClass(v){
+//    let num = document.querySelectorAll('.notice_page_num');
+//    for (let i = 0; i < num.length; i++) {
+//        if(v == num[i]){
+//            num[i].classList.add('notice_page_on');
+//        }else if(v != num[i]){
+//            num[i].classList.remove('notice_page_on');
+//        }
+//        
+//    }
+//}
 
 //noticewriter 등록 버튼
 function noticeWriter_form(){

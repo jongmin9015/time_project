@@ -64,7 +64,7 @@
                     </tr>
                 </table>
                 <div class="noticeView_listBtn_div clear">
-                    <a href="/board/board_list">목록</a>
+                    <a href="/board/board_list?num=1">목록</a>
                     <a href="/board/boardmodify?bno=${boardView.bno }">수정</a>
                 </div>
                 <div class="noticeView_move_div">

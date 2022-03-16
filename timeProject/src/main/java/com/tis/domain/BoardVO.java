@@ -12,6 +12,8 @@ package com.tis.domain;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 public class BoardVO {
@@ -24,13 +26,20 @@ public class BoardVO {
 	
 	//페이징 처리
 	private Criteria cri;
+	
+	
 
 	public BoardVO() {
 	}
 
+
+
 	public BoardVO(Criteria cri) {
+		super();
 		this.cri = cri;
 	}
+
+	
 	
 	
 	

@@ -3,12 +3,51 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tis.mapper.BoardMapper">
+
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title like '%'||#{keyword}||'%' 
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content like '%'||#{keyword}||'%' 
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            writer like '%'||#{keyword}||'%' 
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+	</sql>
+	
 	<!-- 게시물 목록 -->
 	<select id="getBoardList" resultType="com.tis.domain.BoardVO">
-		SELECT
-				bno,title,content,writer,regdate,viewcnt
-		FROM
-				tbl_board
+		<![CDATA[
+        
+	        select bno, title, content, writer, regdate, viewcnt 
+	        	from(
+	        
+	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt
+	                  
+	                from tbl_board 
+	                where rownum <= #{pageNum} * #{amount} 
+     	]]>
+     			<if test="keyword != null">
+     				<include refid="criteria"></include>
+     			</if>
+     	
+     	<![CDATA[
+     				)
+     				
+	        where rn > (#{pageNum} -1) * #{amount}
+	        order by rn
+    	]]>
+    
 	</select>
 	
 	<!-- 게시물 작성 -->
@@ -39,16 +78,28 @@
 	
 	<!-- 게시글 총 갯수 조회 -->
 	<select id="getBoardTotal" resultType="int">
-		SELECT count(bno)
-		FROM tbl_board
+		SELECT count(*) FROM tbl_board
+		<if test="keyword != null">
+			where bno > 0 <include refid="criteria"></include>
+			<!-- where title like '%' ||#{keyword}|| '%'	 -->
+		</if>
 	</select>
 	
-	<!-- 페이징 -->
-	<select id="listPage" parameterType="hashMap" resultType="com.tis.domain.BoardVO">
-	 	select
-	  		bno, title, writer, regDate, viewCnt
-	 	from tbl_board
-	 	order by bno desc
-	  		limit #{displayPost}, #{postNum}
-	</select>
+	<!-- 게시물 목록 + 페이징 -->
+	<!-- <select id="getBoardListPage" resultType="com.tis.domain.BoardVO">
+	<![CDATA[
+        
+        select bno, title, content, writer, regdate, viewcnt 
+        	from(
+        
+                select /*+INDEX_DESC(vam_board pk_board) */ rownum  as rn, bno, title, content, writer, regdate, viewcnt
+                  
+                from tbl_board where rownum <= #{pageNum} * #{amount}) 
+                
+        where rn > (#{pageNum} -1) * #{amount}
+    
+    ]]>
+	
+	</select> -->
+	
 </mapper>
