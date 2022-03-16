@@ -33,9 +33,7 @@ public class CartMapperTests {
 	public void test2() {
 		CartVO cart = new CartVO();
 		cart.setMemberId("guest");
-		cart.setGoodsNo(105L);
 		
-		log.info(cartService.getCartForCheck(cart).getGoodsNo());
 		
 
 	}

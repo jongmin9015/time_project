@@ -199,11 +199,9 @@ values ('noodle', '면.양념.요리', '식초.소스.드레싱', 'dressing');
 < 장바구니 테이블 >
 create table tbl_cart(
     cartNo number(10),
-    memberId varchar2(100),
+    memberId varchar2(200),
     goodsNo number(20),
-    cartCount number(20),
-    constraint pk_cart primary key(cartNo),
-    foreign key (goodsNo) REFERENCES tbl_goods (goodsNo)
+    cartCount number(20)
 );
 
 
@@ -234,18 +232,33 @@ create table tbl_address(
 );
 
 < 주문 테이블>
+
 create table tbl_order(
     memberId varchar2(200),
     goodsNo number(20),
     goodsCount number(10),
+    deliveryFee number(10)
+);
+
+<결제 정보>
+
+create table tbl_pay(
+    memberId varchar2(200),
+    orderGoodsName varchar2(200),
     orderName varchar2(200),
     orderPhone varchar2(30),
-    deliveryName varchar2(200),
+    orderEmail varchar2(30),
+    deliveryName varchar2(20),
     deliveryPhone varchar2(30),
     deliveryLocation varchar2(20),
     deliveryMessage varchar2(200),
     entrancePw varchar2(10),
-    deliveryFee number(10),
-    CONSTRAINT pk_order PRIMARY key (goodsNo)
+    etcLocation varchar2(300),
+    totalPrice number(10),
+    address varchar2(200),
+    addressSub varchar2(200),
+    zipcode number(10),
+    payMethod varchar2(20),
+    payId varchar2(200),
+    constraint pk_pay primary key (memberId)	
 );
-

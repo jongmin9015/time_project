@@ -25,7 +25,7 @@
         <div class="itemView_inner">
             <div class="itemView_pay_div clear">
                 <div class="itemView_main_img_div">
-                	<img class="itemView_main_img" src='/resources/images/shop/goods/<c:out value="${goods.goodsImage}"/>' alt="#" >
+                	<img class="itemView_main_img" src='/resources/images/shop/goods/<c:out value="${goods.goodsImage}"/>' alt="${goods.goodsImage}" >
                 </div>
                 <div class="itemView_iteminfo_div">
                 
@@ -62,9 +62,9 @@
                                     <span class="itemView_tit_item">구매수량</span>
                                     <div class="itemView_item_count_div">
                                         <span class="itemView_item_count">
-                                            <button class="itemView_btn itemViewDown"><i class="fa-solid fa-minus"></i></button>
+                                            <button type="button" class="itemView_btn itemViewDown" onclick="countBtn(this)"><i class="fa-solid fa-minus"></i></button>
                                             <input type="number" readonly="readonly" onfocus="this.blur()" class="itemView_count_input" value="1">
-                                            <button class="itemView_btn itemViewUp"><i class="fa-solid fa-plus"></i></button>
+                                            <button type="button" class="itemView_btn itemViewUp" onclick="countBtn(this)"><i class="fa-solid fa-plus"></i></button>              
                                         </span>
                                     </div>
                                 </li>
@@ -73,13 +73,16 @@
                         <div class="itemView_total clear">
                             <div class="itemView_total_price_div">
                                 <span class="itemView_total_price_tit">총 상품금액: </span>
-                                <span class="itemView_total_price"><c:out value="${goods.goodsPrice}"/></span>
+                                <span class="itemView_total_price">
+                                <fmt:formatNumber pattern="###,###,###" value="${goods.goodsPrice}"></fmt:formatNumber>
+                                </span>
                                 <span class="itemView_total_won">원</span>
                             </div>
                         </div>
                         <div class="itemView_buyBtn_div">
-                            <a href="#" class="itemView_buyBtn">장바구니 담기</a>
+                            <button class="itemView_buyBtn" onclick="itemViewCart(this)">장바구니 담기</button>                       
                         </div>
+                        
                     </div>
                 </div>                
             </div>
@@ -91,13 +94,13 @@
                 <div class="itemView_tab_menu_div">
                     <ul class="itemView_tab_menu clear">
                         <li>
-                            <a href="#itemView_info_img_div" class="itemView_tab_menu_tit tab_menu_tit_on">상품설명</a>
+                            <a href="#itemView_info_img_div" class="itemView_tab_menu_tit tab_menu_tit_on" >상품설명</a>
                         </li>
                         <li>
-                            <a href="#itemView_info_pic_div" class="itemView_tab_menu_tit ">상세정보</a>
+                            <a href="#itemView_info_pic_div" class="itemView_tab_menu_tit" >상세정보</a>
                         </li>
                         <li>
-                            <a href="#itemView_happy_div" class="itemView_tab_menu_tit">교환 및 환불</a>
+                            <a href="#itemView_happy_div" class="itemView_tab_menu_tit" >교환 및 환불</a>
                         </li>
                     </ul>
                 </div>
@@ -278,7 +281,6 @@
                     </div> -->
 
                 </div>
-                
             </div>
         </div>
     </div>
@@ -286,4 +288,11 @@
    		<%@ include file="../../includes/footer.jsp"  %>
     </div>
 </body>
+
+<script>
+
+	const memberId = '${memberid}' || '${sessionId}';
+	const goodsNo = '${goods.goodsNo}';
+	
+</script>
 </html>

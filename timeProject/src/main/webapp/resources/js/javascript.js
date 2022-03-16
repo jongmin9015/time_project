@@ -271,6 +271,9 @@ function removeCart(cartNo, callback, error) {
 	});	
 }
 
+
+
+
 // 장바구니 결제 금액
 function cartPrice() {
 	let totalPrice = 0;
@@ -371,6 +374,16 @@ function showPopUpdate() {
 	window.open(url, "hello popup", windowStatus); 
 }
 
+
+// 장바구니 주문전 주문 삭제(초기화)
+function deleteOrder(memberId){
+	
+	$.ajax({
+		url : "/shop/order/" + memberId,
+		type : 'delete'
+	});
+}
+
 // 장바구니에서 주문하기
 function insertOrder() {
 	
@@ -381,15 +394,20 @@ function insertOrder() {
 		return;
 	}
 	
+	deleteOrder(memberId);
+	
 	const query = 'input[class="cartPage_item_count_check"]:checked';
     const selectedElements = document.querySelectorAll(query);
+    let deliveryFee = document.querySelector(".cartPage_amount_delivery_num").innerText;
+    
     selectedElements.forEach((checkGoods) => {
     	const checkGood = checkGoods.dataset;
     	
     	const order = {
     		memberId : memberId,
     		goodsNo : checkGood.goodsno,
-    		goodsCount : checkGood.goodscount    		
+    		goodsCount : checkGood.goodscount,   
+    		deliveryFee : parseInt(deliveryFee)
     	}
     	
     	$.ajax({
@@ -400,52 +418,108 @@ function insertOrder() {
     		contentType : "application/json; charset=UTF-8"
     	});   	
     });
-    const deliveryFee = document.querySelector(".cartPage_amount_delivery_num").innerText;
+    
     const orderForm = document.querySelector(".order_moveForm")
     const deliveryForm = document.querySelector("input[name='deliveryFee']");
     deliveryForm.value = stringNumberToInt(deliveryFee);
-    
+       
     orderForm.submit();
+	
+   
 }
+
 
 
 //itemView 상세페이지 탭메뉴
 $(document).ready(function(){
     document.getElementsByClassName('itemView_tab_menu_tit')[0].onclick = function(){click1()};
     function click1(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('tab_menu_tit_on');
     };
     document.getElementsByClassName('itemView_tab_menu_tit')[1].onclick = function(){click2()};
     function click2(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.remove('tab_menu_tit_on');
     };
     document.getElementsByClassName('itemView_tab_menu_tit')[2].onclick = function(){click3()};
     function click3(){
-        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.add('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('itemView_tab_on');
-        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('itemView_tab_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[2].classList.add('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[0].classList.remove('tab_menu_tit_on');
+        document.getElementsByClassName('itemView_tab_menu_tit')[1].classList.remove('tab_menu_tit_on');
     };
 });
+
+// itemView Count Button
+function countBtn(btn) {
+
+	const countInput = document.querySelector('.itemView_count_input');
+	const priceTag = document.querySelector('.itemView_total_price');
+	const goodsPrice = document.querySelector('.itemView_price').innerText;
+	
+	if (btn.getAttribute('class') == 'itemView_btn itemViewDown') {
+		
+		let count = countInput.value;		
+		if (count == 1) return;	
+		countInput.value = count - 1;
+		const price =   stringNumberToInt(goodsPrice);
+		priceTag.innerText = priceToString(price * countInput.value);
+		
+	} else if (btn.getAttribute('class') == 'itemView_btn itemViewUp'){
+		
+		let count = countInput.value;		
+		countInput.value = parseInt(count) + 1;
+		const price =   stringNumberToInt(goodsPrice);
+		priceTag.innerText = priceToString(price * countInput.value);
+	}
+}
+
+// itemView 장바구니 담기
+function itemViewCart(){
+	
+	const count = document.querySelector('.itemView_count_input').value;
+	const cart = {
+			goodsNo : goodsNo,
+			memberId : memberId,
+			cartCount : count
+	}
+		
+	put(cart, function(result) {
+		alert(result);
+	});
+	
+}
 
 //payPage 선택별 결제창 보이기
 function cardCheck(value){
     let cardView = document.getElementById('payPage_card_view');
     let simpleView = document.getElementById('payPage_simple_view');
+    let kakaopayView = document.getElementById('kakaopayment');
 
-    if (value == "kakao-pay") {
+    const payMethoInput = document.querySelector("input[name='payMethod']");
+    payMethoInput.value = value;
+    
+    if (value == "kakaopay") {
         cardView.style.display = "none";
         simpleView.style.display = "none";
-    }else if(value == "c"){
+        kakaopayView.classList.remove('payPage_kakaopay_on');
+    } else if(value == "c"){
         cardView.style.display = "block";
         simpleView.style.display = "none";
-    }else if(value == "p"){
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    } else if(value == "phone"){
         cardView.style.display = "none";
         simpleView.style.display = "none";
-    };    
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    } else if (value == "card"){
+        cardView.style.display = "none";
+        simpleView.style.display = "none";
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    }
+    
+    ;    
 };
 
 //payPage simple 클릭이벤트
@@ -536,7 +610,9 @@ $(document).ready(function(){
     let orderTotalPrice = document.querySelector('.payPage_orderitem_add_total');
     let point = document.querySelector('.payPage_orderitem_point_num').innerHTML;
     point = Number(point.replace(',','').replace('원',''));
+    let totalPriceInput = document.querySelector('.paypage_totalprice_input');
 
+    
     let price = 0;
     let totalPrice = 0;
 
@@ -550,6 +626,7 @@ $(document).ready(function(){
     totalPrice = Number(deliveryPrice.replace(',','')) + price - point;
     orderTotalPrice.innerHTML = totalPrice.toLocaleString();
     payBtn.value = totalPrice.toLocaleString() + "원 결제하기";
+    totalPriceInput.value = totalPrice;
 });
 
 // 배송지 설정 팝업
@@ -604,31 +681,41 @@ function messageAddClass(v){
 
 // 결제페이지 배송지 설정 NOTICE
 function noticeDisplay(value) {	
-	const door = document.querySelector(".delivery_entrance");
+	const entrance = document.querySelector(".delivery_entrance");
+	const door = document.querySelector(".delivery_notice_door");
 	const security = document.querySelector(".delivery_notice_security");
 	const post = document.querySelector(".delivery_notice_post");
 	const etc = document.querySelector(".delivery_notice_etc");
+	const etcLocation = document.querySelector(".delivery_location_etc");
 	
 	if(value == "security") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "block";
 		post.style.display = "none";
 		etc.style.display = "none";
+		etcLocation.style.display = "none";
 	} else if (value == "post") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "none";
 		post.style.display = "block";
 		etc.style.display = "none";
+		etcLocation.style.display = "none";
 	} else if (value == "etc") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "none";
 		post.style.display = "none";
 		etc.style.display = "block";
+		etcLocation.style.display = "block";
 	} else if (value == "door") {
 		door.style.display = "block";
+		entrance.style.display = "block";
 		security.style.display = "none";
 		post.style.display = "none";
 		etc.style.display = "none";
+		etcLocation.style.display = "none";
 	}
 }
 
@@ -651,34 +738,110 @@ function sameOrder(value) {
 }
 
 // 배송지 정보 페이지 입력
-function deliveryInfo() {
+function deliveryInsertInfo() {
+	
 	const deliveryLocationTag = opener.document.querySelector(".payPage_receiving_txt");
 	const deliveryMessageTag = opener.document.querySelector(".payPage_receiving_message_time");
 	const deliveryNameTag = opener.document.querySelector(".payPage_receiving_name");
 	const deliveryPhoneTag = opener.document.querySelector(".payPage_receiving_phone");
-	const entrancePwTag = opener.document.querySelector("input[name='entrancePw']");
 	
-	const deliveryName = document.querySelector("input[name='deliveryName']").value;
-	const deliveryPhone = document.querySelector("input[name='deliveryPhone']").value;	
+	const entrancePwInput = opener.document.querySelector("input[name='entrancePw']");
+	const etcLocationInput = opener.document.querySelector("input[name='etcLocation']");
+	const deliveryLocationInput = opener.document.querySelector("input[name='deliveryLocation']");
+	const deliveryMessageInput = opener.document.querySelector("input[name='deliveryMessage']");
+	const deliveryNameInput = opener.document.querySelector("input[name='deliveryName']");
+	const deliveryPhoneInput = opener.document.querySelector("input[name='deliveryPhone']");
+	
+	
+	const deliveryName = document.querySelector("input[name='deliveryName']");
+	const deliveryPhone = document.querySelector("input[name='deliveryPhone']");	
 	const entrancePw = document.querySelector("input[name='entrancePw']").value;
-	let deliveryMessage = document.querySelector("input[name='deliveryMessage']:checked").dataset.name;
+	const etcLocation = document.querySelector("input[name='etcLocation']").value;
+	
+	if(deliveryName.value == "") {
+		alert("받으실 분 이름을 입력하세요");
+		deliveryName.focus();
+		return false;
+	} else if (deliveryPhone.value == "") {
+		alert("받으실 분 핸드폰번호를 입력하세요");
+		deliveryPhone.focus();
+		return false;
+	}
+	
+	let deliveryMessage = document.querySelector("input[name='deliveryMessage']:checked").dataset.name;	
 	let deliveryLocation = document.querySelector("input[name='deliveryLocation']:checked").dataset.name;
 	
-
-	deliveryLocationTag.innerText = deliveryLocation;
+	
+	
 	deliveryMessageTag.innerText = deliveryMessage;
-	deliveryNameTag.innerText = deliveryName;
-	deliveryPhoneTag.innerText = deliveryPhone;
-	entrancePwTag.value = entrancePw;
+	
+	if (deliveryLocation == '기타 장소'){
+		deliveryLocationTag.innerText = etcLocation;
+		
+	} else {
+		deliveryLocationTag.innerText = deliveryLocation;
+	}
+	
+	deliveryNameTag.innerText = deliveryName.value;
+	deliveryPhoneTag.innerText = deliveryPhone.value;
+	
+	
+	
+	// input에 데이터 넣기
+	entrancePwInput.value = entrancePw;
+	etcLocationInput.value = etcLocation;
+	deliveryLocationInput.value = deliveryLocation
+	deliveryMessageInput.value = deliveryMessage
+	deliveryNameInput.value = deliveryName.value;
+	deliveryPhoneInput.value = deliveryPhone.value;
 	
 	window.close();
-	
 }
+
+
+
 
 // 배송지 정보 입력창 닫기
 function closePopUp() {
 	window.close();
 }
+
+
+// 결제 페이지 유효성 검사
+function payInfoCheck(){
+	
+	const orderName = document.querySelector("#orderName");
+	const orderPhone = document.querySelector("#orderPhone");
+	const orderEmail = document.querySelector("#orderEmail");
+	const deliveryInfo = document.querySelector(".payPage_receiving_txt");
+	const agreeCheck = document.querySelector(".agreeCheck");
+	
+	if(orderName.value == "") {
+		alert("보내는 분 이름을 입력해주세요");
+		orderName.focus();
+		return false;
+	} else if (orderPhone.value == "") {
+		alert("보내는 분 핸드폰번호를 입력해주세요");
+		orderPhone.focus();
+		return false;
+	} else if (orderEmail.value == "") {
+		alert("보내는 분 이메일을 입력해주세요");
+		orderEmail.focus();
+		return false;
+	} else if (deliveryInfo.innerText == "") {
+		alert("받으실 분 정보를 입력해주세요");
+		deliveryInfo.focus();
+		return false;
+	}	else if (agreeCheck.checked == false) {
+		alert("개인정보 제공에 동의해주세요");
+		agreeCheck.focus();
+		return false;
+	}
+	
+	return true;
+	
+}
+
 
 
 
@@ -693,6 +856,8 @@ function stringNumberToInt(stringNumber){
 function priceToString(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
+
 
 
 // notice form
@@ -726,3 +891,4 @@ $(document).ready(function(){
     document.querySelector('.noticeView_inp_content').value.trim();
     document.querySelector('.noticeWrite_inp_content').value.trim();
 });
+

@@ -40,7 +40,7 @@
                  <ul class="delivery_info_locaion_select_list">
                      <li class="door">
                          <label class="delivery_info_locaion_radio" onclick="locationAddClass(this)">
-                             <input type="radio" name="deliveryLocation" data-name="문 앞" value="door" onclick="noticeDisplay(this.value)">
+                             <input type="radio" name="deliveryLocation" data-name="문 앞" value="door" onclick="noticeDisplay(this.value)" checked="checked">
                              &nbsp;&nbsp;문 앞
                          </label>
                      </li>
@@ -69,6 +69,13 @@
 					<span class="delivery_input_sub">*</span><br>
 					<input type="text" name="entrancePw" class="delivery_input_text" placeholder="공동현관 비밀번호">
 			</div>
+			
+            <div class="delivery_location_etc">
+					<span class="delivery_input_tit">기타 장소</span>
+					<span class="delivery_input_sub">*</span><br>
+					<input type="text" name="etcLocation" class="delivery_input_text" placeholder="장소를 입력해주세요">
+			</div>
+			
             <div class="delivery_info_message">
             	<div class="delivery_message_div">
 	             	<span class="delivery_input_tit">배송 완료 메시지 전송</span>
@@ -97,7 +104,7 @@
 			</p>		
 			<p class="delivery_notice_security">
 				<span class="notice_check"><i class="fa-solid fa-check"></i> 확인해주세요!</span><br>
-				<span class="notice_attention">&#183; 비밀번호가 정확하지 않을 경우, 부득이하게 1층 공동현관 앞 또는 경비실 앞에 배송될 수 있습니다.</span>
+				<span class="notice_attention">&#183; 경비 부재로 출입이 불가능한 경우, 부득이하게 1층 공동현관 앞 또는 경비실 앞에 배송될 수 있습니다.</span>
 			</p>		
 			<p class="delivery_notice_post">
 				<span class="notice_check"><i class="fa-solid fa-check"></i> 확인해주세요!</span><br>
@@ -115,7 +122,7 @@
 					<button type="button" class="delivery_close_btn" onclick="closePopUp()">취소</button>
 				</div>
 				<div class="delivery_submit_btn_div">
-					<button type="button" class="delivery_submit_btn" onclick="deliveryInfo()">저장</button>
+					<button type="button" class="delivery_submit_btn" onclick="deliveryInsertInfo()">저장</button>
 				</div>
 			</div>
 	</div>
@@ -124,6 +131,7 @@
 
 	const orderName = '${order.orderName}';
 	const orderPhone= '${order.orderPhone}';
+
 
 </script>
 </body>
