@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="/resources/js/javascript.js" defer></script>
-    <title>공지사항</title>
+    <title>공지사항 수정</title>
 </head>
 <body>
 	<div id="header">

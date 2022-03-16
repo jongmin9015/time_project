@@ -3,10 +3,11 @@ package com.tis.mapper;
 import java.util.List;
 
 import com.tis.domain.BoardVO;
+import com.tis.domain.Criteria;
 
 public interface BoardMapper {
 	//게시글 목록
-	List<BoardVO> getBoardList(int displayPost, int postNum);
+	List<BoardVO> getBoardList(Criteria cri);	
 	
 	//게시글 작성
 	void boardWrite(BoardVO board);
@@ -18,8 +19,5 @@ public interface BoardMapper {
 	void boardmodify(BoardVO board);
 	
 	//게시글 총 갯수
-	int getBoardTotal();
-	
-	//게시글 목록 + 페이징
-//	List<BoardVO> listPage(int displayPost, int postNum);
+	int getBoardTotal(Criteria cri);
 }

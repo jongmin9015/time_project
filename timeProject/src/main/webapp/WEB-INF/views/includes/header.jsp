@@ -31,7 +31,7 @@
 	                    <a href="/board/board_list" class="link_menu">고객센터</a>
 	                    <ul class="sub">
 	                        <li>
-	                            <a href="/board/board_list?num=1">공지사항</a>
+	                            <a href="#">공지사항</a>
 	                        </li>
 	                        <li>
 	                            <a href="#">자주하는 질문</a>
