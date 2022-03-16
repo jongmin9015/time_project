@@ -194,12 +194,13 @@
         </div>
     
     </div>
+
 <form action="/shop/order/move" method="post" class="order_moveForm">
     <input type="hidden" name="memberId" value="${memberId}">	
     <input type="hidden" name="deliveryFee" value="">	
  </form>
 <script>
-	
+
 	// 전역 변수
 	let totalPriceTag = $(".totalPrice");
 	const checkBox = $("input[name='cartPage_checkbox_item_list']");
@@ -342,7 +343,7 @@
 	});
 	
 	// 모달창 내부 수량 카운트 DOWN
-	$(".cartPage_count_down").on("click", function() {
+	$(".cartPage_count_down").on("click", function(e) {
 		
 		let count = $(this).next(".cartPage_item_count_input").val();
 		if (count == 1 || count == 99) return;	
@@ -376,9 +377,6 @@
 			contentType : "application/json; charset=utf-8"
 		});
 
-/* 		setTimeout(function() {
-			location.reload();
-		},2000); */
 	});
 	
 	// 장바구니 삭제

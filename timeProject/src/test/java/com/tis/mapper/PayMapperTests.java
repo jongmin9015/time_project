@@ -27,6 +27,8 @@ public class PayMapperTests {
 	@Autowired
 	private PayMapper mapper;
 
+	@Autowired
+	private OrderService orderService;
 	
 //	@Test
 //	public void getNo() {
@@ -34,30 +36,39 @@ public class PayMapperTests {
 //	}
 	
 
-	@Test
-	public void test() {
-	
-		PayVO pay = new PayVO();
-		pay.setAddress("dsdsd");
-		pay.setAddressSub("dsds");
-		pay.setDeliveryLocation("dsdsd");
-		pay.setDeliveryMessage("dsdsd");
-		pay.setDeliveryPhone("dsdsd");
-		pay.setDeliveryName("2332");
-		pay.setMemberId("2323");
-		pay.setOrderEmail("dsdsd");
-		pay.setOrderGoodsName("dsdsd");
-		pay.setOrderPhone("dsdsd");
-		pay.setOrderName("232");
-		pay.setTotalPrice(23232L);
-		pay.setZipcode("2323");
-		pay.setEntrancePw("2323");
-		pay.setEtcLocation("2323");	
-		
-		
-	}
+//	@Test
+//	public void test() {
+//	
+//		PayVO pay = new PayVO();
+//		pay.setAddress("dsdsd");
+//		pay.setAddressSub("dsds");
+//		pay.setDeliveryLocation("dsdsd");
+//		pay.setDeliveryMessage("dsdsd");
+//		pay.setDeliveryPhone("dsdsd");
+//		pay.setDeliveryName("2332");
+//		pay.setMemberId("2323");
+//		pay.setOrderEmail("dsdsd");
+//		pay.setOrderGoodsName("dsdsd");
+//		pay.setOrderPhone("dsdsd");
+//		pay.setOrderName("232");
+//		pay.setTotalPrice(23232L);
+//		pay.setZipcode("2323");
+//		pay.setEntrancePw("2323");
+//		pay.setEtcLocation("2323");	
+//		
+//		
+//	}
 	
 
+	@Test
+	public void getNo() {
+		
+		OrderVO order = new OrderVO();
+		
+	
+		orderService.deleteOrder("07F2DF83F1A2DEDFA4B0E561D6C051EF");
+
+	}
 	
 
 }

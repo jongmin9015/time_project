@@ -67,7 +67,7 @@
     	
 	}
 	
-	// 주소 유효성 감사 AND 주소 정보 전송후 팝업 창 닫기
+	// 주소 유효성 검사 AND 주소 정보 전송후 팝업 창 닫기
    	function closePop() {
    		
 		let addressInput = document.querySelector(".address");  		

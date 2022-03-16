@@ -426,15 +426,7 @@ function insertOrder() {
 	
    
 }
-//리로드
-function refresh(){
-	
-	$.ajax({
-		url : "",
-		dataType : "text"
-	})
-	
-}
+
 
 
 
@@ -467,17 +459,30 @@ $(document).ready(function(){
 function cardCheck(value){
     let cardView = document.getElementById('payPage_card_view');
     let simpleView = document.getElementById('payPage_simple_view');
+    let kakaopayView = document.getElementById('kakaopayment');
 
-    if (value == "kakao-pay") {
+    const payMethoInput = document.querySelector("input[name='payMethod']");
+    payMethoInput.value = value;
+    
+    if (value == "kakaopay") {
         cardView.style.display = "none";
         simpleView.style.display = "none";
-    }else if(value == "c"){
+        kakaopayView.classList.remove('payPage_kakaopay_on');
+    } else if(value == "c"){
         cardView.style.display = "block";
         simpleView.style.display = "none";
-    }else if(value == "p"){
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    } else if(value == "phone"){
         cardView.style.display = "none";
         simpleView.style.display = "none";
-    };    
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    } else if (value == "card"){
+        cardView.style.display = "none";
+        simpleView.style.display = "none";
+        kakaopayView.classList.add('payPage_kakaopay_on');
+    }
+    
+    ;    
 };
 
 //payPage simple 클릭이벤트
@@ -639,7 +644,8 @@ function messageAddClass(v){
 
 // 결제페이지 배송지 설정 NOTICE
 function noticeDisplay(value) {	
-	const door = document.querySelector(".delivery_entrance");
+	const entrance = document.querySelector(".delivery_entrance");
+	const door = document.querySelector(".delivery_notice_door");
 	const security = document.querySelector(".delivery_notice_security");
 	const post = document.querySelector(".delivery_notice_post");
 	const etc = document.querySelector(".delivery_notice_etc");
@@ -647,24 +653,28 @@ function noticeDisplay(value) {
 	
 	if(value == "security") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "block";
 		post.style.display = "none";
 		etc.style.display = "none";
 		etcLocation.style.display = "none";
 	} else if (value == "post") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "none";
 		post.style.display = "block";
 		etc.style.display = "none";
 		etcLocation.style.display = "none";
 	} else if (value == "etc") {
 		door.style.display = "none";
+		entrance.style.display = "none";
 		security.style.display = "none";
 		post.style.display = "none";
 		etc.style.display = "block";
 		etcLocation.style.display = "block";
 	} else if (value == "door") {
 		door.style.display = "block";
+		entrance.style.display = "block";
 		security.style.display = "none";
 		post.style.display = "none";
 		etc.style.display = "none";
@@ -692,6 +702,7 @@ function sameOrder(value) {
 
 // 배송지 정보 페이지 입력
 function deliveryInsertInfo() {
+	
 	const deliveryLocationTag = opener.document.querySelector(".payPage_receiving_txt");
 	const deliveryMessageTag = opener.document.querySelector(".payPage_receiving_message_time");
 	const deliveryNameTag = opener.document.querySelector(".payPage_receiving_name");
@@ -705,11 +716,20 @@ function deliveryInsertInfo() {
 	const deliveryPhoneInput = opener.document.querySelector("input[name='deliveryPhone']");
 	
 	
-	const deliveryName = document.querySelector("input[name='deliveryName']").value;
-	const deliveryPhone = document.querySelector("input[name='deliveryPhone']").value;	
+	const deliveryName = document.querySelector("input[name='deliveryName']");
+	const deliveryPhone = document.querySelector("input[name='deliveryPhone']");	
 	const entrancePw = document.querySelector("input[name='entrancePw']").value;
 	const etcLocation = document.querySelector("input[name='etcLocation']").value;
 	
+	if(deliveryName.value == "") {
+		alert("받으실 분 이름을 입력하세요");
+		deliveryName.focus();
+		return false;
+	} else if (deliveryPhone.value == "") {
+		alert("받으실 분 핸드폰번호를 입력하세요");
+		deliveryPhone.focus();
+		return false;
+	}
 	
 	let deliveryMessage = document.querySelector("input[name='deliveryMessage']:checked").dataset.name;	
 	let deliveryLocation = document.querySelector("input[name='deliveryLocation']:checked").dataset.name;
@@ -725,8 +745,8 @@ function deliveryInsertInfo() {
 		deliveryLocationTag.innerText = deliveryLocation;
 	}
 	
-	deliveryNameTag.innerText = deliveryName;
-	deliveryPhoneTag.innerText = deliveryPhone;
+	deliveryNameTag.innerText = deliveryName.value;
+	deliveryPhoneTag.innerText = deliveryPhone.value;
 	
 	
 	
@@ -735,13 +755,13 @@ function deliveryInsertInfo() {
 	etcLocationInput.value = etcLocation;
 	deliveryLocationInput.value = deliveryLocation
 	deliveryMessageInput.value = deliveryMessage
-	deliveryNameInput.value = deliveryName;
-	deliveryPhoneInput.value = deliveryPhone;
+	deliveryNameInput.value = deliveryName.value;
+	deliveryPhoneInput.value = deliveryPhone.value;
 	
 	window.close();
 }
 
-// 배송지 정보 input 입력
+/*// 배송지 정보 input 입력
 function deliveryInfo(){
 	const deliveryLocationTag = document.querySelector("input[name='deliveryLocation']");
 	const deliveryMessageTag = document.querySelector("input[name='deliveryMessage']");
@@ -749,7 +769,7 @@ function deliveryInfo(){
 	const deliveryPhoneTag = document.querySelector("input[name='deliveryPhone']");
 	const entrancePwTag = document.querySelector("input[name='entrancePw']");
 	const etcLocationTag = document.querySelector("input[name='etcLocation']");
-}
+}*/
 
 
 // 배송지 정보 입력창 닫기
@@ -761,10 +781,37 @@ function closePopUp() {
 // 결제 페이지 유효성 검사
 function payInfoCheck(){
 	
-	document
+	const orderName = document.querySelector("#orderName");
+	const orderPhone = document.querySelector("#orderPhone");
+	const orderEmail = document.querySelector("#orderEmail");
+	const deliveryInfo = document.querySelector(".payPage_receiving_txt");
+	const agreeCheck = document.querySelector(".agreeCheck");
+	
+	if(orderName.value == "") {
+		alert("보내는 분 이름을 입력해주세요");
+		orderName.focus();
+		return false;
+	} else if (orderPhone.value == "") {
+		alert("보내는 분 핸드폰번호를 입력해주세요");
+		orderPhone.focus();
+		return false;
+	} else if (orderEmail.value == "") {
+		alert("보내는 분 이메일을 입력해주세요");
+		orderEmail.focus();
+		return false;
+	} else if (deliveryInfo.innerText == "") {
+		alert("받으실 분 정보를 입력해주세요");
+		deliveryInfo.focus();
+		return false;
+	}	else if (agreeCheck.checked == false) {
+		alert("개인정보 제공에 동의해주세요");
+		agreeCheck.focus();
+		return false;
+	}
+	
+	return true;
+	
 }
-
-
 
 
 

@@ -215,14 +215,14 @@
                                                 <td>
                                                     <div class="payPage_pay_select_first">
                                                         <label class="payPage_kakaopay" id="kakaopayment" onclick="cardaddClass(this)">
-                                                            <input type="radio" value="kakao-pay" checked="checked" name="pay-select" onclick="cardCheck(this.value)">
+                                                            <input type="radio" value="kakaopay" checked="checked" name="pay-select" onclick="cardCheck(this.value)">
                                                             <img src="/resources/images/shop/order/ico_kakao-pay.webp" alt="kakao-pay" class="kakaopay-logo" id="kakaoPay">
                                                         </label>
                                                     </div>
                                                     <ul class="payPage_pay_select_menu_list clear">
                                                         <li class="payPage_pay_menu payPage_pay_menu_card" onclick="cardaddClass(this)">
                                                             <label class="payPage_card" id="cardment">
-                                                                <input type="radio" name="pay-select" value="c" id="payPage_card_radio" onclick="cardCheck(this.value)">
+                                                                <input type="radio" name="pay-select" value="card" id="payPage_card_radio" onclick="cardCheck(this.value)">
                                                                 신용카드                                                            
                                                             </label>
                                                         </li>
@@ -233,7 +233,7 @@
                                                         </li>
                                                         <li class="payPage_pay_menu_phone" onclick="cardaddClass(this)">
                                                             <label class="payPage_phone">
-                                                                <input type="radio" name="pay-select" value="p" onclick="cardCheck(this.value)">
+                                                                <input type="radio" name="pay-select" value="phone" onclick="cardCheck(this.value)">
                                                                 휴대폰
                                                             </label>
                                                         </li>
@@ -363,7 +363,7 @@
                                         <dt class="payPage_orderitem_amount_tit">배송비</dt>
                                         <dd class="payPage_orderitem_price payPage_orderitem_delivery_area">
                                             <span class="payPage_orderitem_delivery_price">
-                                            	<fmt:formatNumber pattern="###,###,###" value="${deliveryFee}"></fmt:formatNumber>
+                                            	<fmt:formatNumber pattern="###,###,###" value="${order.deliveryFee}"></fmt:formatNumber>
                                             </span>
                                             원
                                         </dd>
@@ -397,9 +397,10 @@
                                         <tr>
                                             <td class="payPage_focusAgree">
                                                 <label class="payPage_focusAgree_check">                                                    
-                                                    <input type="checkbox" name="ordAgree" value="y">
+                                                    <input type="checkbox" name="ordAgree" value="y" class="agreeCheck">                                              
                                                     <span class="payPage_check_span_ico"></span>
                                                     <span class="payPage_check_span">결제 진행 필수 동의</span>
+                                                    <input type="hidden" name="ordAgree" value="n" class="agreeCheck_hidden" >
                                                 </label>
                                                 <ul class="payPage_list_agree">
                                                     <li>
@@ -422,7 +423,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="button"  value="" class="payPage_paymant_btn">
+                    <input type="button"  value="" class="payPage_paymant_btn" >
                 </form>
                 <ul class="payPage_notice_order_list">
                     <li>[배송준비중] 이전까지 주문 취소 가능합니다.</li>
@@ -435,7 +436,7 @@
     </div>
 
 	<form action="/shop/pay/info" method="post" id="payForm">
-		<input type="hidden" name="memberId" value="${memberId}">
+		<input type="hidden" name="memberId" value="${order.memberId}">
 		<input type="hidden" name="orderGoodsName" value="">	
 		<input type="hidden" name="orderName" value="">
 		<input type="hidden" name="orderPhone" value="">
@@ -449,6 +450,7 @@
 		<input type="hidden" name="address" value="${address.address}">
 		<input type="hidden" name="addressSub" value="${address.addressSub}">
 		<input type="hidden" name="zipcode" value="${address.zipcode}">
+		<input type="hidden" name="payMethod" value="">
 		<input type="hidden" name="totalPrice" value="" class="paypage_totalprice_input">
 	</form>
     <div id="footer">
@@ -460,6 +462,7 @@
 </body>
 <script>
 
+	
 	// 상품수에 따라 결제 상품명 설정
 	let goodsName = document.querySelectorAll(".payPage_item_list_name");
 	
@@ -473,8 +476,10 @@
 	let orderName = document.querySelector("input[name='orderName']").value;
 	let orderPhone = document.querySelector("input[name='orderPhone']").value;
 	let orderEmail = document.querySelector("input[name='orderEmail']").value;
-	const memberId = "${memberId}";
-	const deliveryFee = "${deliveryFee}";
+	let payMethod = document.querySelector("input[name='pay-select']").value;
+	
+	console.log(orderName);
+	console.log(orderPhone);
 	
 	$("#orderName").on("propertychange change keyup paste input", function() {
 		orderName = $(this).val();
@@ -485,15 +490,29 @@
 	$("#orderEmail").on("propertychange change keyup paste input", function() {
 		orderEmail = $(this).val();
 	});
+	$("input[name='pay-select']").on("propertychange change keyup paste input", function() {
+		payMethod = $(this).val();
+	});
 	
-	
+
 	// 결제 form 전송
 	$(".payPage_paymant_btn").on("click", function() {
-		$("input[name='orderGoodsName']").val(orderGoodsName);
-		$("input[name='orderName']").val(orderName);
-		$("input[name='orderPhone']").val(orderPhone);
-		$("input[name='orderEmail']").val(orderEmail);
-		$("#payForm").submit(); 
+		
+		if (payInfoCheck()) {
+			
+			$("input[name='orderGoodsName']").val(orderGoodsName);
+			$("input[name='orderName']").val(orderName);
+			$("input[name='orderPhone']").val(orderPhone);
+			$("input[name='orderEmail']").val(orderEmail);
+			$("input[name='payMetho']").val(payMethod);
+			$("#payForm").submit();
+			
+			$("input[name='orderName']").val('');
+			$("input[name='orderPhone']").val('');
+			$("input[name='orderEmail']").val('');
+			$("..agreeCheck").prop('checked', false);
+		}
+	
 	})
 	
 

@@ -4,13 +4,12 @@ import lombok.Data;
 
 @Data
 public class PayVO {
-	private String memberId;
 	
+	private String memberId;	
 	private String orderGoodsName; 
 	private String orderName; 
 	private String orderPhone; 
-	private String orderEmail;
-	 
+	private String orderEmail;	 
 	private String deliveryName;
 	private String deliveryPhone;
 	private String deliveryLocation;
@@ -21,4 +20,6 @@ public class PayVO {
 	private String address;
 	private String addressSub;
 	private String zipcode;
+	private String payMethod;
+	private String payId;
 }

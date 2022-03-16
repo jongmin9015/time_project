@@ -12,10 +12,10 @@
 
 	<!-- 결제 정보 입력 -->
   	<insert id="insertPay" >
-		INSERT INTO tbl_pay (memberId,orderName,orderPhone,orderEmail,orderGoodsName,
-		deliveryName,deliveryPhone,deliveryLocation,deliveryMessage,entrancePw,etcLocation,totalPrice,address,addressSub,zipcode)
-		VALUES (#{memberId},#{orderName},#{orderPhone},#{orderEmail},#{orderGoodsName},
-		 #{deliveryName}, #{deliveryPhone}, #{deliveryLocation}, #{deliveryMessage},#{entrancePw}, #{etcLocation}, #{totalPrice}, #{address}, #{addressSub}, #{zipcode})
+		INSERT INTO tbl_pay (memberId,orderName,orderPhone,orderEmail,orderGoodsName,deliveryName,deliveryPhone,
+		deliveryLocation,deliveryMessage,entrancePw,etcLocation,totalPrice,address,addressSub,zipcode,payMethod,payId)
+		VALUES (#{memberId},#{orderName},#{orderPhone},#{orderEmail},#{orderGoodsName},#{deliveryName},#{deliveryPhone},
+	    #{deliveryLocation}, #{deliveryMessage},#{entrancePw},#{etcLocation},#{totalPrice},#{address},#{addressSub},#{zipcode},#{payMethod},#{payId})
 	</insert>	 
 	
 	<!-- 결제 정보 삭제 -->
@@ -23,5 +23,7 @@
 		DELETE FROM tbl_pay
 		WHERE memberId = #{memberId}
 	</delete>
+	
+
 </mapper> 
 

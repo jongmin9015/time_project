@@ -1,5 +1,7 @@
 package com.tis.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,10 @@ public class PayController {
     @RequestMapping(value = "/info", method = RequestMethod.POST)
     public String movePay(PayVO pay, Model model) {
   	
+    	UUID payUUID = UUID.randomUUID();
+    	
+    	pay.setPayId(payUUID.toString());
+    	
     	payService.deletePay(pay.getMemberId());
     	payService.insertPay(pay);
     	PayVO payInfo = payService.getPay(pay.getMemberId());

@@ -2495,11 +2495,10 @@ input[name="cartPage_checkbox_item_list"]:checked + .cartPage_item_chkItem_span{
 .address_input_div {
 	width: 500px;
 	text-align: center;
-	margin: 0 auto;
+	margin: 40px auto;
 }
 .address_tit {
 	display: block;
-
 	font-size: 26px;
 	color: #5f0080;
 	line-height: 30px;
@@ -3031,6 +3030,16 @@ input[name='pay-select']{
 }
 .payPage_kakaopay{
     background-color: #f6e500;
+    display: block;
+    width: 414px;
+    height: 48px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.payPage_kakaopay_on{
+    background-color: #fff;
     display: block;
     width: 414px;
     height: 48px;
@@ -3597,5 +3606,18 @@ input[name="deliveryMessage"] {
 }
 .delivery_location_etc {
 	display: none;
+}
+
+#paypage_body {
+	width: 1200px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+.paypage_title{
+	text-align: center;	
+}
+.paypage_title h1 {
+	margin-bottom: 70px;
 }
 /* pay_delivery 끝*/

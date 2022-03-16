@@ -258,5 +258,7 @@ create table tbl_pay(
     address varchar2(200),
     addressSub varchar2(200),
     zipcode number(10),
+    payMethod varchar2(20),
+    payId varchar2(200),
     constraint pk_pay primary key (memberId)	
 );
