@@ -32,7 +32,8 @@
 		      )
 		WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
 		 ]]>
-	</select>
+	</select>	
+	
 
 	<!-- 상품 서브리스트 조회 -->
 	<select id="getGoodsSubListWithPaging" resultType="com.tis.domain.GoodsVO">
@@ -56,6 +57,7 @@
 					<if test='priceSort != null and (priceSort eq "new".toString())'>
 						ORDER BY goodsregDate DESC
 					</if>
+					
 	    <![CDATA[) 		           
        		   WHERE goodsCategory = #{categorySubTitle}
 		       AND rownum <= #{cri.pageNum} * #{cri.amount} 
@@ -92,5 +94,6 @@
 		SELECT *
 		FROM tbl_goods		
 	</select>
+	
 	
 </mapper>

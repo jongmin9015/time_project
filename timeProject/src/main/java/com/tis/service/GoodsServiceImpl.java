@@ -53,9 +53,6 @@ public class GoodsServiceImpl implements GoodsService {
 		// TODO Auto-generated method stub
 		return goodsMapper.getMainGoodsList();
 	}
-
-
-
-
+	
 
 }
