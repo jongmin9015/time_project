@@ -28,33 +28,26 @@ public class BoardController {
 	
 	//게시글 목록
 	@RequestMapping(value = "/board_list", method = RequestMethod.GET)
-	public void boardList(Model model, @RequestParam("num")int num){
+	public void boardList(Model model, Criteria cri){		
 		
-		//게시물 총 갯수
-		int count = boardService.getBoardTotal();
-		
-		//한 페이지에 출력할 게시물 갯수
-		int postNum = 10;
-		
-		//하단 페이징 번호
-		int pageNum = (int)Math.ceil((double)count/postNum);
-		
-		//출력할 게시물
-		int displayPost = (num-1)*postNum;
-		
-		
-		List<BoardVO> boardList = boardService.getBoardList(displayPost, postNum);
+		List<BoardVO> boardList = boardService.getBoardList(cri);
 		model.addAttribute("boardList", boardList);
-		model.addAttribute("pageNum", pageNum);
+		
+		int total = boardService.getBoardTotal(cri);
+		PageDTO pageMake = new PageDTO(cri, total);
+		
+		model.addAttribute("pageMaker", pageMake);
 		
 		log.info("get board_list......................" + "board_list");
 	}
+
+	
+	
 	//게시글 작성 GET
 	@RequestMapping(value = "/boardwrite", method = RequestMethod.GET)
 	public void boardGetWrite() {
 		log.info("get board_list......................" + "boardWrite_GET");
 	}
-	
 	
 	//게시글 작성
 	@RequestMapping(value = "/boardwrite", method = RequestMethod.POST)
@@ -67,6 +60,9 @@ public class BoardController {
 	//게시글 조회
 	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
 	public void boardGetView(Model model, @RequestParam("bno")int bno) {
+		//조회수 증가
+//		boardService.increaseViewcnt(bno, session);
+		
 		BoardVO board = boardService.boardView(bno);
 		model.addAttribute("boardView", board);
 		log.info("get board_list......................" + "boardView");
@@ -88,24 +84,11 @@ public class BoardController {
 		return "redirect:/board/boardView?bno=" + board.getBno();
 	}
 	
-	//게시물 목록 + 페이징
-//	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-//	public void getBoardPage(Model model, @RequestParam("num")int num) {
-//		//게시물 총 갯수
-//		int count = boardService.getBoardTotal();
-//		
-//		//한 페이지에 출력할 게시물 갯수
-//		int postNum = 10;
-//		
-//		//하단 페이징 번호
-//		int pageNum = (int)Math.ceil((double)count/postNum);
-//		
-//		//출력할 게시물
-//		int displayPost = (num-1)*postNum;
-//		
-//		List<BoardVO> list = boardService.listPage(displayPost, postNum);
-//		model.addAttribute("PageList", list);
-//		model.addAttribute("pageNum", pageNum);
-//		log.info("get board_list......................" + "boardList+page");
+	//게시글 삭제
+//	@RequestMapping(value = "/boarddelete")
+//	public String delete(@RequestParam("bno")int bno) {
+//		boardService.delete(bno);
+//		return "redirect:/board/board_list";
 //	}
+	
 }

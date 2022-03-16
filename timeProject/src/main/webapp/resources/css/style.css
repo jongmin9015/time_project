@@ -1586,7 +1586,7 @@ select[id="orderList"]{
 .itemView_tab_menu_tit{
     box-sizing: border-box;
     display: block;
-    width: 338px;
+    width: 337px;
     padding: 20px 0;
     border: 1px solid #eee;
     border-left: 0;
@@ -7280,6 +7280,10 @@ input[name="deliveryMessage"] {
     padding-left: 10px;
     text-align: left;
     color: #999;
+}
+.notice_table_con_tit .notice_table_con_tit_atag{
+    color: #333;
+    font-size: 12px;
 }
 
 /* notice 페이징 */
