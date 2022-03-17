@@ -481,6 +481,7 @@
 	
 	$("#orderName").on("propertychange change keyup paste input", function() {
 		orderName = $(this).val();
+		console.log(orderName);
 	});
 	$("#orderPhone").on("propertychange change keyup paste input", function() {
 		orderPhone = $(this).val();

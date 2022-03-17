@@ -6,8 +6,15 @@
 	
 	<!-- 회원 조회 -->
 	<select id="getMember" resultType="com.tis.domain.MemberVO">
-		SELECT memberId, memberPw, memberName, phone, email
+		SELECT *
 		FROM tbl_member
 		WHERE memberId = #{memberId}
 	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO tbl_member (memberId,memberPw,memberName,phone,email,
+		address,addressSub,zipcode,gender,birth)
+		VALUES (#{memberId},#{memberPw},#{memberName},#{phone},#{email},
+		#{address},#{addressSub},#{zipcode},#{gender},#{birth})	
+	</insert>
 </mapper>

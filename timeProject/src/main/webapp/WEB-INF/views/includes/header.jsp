@@ -22,10 +22,10 @@
 	        <div id="user_menu">
 	            <ul class="list_menu">
 	                <li class="menu_join">
-	                    <a href="#" class="link_menu menu_join">회원가입</a>
+	                    <a href="/member/login/signup" class="link_menu menu_join">회원가입</a>
 	                </li>
 	                <li class="menu_login">
-	                    <a href="#" class="link_menu">로그인</a>
+	                    <a href="/member/login/move" class="link_menu">로그인</a>
 	                </li>
 	                <li class="menu_center">
 	                    <a href="/board/board_list" class="link_menu">고객센터</a>

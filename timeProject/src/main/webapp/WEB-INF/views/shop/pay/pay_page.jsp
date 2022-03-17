@@ -51,7 +51,7 @@
 	const address = "${payInfo.address}";
 	const addressSub = "${payInfo.addressSub}";
 	const zipcode = "${payInfo.zipcode}";
-	const payMethod = 'kakaopay' || "${payInfo.payMethod}";
+	const payMethod = "${payInfo.payMethod}" || 'kakaopay' ;
 	const payId = "${payInfo.payId}";
 	
 	
@@ -92,11 +92,12 @@
 			msg += '에러내용 : ' + rsp.error_msg;
 			}
 			
+		
 			alert(msg);						
 			history.back();
 			history.back();
 			history.back();
-			location.reload();
+
 				
 			});
 		}());

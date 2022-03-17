@@ -1,5 +1,8 @@
 package com.tis.mapper;
 
+import java.util.HashMap;
+
+import org.json.simple.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ import com.tis.service.OrderService;
 import com.tis.service.PayService;
 
 import lombok.extern.log4j.Log4j;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Log4j
@@ -63,10 +68,25 @@ public class PayMapperTests {
 	@Test
 	public void getNo() {
 		
-		OrderVO order = new OrderVO();
-		
-	
-		orderService.deleteOrder("07F2DF83F1A2DEDFA4B0E561D6C051EF");
+		String api_key = "NCSLMXFBVTNKUTGR";
+	    String api_secret = "NUZHTUVBIHLQ3GB8HCCZS8R5Z4JVUULF";
+	    Message coolsms = new Message(api_key, api_secret);
+
+	    // 4 params(to, from, type, text) are mandatory. must be filled
+	    HashMap<String, String> params = new HashMap<String, String>();
+	    params.put("to", "01049533653");
+	    params.put("from", "01049533653");
+	    params.put("type", "SMS");
+	    params.put("text", "테스트");
+	    params.put("app_version", "test app 1.2"); // application name and version
+
+	    try {
+	      JSONObject obj = (JSONObject) coolsms.send(params);
+	      System.out.println(obj.toString());
+	    } catch (CoolsmsException e) {
+	      System.out.println(e.getMessage());
+	      System.out.println(e.getCode());
+	    }
 
 	}
 	
