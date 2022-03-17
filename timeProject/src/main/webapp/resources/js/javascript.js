@@ -174,26 +174,7 @@ function signupform_check(){
     document.signup_form.submit();
 };
 
-//로그인 유효성
-function login_check(){
-    var id = document.getElementById("id");
-    var pw = document.getElementById("password");
 
-    if(id.value == ""){
-        alert("아이디를 입력하세요.");
-        id.focus();
-        return false;
-    };
-
-    if(pw.value == ""){
-        alert("비밀번호를 입력하세요.");
-        pw.focus();
-        return false;
-    };
-
-    document.login_form.submit();
-
-};
 
 //장바구니 전체선택
 function selectAll(selectAll){

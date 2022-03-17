@@ -28,7 +28,9 @@
                         컬리의 새로운 소식들과 유용한 정보들을 곳에서 확인하세요.
                     </span>
                 </h2>
+
                 <!-- <a href="/board/boardwrite">게시글 등록</a> -->
+
             </div>
             <form id="notice_frm" action="">
                 <input type="hidden" name="id" value="notice">

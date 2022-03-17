@@ -209,13 +209,18 @@ create SEQUENCE seq_cart
 START WITH 1
 INCREMENT by 1;
 
-< 임시 회원 테이블 >
+< 멤버 테이블 >
 create table tbl_member(
     memberId varchar2(200),
     memberPw varchar2(100),
     memberName varchar2(20),
     phone varhar2(30),
-    email varchar2(100)
+    email varchar2(100), 
+    address varchar2(100),
+    addressSub varchar2(100),
+    zipcode varchar2(10),
+    gender varchar2(10),
+    birth date,
     CONSTRAINT pk_member PRIMARY key (memberId)
 );
 
@@ -263,7 +268,7 @@ create table tbl_pay(
     constraint pk_pay primary key (memberId)	
 );
 
-
+<게시글>
 create table tbl_board(
     bno     number not null,        --게시물 번호
     title   varchar2(200) not null, --제목

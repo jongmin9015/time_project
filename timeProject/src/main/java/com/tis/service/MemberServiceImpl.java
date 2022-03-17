@@ -19,4 +19,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.getMember(memberId);
 	}
 
+	// 회원 등록
+	@Override
+	public int insertMember(MemberVO member) {
+		return memberMapper.insertMember(member);
+	}
+
 }
