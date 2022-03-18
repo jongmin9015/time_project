@@ -13,12 +13,19 @@ public class MemberServiceImpl implements MemberService {
 
 	private final MemberMapper memberMapper;
 	
-	// 회원 조회
+	// 회원 조회  WITH ID
 	@Override
-	public MemberVO getMember(String memberId) {
-		return memberMapper.getMember(memberId);
+	public MemberVO getMemberWithId(String memberId) {
+		return memberMapper.getMemberWithId(memberId);
 	}
 
+	// 회원 조회  WITH EMAIL
+	@Override
+	public MemberVO getMemberWithEmail(String email) {
+		// TODO Auto-generated method stub
+		return memberMapper.getMemberWithEmail(email);
+	}
+	
 	// 회원 등록
 	@Override
 	public int insertMember(MemberVO member) {

@@ -14,7 +14,7 @@
     <script src="/resources/js/member.js" defer></script>
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
-    
+    <title>signup</title>
 </head>
 <body>
     <div id="header">
@@ -34,7 +34,7 @@
                                 <tr>
                                     <th>아이디<span class="signup_check">*</span></th>
                                     <td>
-                                        <input class="signup_input" type="text" name="memberId" id="userid" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" value="">
+                                        <input class="signup_input" type="text" name="memberId" id="memberId" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" value="">
                                         <button type="button" class="signup_overlap signup_overlap_id" onclick="checkId()">중복확인</button>
                                         <input type="hidden" name="overLapId" value="n">
                                         <!-- <button type="button" class="signup_overlap signup_overlap_id_ok" onclick="id_check()">중복확인</button><br> -->
@@ -51,13 +51,21 @@
                                 <tr>
                                     <th>비밀번호<span class="signup_check">*</span></th>
                                     <td>
-                                        <input class="signup_input" type="password" name="memberPw" id="userpw1" placeholder="비밀번호를 입력해주세요">                                    
+                                        <input class="signup_input" type="password" name="memberPw" id="memberPw1" placeholder="비밀번호를 입력해주세요">
+                                     <p class="check_id_span_div">
+                                     	<span class="check_id_span checK_pw_success"><i class="fa-solid fa-check"></i> 8~16자 내외로 영문과 숫자를 조합</span> 	
+                                        <span class="check_id_span checK_pw_error"><i class="fa-solid fa-xmark"></i> 8~16자 내외로 영문과 숫자를 조합</span>	
+                                    </p>                                   
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>비밀번호확인<span class="signup_check">*</span></th>
                                     <td>
-                                        <input class="signup_input" type="password" name="memberpw2" id="userpw2" placeholder="비밀번호를 한번 더 입력해주세요">                                    
+                                        <input class="signup_input" type="password" name="memberpw2" id="memberPw2" placeholder="비밀번호를 한번 더 입력해주세요">
+                                    <p class="check_id_span_div">
+                                     	<span class="check_id_span checK_pwsame_success"><i class="fa-solid fa-check"></i> 동일한 비밀번호를 입력해주세요</span> 	
+                                        <span class="check_id_span checK_pwsame_error"><i class="fa-solid fa-xmark"></i> 동일한 비밀번호를 입력해주세요</span>	
+                                    </p>                                      
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,14 +77,14 @@
                                 <tr>
                                     <th>이메일<span class="signup_check">*</span></th>
                                     <td>
-                                        <input class="signup_input" type="text" name="memberEmail" id="email" placeholder="예: timeproject@naver.com">
-                                        <button type="button" class="signup_overlap">중복확인</button>                                  
+                                        <input class="signup_input" type="text" name="email" id="email" placeholder="ex) timeproject@naver.com">
+                                        <button type="button" class="signup_overlap" onclick="checkEmail()	">중복확인</button>                                  
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰<span class="signup_check">*</span></th>
                                     <td>
-                                        <input class="signup_input" type="tel" name="memberPhone" id="phone" placeholder="숫자만 입력해주세요">
+                                        <input class="signup_input" type="tel" name="phone" id="phone" placeholder="숫자만 입력해주세요">
                                         <button class="signup_cartBtnOff" type="button">인증번호 받기</button>                                  
                                     </td>
                                 </tr>
@@ -132,6 +140,8 @@
                 </div>
             </div>  
     </div>
+    
+    
     <div class="juso_background">
         <div class="window">
             <div class="popup clear">
@@ -175,24 +185,28 @@
 	document.querySelector("#show").addEventListener("click", show);
 	document.querySelector("#close").addEventListener("click", close);
 	
-	const sixSuccess = document.querySelector('.checK_id_six_success');
-	const sixError = document.querySelector('.checK_id_six_error');
+	const idSuccess = document.querySelector('.checK_id_six_success');
+	const idError = document.querySelector('.checK_id_six_error');
 	const overlapSuccess = document.querySelector('.checK_id_overlap_success');
 	const overlapError = document.querySelector('.checK_id_overlap_error');
 	const overLapId = document.querySelector('input[name="overLapId"]');
+	
+	const pwSuccess = document.querySelector('.checK_pw_success');
+	const pwError = document.querySelector('.checK_pw_error');
+	const pwsameSuccess = document.querySelector('.checK_pwsame_success');
+	const pwsameError = document.querySelector('.checK_pwsame_error');
 
-
-	$("#userid").on("propertychange change keyup paste input", function() {
+	$("#memberId").on("propertychange change keyup paste input", function() {
 		
-		var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,16}$/;
+		const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,16}$/;
 		overLapId.value = 'n';
 		
 		if(regExp.test($(this).val())) {		
-			sixSuccess.style.display = 'block';
-			sixError.style.display = 'none';
+			idSuccess.style.display = 'block';
+			idError.style.display = 'none';
 		} else {
-			sixSuccess.style.display = 'none';
-			sixError.style.display = 'block';
+			idSuccess.style.display = 'none';
+			idError.style.display = 'block';
 		}
 		
 		if(overLapId.value == 'n') {
@@ -202,14 +216,27 @@
 			overlapSuccess.style.display = 'block';
 			overlapError.style.display = 'none';
 		}
-		
-
 	});
- 	$("#userpw1").on("propertychange change keyup paste input", function() {
-		orderPhone = $(this).val();
+ 	$("#memberPw1").on("propertychange change keyup paste input", function() {
+ 		const regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+ 		
+		if(regExp.test($(this).val())) {		
+			pwSuccess.style.display = 'block';
+			pwError.style.display = 'none';
+		} else {
+			pwSuccess.style.display = 'none';
+			pwError.style.display = 'block';
+		}
 	});
-	$("#userpw2").on("propertychange change keyup paste input", function() {
-		orderEmail = $(this).val();
-	}); 
+ 	$("#memberPw2").on("propertychange change keyup paste input", function() {
+ 		const pw1 = $("#memberPw1").val();
+ 		if (pw1 == $(this).val()){
+			pwsameSuccess.style.display = 'block';
+			pwsameError.style.display = 'none';
+ 		} else {
+ 			pwsameSuccess.style.display = 'none';
+			pwsameError.style.display = 'block';
+ 		}
+	});  
 </script>
 </html>

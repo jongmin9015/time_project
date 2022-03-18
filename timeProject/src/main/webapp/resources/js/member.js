@@ -40,7 +40,7 @@ function genderRadioBtn(v){
 function checkId() {
 	
 	
-	const memberIdInput = document.querySelector('.signup_input');
+	const memberIdInput = document.querySelector('input[name="memberId"]');
 	const overLapId = document.querySelector('input[name="overLapId"]');
 	const memberId = memberIdInput.value;
 	const overlapSuccess = document.querySelector('.checK_id_overlap_success');
@@ -51,9 +51,9 @@ function checkId() {
 		memberIdInput.focus();
 		return;
 	}
-	console.log(memberId);
+	
 	$.ajax({
-		url : '/member/login/check/' + memberId,
+		url : '/member/login/check_id/' + memberId,
 		type : 'get',
 		contentType : 'application/text; charset=UTF-8',
 		success : function(res) {
@@ -68,7 +68,38 @@ function checkId() {
 			alert(er);
 		}
 	});
+}
+
+
+// 이메일 중복 체크
+function checkEmail() {
+	
+	const emailInput = document.querySelector('input[name="email"]');
+	let email = emailInput.value;
+	
+	if (email == "") {
+		alert("이메일을 입력하세요");
+		memberEmailInput.focus();
+		return;
+	} else if (email.indexOf('@') == -1){
+		alert("잘못된 이메일 형식입니다");
+		memberEmailInput.focus();
+		return;
+	}
 	
 	
+	$.ajax({
+		url : '/member/login/check_email',
+		type : 'get',
+		data : {email : email},
+		dataType : 'json',
+		contentType : 'application/text; chartset=UTF-8',
+		success : function(res) {
+			alert(res);
+		},
+		error : function(er) {
+			alert(er);
+		}		
+	})
 	
 }

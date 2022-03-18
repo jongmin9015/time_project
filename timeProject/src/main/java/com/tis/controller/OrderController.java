@@ -38,7 +38,7 @@ public class OrderController {
 		
 		List<GoodsVO> orderGoodsList = orderService.getOrderList(order.getMemberId());
 		
-		MemberVO member = memberService.getMember(order.getMemberId());
+		MemberVO member = memberService.getMemberWithId(order.getMemberId());
 		AddressVO address = addressService.getAddress(order.getMemberId());
 
 		model.addAttribute("orderGoodsList", orderGoodsList);

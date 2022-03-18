@@ -2116,14 +2116,17 @@ select[id="orderList"]{
 .check_id_span {
 	font-size: 6px;	
 }
-.checK_id_six_success, .checK_id_overlap_success {
+.checK_id_six_success, .checK_id_overlap_success, .checK_pw_success,
+ .checK_pwsame_success {
 	display: none;
 	color: #0f851a;
 }
-.checK_id_six_error, .checK_id_overlap_error {
+.checK_id_six_error, .checK_id_overlap_error, .checK_pw_error,
+ .checK_pwsame_error {
 	color: #b3130b;
 	display: none;
 }
+
 /* signup page 끝 */
 
 
