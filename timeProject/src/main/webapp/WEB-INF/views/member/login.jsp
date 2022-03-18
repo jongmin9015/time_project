@@ -37,7 +37,7 @@
                         </div>
                         <button type="submit" class="login_loginBtn" onclick="login_check()">로그인</button>
                     </form>
-                    <a href="/member/signup" class="login_signupBtn">회원가입</a>
+                    <a href="/member/login/signup" class="login_signupBtn">회원가입</a>
                 </div>
             </div>
     </div>

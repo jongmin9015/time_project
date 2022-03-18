@@ -13,4 +13,8 @@ public interface MemberService {
 	// 회원 등록
 	int insertMember(MemberVO member);
 
+
+
+	
+
 }

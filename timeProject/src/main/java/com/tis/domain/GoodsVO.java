@@ -2,6 +2,8 @@ package com.tis.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -18,7 +20,9 @@ public class GoodsVO {
 	private String goodsPackage;
 	private String goodsAllergy;
 	private String goodsImage;
+	 @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date goodsRegdate;
+	 @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date goodsUpdatedate;
 	 	
 	// CategoryVO

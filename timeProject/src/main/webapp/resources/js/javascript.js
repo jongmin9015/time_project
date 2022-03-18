@@ -115,14 +115,6 @@ function signupform_check(){
         return false;
     };
 
-    // var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-
-    // if(!pwdCheck.test(pw1.value)){
-    //     alert("비밀번호는 영문자+조합+특수문자 조합으로 8~25자리 사용해야 합니다.");
-    //     pw1.focus();
-    //     return false;
-    // };
-
     if (pw1.value !== pw2.value) {
         alert("비밀번호가 일치하지 않습니다..");
         pd2.focus();
