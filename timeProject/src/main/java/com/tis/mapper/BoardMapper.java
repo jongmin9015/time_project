@@ -18,6 +18,12 @@ public interface BoardMapper {
 	//게시글 수정
 	void boardmodify(BoardVO board);
 	
+	//게시글 삭제
+	int boardDelete(int bno);
+	
 	//게시글 총 갯수
 	int getBoardTotal(Criteria cri);
+	
+	//조회수 올리기
+	int updateViewCnt(int bno);
 }

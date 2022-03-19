@@ -14,6 +14,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="/resources/js/javascript.js" defer></script>
     <title>공지사항</title>
+    <style>
+    	/* 페이징 번호 클릭시 표시 클래스 */
+        .boardList_page_aTag{
+            background-color: #ddd;
+            font-weight: 700;
+            cursor: default;
+        }
+        /* 페이징 번호 컬러 수정 */
+        .notice_page_div .notice_page_btn{
+        	color: #333;
+        }
+        /* 게시글 제목 좌측정렬 */
+        .notice_table_contentTitle_td{
+        	text-align: left !important;
+        }
+    </style>
 </head>
 <body>
 	<div id="header">
@@ -32,7 +48,7 @@
                 <!-- <a href="/board/boardwrite">게시글 등록</a> -->
 
             </div>
-            <form id="notice_frm" action="">
+            <form id="notice_frm" action="" onsubmit="return false;">
                 <input type="hidden" name="id" value="notice">
                 <div class="notice_table_inner">
                     <table width="100%" align="center" cellpadding="0" cellspacing="0">
@@ -53,7 +69,7 @@
                                         <c:forEach items="${boardList }" var="boardList">
                                             <tr class="notice_table_second_tr">
                                                 <td width="50" nowrap align="center">${boardList.bno }</td>
-                                                <td>
+                                                <td class="notice_table_contentTitle_td">
                                                     <a href="#">
                                                         <b class="notice_table_con_tit">
                                                         <a href="/board/boardView?bno=${boardList.bno }" class="notice_table_con_tit_atag">${boardList.title }</a>
@@ -80,14 +96,21 @@
                     </table>
                     <div class="notice_page_inner">                    	
                         <div class="notice_page_div">
-	                            <a href="#" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angles-left"></i></a>
-	                            <a href="#" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angle-left"></i></a>
+                        	<!-- 이전페이지 -->
+                        	<c:if test="${pageMaker.prev }">
+	                            <a href="1" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angles-left"></i></a>
+	                            <a href="${pageMaker.startPage - 1 }" class="notice_page_btn notice_page_fir"><i class="fa-solid fa-angle-left"></i></a>
+	                        </c:if>
 	                        
                         	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">         	  
-	                            <a href="${num }" class="notice_page_btn notice_page_num">${num }</a>
+	                            <a href="${num }" class="notice_page_btn notice_page_num ${pageMaker.cri.pageNum == num ? "boardList_page_aTag":""}">${num }</a>
 	                        </c:forEach>
-	                            <a href="#" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angle-right"></i></a>
-	                            <a href="#" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angles-right"></i></a>
+	                        
+	                        <!-- 다음페이지 -->
+	                        <c:if test="${pageMaker.next }">
+	                            <a href="${pageMaker.endPage + 1}" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angle-right"></i></a>
+	                            <a href="${pageMaker.realEnd}" class="notice_page_btn notice_page_last"><i class="fa-solid fa-angles-right"></i></a>
+	                        </c:if>
                         </div>
                     </div>
                     <table class="notice_search_table">
@@ -96,15 +119,15 @@
                                 검색어
                             </td>
                             <td class="notice_stxt">
-                                <input type="checkbox" name="notice_search[name]" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>이름
-                                <input type="checkbox" name="notice_search[title]" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목
-                                <input type="checkbox" name="notice_search[content]" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용 &nbsp;
+                                <input type="checkbox" name="searchType" class="boardSearchType" value="W" <c:out value="${pageMaker.cri.type eq 'W'?'checked':''}"/>>이름
+                                <input type="checkbox" name="searchType" class="boardSearchType" value="T" <c:out value="${pageMaker.cri.type eq 'T'?'checked':''}"/>>제목
+                                <input type="checkbox" name="searchType" class="boardSearchType" value="C" <c:out value="${pageMaker.cri.type eq 'C'?'checked':''}"/>>내용 &nbsp;
                             </td>
                             <td class="notice_input_txt">
                                 &nbsp;
                             </td>
                             <td class="notice_search_bt">
-                                <a href="" onclick="return notice_search_frm()">
+                                <a href=""><!--  onclick="return notice_search_frm()" -->
                                     <img src="/resources/images/notice/search.webp" alt="">
                                 </a>
                                 <input id="notice_input_box" type="text" name="notice_search[word]" value="${pageMaker.cri.keyword }" required>
@@ -126,8 +149,8 @@
     	</form>
     </div>
     <script>
-    	/* 페이징 번호 이동 작업 */
     	$(document).ready(function() {
+    		/* 페이징 번호 이동 작업 */
     		$(".notice_page_div a").on("click", function(e) {
     			
     			e.preventDefault();
@@ -137,20 +160,38 @@
     			
     		});
     		
+    		
+    		
+    		
     		//검색
     		$(".notice_search_bt a").on("click", function(e){
     			e.preventDefault();
-    			let w = $(".notice_stxt checkbox").val();
+    			
+    			let typeArr = [];
+    			let type = null;
+    			
+    			/* 인풋박스 value를 배열로 받음 */
+    			$("input:checkbox[name='searchType']:checked").each(function(){
+    				typeArr.push($(this).val());
+    			});
+    			/* 배열을 문자열로 변경 */
+    			type = typeArr.join('');
+    			    			
+    			/* 키워드 */
     			let keyword = $("input[name='notice_search[word]']").val();
     			
-    			if(!type){
+    			/* 키워드, 검색종류 미선택시 */
+    			if(!type && !keyword){
+    				keyword.value = '';
+    			}else if(!type && keyword){
     				alert("검색 종류를 선택하세요.");
     				return false;
-    			}
-    			if(!keyword){
-    	            alert("키워드를 입력하세요.");
+    			}else if(!keyword && type){
+    				alert("키워드를 입력하세요.");
     	            return false;
-    	        }      			
+    			}
+    			
+    			
     			$("input[name='type']").val(type);
     			$("input[name='keyword']").val(keyword);
     			$("input[name='pageNum']").val(1);

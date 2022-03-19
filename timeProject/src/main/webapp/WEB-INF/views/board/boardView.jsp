@@ -57,15 +57,13 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="noticeView_contents">
-                            <textarea name="content" cols="140" rows="20" class="noticeView_inp_content" readonly>
-                                ${boardView.content }
-                            </textarea>
+                            <textarea name="content" cols="140" rows="20" class="noticeView_inp_content" readonly>${boardView.content }</textarea>
                         </td>
                     </tr>
                 </table>
                 <div class="noticeView_listBtn_div clear">
-                    <a href="/board/board_list">목록</a>
-                    <a href="/board/boardmodify?bno=${boardView.bno }">수정</a>
+                    <a href="#" class="boardList_aTag_Btn">목록</a>
+                    <a href="#" class="boardmodify_aTag_Btn">수정</a>
                 </div>
                 <div class="noticeView_move_div">
                     <ul>
@@ -82,8 +80,26 @@
             </div>
         </div>
     </div>
+   	<form id="infoForm" action="/board/boardmodify" method="get">
+   		<input type="hidden" id="bno" name="bno" value='<c:out value="${boardView.bno }"/>'>
+   	</form>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
     </div>
+    <script>
+    	let form = $("#infoForm");
+    	
+    	/* 게시글 목록 버튼 */
+    	$(".boardList_aTag_Btn").on("click", function(e){
+    		form.find("#bno").remove();
+    		form.attr("action", "/board/board_list");
+    		form.submit();
+    	});
+    	
+    	$(".boardmodify_aTag_Btn").on("click", function(e){
+    		form.attr("action", "/board/boardmodify");
+    		form.submit();
+    	});
+    </script>
 </body>
 </html>

@@ -18,6 +18,13 @@ public interface BoardService {
 	//게시물 수정
 	void boardmodify(BoardVO board);
 	
+	//게시물 삭제
+	int boardDelete(int bno);
+	
 	//게시물 총 갯수
 	int getBoardTotal(Criteria cri);
+	
+	//조회수 올리기
+	int updateViewCnt(int bno);
+	
 }
