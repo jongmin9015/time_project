@@ -38,9 +38,9 @@
                         </tr>
                         <tr>
                             <th scope="row">작성자</th>
-                            <td><input type="text" name="writer" value="${boardView.writer } class="noticeWrite_inp noticeWrite_inp_writer"></td>
+                            <td><input type="text" name="writer" value="${boardView.writer }" class="noticeWrite_inp noticeWrite_inp_writer"></td>
                         </tr>
-                        <!-- <tr class="noticeView_etcArea">
+                        <tr class="noticeView_etcArea">
                             <td colspan="2">
                                 <ul class="clear">
                                     <li class="noticeView_date">
@@ -53,35 +53,78 @@
                                     </li>
                                 </ul>
                             </td>
-                        </tr> -->
+                        </tr>
                         <tr>
                             <td colspan="2" class="noticeView_contents">
-                                <textarea name="content" cols="140" rows="20" value="${boardView.content }" class="noticeWrite_inp_content"></textarea>
+                                <textarea name="content" cols="140" rows="20" class="noticeWrite_inp_content">${boardView.content }</textarea>
                             </td>
                         </tr>
                     </table>
                     <div class="noticeView_listBtn_div clear">
                         <button type="submit" class="noticeWrite_submitBtn">수정</button>
-                        <a href="javascript:history.back()" class="noticeWrite_backBtn">이전</a>
+                        <a href="#" class="noticeWrite_backBtn boardDelete_aTag_Btn">삭제</a>
+                        <a href="#" class="noticeWrite_backBtn boardView_aTag_Btn">수정취소</a>
+                        <a href="#" class="noticeWrite_backBtn boardList_aTag_Btn">목록</a>
                     </div>
-                    <!-- <div class="noticeView_move_div">
-                        <ul>
-                            <li class="noticeView_prev clear">
-                                <strong>이전글</strong>
-                                <a href="">[가격인상공지] [지위픽] DOG 에어드라이 사슴고기 1kg 외 52건 (2022 3. 18 ~)</a>
-                            </li>
-                            <li class="noticeView_next clear">
-                                <strong>다음글</strong>
-                                <a href="">[가격인상공지] [온맘] 엄마의식탁 김자반 (2022 3. 18 ~)</a>
-                            </li>
-                        </ul>
-                    </div> -->
+
                 </div>
             </form>
         </div>
     </div>
+    <form id="infoForm" action="/board/boardmodify" method="get">
+    	<input type="hidden" id="bno" name="bno" value='<c:out value="${boardView.bno }"/>'>
+    </form>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
     </div>
+    <script>
+    $(document).ready(function(){
+    	/* 등록 수정 삭제 시 alert창 띄우기 */
+    	let result = '<c:out value="${result}"/>';    	
+    	
+    	checkAlert(result);
+    	console.log(result);
+    	
+    	function checkAlert(result){
+    		if(result === ''){
+    			return;
+    		}
+    		if(result === "enrol success"){
+    			alert("등록이 완료되었습니다.");
+    		}
+    		if(result === "modify success"){
+    			alert("수정이 완료되었습니다.");
+    		}
+    		if(result === "delete success"){
+    			alert("삭제가 완료되었습니다.");
+    			console.log("test");
+    		}
+    	}
+    });
+    
+    	let form = $("#infoForm");
+    	let mForm = $("#noticewriter_frm");
+    	
+    	/* 목록 페이지 이동 */
+    	$(".boardList_aTag_Btn").on("click", function(e){
+    		form.find("#bno").remove();
+    		form.attr("action", "/board/board_list");
+    		form.submit();
+    	});
+    	
+    	/* 수정 취소 버튼 */
+    	$(".boardView_aTag_Btn").on("click", function(e){
+    		form.attr("action", "/board/boardView");
+    		form.submit();
+    	});
+    	
+    	/* 삭제 버튼 */    	
+    	$(".boardDelete_aTag_Btn").on("click", function(e){
+    		form.attr("action", "/board/boardDelete");
+    		form.attr("method", "post");
+    		form.submit();
+    	});
+    	
+    </script>
 </body>
 </html>

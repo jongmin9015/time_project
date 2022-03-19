@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.tis.domain.BoardVO;
@@ -61,7 +62,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
 	public void boardGetView(Model model, @RequestParam("bno")int bno) {
 		//조회수 증가
-//		boardService.increaseViewcnt(bno, session);
+		boardService.updateViewCnt(bno);
 		
 		BoardVO board = boardService.boardView(bno);
 		model.addAttribute("boardView", board);
@@ -85,10 +86,12 @@ public class BoardController {
 	}
 	
 	//게시글 삭제
-//	@RequestMapping(value = "/boarddelete")
-//	public String delete(@RequestParam("bno")int bno) {
-//		boardService.delete(bno);
-//		return "redirect:/board/board_list";
-//	}
+	@RequestMapping(value="/boardDelete")
+	public String boardDelete(int bno) {
+		boardService.boardDelete(bno);
+		log.info("get board_list......................" + "boardDelete");
+		return "redirect:/board/board_list";
+	}
+	
 	
 }

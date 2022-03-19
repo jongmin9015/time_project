@@ -42,11 +42,26 @@ public class BoardServiceImpl implements BoardService {
 	public void boardmodify(BoardVO board) {
 		boardMapper.boardmodify(board);
 	}
+	
+	//게시글 삭제
+	@Override
+	public int boardDelete(int bno) {		
+		return boardMapper.boardDelete(bno);
+	}
 
 	//게시글 총 갯수
 	@Override
 	public int getBoardTotal(Criteria cri) {
 		return boardMapper.getBoardTotal(cri);
 	}
+
+	//조회수 올리기
+	@Override
+	public int updateViewCnt(int bno) {
+		return boardMapper.updateViewCnt(bno);
+	}
+
+
+	
 	
 }
