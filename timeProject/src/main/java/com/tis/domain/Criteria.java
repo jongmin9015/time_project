@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class Criteria {
-		
+	//게시판 분류
+	private int bgno;		
 	//검색 키워드
 	private String keyword;
 	//검색 타입

@@ -73,6 +73,7 @@
     </div>
     <form id="infoForm" action="/board/boardmodify" method="get">
     	<input type="hidden" id="bno" name="bno" value='<c:out value="${boardView.bno }"/>'>
+    	<input type="hidden" id="bgno" name="bgno" value='<c:out value="${bgno }"/>'>
     </form>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
@@ -102,27 +103,30 @@
     	}
     });
     
-    	let form = $("#infoForm");
+    	let formModify = $("#infoForm");
     	let mForm = $("#noticewriter_frm");
     	
     	/* 목록 페이지 이동 */
     	$(".boardList_aTag_Btn").on("click", function(e){
-    		form.find("#bno").remove();
-    		form.attr("action", "/board/board_list");
-    		form.submit();
+    		e.preventDefault();
+    		formModify.find("#bno").remove();
+    		formModify.attr("action", "/board/board_list");
+    		formModify.submit();
     	});
     	
     	/* 수정 취소 버튼 */
     	$(".boardView_aTag_Btn").on("click", function(e){
-    		form.attr("action", "/board/boardView");
-    		form.submit();
+    		e.preventDefault();
+    		formModify.attr("action", "/board/boardView");
+    		formModify.submit();
     	});
     	
     	/* 삭제 버튼 */    	
     	$(".boardDelete_aTag_Btn").on("click", function(e){
-    		form.attr("action", "/board/boardDelete");
-    		form.attr("method", "post");
-    		form.submit();
+    		e.preventDefault();
+    		formModify.attr("action", "/board/boardDelete");
+    		formModify.attr("method", "post");
+    		formModify.submit();
     	});
     	
     </script>
