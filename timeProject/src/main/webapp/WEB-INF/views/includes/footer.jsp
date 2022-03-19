@@ -132,19 +132,19 @@
     
                     <li>
     
-                        <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                        <a href="https://www.instagram.com/marketkurly/" class="link_sns" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
     
                     </li>
     
                     <li>
     
-                        <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                        <a href="https://www.facebook.com/marketkurly" class="link_sns" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a>
     
                     </li>
     
                     <li>
     
-                        <a href="#" class="link_sns" target="_blank"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+                        <a href="https://www.youtube.com/channel/UCfpdjL5pl-1qKT7Xp4UQzQg" class="link_sns" target="_blank"><i class="fa-brands fa-youtube fa-2xl"></i></a>
     
                     </li>
     
