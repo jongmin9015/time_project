@@ -25,9 +25,14 @@
         .notice_page_div .notice_page_btn{
         	color: #333;
         }
-        /* 게시글 제목 좌측정렬 */
+        /* 게시글 제목 좌측정렬 및 글자 한줄로만 보이기 */
         .notice_table_contentTitle_td{
+        	display: inline-block;
         	text-align: left !important;
+        	width: 470px !important;
+        	overflow : hidden;
+        	text-overflow: ellipsis;
+        	white-space : nowrap;
         }
     </style>
 </head>
@@ -72,7 +77,7 @@
                                                 <td class="notice_table_contentTitle_td">
                                                     <a href="#">
                                                         <b class="notice_table_con_tit">
-                                                        <a href="/board/boardView?bno=${boardList.bno }" class="notice_table_con_tit_atag">${boardList.title }</a>
+                                                        <a href="/board/boardView?bno=${boardList.bno }&bgno=${pageMaker.cri.bgno}" class="notice_table_con_tit_atag">${boardList.title }</a>
                                                         </b>
                                                     </a>
                                                 </td>
@@ -138,10 +143,23 @@
                 </div>
                 
             </form>
+            <aside class="board_side_menu_bar">
+                <div class="board_side_menu_inner">
+                    <h2>고객센터</h2>
+                    <div class="board_side_menu_list_inner">
+                        <ul class="board_side_menu_list">
+                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
+                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
+                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
             
         </div>
         <!-- 페이징처리 -->
         <form id="boardListmoveForm" method="get" action="/board/board_list">
+	        <input type="hidden" name="bgno" value="${pageMaker.cri.bgno }">
 	        <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
@@ -160,7 +178,29 @@
     			
     		});
     		
+    		let notice = $(".board_side_menu_list_Btn_notic");
+    		let many = $(".board_side_menu_list_Btn_many");
+    		let inquiry = $(".board_side_menu_list_Btn_inquiry");
+    		let fromList = $("#boardListmoveForm");
     		
+    		
+    		notice.on("click",function(e){
+    			e.preventDefault();
+    			fromList.find("input[name='bgno']").val("1");
+    			fromList.submit();
+    		});
+    		
+    		many.on("click",function(e){
+    			e.preventDefault();
+    			fromList.find("input[name='bgno']").val("2");
+    			fromList.submit();
+    		});
+    		
+    		inquiry.on("click",function(e){   
+    			e.preventDefault();
+    			fromList.find("input[name='bgno']").val("3");
+    			fromList.submit();
+    		});
     		
     		
     		//검색

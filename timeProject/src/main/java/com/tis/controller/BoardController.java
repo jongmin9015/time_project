@@ -29,8 +29,8 @@ public class BoardController {
 	
 	//게시글 목록
 	@RequestMapping(value = "/board_list", method = RequestMethod.GET)
-	public void boardList(Model model, Criteria cri){		
-		
+	public void boardList(Model model, Criteria cri, @RequestParam("bgno")int bgno){		
+		cri.setBgno(bgno);
 		List<BoardVO> boardList = boardService.getBoardList(cri);
 		model.addAttribute("boardList", boardList);
 		
@@ -60,20 +60,22 @@ public class BoardController {
 	
 	//게시글 조회
 	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
-	public void boardGetView(Model model, @RequestParam("bno")int bno) {
+	public void boardGetView(Model model, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
 		//조회수 증가
 		boardService.updateViewCnt(bno);
 		
 		BoardVO board = boardService.boardView(bno);
 		model.addAttribute("boardView", board);
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardView");
 	}
 	
 	//게시글 수정 GET
 	@RequestMapping(value = "/boardmodify", method = RequestMethod.GET)
-	public void boardGetmodify(Model model, @RequestParam("bno")int bno) {
+	public void boardGetmodify(Model model, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
 		BoardVO board = boardService.boardView(bno);
 		model.addAttribute("boardView", board);
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardmodify_GET");
 	}
 	
@@ -87,8 +89,9 @@ public class BoardController {
 	
 	//게시글 삭제
 	@RequestMapping(value="/boardDelete")
-	public String boardDelete(int bno) {
+	public String boardDelete(Model model,int bno, @RequestParam("bgno")int bgno) {
 		boardService.boardDelete(bno);
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardDelete");
 		return "redirect:/board/board_list";
 	}

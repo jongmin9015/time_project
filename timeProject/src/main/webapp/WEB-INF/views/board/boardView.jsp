@@ -82,23 +82,24 @@
     </div>
    	<form id="infoForm" action="/board/boardmodify" method="get">
    		<input type="hidden" id="bno" name="bno" value='<c:out value="${boardView.bno }"/>'>
+   		<input type="hidden" id="bgno" name="bgno" value='<c:out value="${bgno }"/>'>
    	</form>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
     </div>
     <script>
-    	let form = $("#infoForm");
+    	let formView = $("#infoForm");
     	
     	/* 게시글 목록 버튼 */
     	$(".boardList_aTag_Btn").on("click", function(e){
-    		form.find("#bno").remove();
-    		form.attr("action", "/board/board_list");
-    		form.submit();
+    		formView.find("#bno").remove();
+    		formView.attr("action", "/board/board_list");
+    		formView.submit();
     	});
     	
     	$(".boardmodify_aTag_Btn").on("click", function(e){
-    		form.attr("action", "/board/boardmodify");
-    		form.submit();
+    		formView.attr("action", "/board/boardmodify");
+    		formView.submit();
     	});
     </script>
 </body>

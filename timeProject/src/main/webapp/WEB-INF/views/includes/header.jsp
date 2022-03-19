@@ -28,7 +28,7 @@
 	                    <a href="/member/login/move" class="link_menu">로그인</a>
 	                </li>
 	                <li class="menu_center">
-	                    <a href="/board/board_list" class="link_menu">고객센터</a>
+	                    <a href="#" class="link_menu">고객센터</a>
 	                    <ul class="sub">
 	                        <li>
 	                            <a href="#">공지사항</a>
@@ -118,6 +118,20 @@
     			</a>
             </div>
         </div>
+        <!-- hidden Form -->
+        <form id="indexMoveForm" method="get" action="/board/board_list">
+	        <input type="hidden" name="bgno" value="1">
+    	</form>
+    	<script>
+    		let formIndex = $("#indexMoveForm");
+    		/* 고객센터 이동 */
+   			$(".link_menu").on("click", function(e){
+   				e.preventDefault();
+   				formIndex.submit();
+   				
+   			});
+    		
+    	</script>
         <!-- HEADER -->
         
         
