@@ -15,4 +15,7 @@ public interface AddressMapper {
 	
 	// 배송지 수정
 	int updateAddress(AddressVO address);
+	
+	// 회원 배송지 조회
+	AddressVO getAddressWithMember(String memberId);
 }

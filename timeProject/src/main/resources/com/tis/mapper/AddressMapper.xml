@@ -17,6 +17,13 @@
 		WHERE memberId = #{memberId}
 	</select>
 	
+	<!-- 회원 배송지 조회 -->
+	<select id="getAddressWithMember" resultType="com.tis.domain.AddressVO">
+		SELECT address, addressSub, zipcode, memberId
+		FROM tbl_member
+		WHERE memberId = #{memberId}
+	</select>
+	
 	<!-- 배송지 삭제 -->
 	<delete id="deleteAddress">
 		DELETE FROM tbl_address

@@ -1,24 +1,3 @@
-//로그인 유효성
-function login_check(){
-    var id = document.getElementById("id");
-    var pw = document.getElementById("password");
-
-    if(id.value == ""){
-        alert("아이디를 입력하세요.");
-        id.focus();
-        return false;
-    };
-
-    if(pw.value == ""){
-        alert("비밀번호를 입력하세요.");
-        pw.focus();
-        return false;
-    };
-
-    document.login_form.submit();
-
-};
-
 
 // 회원가입 성별 RADIO버튼
 function genderRadioBtn(v){
@@ -53,7 +32,7 @@ function checkId() {
 	}
 	
 	$.ajax({
-		url : '/member/login/check_id/' + memberId,
+		url : '/member/signup/check_id/' + memberId,
 		type : 'get',
 		contentType : 'application/text; charset=UTF-8',
 		success : function(res) {
@@ -63,9 +42,9 @@ function checkId() {
 			alert(res);
 			
 		},
-		error : function (er) {
+		error : function (error) {
 			overLapId.value = 'n';
-			alert(er);
+			alert('이미 존재하는 아이디 입니다');
 		}
 	});
 }
@@ -102,7 +81,7 @@ function checkEmail() {
 	}
 	
 	$.ajax({
-		url : '/member/login/check_email/' + email,
+		url : '/member/signup/check_email/' + email,
 		type : 'get',
 		contentType : 'application/text; chartset=UTF-8',
 		success : function(res) {
@@ -111,7 +90,7 @@ function checkEmail() {
 			emailInput.setAttribute('readonly', 'readonly');
 		},
 		error : function(er) {
-			alert(er);
+			alert('이미 존재하는 이메일 입니다');
 			emailOverlapInput.value = 'n';
 		}		
 	})	
@@ -137,7 +116,7 @@ function phoneAuthh() {
 	}
 	
 	$.ajax({
-		url : '/member/login/sms/' + phone,
+		url : '/member/signup/sms/' + phone,
 		type : 'get',
 		contentType : 'application/text; charset=UTF-8',
 		success : function(res) {

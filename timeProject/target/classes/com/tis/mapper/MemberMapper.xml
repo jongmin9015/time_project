@@ -3,12 +3,42 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tis.mapper.MemberMapper">
+
+	<!-- 회원 멤버 칼럼 설정 -->
+	<resultMap type="com.tis.domain.MemberVO" id="memberMap">
+		<id property="memberId" column="memberId"/>
+		<result property="memberPw" column="memberPw"/>
+		<result property="memberName" column="memberName"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<result property="address" column="address"/>
+		<result property="addressSub" column="addressSub"/>
+		<result property="zipcode" column="zipcode"/>
+		<result property="gender" column="gender"/>
+		<result property="birth" column="birth"/>
+		<result property="regDate" column="regDate"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.tis.security.domain.AuthVO" id="authMap">
+		<result property="memberId" column="memberId"/>
+		<result property="auth" column="auth"/>
+	</resultMap>
+	
+	<!-- 로그인 -->
+	<select id="getLogin" resultType="com.tis.domain.MemberVO">
+		SELECT * 
+		FROM tbl_member
+		WHERE memberId = #{memberId} AND memberPw = #{memberPw}
+	</select>
+
 	
 	<!-- 회원 조회  WITH ID-->
-	<select id="getMemberWithId" resultType="com.tis.domain.MemberVO">
-		SELECT *
-		FROM tbl_member
-		WHERE memberId = #{memberId}
+	<select id="getMemberWithId" resultMap="memberMap">
+		SELECT m.memberId,memberPw,memberName,phone,email,address,addressSub,zipcode,gender,birth,auth
+		FROM tbl_member m LEFT JOIN tbl_member_auth a
+		ON m.memberId = a.memberId 
+		WHERE m.memberId = #{memberId}
 	</select>
 	
 	<!-- 회원 조회 WITH EMAIL -->
@@ -18,13 +48,17 @@
 		WHERE email = #{email}
 	</select>
 	
-	
-	
 	<!-- 회원 가입 -->
 	<insert id="insertMember">
 		INSERT INTO tbl_member (memberId,memberPw,memberName,phone,email,
 		address,addressSub,zipcode,gender,birth)
 		VALUES (#{memberId},#{memberPw},#{memberName},#{phone},#{email},
 		#{address},#{addressSub},#{zipcode},#{gender},#{birth})	
+	</insert>
+	
+	<!-- 권한 부여 -->
+	<insert id="insertAuth">
+		INSERT INTO tbl_member_auth (memberId)
+		VALUES (#{memberId})		
 	</insert>
 </mapper>

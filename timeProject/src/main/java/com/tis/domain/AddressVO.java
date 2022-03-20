@@ -7,6 +7,6 @@ public class AddressVO {
 
 	private String address;
 	private String addressSub;
-	private int zipcode;
+	private String zipcode;
 	private String memberId;
 }

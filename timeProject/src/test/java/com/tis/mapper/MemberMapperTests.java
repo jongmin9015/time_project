@@ -14,6 +14,7 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 
+@Log4j
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class MemberMapperTests {
 	
@@ -29,11 +30,9 @@ public class MemberMapperTests {
 	@Test
 	public void test() {
 		MemberVO member = new MemberVO();
-		member.setEmail("kimjisoo3653@nate.com");
-		/* memberService.getMemberWithEmail("kimjisoo3653@nate.com"); */
-		
-		int result = member.getEmail().indexOf(".co");
-		System.out.println(result);
-	
+		member.setMemberId("kimjisoo1122");
+		member.setMemberPw("azsxd1122");
+		MemberVO vo = memberService.getMemberWithId("kimjisoo3653");
+		vo.getAuthList().forEach(auth -> log.info(auth));
 	}
 }

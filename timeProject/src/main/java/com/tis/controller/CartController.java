@@ -55,19 +55,22 @@ public class CartController {
 		model.addAttribute("sessiondId");
 		String memberId = (String) request.getSession().getAttribute("sessionId");
 
+		// 비회원일때 세션아이디로 배송지 설정
 		if(cart.getMemberId() == null) {
-			cart.setMemberId(memberId);
-		}
-
+			cart.setMemberId(memberId);		
+		}	
+		
+		// 권한 부여
+		
 		int deliveryFee = 3000;
 		int totalPrice = 0;
+		
+		AddressVO address = addressService.getAddress(cart.getMemberId());
 		
 		List<GoodsVO> cartList = cartService.getCarList(cart);
 		if (cartList.isEmpty()) {
 			deliveryFee = 0;
-		} 
-		
-		AddressVO address = addressService.getAddress(cart.getMemberId());
+		} 	
 	
 		for (GoodsVO goods : cartList) {
 			totalPrice += goods.getGoodsPrice() * goods.getCartCount();
@@ -85,10 +88,8 @@ public class CartController {
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("deliveryFee", deliveryFee);
-		model.addAttribute("memberId", cart.getMemberId());
 		model.addAttribute("address", address);
-		
-		
+				
 		log.info("move to cart..........................");
 		return "shop/cart/shop_cart";
 	}

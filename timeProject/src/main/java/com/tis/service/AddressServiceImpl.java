@@ -36,6 +36,12 @@ public class AddressServiceImpl implements AddressService {
 	public int updateAddress(AddressVO address) {
 		return addressMapper.updateAddress(address);
 	}
+	
+	// 회원 배송지 조회
+	@Override
+	public AddressVO getAddressWithMember(String memberId) {
+		return addressMapper.getAddressWithMember(memberId);
+	}
 
 	
 }

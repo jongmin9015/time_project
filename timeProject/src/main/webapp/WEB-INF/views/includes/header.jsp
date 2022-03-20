@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,20 +13,41 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="/resources/js/javascript.js" defer></script>
+    <script type="/resources/js/header.js" defer></script>
 </head>
 <body>
 
         <div id="warp">
         <!-- User Menu -->
+        <sec:authentication property="principal" var="pinfo"/>
+        
+        
 	        <div id="user_menu">
 	            <ul class="list_menu">
+	           		<sec:authorize access="isAnonymous()">          		
 	                <li class="menu_join">
-	                    <a href="/member/login/signup" class="link_menu menu_join">회원가입</a>
+	                    <a href="/member/signup/move" class="link_menu menu_join">회원가입</a>
 	                </li>
-	                <li class="menu_login">
-	                    <a href="/member/login/move" class="link_menu">로그인</a>
+                	<li class="menu_login">
+		                    <a href="/member/login/move" class="link_menu">로그인</a>
 	                </li>
+	                </sec:authorize>
+	                
+					<sec:authorize access="isAuthenticated()">
+						<li id="welcome">
+		                    <div class="welcome_div">웰컴</div>
+	                	</li>
+	                	<li class="menu_login" id="login_user">	
+		                    <a href="#" class="link_menu" >${pinfo.member.memberName} 님</a>
+		                     <ul class="login_user_menu">
+               					  <li><a href="#">개인정보수정</a></li>
+                     			  <li> <a href="#">배송지관리</a></li>
+                   				  <li><a href="/member/login/logout">로그아웃</a></li>
+               			     </ul>
+
+		                </li>
+					</sec:authorize>
+
 	                <li class="menu_center">
 	                    <a href="#" class="link_menu">고객센터</a>
 	                    <ul class="sub">
@@ -110,13 +131,20 @@
 	                    </span>          
                 </form>
             </div> 
-
-
-            <div class="cart">
-                <a href="/shop/cart/move" class="cart_icon">
-                        <i class="fa-solid fa-cart-shopping"></i>
-    			</a>
-            </div>
+			<sec:authorize access="isAnonymous()">
+	            <div class="cart">
+	                <a href="/shop/cart/move" class="cart_icon">
+	                        <i class="fa-solid fa-cart-shopping"></i>
+	    			</a>
+	            </div>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+	            <div class="cart">
+	                <a href="/shop/cart/move?memberId=${pinfo.member.memberId}" class="cart_icon">
+	                        <i class="fa-solid fa-cart-shopping"></i>
+	    			</a>
+	            </div>
+            </sec:authorize>
         </div>
         <!-- hidden Form -->
         <form id="indexMoveForm" method="get" action="/board/board_list">
@@ -135,29 +163,6 @@
         <!-- HEADER -->
         
         
-<!-- <script>
-$(document).ready(function() {
-	
-        var wind = $(window),
-        header = $('#gnbMenu'),
-        headerOffsetTop = header.offset().top;
-
-/*         console.log(headerOffsetTop);
-        console.log(wind.scrollTop()); */
-        
-        wind.scroll(function() {
-        	
-           if(wind.scrollTop()>= headerOffsetTop) {
-        	   
-            header.addClass('sticky');
-            
-           } else {
-        	   
-            header.removeClass('sticky');
-          }
-        });
-        
-});//ready
-</script> -->
 </body>
+
 </html>

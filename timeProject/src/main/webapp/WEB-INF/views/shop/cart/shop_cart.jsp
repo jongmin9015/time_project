@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,13 +121,13 @@
                                 <c:when test="${address == null}">                                                    
                                		 <div class="cartPage_address_input_btn_div">
 	                           		 	<button class="cartPage_address_input_btn" onclick="showPopUp()" >
-	                           		 	<i class="fa-solid fa-magnifying-glass"></i>&nbsp;배송지를 검색하세요</button>
+	                           		 	<i class="fa-solid fa-magnifying-glass"></i> 배송지를 검색하세요</button>
 	                       	    	</div>                       	    
 	                       	    </c:when>
 	                       	    <c:otherwise>
 	                       	    	 <div class="cartPage_address_input_btn_div">
                            		 		<button class="cartPage_address_input_btn" onclick="showPopUpdate()" >
-                           		 		<i class="fa-solid fa-magnifying-glass"></i>&nbsp;배송지 변경</button>
+                           		 		<i class="fa-solid fa-magnifying-glass"></i> 배송지 변경</button>
                        	    		</div>
 	                       	    </c:otherwise>
 							</c:choose>
@@ -195,8 +196,15 @@
     
     </div>
 
+<sec:authentication property="principal" var="pinfo"/>
+
 <form action="/shop/order/move" method="post" class="order_moveForm">
-    <input type="hidden" name="memberId" value="${memberId}">	
+	<sec:authorize access="isAnonymous()">
+		<input type="hidden" name="memberId" value="${address.memberId}">	
+	</sec:authorize>
+	<sec:authorize access="isAuthenticated()">
+		 <input type="hidden" name="memberId" value="${pinfo.member.memberId}">	
+	</sec:authorize>  
     <input type="hidden" name="deliveryFee" value="">	
  </form>
 <script>
@@ -206,7 +214,15 @@
 	const checkBox = $("input[name='cartPage_checkbox_item_list']");
 	const checkAllBox = $(".checkAll");
 	let deliveryFee = ${deliveryFee};
-	let memberId = "${memberId}" || "${sessionId}";
+	
+	
+	'<sec:authorize access="isAnonymous()">'
+		let memberId = "${sessionId}";
+	'</sec:authorize>'
+	'<sec:authorize access="isAuthenticated()">'
+		let memberId = "${pinfo.member.memberId}";
+	'</sec:authorize>' 
+	
 	
 	// 페이지 로드시 장바구니 전체상품 체크	
 	checkBox.attr("checked", true);

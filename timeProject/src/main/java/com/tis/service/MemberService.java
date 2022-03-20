@@ -4,6 +4,9 @@ import com.tis.domain.MemberVO;
 
 public interface MemberService {
 	
+	// 로그인
+	MemberVO getLogin(MemberVO user);
+	
 	// 회원 조회  WITH ID
 	MemberVO getMemberWithId(String memberId);
 	
@@ -13,7 +16,8 @@ public interface MemberService {
 	// 회원 등록
 	int insertMember(MemberVO member);
 
-
+	// 권한 부여
+	int insertAuth(String memberId);
 
 	
 
