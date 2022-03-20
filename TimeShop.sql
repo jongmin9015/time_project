@@ -13,6 +13,8 @@ create sequence seq_board
 start with 1
 increment by 1;
 
+
+
 --board value
 insert into tbl_board (bno, title, content, writer)
 values (seq_board.nextval, '[가격인상공지] [페이브] 블렌드 원두(블랙 블렌드) 외 12건 (2022 3. 21 ~)', '

@@ -24,6 +24,9 @@ public class BoardVO {
 	
 	//페이징 처리
 	private Criteria cri;
+	
+	//게시판 분류
+	private int bgno;
 
 	public BoardVO() {
 	}

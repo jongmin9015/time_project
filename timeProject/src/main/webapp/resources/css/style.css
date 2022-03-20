@@ -454,7 +454,13 @@ li > .link {
 
 /* myPage */
 
-.snb{
+/* 고객센터 사이드 메뉴 시작 */
+.board_side_menu_bar{
+    position: absolute;
+    top: 0;
+    left: -330px;
+}
+.board_side_menu_inner{
     display: block;
     position: relative;
     margin-left: 20px;
@@ -463,32 +469,38 @@ li > .link {
     overflow :hidden;
 }
 
-.snb>h2{
+.board_side_menu_inner>h2{
     margin-bottom: 40px;
     margin-left: 20px;
 }
 
-.inner_sub{
+.board_side_menu_list_inner{
     border: 1px solid #f2f2f2;
 }
 
-.sub_list_menu li{
+.board_side_menu_list li{
     border-bottom: 1px solid #f2f2f2;
 }
 
-.sub_list_menu li:last-child{
+.board_side_menu_list li:last-child{
     border-bottom: 0;
 }
 
-.sub_list_menu li a{
+.board_side_menu_list li a{
     display: block;
-    color: #666;
+    color: #333;
     font-size: 14px;
     padding: 14px 0 16px 20px;
     line-height: 20px;
 }
+.board_side_menu_click_aTag{    
+    font-weight: 700;
+    cursor: default;
+    color: #5f0080;
+    background-color: rgba(179, 179, 179, 30%);
+}
 
-.sub_list_menu li a:hover{
+.board_side_menu_list li a:hover{
     display: block;
     color: #5f0080;
     background-color: rgba(179, 179, 179, 30%);
@@ -498,11 +510,11 @@ li > .link {
 
 }
 
-.arr{
+.side_menu_arr{
     position: relative;
 }
 
-.arr::after{
+.side_menu_arr::after{
     content: '';
     width: 10px;
     height: 10px;
@@ -514,6 +526,7 @@ li > .link {
     top: -30px;
     left: 160px;
 }
+/* 고객센터 사이드 메뉴 끝 */
 
 /* mypage 공통 */
 section{
@@ -3982,6 +3995,7 @@ input[name="deliveryMessage"] {
 
 /* notice 시작 */
 .notice_inner{
+    position: relative;
     width: 820px;
     margin: 0 auto;
 }
@@ -4341,6 +4355,7 @@ div.noticeView_listBtn_div>.noticeWrite_backBtn:hover{
 .notice_page_btn notice_page_fir{
 	text-decoration: none;
 }
+<<<<<<< HEAD
 
 /* =================================================================== */
 
