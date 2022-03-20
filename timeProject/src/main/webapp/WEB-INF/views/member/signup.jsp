@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/resources/js/javascript.js" defer></script>
-    <script src="/resources/js/member.js" defer></script>
+    <script src="/resources/js/signup.js" defer></script>
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <title>signup</title>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="signup_forminner">
                     <div class="signup_formBox">                        
-                        <form action="/member/login/signup" name="signup_form" method="post" class="signup_form">
+                        <form action="/member/signup/signup_ok" name="signup_form" method="post" class="signup_form" autocomplete="off">
                             <table class="signup_formtable">
                                 <tr>
                                     <th>아이디<span class="signup_check">*</span></th>
@@ -180,7 +180,7 @@
                                         <tr>
                                             <td class="signup_focusAgree_sub">
                                                 <label class="signup_focusAgree_check">                                                    
-                                                    <input type="checkbox" name="ordAgree" value="y" class="agreeCheck"onclick="checkSelectAll(this)">                                              
+                                                    <input type="checkbox" name="ordAgree" value="y" class="agreeCheck" onclick="checkSelectAll(this)">                                              
                                                     <span class="signup_check_span_ico"></span>
                                                     <span class="signup_subcheck_span">이용약관 동의</span>
                                                     <span class="signup_emph">(필수)</span>
@@ -303,6 +303,7 @@
             </div>
         </div>
     </div>
+   
  </form>
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
@@ -310,14 +311,6 @@
 
 </body>
 <script>
-
-	const birthDate = "19921122";
-	
-	const date = new Date(birthDate);
-	
-	
-	
-	console.log(date);
 	
 	function show(){
 	    document.querySelector(".juso_background").className = "juso_background show";

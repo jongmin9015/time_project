@@ -150,7 +150,6 @@
                                 <div class="payPage_addrinfo_div">
                                     <span class="payPage_addrinfo_default" id="addrDefault" data-text="기본배송지">기본배송지</span> <br>                              
                                     <span class="payPage_addrinfo">
-                                        ${address.address} ${address.addressSub} 
                                     </span>
                                 </div>
                             </div>
@@ -160,8 +159,8 @@
                                 </h3>
                                 <div class="payPage_receiving_div">                                    
                                     <div class="payPage_receiving_info">
-                                        <span class="payPage_receiving_name">${member.memberName}</span>
-                                    	<span class="payPage_receiving_phone">${member.phone}</span>
+                                        <span class="payPage_receiving_name"></span>
+                                    	<span class="payPage_receiving_phone"></span>
                                     </div>
                                    
                                     <div class="payPage_receiving_place_div">                                    

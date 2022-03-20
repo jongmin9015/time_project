@@ -233,7 +233,7 @@ add CONSTRAINT fk_member foreign key (address) REFERENCES tbl_address (address);
 create table tbl_address(
     address varchar2(200),
     addressSub varchar2(100),
-    zipcode number(10),
+    zipcode varchar2(10),
     memberId varchar2(200)
 );
 
@@ -279,3 +279,19 @@ create table tbl_board(
     viewcnt number default 0,       --조회수
     PRIMARY key(bno)                --게시물 번호 기본키설정
 );
+
+
+< 스프링 시큐리티 권한 >
+create table tbl_member_auth(
+    memberId varchar2(200),
+    auth varchar2(50),
+    CONSTRAINT fk_member_auth foreign key(memberId) REFERENCES tbl_member(memberId)
+);
+
+< 자동 로그인 >
+  create table persistent_logins (	
+    username VARCHAR2(64) NOT NULL, 
+	series VARCHAR2(64) primary key,
+	token VARCHAR2(64) NOT NULL, 
+	last_used TIMESTAMP (6) NOT NULL
+     );

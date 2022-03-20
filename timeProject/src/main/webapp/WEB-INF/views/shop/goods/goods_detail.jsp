@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -291,8 +292,17 @@
 
 <script>
 
-	const memberId = '${memberid}' || '${sessionId}';
+	// 로그인된 아이디 정보
+	'<sec:authorize access="isAuthenticated()">'
+	let memberId = '<sec:authentication property="principal.member.memberId"/>'
+	'</sec:authorize>'
+	
+	'<sec:authorize access="isAnonymous()">'
+	let memberId = "${sessionId}";
+	'</sec:authorize>
+
 	const goodsNo = '${goods.goodsNo}';
+	
 	
 </script>
 </html>

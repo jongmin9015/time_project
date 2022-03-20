@@ -1,4 +1,3 @@
-
 // Header 메뉴바 고정
 $(document).ready(function() {
 	
@@ -17,7 +16,21 @@ $(document).ready(function() {
       }
        
     });
+    
+    const login_user = document.querySelector('#login_user');  
+    const login_user_menu = document.querySelector('.login_user_menu');  
+    
+    login_user.addEventListener('mouseover', function() {
+    	
+    	login_user_menu.style.display = 'block';
+    });
+    login_user_menu.addEventListener('mouseout', function() {
+    	
+    	login_user_menu.style.display = 'none';
+	});
+   
 });
+
 
 // 전체 검색
 function search_form(){

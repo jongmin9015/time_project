@@ -13,6 +13,12 @@ public class MemberServiceImpl implements MemberService {
 
 	private final MemberMapper memberMapper;
 	
+	// 로그인
+	@Override
+	public MemberVO getLogin(MemberVO user) {
+		return memberMapper.getLogin(user);
+	}
+	
 	// 회원 조회  WITH ID
 	@Override
 	public MemberVO getMemberWithId(String memberId) {
@@ -31,5 +37,12 @@ public class MemberServiceImpl implements MemberService {
 	public int insertMember(MemberVO member) {
 		return memberMapper.insertMember(member);
 	}
+	
+	// 권한 부여
+	@Override
+	public int insertAuth(String memberId) {
+		return memberMapper.insertAuth(memberId);
+	}
+
 
 }

@@ -24,9 +24,7 @@ public class AddressMapperTests {
 	public void insert() {
 		
 		AddressVO address = new AddressVO();
-		address.setAddress("지수네집");
-		address.setMemberId("guest");
-		address.setZipcode(22323);
+	
 		
 		addressService.insertAddress(address);
 	}

@@ -1,14 +1,7 @@
 package com.tis.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.tis.domain.GoodsVO;
-import com.tis.mapper.GoodsMapper;
 import com.tis.service.GoodsService;
 
 import lombok.AllArgsConstructor;
@@ -43,7 +35,7 @@ public class HomeController {
 		model.addAttribute("goodsList", goodsList);
 		model.addAttribute("sessionId", sessionId);
 		
-		log.info("main index home............................." + sessionId);
+		log.info("main index home............................." );
 		return "index";
 	}
 	
