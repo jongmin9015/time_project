@@ -60,22 +60,23 @@ public class CartController {
 			cart.setMemberId(memberId);		
 		}	
 		
-		// 권한 부여
-		
+		// 기본 배송비 OR 총가격 설정
 		int deliveryFee = 3000;
 		int totalPrice = 0;
 		
+		// 해당 ID로 조회하여  주소지를 가져옵니다 (없을시 배송지 설정)
 		AddressVO address = addressService.getAddress(cart.getMemberId());
 		
+		// 상품이 없다면 배송비 0원
 		List<GoodsVO> cartList = cartService.getCarList(cart);
 		if (cartList.isEmpty()) {
 			deliveryFee = 0;
 		} 	
-	
+		// 장바구니 총가격 설정
 		for (GoodsVO goods : cartList) {
 			totalPrice += goods.getGoodsPrice() * goods.getCartCount();
 		}
-			
+		// 가격이 2만원이 넘어가면 배송지 0원 설정	
 		if (totalPrice < 20000 && totalPrice > 0) {
 			int freeDelivery = 20000 - totalPrice;
 			DecimalFormat df = new DecimalFormat("###,###,###");		

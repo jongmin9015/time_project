@@ -44,6 +44,7 @@
 	<!-- Componet Scan -->
 	<mybatis-spring:scan base-package="com.tis.mapper"/>
 	<context:component-scan base-package="com.tis.service"></context:component-scan>
+
 	
 	
 	

@@ -435,6 +435,7 @@
 		} 	
 	});
 	
+	// 선택 삭제 버튼
 	$(".cartPage_select_menu_delBtn").on("click", function(e) {
 		
  		e.preventDefault();
