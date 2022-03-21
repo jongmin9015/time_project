@@ -43,7 +43,6 @@ public class GoodsController {
 		CategoryVO category = new CategoryVO();
 		category.setCategoryTitle(categoryTitle);
 		
-
 		model.addAttribute("goodsList", goodsService.getGoodsListWithPaging(goods));
 		model.addAttribute("categorys", categoryService.getCategory(category));
 		model.addAttribute("categoryMainTitle", categoryTitle);
@@ -56,8 +55,7 @@ public class GoodsController {
 	
 	// 상품 서브 리스트
 	@RequestMapping(value = "goods_sublist", method = RequestMethod.GET)
-	public String goodsSubList(Model model,@RequestParam("category")String categorySubTitle, Criteria cri, String priceSort) {
-
+	public String goodsSubList(@RequestParam("category")String categorySubTitle, Criteria cri, String priceSort, Model model) {
 
 		GoodsVO goods = new GoodsVO(cri);
 		goods.setCategorySubTitle(categorySubTitle);
