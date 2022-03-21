@@ -28,10 +28,10 @@
 	<select id="getBoardList" resultType="com.tis.domain.BoardVO">
 		<![CDATA[
         
-	        select bno, title, content, writer, regdate, viewcnt 
+	        select bno, title, content, writer, regdate, viewcnt, category
 	        	from(
 	        
-	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt
+	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt, category
 	                  
 	                from (select * from tbl_board where bgno = #{bgno} order by bno desc)
 	                where rownum <= #{pageNum} * #{amount} 

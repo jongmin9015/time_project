@@ -45,11 +45,11 @@
                                 <ul class="clear">
                                     <li class="noticeView_date">
                                         <strong class="noticeView_th">작성일</strong>
-                                        <span class="noticeView_td">2022-01-03</span>
+                                        <span class="noticeView_td"><fmt:formatDate pattern="yyyy-MM-dd" value="${boardView.regdate }"/></span>
                                     </li>
                                     <li class="noticeView_hit">
                                         <strong class="noticeView_th">조회수</strong>
-                                        <span class="noticeView_td">34528</span>
+                                        <span class="noticeView_td">${boardView.viewcnt }</span>
                                     </li>
                                 </ul>
                             </td>

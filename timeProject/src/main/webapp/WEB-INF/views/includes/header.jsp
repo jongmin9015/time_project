@@ -49,7 +49,7 @@
 					</sec:authorize>
 
 	                <li class="menu_center">
-	                    <a href="#" class="link_menu">고객센터</a>
+	                    <a href="#" class="link_menu header_noticeMove">고객센터</a>
 	                    <ul class="sub">
 	                        <li>
 	                            <a href="#">공지사항</a>
@@ -153,7 +153,7 @@
     	<script>
     		let formIndex = $("#indexMoveForm");
     		/* 고객센터 이동 */
-   			$(".link_menu").on("click", function(e){
+   			$(".header_noticeMove").on("click", function(e){
    				e.preventDefault();
    				formIndex.submit();
    				
