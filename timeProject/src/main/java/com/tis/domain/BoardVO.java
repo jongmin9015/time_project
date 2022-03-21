@@ -21,6 +21,7 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private int viewcnt;
+	private String category;
 	
 	//페이징 처리
 	private Criteria cri;

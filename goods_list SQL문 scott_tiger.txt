@@ -214,14 +214,14 @@ create table tbl_member(
     memberId varchar2(200),
     memberPw varchar2(100),
     memberName varchar2(20),
-    phone varhar2(30),
+    phone varchar2(30),
     email varchar2(100), 
     address varchar2(100),
     addressSub varchar2(100),
     zipcode varchar2(10),
     gender varchar2(10),
     birth date,
-    regDate date default sysdate
+    regDate date default sysdate,
     CONSTRAINT pk_member PRIMARY key (memberId)
 );
 

@@ -12,8 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/js/javascript.js"></script>
     <script src="/resources/js/login.js"></script>
-    <link rel="stylesheet" href="/resources/reset.css">
-    <link rel="stylesheet" href="/resources/style.css">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="/resources/js/javascript.js" defer></script>
-    <title>공지사항</title>
+    <title>고객센터</title>
     <style>
     	/* 페이징 번호 클릭시 표시 클래스 */
         .boardList_page_aTag{
@@ -34,6 +34,23 @@
         	text-overflow: ellipsis;
         	white-space : nowrap;
         }
+        /* 글쓰기 버튼 */
+        .bgno3_insert_Btn{
+        	display: block;
+        	float: right;
+		    width: 150px;
+		    line-height: 37px;
+		    font-size: 13px;
+		    text-align: center;
+		    border: 1px solid #795b8f;
+		    color: #fff;
+		    background-color: #795b8f;
+		    cursor: pointer;
+        }
+        .bgno3_insert_Btn:hover{
+        	color: #795b8f;
+        	background-color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -43,62 +60,167 @@
     <div id="warp">
         <div class="notice_inner">
             <div class="notice_head_tit_div">
+            <c:choose>
+            	<c:when test="${pageMaker.cri.bgno == 1}">
                 <h2 class="notice_head_tit">
                     공지사항
                     <span class="notice_head_sub">
                         컬리의 새로운 소식들과 유용한 정보들을 곳에서 확인하세요.
                     </span>
                 </h2>
-
+                </c:when>
+            	<c:when test="${pageMaker.cri.bgno == 2}">
+                <h2 class="notice_head_tit">
+                    자주하는 질문
+                    <span class="notice_head_sub">
+                        고객님들께서 가장 자주하시는 질문을 모두 모았습니다.
+                    </span>
+                </h2>
+                </c:when>
+            	<c:otherwise>
+                <h2 class="notice_head_tit">
+                    1:1 문의
+                    <span class="notice_head_sub">
+                    </span>
+                </h2>
+                </c:otherwise>
+			</c:choose>
                 <!-- <a href="/board/boardwrite">게시글 등록</a> -->
 
             </div>
             <form id="notice_frm" action="" onsubmit="return false;">
                 <input type="hidden" name="id" value="notice">
                 <div class="notice_table_inner">
-                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td>
-                                <div class="notice_table_div">
-                                    <table class="notice_table" width="100%" cellpadding="0" cellspacing="0">
-                                        <thead>
-                                            <tr class="notice_table_fir_tr">
-                                                <th>번호</th>
-                                                <th>제목</th>
-                                                <th>작성자</th>
-                                                <th>작성일</th>
-                                                <th>조회</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${boardList }" var="boardList">
-                                            <tr class="notice_table_second_tr">
-                                                <td width="50" nowrap align="center">${boardList.bno }</td>
-                                                <td class="notice_table_contentTitle_td">
-                                                    <a href="#">
-                                                        <b class="notice_table_con_tit">
-                                                        <a href="/board/boardView?bno=${boardList.bno }&bgno=${pageMaker.cri.bgno}" class="notice_table_con_tit_atag">${boardList.title }</a>
-                                                        </b>
-                                                    </a>
-                                                </td>
-                                                <td width="100" nowrap align="center">
-                                                    ${boardList.writer }
-                                                </td>
-                                                <td width="100" nowrap align="center" class="notice_eng2">
-                                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${boardList.regdate }"/>
-                                                    
-                                                </td>
-                                                <td width="100" nowrap align="center" class="notice_eng2">
-                                                    ${boardList.viewcnt }
-                                                </td>
-                                            </tr>                                            
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                <c:choose>
+                	<c:when test="${pageMaker.cri.bgno == 1}">
+	                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+	                        <tr>
+	                            <td>
+	                                <div class="notice_table_div">
+	                                    <table class="notice_table" width="100%" cellpadding="0" cellspacing="0">
+	                                        <thead>
+	                                            <tr class="notice_table_fir_tr">
+	                                                <th>번호</th>
+	                                                <th>제목</th>
+	                                                <th>작성자</th>
+	                                                <th>작성일</th>
+	                                                <th>조회</th>
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        <c:forEach items="${boardList }" var="boardList">
+	                                            <tr class="notice_table_second_tr">
+	                                                <td width="50" nowrap align="center">${boardList.bno }</td>
+	                                                <td class="notice_table_contentTitle_td">
+	                                                    <a href="#">
+	                                                        <b class="notice_table_con_tit">
+	                                                        <a href="/board/boardView?bno=${boardList.bno }&bgno=${pageMaker.cri.bgno}" class="notice_table_con_tit_atag">${boardList.title }</a>
+	                                                        </b>
+	                                                    </a>
+	                                                </td>
+	                                                <td width="100" nowrap align="center">
+	                                                    ${boardList.writer }
+	                                                </td>
+	                                                <td width="100" nowrap align="center" class="notice_eng2">
+	                                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${boardList.regdate }"/>
+	                                                    
+	                                                </td>
+	                                                <td width="100" nowrap align="center" class="notice_eng2">
+	                                                    ${boardList.viewcnt }
+	                                                </td>
+	                                            </tr>                                            
+	                                        </c:forEach>
+	                                        </tbody>
+	                                    </table>
+	                                </div>
+	                            </td>
+	                        </tr>
+	                    </table>
+                   	</c:when>
+                	<c:when test="${pageMaker.cri.bgno == 2}">
+	                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+	                        <tr>
+	                            <td>
+	                                <div class="notice_table_div">
+	                                    <table class="notice_table" width="100%" cellpadding="0" cellspacing="0">
+	                                        <thead>
+	                                            <tr class="notice_table_fir_tr">
+	                                                <th>번호</th>
+	                                                <th>카테고리</th>
+	                                                <th>제목</th>
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        <c:forEach items="${boardList }" var="boardList">
+	                                            <tr class="notice_table_second_tr">
+	                                                <td width="50" nowrap align="center" style="color: #333; font-size: 12px;">${boardList.bno }</td>
+	                                                
+	                                                <td width="100" nowrap align="center" style="color: #333; font-size: 12px;">
+	                                                    ${boardList.category }
+	                                                </td>
+	                                                <td class="notice_table_contentTitle_td" style="width: 670px !important;">
+	                                                    <a href="#">
+	                                                        <b class="notice_table_con_tit">
+	                                                        <a href="/board/boardView?bno=${boardList.bno }&bgno=${pageMaker.cri.bgno}" class="notice_table_con_tit_atag">${boardList.title }</a>
+	                                                        </b>
+	                                                    </a>
+	                                                </td>
+	                                            </tr>                                            
+	                                        </c:forEach>
+	                                        </tbody>
+	                                    </table>
+	                                </div>
+	                            </td>
+	                        </tr>
+	                    </table>
+                   	</c:when>
+                   	<c:when test="${pageMaker.cri.bgno == 3}">
+	                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+	                        <tr>
+	                            <td>
+	                                <div class="notice_table_div">
+	                                    <table class="notice_table" width="100%" cellpadding="0" cellspacing="0">
+	                                        <thead>
+	                                            <tr class="notice_table_fir_tr">
+	                                                <th style="width= 20px;">번호</th>
+	                                                <th>카테고리</th>
+	                                                <th>제목</th>
+	                                                <th>작성자</th>
+	                                                <th>작성일</th>
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        <c:forEach items="${boardList }" var="boardList">
+	                                            <tr class="notice_table_second_tr">
+	                                                <td width="50" nowrap align="center">${boardList.bno }</td>
+	                                                <td width="100" nowrap align="center" class="notice_eng2">
+	                                                    ${boardList.category }
+	                                                </td>
+	                                                <td class="notice_table_contentTitle_td">
+	                                                    <a href="#">
+	                                                        <b class="notice_table_con_tit">
+	                                                        <a href="/board/boardView?bno=${boardList.bno }&bgno=${pageMaker.cri.bgno}" class="notice_table_con_tit_atag">${boardList.title }</a>
+	                                                        </b>
+	                                                    </a>
+	                                                </td>
+	                                                <td width="100" nowrap align="center">
+	                                                    ${boardList.writer }
+	                                                </td>
+	                                                <td width="100" nowrap align="center" class="notice_eng2">
+	                                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${boardList.regdate }"/>
+	                                                    
+	                                                </td>
+	                                                
+	                                            </tr>                                            
+	                                        </c:forEach>
+	                                        </tbody>
+	                                    </table>
+	                                </div>
+	                            </td>
+	                        </tr>
+	                    </table>
+                   	</c:when>
+                </c:choose>
                     <div class="notice_page_inner">                    	
                         <div class="notice_page_div">
                         	<!-- 이전페이지 -->
@@ -120,6 +242,8 @@
                     </div>
                     <table class="notice_search_table">
                         <tr>
+                        <c:choose>
+                        	<c:when test="${pageMaker.cri.bgno == 1}">
                             <td class="notice_input_txt">
                                 검색어
                             </td>
@@ -138,22 +262,58 @@
                                 <input id="notice_input_box" type="text" name="notice_search[word]" value="${pageMaker.cri.keyword }" required>
                                 
                             </td>
+                            </c:when>
+                        	<c:when test="${pageMaker.cri.bgno == 2}">
+                            
+                            <td class="notice_search_bt">
+                                <a href=""><!--  onclick="return notice_search_frm()" -->
+                                    <img src="/resources/images/notice/search.webp" alt="">
+                                </a>
+                                <input id="notice_input_box" type="text" name="notice_search[word]" value="${pageMaker.cri.keyword }" required>
+                                
+                            </td>
+                            </c:when>
+                        	<c:when test="${pageMaker.cri.bgno == 3}">
+                            
+                            <td class="notice_search_bt">
+                                <a href="#" class="bgno3_insert_Btn">글쓰기</a>
+                                
+                            </td>
+                            </c:when>
+                        </c:choose>
                         </tr>
                     </table>
                 </div>
                 
             </form>
             <aside class="board_side_menu_bar">
-                <div class="board_side_menu_inner">
-                    <h2>고객센터</h2>
-                    <div class="board_side_menu_list_inner">
-                        <ul class="board_side_menu_list">
-                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
-                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
-                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
-                        </ul>
-                    </div>
-                </div>
+            <c:choose>
+            	<c:when test="${pageMaker.cri.bgno != 0}">
+	                <div class="board_side_menu_inner">
+	                    <h2>고객센터</h2>
+	                    <div class="board_side_menu_list_inner">
+	                        <ul class="board_side_menu_list">
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </c:when>
+            	<c:when test="${pageMaker.cri.bgno == 0}">
+	                <div class="board_side_menu_inner">
+	                    <h2>고객센터</h2>
+	                    <div class="board_side_menu_list_inner">
+	                        <ul class="board_side_menu_list">
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항 관리</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문 관리</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의 관리</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_admin ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">관리자Page</a><span class="side_menu_arr"></span></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </c:when>
+            </c:choose>
             </aside>
             
         </div>
@@ -181,6 +341,7 @@
     		let notice = $(".board_side_menu_list_Btn_notic");
     		let many = $(".board_side_menu_list_Btn_many");
     		let inquiry = $(".board_side_menu_list_Btn_inquiry");
+    		let admin = $(".board_side_menu_list_Btn_admin");
     		let fromList = $("#boardListmoveForm");
     		
     		
@@ -199,6 +360,12 @@
     		inquiry.on("click",function(e){   
     			e.preventDefault();
     			fromList.find("input[name='bgno']").val("3");
+    			fromList.submit();
+    		});
+    		
+    		admin.on("click",function(e){   
+    			e.preventDefault();
+    			fromList.find("input[name='bgno']").val("0");
     			fromList.submit();
     		});
     		
