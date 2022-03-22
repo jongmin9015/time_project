@@ -57,13 +57,13 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="noticeView_contents">
-                            <textarea name="content" cols="140" rows="20" class="noticeView_inp_content" readonly>${boardView.content }</textarea>
+                            <textarea name="content" cols="140" rows="20" class="noticeView_inp_content" readonly style="border: none;">${boardView.content }</textarea>
                         </td>
                     </tr>
                 </table>
                 <div class="noticeView_listBtn_div clear">
                     <a href="#" class="boardList_aTag_Btn">목록</a>
-                    <a href="#" class="boardmodify_aTag_Btn">수정</a>
+                    <!-- <a href="#" class="boardmodify_aTag_Btn">수정</a> -->
                 </div>
                 <div class="noticeView_move_div">
                     <ul>
@@ -101,6 +101,14 @@
     		formView.attr("action", "/board/boardmodify");
     		formView.submit();
     	});
+    	
+    	/* textarea 자동 높이조절 */
+    	let textarea = $("textarea[name='content']");
+    	if(textarea){
+    		textarea.each(function(){
+    			$(this).height(this.scrollHeight);
+    		});
+    	}
     </script>
 </body>
 </html>
