@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,9 +287,7 @@
                 </div>
                 
             </form>
-            <aside class="board_side_menu_bar">
-            <c:choose>
-            	<c:when test="${pageMaker.cri.bgno != 0}">
+            <aside class="board_side_menu_bar">            
 	                <div class="board_side_menu_inner">
 	                    <h2>고객센터</h2>
 	                    <div class="board_side_menu_list_inner">
@@ -296,24 +295,12 @@
 	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
 	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
 	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
+ 	                            <sec:authorize access="hasAnyRole('role_admin')">
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_admin_admin ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">관리자Page</a><span class="side_menu_arr"></span></li>
+	                            </sec:authorize>
 	                        </ul>
 	                    </div>
-	                </div>
-	            </c:when>
-            	<c:when test="${pageMaker.cri.bgno == 0}">
-	                <div class="board_side_menu_inner">
-	                    <h2>고객센터</h2>
-	                    <div class="board_side_menu_list_inner">
-	                        <ul class="board_side_menu_list">
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항 관리</a><span class="side_menu_arr"></span></li>
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문 관리</a><span class="side_menu_arr"></span></li>
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의 관리</a><span class="side_menu_arr"></span></li>
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_admin ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">관리자Page</a><span class="side_menu_arr"></span></li>
-	                        </ul>
-	                    </div>
-	                </div>
-	            </c:when>
-            </c:choose>
+	                </div>	            
             </aside>
             
         </div>
@@ -328,6 +315,8 @@
     </div>
     <script>
     	$(document).ready(function() {
+    		
+    		
     		/* 페이징 번호 이동 작업 */
     		$(".notice_page_div a").on("click", function(e) {
     			
