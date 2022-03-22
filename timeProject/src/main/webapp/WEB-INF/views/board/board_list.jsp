@@ -287,21 +287,42 @@
                 </div>
                 
             </form>
-            <aside class="board_side_menu_bar">            
-	                <div class="board_side_menu_inner">
-	                    <h2>고객센터</h2>
-	                    <div class="board_side_menu_list_inner">
-	                        <ul class="board_side_menu_list">
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
- 	                            <sec:authorize access="hasAnyRole('role_admin')">
-	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_admin_admin ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">관리자Page</a><span class="side_menu_arr"></span></li>
-	                            </sec:authorize>
-	                        </ul>
-	                    </div>
-	                </div>	            
-            </aside>
+            <c:choose>
+            	<c:when test="${pageMaker.cri.bgno != 0 }">
+		            <aside class="board_side_menu_bar">            
+			                <div class="board_side_menu_inner">
+			                    <h2>고객센터</h2>
+			                    <div class="board_side_menu_list_inner">
+			                        <ul class="board_side_menu_list">
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의</a><span class="side_menu_arr"></span></li>
+		 	                            <sec:authorize access="hasAuthority('role_admin')">
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_admin ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">관리자Page</a><span class="side_menu_arr"></span></li>
+			                            </sec:authorize>
+			                        </ul> 
+			                    </div>
+			                </div>	            
+		            </aside>
+		        </c:when>
+            	<c:when test="${pageMaker.cri.bgno == 0 }">
+		            <aside class="board_side_menu_bar">            
+			                <div class="board_side_menu_inner">
+			                    <h2>관리 Page</h2>
+			                    <div class="board_side_menu_list_inner">
+			                        <ul class="board_side_menu_list">
+		 	                            <sec:authorize access="hasAuthority('role_admin')">
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic_admin ${pageMaker.cri.bgno eq '10'?'board_side_menu_click_aTag':'' }">공지 사항 관리</a><span class="side_menu_arr"></span></li>
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many_admin ${pageMaker.cri.bgno eq '20'?'board_side_menu_click_aTag':'' }">자주 하는 질문 관리</a><span class="side_menu_arr"></span></li>
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry_admin ${pageMaker.cri.bgno eq '30'?'board_side_menu_click_aTag':'' }">1:1문의 관리</a><span class="side_menu_arr"></span></li>
+				                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_back_admin">고객센터</a><span class="side_menu_arr"></span></li>
+			                            </sec:authorize>
+			                        </ul> 
+			                    </div>
+			                </div>	            
+		            </aside>
+		        </c:when>
+	        </c:choose>
             
         </div>
         <!-- 페이징처리 -->
@@ -331,6 +352,7 @@
     		let many = $(".board_side_menu_list_Btn_many");
     		let inquiry = $(".board_side_menu_list_Btn_inquiry");
     		let admin = $(".board_side_menu_list_Btn_admin");
+    		let back = $(".board_side_menu_list_Btn_back_admin");
     		let fromList = $("#boardListmoveForm");
     		
     		/* 서브메뉴 클릭 페이지 이동 */
@@ -358,6 +380,12 @@
     		admin.on("click",function(e){   
     			e.preventDefault();
     			fromList.find("input[name='bgno']").val("0");
+    			fromList.submit();
+    		});
+    		
+    		back.on("click",function(e){   
+    			e.preventDefault();
+    			fromList.find("input[name='bgno']").val("1");
     			fromList.submit();
     		});
     		
