@@ -344,22 +344,25 @@
     		let admin = $(".board_side_menu_list_Btn_admin");
     		let fromList = $("#boardListmoveForm");
     		
-    		
+    		/* 서브메뉴 클릭 페이지 이동 */
     		notice.on("click",function(e){
     			e.preventDefault();
     			fromList.find("input[name='bgno']").val("1");
+    			fromList.find("input[name='pageNum']").val("1");
     			fromList.submit();
     		});
     		
     		many.on("click",function(e){
     			e.preventDefault();
     			fromList.find("input[name='bgno']").val("2");
+    			fromList.find("input[name='pageNum']").val("1");
     			fromList.submit();
     		});
     		
     		inquiry.on("click",function(e){   
     			e.preventDefault();
     			fromList.find("input[name='bgno']").val("3");
+    			fromList.find("input[name='pageNum']").val("1");
     			fromList.submit();
     		});
     		

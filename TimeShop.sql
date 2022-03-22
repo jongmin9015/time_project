@@ -10,10 +10,20 @@ create table tbl_board(
     viewcnt number default 0,       --조회수
     PRIMARY key(bno)                --게시물 번호 기본키설정
 );
+
 --board 시퀀스 생성
 create sequence seq_board 
 start with 1
 increment by 1;
+--Test value
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, 'Test Title', 'Test Content', 'TimeShop');
+
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, 'Test Title', 'Test Content', 'TimeShop');
+
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, 'Test Title', 'Test Content', 'TimeShop');
 
 insert into tbl_board (bno, bgno, title, category, content, writer)
 values (seq_board.nextval, 3, '1:1문의글', '회원', '1:1문의의의', 'user');
@@ -1683,7 +1693,6 @@ start with 1
 increment by 1;
 
 
-
 --<상품 : 건강식품>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
 values (seq_goods.nextval,'diet', '[올케어]올케어 마늘의 왕', '진하게 농축해 담은 흑마늘', 48000, '1박스', '70ml*30포', '샛별배송/택배배송', '상온/종이포장', '없음', 'health1.jpg');
@@ -1843,6 +1852,7 @@ create SEQUENCE seq_cart
 START WITH 1
 INCREMENT by 1;
 
+
 --< 임시 회원 테이블 >
 create table tbl_member(
     memberId varchar2(200),
@@ -1895,5 +1905,6 @@ create table tbl_pay(
     payId varchar2(200),
     constraint pk_pay primary key (memberId)	
 );
+
 
 commit;
