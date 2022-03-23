@@ -13,22 +13,37 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="/resources/js/javascript.js" defer></script>
-    <title>공지사항 등록</title>
+    <title>등록</title>
 </head>
 <body>
 	<div id="header">
-   		<%@ include file="../includes/header.jsp"  %>
+   		<%-- <%@ include file="../includes/header.jsp"  %> --%>
     </div>
     <div id="warp">
         <div class="noticeView_inner">
-            <div class="noticeView_tit_div">
-                <h2 class="noticeView_tit">
-                    공지사항 등록
-                    <!-- <p class="noticeView_sub">
-                        컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.
-                    </p> -->
-                </h2>
-            </div>
+        <c:choose>
+        	<c:when test="${bgno == 1}">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    공지사항 등록                    
+	                </h2>
+	            </div>
+            </c:when>
+        	<c:when test="${bgno == 2}">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                   	자주하는질문 등록                    
+	                </h2>
+	            </div>
+            </c:when>
+        	<c:when test="${bgno == 3}">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                   	1:1문의 관리                    
+	                </h2>
+	            </div>
+            </c:when>
+        </c:choose>
             <form method="post" id="noticewriter_frm">
                 <div class="noticeView_table_inner">
                     <table class="noticeView_table">
@@ -39,21 +54,7 @@
                         <tr>
                             <th scope="row">작성자</th>
                             <td><input type="text" name="writer" class="noticeWrite_inp noticeWrite_inp_writer"></td>
-                        </tr>
-                        <!-- <tr class="noticeView_etcArea">
-                            <td colspan="2">
-                                <ul class="clear">
-                                    <li class="noticeView_date">
-                                        <strong class="noticeView_th">작성일</strong>
-                                        <span class="noticeView_td">2022-01-03</span>
-                                    </li>
-                                    <li class="noticeView_hit">
-                                        <strong class="noticeView_th">조회수</strong>
-                                        <span class="noticeView_td">34528</span>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr> -->
+                        </tr>                        
                         <tr>
                             <td colspan="2" class="noticeView_contents">
                                 <textarea name="content" cols="140" rows="20" class="noticeWrite_inp_content"></textarea>
@@ -61,21 +62,10 @@
                         </tr>
                     </table>
                     <div class="noticeView_listBtn_div clear">
+                    	<input type="hidden" name="bgno" value="${bgno }">
                         <button type="submit" class="noticeWrite_submitBtn">등록</button>
                         <a href="javascript:history.back()" class="noticeWrite_backBtn">이전</a>
-                    </div>
-                    <!-- <div class="noticeView_move_div">
-                        <ul>
-                            <li class="noticeView_prev clear">
-                                <strong>이전글</strong>
-                                <a href="">[가격인상공지] [지위픽] DOG 에어드라이 사슴고기 1kg 외 52건 (2022 3. 18 ~)</a>
-                            </li>
-                            <li class="noticeView_next clear">
-                                <strong>다음글</strong>
-                                <a href="">[가격인상공지] [온맘] 엄마의식탁 김자반 (2022 3. 18 ~)</a>
-                            </li>
-                        </ul>
-                    </div> -->
+                    </div>                    
                 </div>
             </form>
         </div>

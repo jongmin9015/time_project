@@ -46,14 +46,16 @@ public class BoardController {
 	
 	//게시글 작성 GET
 	@RequestMapping(value = "/boardwrite", method = RequestMethod.GET)
-	public void boardGetWrite() {
+	public void boardGetWrite(Model model, @RequestParam("bgno")int bgno) {
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardWrite_GET");
 	}
 	
 	//게시글 작성
 	@RequestMapping(value = "/boardwrite", method = RequestMethod.POST)
-	public String boardWrite(BoardVO board) {
+	public String boardWrite(Model model, BoardVO board, @RequestParam("bgno")int bgno) {
 		boardService.boardWrite(board);
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardWrite_POST");
 		return "redirect:/board/board_list";
 	}
@@ -81,8 +83,9 @@ public class BoardController {
 	
 	//게시글 수정
 	@RequestMapping(value = "/boardmodify", method = RequestMethod.POST)
-	public String boardmodify(BoardVO board) {
+	public String boardmodify(Model model, BoardVO board, @RequestParam("bgno")int bgno) {
 		boardService.boardmodify(board);
+		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardmodify_POST");
 		return "redirect:/board/boardView?bno=" + board.getBno();
 	}

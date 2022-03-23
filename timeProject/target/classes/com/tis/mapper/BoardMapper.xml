@@ -51,8 +51,8 @@
 	
 	<!-- 게시물 작성 -->
  	<insert id="boardWrite" parameterType="com.tis.domain.BoardVO"> 		
-		insert into tbl_board(bno, title, content, writer)
-			values (SEQ_BOARD.nextval, #{title}, #{content}, #{writer})
+		insert into tbl_board(bno, bgno, title, content, writer)
+			values (SEQ_BOARD.nextval, #{bgno}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<!-- 게시물 조회 -->

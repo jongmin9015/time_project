@@ -1,24 +1,27 @@
 set define off;
 
---board Å×ÀÌºí
+--board í…Œì´ë¸”
 create table tbl_board(
-    bno     number not null,        --°Ô½Ã¹° ¹øÈ£
-    bgno    number not null,        --°Ô½ÃÆÇ ºĞ·ù¹øÈ£
-    title   varchar2(200) not null, --Á¦¸ñ
-    category varchar2(50) default '-' not null, --Ä«Å×°í¸®
-    content varchar2(4000),         --³»¿ë
-    writer  varchar2(50) not null,  --ÀÌ¸§
-    regdate date default sysdate,   --ÀÛ¼ºÀÏÀÚ
-    viewcnt number default 0,       --Á¶È¸¼ö
-    PRIMARY key(bno)                --°Ô½Ã¹° ¹øÈ£ ±âº»Å°¼³Á¤
+    bno     number not null,        --ê²Œì‹œë¬¼ ë²ˆí˜¸
+    bgno    number not null,        --ê²Œì‹œíŒ ë¶„ë¥˜ë²ˆí˜¸
+    title   varchar2(200) not null, --ì œëª©
+    category varchar2(50) default '-' not null, --ì¹´í…Œê³ ë¦¬
+    content varchar2(4000),         --ë‚´ìš©
+    writer  varchar2(50) not null,  --ì´ë¦„
+    regdate date default sysdate,   --ì‘ì„±ì¼ì
+    viewcnt number default 0,       --ì¡°íšŒìˆ˜
+    PRIMARY key(bno)                --ê²Œì‹œë¬¼ ë²ˆí˜¸ ê¸°ë³¸í‚¤ì„¤ì •
 );
 
---board ½ÃÄö½º »ı¼º
+
+
+--board ì‹œí€€ìŠ¤ ìƒì„±
 create sequence seq_board 
 start with 1
 increment by 1;
 
---<»óÇ° Å×ÀÌºí>
+
+--<ìƒí’ˆ í…Œì´ë¸”>
 create table tbl_goods(
     goodsNo number(20) not null,
     goodsCategory varchar2(20) not null,
@@ -36,93 +39,93 @@ create table tbl_goods(
     CONSTRAINT pk_goods primary key (goodsNo)
 );
 
---<»óÇ° Å×ÀÌºí ½ÃÄö½º>
+--<ìƒí’ˆ í…Œì´ë¸” ì‹œí€€ìŠ¤>
 create sequence seq_goods 
 start with 1
 increment by 1;
 
 
---<»óÇ° : °Ç°­½ÄÇ°>
+--<ìƒí’ˆ : ê±´ê°•ì‹í’ˆ>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿ÃÄÉ¾î]¿ÃÄÉ¾î ¸¶´ÃÀÇ ¿Õ', 'ÁøÇÏ°Ô ³óÃàÇØ ´ãÀº Èæ¸¶´Ã', 48000, '1¹Ú½º', '70ml*30Æ÷', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '¾øÀ½', 'health1.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ì¼€ì–´]ì˜¬ì¼€ì–´ ë§ˆëŠ˜ì˜ ì™•', 'ì§„í•˜ê²Œ ë†ì¶•í•´ ë‹´ì€ í‘ë§ˆëŠ˜', 48000, '1ë°•ìŠ¤', '70ml*30í¬', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ì—†ìŒ', 'health1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿ÃÄÉ¾î]¿ÃÄÉ¾î ¸¶´ÃÀÇ ¿©¿Õ', 'ÁøÇÏ°Ô ³óÃàÇØ ´ãÀº Èæ¸¶´Ã', 48000, '1¹Ú½º', '70ml*30Æ÷', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '¾øÀ½', 'health2.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ì¼€ì–´]ì˜¬ì¼€ì–´ ë§ˆëŠ˜ì˜ ì—¬ì™•', 'ì§„í•˜ê²Œ ë†ì¶•í•´ ë‹´ì€ í‘ë§ˆëŠ˜', 48000, '1ë°•ìŠ¤', '70ml*30í¬', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ì—†ìŒ', 'health2.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿Ã°¡ºñ¿À]»õ½Ïº¸¸® ºĞ¸»', '¾î¸° »õ½ÏÀÇ ÃÊ·Ïºû »ı±â', 9900, '1Åë', '80g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', 'º» Á¦Ç°Àº ¿ìÀ¯,°è¶õ,¸Ş¹Ğ,¶¥Äá,´ëµÎ,¹Ğ µî¾Ë »ç¿ëÇÑ Á¦Ç°°ú °°Àº ½Ã¼³¿¡¼­ Á¦Á¶ÇÏ°í ÀÖ½À´Ï´Ù', 'health3.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ê°€ë¹„ì˜¤]ìƒˆì‹¹ë³´ë¦¬ ë¶„ë§', 'ì–´ë¦° ìƒˆì‹¹ì˜ ì´ˆë¡ë¹› ìƒê¸°', 9900, '1í†µ', '80g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ë³¸ ì œí’ˆì€ ìš°ìœ ,ê³„ë€,ë©”ë°€,ë•…ì½©,ëŒ€ë‘,ë°€ ë“±ì•Œ ì‚¬ìš©í•œ ì œí’ˆê³¼ ê°™ì€ ì‹œì„¤ì—ì„œ ì œì¡°í•˜ê³  ìˆìŠµë‹ˆë‹¤', 'health3.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿Ã°¡ºñ¿À]´ë¸¶Á¾ÀÚÀ¯', '°£ÆíÇÏ°Ô ¼·ÃëÇÏ´Â ½Ä¹°¼º ¿ÀÀÏ', 13900, '1Åë', '1000ml*30Ä¸', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '¼è°í±âÇÔÀ¯', 'health4.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ê°€ë¹„ì˜¤]ëŒ€ë§ˆì¢…ììœ ', 'ê°„í¸í•˜ê²Œ ì„­ì·¨í•˜ëŠ” ì‹ë¬¼ì„± ì˜¤ì¼', 13900, '1í†µ', '1000ml*30ìº¡', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ì‡ ê³ ê¸°í•¨ìœ ', 'health4.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿Ã°¡ºñ¿À]À¯±â³ó ¿©ÁÖÈ¯', '½Ô»ç¸§ÇÔ ¾øÀÌ Áñ±â´Â ¿©ÁÖ', 13200, '1Åë', '120g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '¾øÀ½', 'health5.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ê°€ë¹„ì˜¤]ìœ ê¸°ë† ì—¬ì£¼í™˜', 'ìŒ‰ì‚¬ë¦„í•¨ ì—†ì´ ì¦ê¸°ëŠ” ì—¬ì£¼', 13200, '1í†µ', '120g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ì—†ìŒ', 'health5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'diet', '[¿Ã°¡ºñ¿À]À¯±â³ó ÀÛµÎÄá', 'È¯À¸·Î ¸¸µé¾î ¿À·¡ Áñ±â´Â Äá', 13200, '1Åë', '120g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '¾øÀ½', 'health6.jpg');
+values (seq_goods.nextval,'diet', '[ì˜¬ê°€ë¹„ì˜¤]ìœ ê¸°ë† ì‘ë‘ì½©', 'í™˜ìœ¼ë¡œ ë§Œë“¤ì–´ ì˜¤ë˜ ì¦ê¸°ëŠ” ì½©', 13200, '1í†µ', '120g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', 'ì—†ìŒ', 'health6.jpg');
 
---<»óÇ° : ¸é>
+--<ìƒí’ˆ : ë©´>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[Ç®¹«¿ø]µÎºÎ¸é', '½Ä¹°¼º ´Ü¹éÁúÀÌ µë»Ò ´ã±ä ÀÌ»ö ¸é', 2600, '1ÆÑ', '100g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '-´ëµÎ ÇÔÀ¯', 'noodle1.jpg');
+values (seq_goods.nextval,'pastanoodle', '[í’€ë¬´ì›]ë‘ë¶€ë©´', 'ì‹ë¬¼ì„± ë‹¨ë°±ì§ˆì´ ë“¬ë¿ ë‹´ê¸´ ì´ìƒ‰ ë©´', 2600, '1íŒ©', '100g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '-ëŒ€ë‘ í•¨ìœ ', 'noodle1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[ÆùÅ¸³ª]ÀÌÅ»¸®¾Æ Ä¯ÆÄ´Ï', 'ÀÌÅ»ÀÌ¿¡¼­ ¸¸µç ±âº» ÆÄ½ºÅ¸¸é', 2450, '1ºÀ', '500g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '-¹Ğ ÇÔÀ¯', 'noodle2.jpg');
+values (seq_goods.nextval,'pastanoodle', '[í°íƒ€ë‚˜]ì´íƒˆë¦¬ì•„ ìº„íŒŒë‹ˆ', 'ì´íƒˆì´ì—ì„œ ë§Œë“  ê¸°ë³¸ íŒŒìŠ¤íƒ€ë©´', 2450, '1ë´‰', '500g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', '-ë°€ í•¨ìœ ', 'noodle2.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[µ¥Ã¼ÄÚ]·Õ ÆÄ½ºÅ¸','·ÕÆÄ½ºÅ¸ 6Á¾ -½ºÆÄ°ÔÆ¼/¸µ±Í³×/Ä«Æç¸®´Ï/Å»¸®¾ÆÆç·¹/½Ã±İÄ¡ ÆäÅõÄ¡´Ï', 3000, '1ºÀ', 'Á¦Ç°º° »óÀÌ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '-¹Ğ ÇÔÀ¯', 'noodle3.jpg');
+values (seq_goods.nextval,'pastanoodle', '[ë°ì²´ì½”]ë¡± íŒŒìŠ¤íƒ€','ë¡±íŒŒìŠ¤íƒ€ 6ì¢… -ìŠ¤íŒŒê²Œí‹°/ë§ê·€ë„¤/ì¹´í ë¦¬ë‹ˆ/íƒˆë¦¬ì•„í ë ˆ/ì‹œê¸ˆì¹˜ í˜íˆ¬ì¹˜ë‹ˆ', 3000, '1ë´‰', 'ì œí’ˆë³„ ìƒì´', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', '-ë°€ í•¨ìœ ', 'noodle3.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[Ç®¹«¿ø]¼öÅ¸½Ä ¿ìµ¿»ç¸®¸é', 'ÂÌ±êÇÏ°Ô °¨±â´Â ¸é¹ß', 1100, '1ºÀ', '210g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '»ó¿Â/Á¾ÀÌÆ÷Àå', '-¹Ğ,´ëµÎ ÇÔÀ¯', 'noodle4.jpg');
+values (seq_goods.nextval,'pastanoodle', '[í’€ë¬´ì›]ìˆ˜íƒ€ì‹ ìš°ë™ì‚¬ë¦¬ë©´', 'ì«„ê¹ƒí•˜ê²Œ ê°ê¸°ëŠ” ë©´ë°œ', 1100, '1ë´‰', '210g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ìƒì˜¨/ì¢…ì´í¬ì¥', '-ë°€,ëŒ€ë‘ í•¨ìœ ', 'noodle4.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[¾Æ·¹¹Ù·Î½º]¹Ğ¶Ç¶ì¾Æ 3Á¾', '¶Ç¶ì¾Æ,ÇÇÀÚ,ºê¸®¶Ç,Å¸ÄÚµî¿¡ È°¿ë°¡´É', 2580, '1°³', 'ÇÏ´ÜÂüÁ¶', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-¹ĞÇÔÀ¯', 'noodle5.jpg');
+values (seq_goods.nextval,'pastanoodle', '[ì•„ë ˆë°”ë¡œìŠ¤]ë°€ë˜ë ì•„ 3ì¢…', 'ë˜ë ì•„,í”¼ì,ë¸Œë¦¬ë˜,íƒ€ì½”ë“±ì— í™œìš©ê°€ëŠ¥', 2580, '1ê°œ', 'í•˜ë‹¨ì°¸ì¡°', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-ë°€í•¨ìœ ', 'noodle5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pastanoodle', '[ÃµÀÏ½ÄÇ°]»ç´©³¢ ¿ìµ¿¸é', '´Ù°¡¼ö ¹æ½ÄÀÌ¶ó ÃËÃË ÅÊ±ÛÇÑ', 5150, '1ÆÑ', '230g X 5°³ÀÔ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-¹Ğ ÇÔÀ¯', 'noodle6.jpg'); 
+values (seq_goods.nextval,'pastanoodle', '[ì²œì¼ì‹í’ˆ]ì‚¬ëˆ„ë¼ ìš°ë™ë©´', 'ë‹¤ê°€ìˆ˜ ë°©ì‹ì´ë¼ ì´‰ì´‰ íƒ±ê¸€í•œ', 5150, '1íŒ©', '230g X 5ê°œì…', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-ë°€ í•¨ìœ ', 'noodle6.jpg'); 
 
---<»óÇ° : »ø·¯µå>
+--<ìƒí’ˆ : ìƒëŸ¬ë“œ>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '[½ºÀ­¹ë·±½º]¿À´ÃÀÇ »ø·¯µå 6Á¾', '´ÙÃ¤·Î¿î ÅäÇÎÀ» ¾ñÀº »ø·¯µå', 2600, '1Åë', '240g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '(±¼) ÇÔÀ¯ ¼è°í±â,µÅÁö°í±â,¸Ş¹Ğ,¶¥Äá,°Ô,ÀãÀ» »ç¿ëÇÑ Á¦Ç°°ú °°Àº Á¦Á¶½Ã¼³¿¡¼­ Á¦Á¶', 'salad1.jpg');
+values (seq_goods.nextval,'saladchicken', '[ìŠ¤ìœ—ë°¸ëŸ°ìŠ¤]ì˜¤ëŠ˜ì˜ ìƒëŸ¬ë“œ 6ì¢…', 'ë‹¤ì±„ë¡œìš´ í† í•‘ì„ ì–¹ì€ ìƒëŸ¬ë“œ', 2600, '1í†µ', '240g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '(êµ´) í•¨ìœ  ì‡ ê³ ê¸°,ë¼ì§€ê³ ê¸°,ë©”ë°€,ë•…ì½©,ê²Œ,ì£ì„ ì‚¬ìš©í•œ ì œí’ˆê³¼ ê°™ì€ ì œì¡°ì‹œì„¤ì—ì„œ ì œì¡°', 'salad1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '¹«³ó¾à °£Æí »ø·¯µå 6Á¾', '³» ¸¾´ë·Î °ñ¶ó´ã°í ¼¼Ã´µÇ¾î ¹Ù·Î ¸ÔÀ» ¼ö ÀÖ´Â ½Å¼±ÇÑ »ø·¯µå', 1390, '1ÆÑ', '150g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '¾øÀ½', 'salad2.jpg');
+values (seq_goods.nextval,'saladchicken', 'ë¬´ë†ì•½ ê°„í¸ ìƒëŸ¬ë“œ 6ì¢…', 'ë‚´ ë§˜ëŒ€ë¡œ ê³¨ë¼ë‹´ê³  ì„¸ì²™ë˜ì–´ ë°”ë¡œ ë¨¹ì„ ìˆ˜ ìˆëŠ” ì‹ ì„ í•œ ìƒëŸ¬ë“œ', 1390, '1íŒ©', '150g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', 'ì—†ìŒ', 'salad2.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '[Better me]´ß°¡½¿»ì Å¥ºê 6Á¾','¹«Ç×»ıÁ¦ ´ß°¡½¿»ìÀ» »ç¿ëÇÑ °£Æí Å¥ºê', 1600, '1ÆÑ', '100g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÃ·¹ÀÎ,ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ,¹Ğ,Á¶°³·ù(±¼)ÇÔÀ¯', 'salad3.jpg');
+values (seq_goods.nextval,'saladchicken', '[Better me]ë‹­ê°€ìŠ´ì‚´ íë¸Œ 6ì¢…','ë¬´í•­ìƒì œ ë‹­ê°€ìŠ´ì‚´ì„ ì‚¬ìš©í•œ ê°„í¸ íë¸Œ', 1600, '1íŒ©', '100g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í”Œë ˆì¸,ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘,ë°€,ì¡°ê°œë¥˜(êµ´)í•¨ìœ ', 'salad3.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '[ÇÏ¸²]³ÃÀå ´ß°¡½¿»ì 4Á¾', '°£ÆíÇÏ°Ô ²¨³»¸Ô´Â ³ÃÀå ´ß°¡½¿»ì', 1700, '1ÆÑ', '110g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '-ÈÆÁ¦:´ß°í±â ÇÔÀ¯, ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ ÇÔÀ¯', 'salad4.jpg');
+values (seq_goods.nextval,'saladchicken', '[í•˜ë¦¼]ëƒ‰ì¥ ë‹­ê°€ìŠ´ì‚´ 4ì¢…', 'ê°„í¸í•˜ê²Œ êº¼ë‚´ë¨¹ëŠ” ëƒ‰ì¥ ë‹­ê°€ìŠ´ì‚´', 1700, '1íŒ©', '110g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '-í›ˆì œ:ë‹­ê³ ê¸° í•¨ìœ , ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘ í•¨ìœ ', 'salad4.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '[¾î°ÔÀÎ¸®ÇÁ·¹½¬]»ø·¯µå 7Á¾', '³» ÃëÇâ¿¡ ¸Â´Â »ø·¯µå °í¸£±â', 5900, 'PK', '¿É¼Çº° »óÀÌ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '-¿¬¾î»ø·¯µå:¿ìÀ¯,È£µÎ,Àã,´ëµÎ,¾ÆÈ²»ê·ù ÇÔÀ¯', 'salad5.jpg');
+values (seq_goods.nextval,'saladchicken', '[ì–´ê²Œì¸ë¦¬í”„ë ˆì‰¬]ìƒëŸ¬ë“œ 7ì¢…', 'ë‚´ ì·¨í–¥ì— ë§ëŠ” ìƒëŸ¬ë“œ ê³ ë¥´ê¸°', 5900, 'PK', 'ì˜µì…˜ë³„ ìƒì´', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '-ì—°ì–´ìƒëŸ¬ë“œ:ìš°ìœ ,í˜¸ë‘,ì£,ëŒ€ë‘,ì•„í™©ì‚°ë¥˜ í•¨ìœ ', 'salad5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'saladchicken', '[È«·çÀÌÁ¨]´ë¸¸ »÷µåÀ§Ä¡ 3Á¾', 'È£¹Ğ»§À¸·Î ´õÇÑ °í¼ÒÇÔ', 2300, '1°³', '¿É¼Çº° »óÀÌ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '-ÇÜ »÷µåÀ§Ä¡:´ëµÎ,¹Ğ,¿ìÀ¯,´Ş°¿,µÅÁö°í±â,¼è°í±â,Á¶°³·ù(±¼)´ß°í±âÇÔÀ¯', 'salad6.jpg');
+values (seq_goods.nextval,'saladchicken', '[í™ë£¨ì´ì  ]ëŒ€ë§Œ ìƒŒë“œìœ„ì¹˜ 3ì¢…', 'í˜¸ë°€ë¹µìœ¼ë¡œ ë”í•œ ê³ ì†Œí•¨', 2300, '1ê°œ', 'ì˜µì…˜ë³„ ìƒì´', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '-í–„ ìƒŒë“œìœ„ì¹˜:ëŒ€ë‘,ë°€,ìš°ìœ ,ë‹¬ê±€,ë¼ì§€ê³ ê¸°,ì‡ ê³ ê¸°,ì¡°ê°œë¥˜(êµ´)ë‹­ê³ ê¸°í•¨ìœ ', 'salad6.jpg');
 
---<»óÇ° : »ø·¯µå µµ½Ã¶ô>
+--<ìƒí’ˆ : ìƒëŸ¬ë“œ ë„ì‹œë½>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '[Åº´ÜÁö]°¡º­¿î ÇÑ½Ä µµ½Ã¶ô', '´ÙÃ¤·Î¿î ÇÑ½Ä¸Ş´º·Î Áñ±â´Â µµ½Ã¶ô!', 4200, '1ÆÑ', '200g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '(±¼) ÇÔÀ¯ ¼è°í±â,µÅÁö°í±â,¸Ş¹Ğ,¶¥Äá,°Ô,ÀãÀ» »ç¿ëÇÑ Á¦Ç°°ú °°Àº Á¦Á¶½Ã¼³¿¡¼­ Á¦Á¶', 'lunchbox1.jpg');
+values (seq_goods.nextval,'lunchbox', '[íƒ„ë‹¨ì§€]ê°€ë²¼ìš´ í•œì‹ ë„ì‹œë½', 'ë‹¤ì±„ë¡œìš´ í•œì‹ë©”ë‰´ë¡œ ì¦ê¸°ëŠ” ë„ì‹œë½!', 4200, '1íŒ©', '200g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '(êµ´) í•¨ìœ  ì‡ ê³ ê¸°,ë¼ì§€ê³ ê¸°,ë©”ë°€,ë•…ì½©,ê²Œ,ì£ì„ ì‚¬ìš©í•œ ì œí’ˆê³¼ ê°™ì€ ì œì¡°ì‹œì„¤ì—ì„œ ì œì¡°', 'lunchbox1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '[¸¶ÀÌºñ¹Ğ]¶óÀÌÅ¶ ½Ä´Ü°ü¸® µµ½Ã¶ô', '¾ğÁ¦ ¾îµğ¼­µç ¼Õ½¬¿î ½Ä´Ü °ü¸®', 3600, '1ÆÑ', '¿É¼Çº°·Î »óÀÌ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '¾øÀ½', 'lunchbox2.jpg');
+values (seq_goods.nextval,'lunchbox', '[ë§ˆì´ë¹„ë°€]ë¼ì´í‚· ì‹ë‹¨ê´€ë¦¬ ë„ì‹œë½', 'ì–¸ì œ ì–´ë””ì„œë“  ì†ì‰¬ìš´ ì‹ë‹¨ ê´€ë¦¬', 3600, '1íŒ©', 'ì˜µì…˜ë³„ë¡œ ìƒì´', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', 'ì—†ìŒ', 'lunchbox2.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '[ÇŞ¹İÄî¹İ]³ë¸©³ë¸© ±¸¿î ÁÖ¸Ô¹ä','°£ÆíÇÏ°Ô Ã¬°Ü¸Ô´Â ÇÑ ³¢ ÁÖ¸Ô¹ä', 6900, '1ÆÑ', '100gX5°³ÀÔ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÃ·¹ÀÎ,ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ,¹Ğ,Á¶°³·ù(±¼)ÇÔÀ¯', 'lunchbox3.jpg');
+values (seq_goods.nextval,'lunchbox', '[í–‡ë°˜ì¿¡ë°˜]ë…¸ë¦‡ë…¸ë¦‡ êµ¬ìš´ ì£¼ë¨¹ë°¥','ê°„í¸í•˜ê²Œ ì±™ê²¨ë¨¹ëŠ” í•œ ë¼ ì£¼ë¨¹ë°¥', 6900, '1íŒ©', '100gX5ê°œì…', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í”Œë ˆì¸,ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘,ë°€,ì¡°ê°œë¥˜(êµ´)í•¨ìœ ', 'lunchbox3.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '´ß°¡½¿»ì °ï¾à ººÀ½¹ä', 'ºÎ´ã¾øÀÌ ¸ÀÀÖ°Ô Áñ±â´Â ÇÑ ³¢', 2200, '1ÆÑ', '200g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÈÆÁ¦:´ß°í±â ÇÔÀ¯, ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ ÇÔÀ¯', 'lunchbox4.jpg');
+values (seq_goods.nextval,'lunchbox', 'ë‹­ê°€ìŠ´ì‚´ ê³¤ì•½ ë³¶ìŒë°¥', 'ë¶€ë‹´ì—†ì´ ë§›ìˆê²Œ ì¦ê¸°ëŠ” í•œ ë¼', 2200, '1íŒ©', '200g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í›ˆì œ:ë‹­ê³ ê¸° í•¨ìœ , ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘ í•¨ìœ ', 'lunchbox4.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '[Ã»Á¤¿ø]¶óÀÌÆ²¸® °ï¾à ººÀ½¹ä', '°¡º±Áö¸¸ ¾ËÂ÷°Ô Áñ±â´Â ººÀ½¹ä', 2500, '1ºÀ', '200G', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-¿¬¾î»ø·¯µå:¿ìÀ¯,È£µÎ,Àã,´ëµÎ,¾ÆÈ²»ê·ù ÇÔÀ¯', 'lunchbox5.jpg');
+values (seq_goods.nextval,'lunchbox', '[ì²­ì •ì›]ë¼ì´í‹€ë¦¬ ê³¤ì•½ ë³¶ìŒë°¥', 'ê°€ë³ì§€ë§Œ ì•Œì°¨ê²Œ ì¦ê¸°ëŠ” ë³¶ìŒë°¥', 2500, '1ë´‰', '200G', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-ì—°ì–´ìƒëŸ¬ë“œ:ìš°ìœ ,í˜¸ë‘,ì£,ëŒ€ë‘,ì•„í™©ì‚°ë¥˜ í•¨ìœ ', 'lunchbox5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'lunchbox', '[°í¿Â¾î´ÙÀÌ¾îÆ®]½ÃÁğ3 µµ½Ã¶ô 5Á¾', '¸À°ú ½Ä°¨À» ¸ğµÎ °í·ÁÇÑ ¸Ş´º ±¸¼º', 3500, '1ÆÑ', '¿É¼Çº° »óÀÌ', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÜ »÷µåÀ§Ä¡:´ëµÎ,¹Ğ,¿ìÀ¯,´Ş°¿,µÅÁö°í±â,¼è°í±â,Á¶°³·ù(±¼)´ß°í±âÇÔÀ¯', 'lunchbox6.jpg');
+values (seq_goods.nextval,'lunchbox', '[ê³ ì˜¨ì–´ë‹¤ì´ì–´íŠ¸]ì‹œì¦Œ3 ë„ì‹œë½ 5ì¢…', 'ë§›ê³¼ ì‹ê°ì„ ëª¨ë‘ ê³ ë ¤í•œ ë©”ë‰´ êµ¬ì„±', 3500, '1íŒ©', 'ì˜µì…˜ë³„ ìƒì´', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í–„ ìƒŒë“œìœ„ì¹˜:ëŒ€ë‘,ë°€,ìš°ìœ ,ë‹¬ê±€,ë¼ì§€ê³ ê¸°,ì‡ ê³ ê¸°,ì¡°ê°œë¥˜(êµ´)ë‹­ê³ ê¸°í•¨ìœ ', 'lunchbox6.jpg');
 
---<»óÇ° : »ø·¯µå °£Æí½Ä>
+--<ìƒí’ˆ : ìƒëŸ¬ë“œ ê°„í¸ì‹>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[·ÎÄÃ½ÄÅ¹]ºÎ»ê ºñºö´ç¸é', 'Áı¿¡¼­ ¸¸³ª´Â ½ÃÀåÀÇ º°¹Ì', 9900, '1ÆÑ', '325g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '(±¼) ÇÔÀ¯ ¼è°í±â,µÅÁö°í±â,¸Ş¹Ğ,¶¥Äá,°Ô,ÀãÀ» »ç¿ëÇÑ Á¦Ç°°ú °°Àº Á¦Á¶½Ã¼³¿¡¼­ Á¦Á¶', 'pasta1.jpg');
+values (seq_goods.nextval,'pasta', '[ë¡œì»¬ì‹íƒ]ë¶€ì‚° ë¹„ë¹”ë‹¹ë©´', 'ì§‘ì—ì„œ ë§Œë‚˜ëŠ” ì‹œì¥ì˜ ë³„ë¯¸', 9900, '1íŒ©', '325g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '(êµ´) í•¨ìœ  ì‡ ê³ ê¸°,ë¼ì§€ê³ ê¸°,ë©”ë°€,ë•…ì½©,ê²Œ,ì£ì„ ì‚¬ìš©í•œ ì œí’ˆê³¼ ê°™ì€ ì œì¡°ì‹œì„¤ì—ì„œ ì œì¡°', 'pasta1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[´õÇÃ·£]¸ñ·Ã ¾î¹¬ ¿ìµ¿', '[±ØÇÑÁ÷¾÷ ¾î¹¬Æí ¹æ¼Û]ÅÊ±ÛÇÑ ¾î¹¬ÀÌ ´ã±ä ¿ìµ¿ ÇÑ±×¸©', 4000, '1°³', '313g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '¾øÀ½', 'pasta2.jpg');
+values (seq_goods.nextval,'pasta', '[ë”í”Œëœ]ëª©ë ¨ ì–´ë¬µ ìš°ë™', '[ê·¹í•œì§ì—… ì–´ë¬µí¸ ë°©ì†¡]íƒ±ê¸€í•œ ì–´ë¬µì´ ë‹´ê¸´ ìš°ë™ í•œê·¸ë¦‡', 4000, '1ê°œ', '313g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', 'ì—†ìŒ', 'pasta2.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[ÀÌ¿¬º¹ÀÇ ¸ñ¶õ]Â«»Í 2ÀÎºĞ','¸ÅÄŞÇÑ ºÒ¸ÀÀÌ ´ã±ä ÇÑ ±×¸©', 13200, '1ÆÑ', 'ÁßÈ­¸é(250gX2°³ÀÔ)', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÃ·¹ÀÎ,ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ,¹Ğ,Á¶°³·ù(±¼)ÇÔÀ¯', 'pasta3.jpg');
+values (seq_goods.nextval,'pasta', '[ì´ì—°ë³µì˜ ëª©ë€]ì§¬ë½• 2ì¸ë¶„','ë§¤ì½¤í•œ ë¶ˆë§›ì´ ë‹´ê¸´ í•œ ê·¸ë¦‡', 13200, '1íŒ©', 'ì¤‘í™”ë©´(250gX2ê°œì…)', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í”Œë ˆì¸,ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘,ë°€,ì¡°ê°œë¥˜(êµ´)í•¨ìœ ', 'pasta3.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[ÀüÁÖ º£Å×¶û]Ä®±¹¼ö', 'º£Å×¶ûÀÇ ´ëÇ¥¸Ş´º¸¦ Áı¿¡¼­', 5600, '1ÆÑ', '196.5g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÈÆÁ¦:´ß°í±â ÇÔÀ¯, ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ ÇÔÀ¯', 'pasta4.jpg');
+values (seq_goods.nextval,'pasta', '[ì „ì£¼ ë² í…Œë‘]ì¹¼êµ­ìˆ˜', 'ë² í…Œë‘ì˜ ëŒ€í‘œë©”ë‰´ë¥¼ ì§‘ì—ì„œ', 5600, '1íŒ©', '196.5g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í›ˆì œ:ë‹­ê³ ê¸° í•¨ìœ , ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘ í•¨ìœ ', 'pasta4.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[¸¶ÀÌÇÏ³ëÀÌ]°í±âÆøÅº ½Ò±¹¼ö', '½Å»çµ¿ °¡·Î¼ö±æ,ÇÏ³ëÀÌ½Ä Á¤Åë ½Ò±¹¼öÁı', 6900, '1ÆÑ', '750g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-¿¬¾î»ø·¯µå:¿ìÀ¯,È£µÎ,Àã,´ëµÎ,¾ÆÈ²»ê·ù ÇÔÀ¯', 'pasta5.jpg');
+values (seq_goods.nextval,'pasta', '[ë§ˆì´í•˜ë…¸ì´]ê³ ê¸°í­íƒ„ ìŒ€êµ­ìˆ˜', 'ì‹ ì‚¬ë™ ê°€ë¡œìˆ˜ê¸¸,í•˜ë…¸ì´ì‹ ì •í†µ ìŒ€êµ­ìˆ˜ì§‘', 6900, '1íŒ©', '750g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-ì—°ì–´ìƒëŸ¬ë“œ:ìš°ìœ ,í˜¸ë‘,ì£,ëŒ€ë‘,ì•„í™©ì‚°ë¥˜ í•¨ìœ ', 'pasta5.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pasta', '[ÀÌ¿¬º¹ÀÇ ¸ñ¶õ]Â¥Àå¸é 2ÀÎºĞ', '´ë°¡°¡ ¼±º¸ÀÌ´Â ÇÑ ±×¸©', 9800, '1ÆÑ', '1040g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÜ »÷µåÀ§Ä¡:´ëµÎ,¹Ğ,¿ìÀ¯,´Ş°¿,µÅÁö°í±â,¼è°í±â,Á¶°³·ù(±¼)´ß°í±âÇÔÀ¯', 'pasta6.jpg');
+values (seq_goods.nextval,'pasta', '[ì´ì—°ë³µì˜ ëª©ë€]ì§œì¥ë©´ 2ì¸ë¶„', 'ëŒ€ê°€ê°€ ì„ ë³´ì´ëŠ” í•œ ê·¸ë¦‡', 9800, '1íŒ©', '1040g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í–„ ìƒŒë“œìœ„ì¹˜:ëŒ€ë‘,ë°€,ìš°ìœ ,ë‹¬ê±€,ë¼ì§€ê³ ê¸°,ì‡ ê³ ê¸°,ì¡°ê°œë¥˜(êµ´)ë‹­ê³ ê¸°í•¨ìœ ', 'pasta6.jpg');
 
---<»óÇ° : »ø·¯µå Ä«Å×°í¸® 4Á¾>
+--<ìƒí’ˆ : ìƒëŸ¬ë“œ ì¹´í…Œê³ ë¦¬ 4ì¢…>
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'snack', '[·ÎÄÃ½ÄÅ¹]ºÎ»ê ¹°¶±,¾î¹¬²¿Ä¡', 'ºÎ»êÀÇ º°¹Ì ºĞ½Ä', 5900, '1ºÀ', '400g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '(±¼) ÇÔÀ¯ ¼è°í±â,µÅÁö°í±â,¸Ş¹Ğ,¶¥Äá,°Ô,ÀãÀ» »ç¿ëÇÑ Á¦Ç°°ú °°Àº Á¦Á¶½Ã¼³¿¡¼­ Á¦Á¶', 'snack1.jpg');
+values (seq_goods.nextval,'snack', '[ë¡œì»¬ì‹íƒ]ë¶€ì‚° ë¬¼ë–¡,ì–´ë¬µê¼¬ì¹˜', 'ë¶€ì‚°ì˜ ë³„ë¯¸ ë¶„ì‹', 5900, '1ë´‰', '400g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '(êµ´) í•¨ìœ  ì‡ ê³ ê¸°,ë¼ì§€ê³ ê¸°,ë©”ë°€,ë•…ì½©,ê²Œ,ì£ì„ ì‚¬ìš©í•œ ì œí’ˆê³¼ ê°™ì€ ì œì¡°ì‹œì„¤ì—ì„œ ì œì¡°', 'snack1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'pizza', '[¼­¿ï¸¶´Ô]°£Æí °£½Ä ¶±±¸ÀÌ', '´Ù¾çÇÑ ÅäÇÎÀ¸·Î Ã¤¿î ¶±±Í', 1900, '3°³', '1°³ 120g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '¾øÀ½', 'pizza1.jpg');
+values (seq_goods.nextval,'pizza', '[ì„œìš¸ë§ˆë‹˜]ê°„í¸ ê°„ì‹ ë–¡êµ¬ì´', 'ë‹¤ì–‘í•œ í† í•‘ìœ¼ë¡œ ì±„ìš´ ë–¡ê·€', 1900, '3ê°œ', '1ê°œ 120g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', 'ì—†ìŒ', 'pizza1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'poached', '[¹ÌÆ®Å¬·¹¹ö]ÇÑµ· ¶±°¥ºñ','°£ÆíÇÏ°Ô Áñ±â´Â µµÅèÇÑ ¶±°¥ºñ', 3100, '1ÆÑ', '120g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³Ãµ¿/½ºÆ¼·ÎÆû', '-ÇÃ·¹ÀÎ,ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ,¹Ğ,Á¶°³·ù(±¼)ÇÔÀ¯', 'poached1.jpg');
+values (seq_goods.nextval,'poached', '[ë¯¸íŠ¸í´ë ˆë²„]í•œëˆ ë–¡ê°ˆë¹„','ê°„í¸í•˜ê²Œ ì¦ê¸°ëŠ” ë„í†°í•œ ë–¡ê°ˆë¹„', 3100, '1íŒ©', '120g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ë™/ìŠ¤í‹°ë¡œí¼', '-í”Œë ˆì¸,ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘,ë°€,ì¡°ê°œë¥˜(êµ´)í•¨ìœ ', 'poached1.jpg');
 insert into tbl_goods (goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
-values (seq_goods.nextval,'soup', '[¼ø¼ö¶÷]Ã¤¼Ò¸¦ ´ãÀº ÀÚ¿¬ÁÖÀÇ Ã¤´ãÄ«·¹', '»õ½ÏÀÌ µë»Ò, Ä«·¹ÀÇ °Ç°­ÇÑ º¯½Å!', 1960, '1ºÀ', '160g', '»ûº°¹è¼Û/ÅÃ¹è¹è¼Û', '³ÃÀå/½ºÆ¼·ÎÆû', '-ÈÆÁ¦:´ß°í±â ÇÔÀ¯, ºí·¢ÆäÆÛ:´ß°í±â,´ëµÎ ÇÔÀ¯', 'soup1.jpg');
+values (seq_goods.nextval,'soup', '[ìˆœìˆ˜ëŒ]ì±„ì†Œë¥¼ ë‹´ì€ ìì—°ì£¼ì˜ ì±„ë‹´ì¹´ë ˆ', 'ìƒˆì‹¹ì´ ë“¬ë¿, ì¹´ë ˆì˜ ê±´ê°•í•œ ë³€ì‹ !', 1960, '1ë´‰', '160g', 'ìƒ›ë³„ë°°ì†¡/íƒë°°ë°°ì†¡', 'ëƒ‰ì¥/ìŠ¤í‹°ë¡œí¼', '-í›ˆì œ:ë‹­ê³ ê¸° í•¨ìœ , ë¸”ë™í˜í¼:ë‹­ê³ ê¸°,ëŒ€ë‘ í•¨ìœ ', 'soup1.jpg');
 
---<Ä«Å×°í¸® Å×ÀÌºí>
+--<ì¹´í…Œê³ ë¦¬ í…Œì´ë¸”>
 create table tbl_category(
     categoryTitle varchar2(50),
     categoryMain varchar2(50),
@@ -133,51 +136,51 @@ alter table tbl_category
 add constraint pk_category primary key (categorySubTitle);
 
 
---<Ä«Å×°í¸® Å×ÀÌºí>
+--<ì¹´í…Œê³ ë¦¬ í…Œì´ë¸”>
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', '»ø·¯µå.´ß°¡½¿»ì', 'saladchicken');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'ìƒëŸ¬ë“œ.ë‹­ê°€ìŠ´ì‚´', 'saladchicken');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', 'µµ½Ã¶ô.¹ä·ù', 'lunchbox');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'ë„ì‹œë½.ë°¥ë¥˜', 'lunchbox');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', 'ÆÄ½ºÅ¸.¸é·ù', 'pasta');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'íŒŒìŠ¤íƒ€.ë©´ë¥˜', 'pasta');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', '¶±ººÀÌ.Æ¢±è.¼ø´ë', 'snack');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'ë–¡ë³¶ì´.íŠ€ê¹€.ìˆœëŒ€', 'snack');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', 'ÇÇÀÚ.ÇÖµµ±×', 'pizza');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'í”¼ì.í•«ë„ê·¸', 'pizza');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', 'Æø¸³.¶±°¥ºñ.¾ÈÁÖ', 'poached');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'í­ë¦½.ë–¡ê°ˆë¹„.ì•ˆì£¼', 'poached');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('salad', '»ø·¯µå.°£Æí½Ä', 'Á×.½ºÇÁ.Ä«·¹', 'soup');
+values ('salad', 'ìƒëŸ¬ë“œ.ê°„í¸ì‹', 'ì£½.ìŠ¤í”„.ì¹´ë ˆ', 'soup');
 
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', '¿µ¾çÁ¦', 'nutrients');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ì˜ì–‘ì œ', 'nutrients');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', 'À¯»ê±Õ', 'lacto');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ìœ ì‚°ê· ', 'lacto');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', 'È«»ï.ÀÎ»ï.²Ü', 'ginseng');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'í™ì‚¼.ì¸ì‚¼.ê¿€', 'ginseng');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', '°Ç°­Áò.°Ç°­À½·á', 'healthdrink');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ê±´ê°•ì¦˜.ê±´ê°•ìŒë£Œ', 'healthdrink');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', '°Ç°­ºĞ¸».°Ç°­È¯', 'healthpowder');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ê±´ê°•ë¶„ë§.ê±´ê°•í™˜', 'healthpowder');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', '´ÙÀÌ¾îÆ®.ÀÌ³ÊºäÆ¼', 'diet');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ë‹¤ì´ì–´íŠ¸.ì´ë„ˆë·°í‹°', 'diet');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('health', '°Ç°­½ÄÇ°', 'À¯¾Æµ¿', 'child');
+values ('health', 'ê±´ê°•ì‹í’ˆ', 'ìœ ì•„ë™', 'child');
 
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', 'ÆÄ½ºÅ¸.¸é·ù', 'pastanoodle');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'íŒŒìŠ¤íƒ€.ë©´ë¥˜', 'pastanoodle');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', '¹Ğ°¡·ç.°¡·ç.¹Í½º', 'flour');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'ë°€ê°€ë£¨.ê°€ë£¨.ë¯¹ìŠ¤', 'flour');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', '¼Ò±İ.¼³ÅÁ.Çâ½Å·á', 'spice');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'ì†Œê¸ˆ.ì„¤íƒ•.í–¥ì‹ ë£Œ', 'spice');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', '½Ä¿ëÀ¯.Âü±â¸§.¿ÀÀÏ', 'oil');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'ì‹ìš©ìœ .ì°¸ê¸°ë¦„.ì˜¤ì¼', 'oil');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', '¾ç³ä.¾×Á£.Àå·ù', 'seasoning');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'ì–‘ë….ì•¡ì “.ì¥ë¥˜', 'seasoning');
 insert into tbl_category (categoryTitle, categoryMain, categorySub, categorySubTitle)
-values ('noodle', '¸é.¾ç³ä.¿ä¸®', '½ÄÃÊ.¼Ò½º.µå·¹½Ì', 'dressing');
+values ('noodle', 'ë©´.ì–‘ë….ìš”ë¦¬', 'ì‹ì´ˆ.ì†ŒìŠ¤.ë“œë ˆì‹±', 'dressing');
 
---< Àå¹Ù±¸´Ï Å×ÀÌºí >
+--< ì¥ë°”êµ¬ë‹ˆ í…Œì´ë¸” >
 create table tbl_cart(
     cartNo number(10),
     memberId varchar2(200),
@@ -185,13 +188,13 @@ create table tbl_cart(
     cartCount number(20)
 );
 
---Àå¹Ù±¸´Ï ½ÃÄö½º
+--ì¥ë°”êµ¬ë‹ˆ ì‹œí€€ìŠ¤
 create SEQUENCE seq_cart
 START WITH 1
 INCREMENT by 1;
 
 
---< ¸â¹ö Å×ÀÌºí >
+--< ë©¤ë²„ í…Œì´ë¸” >
 create table tbl_member(
     memberId varchar2(200),
     memberPw varchar2(100),
@@ -209,7 +212,7 @@ create table tbl_member(
 add CONSTRAINT fk_member foreign key (address) REFERENCES tbl_address (address);
 
 
---< ÁÖ¼Ò Å×ÀÌºí >
+--< ì£¼ì†Œ í…Œì´ë¸” >
 create table tbl_address(
     address varchar2(200),
     addressSub varchar2(100),
@@ -217,7 +220,7 @@ create table tbl_address(
     memberId varchar2(200)
 );
 
---< ÁÖ¹® Å×ÀÌºí>
+--< ì£¼ë¬¸ í…Œì´ë¸”>
 create table tbl_order(
     memberId varchar2(200),
     goodsNo number(20),
@@ -225,7 +228,7 @@ create table tbl_order(
     deliveryFee number(10)
 );
 
---<°áÁ¦ Á¤º¸>
+--<ê²°ì œ ì •ë³´>
 create table tbl_pay(
     memberId varchar2(200),
     orderGoodsName varchar2(200),
@@ -247,7 +250,7 @@ create table tbl_pay(
     constraint pk_pay primary key (memberId)	
 );
 
---< ½ºÇÁ¸µ ½ÃÅ¥¸®Æ¼ ±ÇÇÑ >
+--< ìŠ¤í”„ë§ ì‹œíë¦¬í‹° ê¶Œí•œ >
 create table tbl_member_auth(
     memberId varchar2(200),
     auth varchar2(50),
@@ -256,7 +259,7 @@ create table tbl_member_auth(
 alter table tbl_member_auth modify auth varchar2(50) default 'role_member';
 
 
---< ÀÚµ¿ ·Î±×ÀÎ >
+--< ìë™ ë¡œê·¸ì¸ >
   create table persistent_logins (	
     username VARCHAR2(64) NOT NULL, 
 	series VARCHAR2(64) primary key,
