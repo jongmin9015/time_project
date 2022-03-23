@@ -3,6 +3,19 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tis.mapper.BoardMapper">
+	<resultMap type="BoardVO" id="BoardVO">
+		<result column="bno" property="bno"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="writer" property="writer"/>
+		<result column="regdate" property="regdate"/>
+		<result column="viewcnt" property="viewcnt"/>
+		<result column="categoryNo" property="categoryNo"/>
+	</resultMap>
+	<resultMap type="BoardCategoryVO" id="BoardCategoryVO">
+		<result column="category" property="category"/>	
+		<result column="categoryNo" property="categoryNo"/>	
+	</resultMap>
 	<!-- 검색 조건문 -->
 	<sql id="criteria">
 		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
@@ -25,34 +38,42 @@
 	</sql>
 	
 	<!-- 게시물 목록 -->
-	<select id="getBoardList" resultType="com.tis.domain.BoardVO">
+	<select id="getBoardList" resultType="com.tis.domain.BoardVO" resultMap="BoardCategoryVO">
 		<![CDATA[
         
-	        select bno, title, content, writer, regdate, viewcnt, category
+	        select bno, title, content, writer, regdate, viewcnt, c.category
 	        	from(
 	        
-	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt, category
+	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt, b.categoryNo, c.category
 	                  
-	                from (select * from tbl_board where bgno = #{bgno} order by bno desc)
-	                where rownum <= #{pageNum} * #{amount} 
+	                from (select bno, title, content, writer, regdate, viewcnt, b.categoryNo, c.category
+                            from tbl_board b
+                            join tbl_board_category c
+                            on b.categoryNo = c.categoryNo
+                            where bgno = 2
+                            order by bno desc) b
+	                join tbl_board_category c
+                    on b.categoryNo = c.categoryNo
+	                where rownum <= #{pageNum} * #{amount}
      	]]>
      			<if test="keyword != null">
      				<include refid="criteria"></include>
      			</if>
      	
      	<![CDATA[
-     				)
-     				
+     				) b
+                join tbl_board_category c
+                on b.categoryno = c.categoryno     				
 	        where rn > (#{pageNum} -1) * #{amount}
-	        order by rn
+	        order by rn;
     	]]>
     
 	</select>
 	
 	<!-- 게시물 작성 -->
  	<insert id="boardWrite" parameterType="com.tis.domain.BoardVO"> 		
-		insert into tbl_board(bno, bgno, title, content, writer)
-			values (SEQ_BOARD.nextval, #{bgno}, #{title}, #{content}, #{writer})
+		insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
+			values (SEQ_BOARD.nextval, #{bgno}, #{categoryNo}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<!-- 게시물 조회 -->

@@ -21,7 +21,10 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private int viewcnt;
-	private String category;
+	private String categoryNo;
+	
+	//boardCategoryVO
+	private BoardCategoryVO boardCategoryVO;
 	
 	//페이징 처리
 	private Criteria cri;

@@ -165,7 +165,7 @@
 	                                                <td width="50" nowrap align="center" style="color: #333; font-size: 12px;">${boardList.bno }</td>
 	                                                
 	                                                <td width="100" nowrap align="center" style="color: #333; font-size: 12px;">
-	                                                    ${boardList.category }
+	                                                    ${boardCategoryVO.category }
 	                                                </td>
 	                                                <td class="notice_table_contentTitle_td" style="width: 670px !important;">
 	                                                    <a href="#">
@@ -203,7 +203,7 @@
 	                                            <tr class="notice_table_second_tr">
 	                                                <td width="50" nowrap align="center">${boardList.bno }</td>
 	                                                <td width="100" nowrap align="center" class="notice_eng2">
-	                                                    ${boardList.category }
+	                                                    ${boardCategoryVO.category }
 	                                                </td>
 	                                                <td class="notice_table_contentTitle_td">
 	                                                    <a href="#">

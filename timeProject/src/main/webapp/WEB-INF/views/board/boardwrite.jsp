@@ -34,6 +34,7 @@
 	                <h2 class="noticeView_tit">
 	                   	자주하는질문 등록                    
 	                </h2>
+	                
 	            </div>
             </c:when>
         	<c:when test="${bgno == 3}">
@@ -49,7 +50,16 @@
                     <table class="noticeView_table">
                         <tr>
                             <th scope="row" style="border: none;">제목</th>
-                            <td><input type="text" name="title" class="noticeWrite_inp noticeWrite_inp_title"></td>
+                            <td>
+                            	<input type="text" name="title" class="noticeWrite_inp noticeWrite_inp_title">
+                            	<select name="category">
+                            		<option value="10">회원</option>
+                            		<option value="20">배송/포장</option>
+                            		<option value="30">상품</option>
+                            		<option value="40">서비스 이용</option>
+                            		<option value="50">취소/교환/환불</option>
+                            	</select>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">작성자</th>
