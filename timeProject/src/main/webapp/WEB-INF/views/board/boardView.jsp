@@ -63,7 +63,9 @@
                 </table>
                 <div class="noticeView_listBtn_div clear">
                     <a href="#" class="boardList_aTag_Btn">목록</a>
-                    <!-- <a href="#" class="boardmodify_aTag_Btn">수정</a> -->
+                    <sec:authorize access="hasAuthority('role_admin')">
+                    <a href="#" class="boardmodify_aTag_Btn">수정</a>
+                    </sec:authorize>
                 </div>
                 <div class="noticeView_move_div">
                     <ul>
