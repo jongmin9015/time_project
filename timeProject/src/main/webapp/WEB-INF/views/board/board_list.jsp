@@ -56,7 +56,7 @@
 </head>
 <body>
 	<div id="header">
-   		<%-- <%@ include file="../includes/header.jsp"  %> --%>
+   		<%@ include file="../includes/header.jsp"  %>
     </div>
     <div id="warp">
         <div class="notice_inner">

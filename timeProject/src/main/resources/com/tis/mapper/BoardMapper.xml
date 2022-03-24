@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tis.mapper.BoardMapper">
-	<resultMap type="BoardVO" id="BoardVO">
+<!-- 	<resultMap type="BoardVO" id="BoardVO">
 		<result column="bno" property="bno"/>
 		<result column="title" property="title"/>
 		<result column="content" property="content"/>
@@ -15,7 +15,7 @@
 	<resultMap type="BoardCategoryVO" id="BoardCategoryVO">
 		<result column="category" property="category"/>	
 		<result column="categoryNo" property="categoryNo"/>	
-	</resultMap>
+	</resultMap> -->
 	<!-- 검색 조건문 -->
 	<sql id="criteria">
 		<trim prefix="AND (" suffix=")" prefixOverrides="OR">
@@ -38,7 +38,7 @@
 	</sql>
 	
 	<!-- 게시물 목록 -->
-	<select id="getBoardList" resultType="com.tis.domain.BoardVO" resultMap="BoardCategoryVO">
+	<select id="getBoardList" resultType="com.tis.domain.BoardVO">
 		<![CDATA[
         
 	        select bno, title, content, writer, regdate, viewcnt, c.category
@@ -50,7 +50,7 @@
                             from tbl_board b
                             join tbl_board_category c
                             on b.categoryNo = c.categoryNo
-                            where bgno = 2
+                            where bgno = #{bgno}
                             order by bno desc) b
 	                join tbl_board_category c
                     on b.categoryNo = c.categoryNo
@@ -65,7 +65,7 @@
                 join tbl_board_category c
                 on b.categoryno = c.categoryno     				
 	        where rn > (#{pageNum} -1) * #{amount}
-	        order by rn;
+	        order by rn
     	]]>
     
 	</select>
