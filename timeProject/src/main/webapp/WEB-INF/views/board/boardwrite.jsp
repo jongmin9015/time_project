@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id="header">
-   		<%-- <%@ include file="../includes/header.jsp"  %> --%>
+   		<%@ include file="../includes/header.jsp"  %>
     </div>
     <div id="warp">
         <div class="noticeView_inner">
@@ -52,13 +52,21 @@
                             <th scope="row" style="border: none;">제목</th>
                             <td>
                             	<input type="text" name="title" class="noticeWrite_inp noticeWrite_inp_title">
-                            	<select name="category">
-                            		<option value="10">회원</option>
-                            		<option value="20">배송/포장</option>
-                            		<option value="30">상품</option>
-                            		<option value="40">서비스 이용</option>
-                            		<option value="50">취소/교환/환불</option>
-                            	</select>
+                            	
+                            	<c:choose>
+                            		<c:when test="${bgno != 1 }">
+		                            	<select name="category">
+		                            		<option value="회원">회원</option>
+		                            		<option value="배송/포장">배송/포장</option>
+		                            		<option value="상품">상품</option>
+		                            		<option value="서비스 이용">서비스 이용</option>
+		                            		<option value="취소/교환/환불">취소/교환/환불</option>
+		                            	</select>
+		                          	</c:when>
+		                          	<c:otherwise>
+		                          		<input type="hidden" name="category" value="-">
+		                          	</c:otherwise>
+                            	</c:choose>
                             </td>
                         </tr>
                         <tr>

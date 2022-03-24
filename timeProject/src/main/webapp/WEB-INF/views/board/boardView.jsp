@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="/resources/js/javascript.js" defer></script>
-    <title>공지사항 상세페이지</title>
+    <title>상세페이지</title>
 </head>
 <body>
 	<div id="header">
@@ -21,19 +21,47 @@
     </div>
     <div id="warp">
         <div class="noticeView_inner">
-            <div class="noticeView_tit_div">
-                <h2 class="noticeView_tit">
-                    공지사항
-                    <p class="noticeView_sub">
-                        컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.
-                    </p>
-                </h2>
-            </div>
+        <c:choose>
+        	<c:when test="${bgno == 1 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    공지사항
+	                    <p class="noticeView_sub">
+	                        컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.
+	                    </p>
+	                </h2>
+	            </div>
+	        </c:when>
+        	<c:when test="${bgno == 2 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    자주하는 질문
+	                    <p class="noticeView_sub">
+	                        고객님들께서 가장 자주하시는 질문을 모두 모았습니다.
+	                    </p>
+	                </h2>
+	            </div>
+	        </c:when>
+        	<c:when test="${bgno == 3 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    1:1 문의
+	                </h2>
+	            </div>
+	        </c:when>
+        </c:choose>
             <div class="noticeView_table_inner">
                 <table class="noticeView_table">
                     <tr>
                         <th scope="row" style="border: none;">제목</th>
-                        <td>${boardView.title }</td>
+                        <td>
+                        <c:choose>
+                        	<c:when test="${bgno != 1 }">
+                        		<span class="boardView_category_span">${boardView.category }</span>
+                        	</c:when>
+                        </c:choose>
+                        ${boardView.title }
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">작성자</th>

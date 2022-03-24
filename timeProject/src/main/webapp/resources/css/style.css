@@ -3999,6 +3999,24 @@ input[name="deliveryMessage"] {
     width: 820px;
     margin: 0 auto;
 }
+/* 관리자 글쓰기버튼 */
+.notice_admin_write_btn{
+	display: block;
+    float: right;
+    width: 150px;
+    line-height: 37px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #795b8f;
+    color: #fff;
+    background-color: #795b8f;
+    cursor: pointer;
+}
+.notice_admin_write_btn:hover{
+	color: #795b8f;
+    background-color: #fff;
+}
+
 /* notice 타이틀 */
 .notice_head_tit_div{
     padding: 5px 0 34px;
@@ -4141,6 +4159,10 @@ input[name="notice_search[word]"]{
     margin-top: 20px;
     font-size: 12px;
     border-collapse: collapse;
+}
+.boardView_category_span{
+	border: 1px solid #ddd;
+	padding: 5px;
 }
 .noticeView_table th{
     width: 130px;
@@ -4416,7 +4438,7 @@ div.noticeView_listBtn_div>.noticeWrite_backBtn:hover{
     color: #5f0080;
     cursor: pointer;
 }
- .login_user_menu{
+.login_user_menu{
  	position:absolute;
 	margin-top: 5px;
 	line-height: 20px;
