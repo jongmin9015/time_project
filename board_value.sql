@@ -7,15 +7,15 @@ set define off;
 
 
 --1:1¹®ÀÇ ÀÓ½Ã Á¤º¸
-insert into tbl_board (bno, bgno, title, categoryNo, content, writer)
-values (seq_board.nextval, 3, '1:1¹®ÀÇ±Û', 10, '1:1¹®ÀÇÀÇÀÇ', 'user');
+insert into tbl_board (bno, bgno, category, title,  content, writer)
+values (seq_board.nextval, 3, 'È¸¿ø', '1:1¹®ÀÇ±Û', '1:1¹®ÀÇÀÇÀÇ', 'user');
 
 
 
 --ÀÚÁÖÇÏ´ÂÁú¹®
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '´Ù¸¥ Æ÷Àå¹æ¹ıÀº ¾ø³ª¿ä?', '¡á ÄÃ¸®°¡ »ç¿ë ÁßÀÎ Æ÷ÀåÀç
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '´Ù¸¥ Æ÷Àå¹æ¹ıÀº ¾ø³ª¿ä?', '¡á ÄÃ¸®°¡ »ç¿ë ÁßÀÎ Æ÷ÀåÀç
 
 
 - ÇöÀç, ÄÃ¸®°¡ »ç¿ë ÁßÀÎ Æ÷ÀåÀç : Á¾ÀÌ / ÆÛÇÃ¹Ú½º ( ÀÏºÎ ºñ´Ò, ½ºÆ¼·ÎÆû µî )
@@ -35,8 +35,8 @@ values (seq_board.nextval, 2, 20, '´Ù¸¥ Æ÷Àå¹æ¹ıÀº ¾ø³ª¿ä?', '¡á ÄÃ¸®°¡ »ç¿ë ÁßÀ
 ¾ÆÁ÷Àº ¸ğµç ¹è¼ÛÁö¿ªÀ¸·Î È®ÀåÀÌ ´õµğÁö¸¸ Â÷±ÙÂ÷±Ù ¿¬±¸ÇÏ¿©
 »ç¶÷¿¡°Ôµµ È¯°æ¿¡µµ ´õ ÀÌ·Î¿î ¹è¼ÛÀ» À§ÇØ ÄÃ¸®´Â ¿©ÀüÈ÷ ÇöÀç ÁøÇàÇüÀ¸·Î ³ë·ÂÇÏ°í ÀÖ´Â Á¡ ¾çÇØ ºÎÅ¹µå¸³´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, 'Æ÷ÀåÀç¸¦ È¸¼öÇÏ±âµµ ÇÏ³ª¿ä?', '¡á Æ÷ÀåÀç È¸¼ö ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', 'Æ÷ÀåÀç¸¦ È¸¼öÇÏ±âµµ ÇÏ³ª¿ä?', '¡á Æ÷ÀåÀç È¸¼ö ¾È³»
 
 - ÄÃ¸®¿¡¼­´Â ÀÏºÎ Æ÷ÀåÀç È¸¼ö¸¦ ÅëÇØ ÀçÈ°¿ë¾÷Ã¼¿¡ Àü´ŞÇÑ ¼öÀÔ±İ µîÀ¸·Î Áö±¸¸¦ À§ÇÑ ¼±¼øÈ¯ Ä·ÆäÀÎÀ» ÇÔ²² ÇÏ°í ÀÖÀ½À» ¾È³» µå¸³´Ï´Ù.
 
@@ -68,8 +68,8 @@ values (seq_board.nextval, 2, 20, 'Æ÷ÀåÀç¸¦ È¸¼öÇÏ±âµµ ÇÏ³ª¿ä?', '¡á Æ÷ÀåÀç È¸¼ö
 
 ¢Ã »ó¼¼ ³»¿ëÀº ÄÃ¸®È¨>°øÁö»çÇ× °Ô½ÃÆÇ¿¡¼­ È®ÀÎ ÇÒ ¼ö ÀÖ½À´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '¹è¼Û µÉ ¶§´Â ¾î¶»°Ô Æ÷ÀåµÇ¾î¼­ ¿À³ª¿ä?', '¡á Æ÷Àå¹ı ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '¹è¼Û µÉ ¶§´Â ¾î¶»°Ô Æ÷ÀåµÇ¾î¼­ ¿À³ª¿ä?', '¡á Æ÷Àå¹ı ¾È³»
 
 
 - »ûº°Áö¿ª : Àü¸é Á¾ÀÌ¹Ú½º Æ÷Àå or ÄÃ¸®ÆÛÇÃ¹Ú½º Æ÷Àå ¼±ÅÃ °¡´É
@@ -86,8 +86,8 @@ values (seq_board.nextval, 2, 20, '¹è¼Û µÉ ¶§´Â ¾î¶»°Ô Æ÷ÀåµÇ¾î¼­ ¿À³ª¿ä?', '¡á 
 
 ¢Ã ÁÖ¹® ½Ã, »óÇ° »ó¼¼ÆäÀÌÁö »ó´Ü Æ÷Àå Å¸ÀÔÀ» È®ÀÎÇÏ¿© ¸ğ¾Æ¼­ ÁÖ¹®ÇÏ½Ã¸é ¹Ú½ºÀÇ °³¼ö¸¦ ÃÖ¼ÒÈ­ ÇÒ ¼ö ÀÖ½À´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '	»óÇ°Àº ¾î¶»°Ô Æ÷ÀåµÇ³ª¿ä?', '¡á Æ÷Àå¹ı ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '	»óÇ°Àº ¾î¶»°Ô Æ÷ÀåµÇ³ª¿ä?', '¡á Æ÷Àå¹ı ¾È³»
 
 
 »óÇ° º¸°ü¹æ¹ıº°·Î ±¸ºĞÇÏ¿© Æ÷Àå µË´Ï´Ù. ( »ó¿Â / ³ÃÀå / ³Ãµ¿ )
@@ -109,8 +109,8 @@ values (seq_board.nextval, 2, 20, '	»óÇ°Àº ¾î¶»°Ô Æ÷ÀåµÇ³ª¿ä?', '¡á Æ÷Àå¹ı ¾È³»
 
 »óÇ°»Ó¸¸ÀÌ ¾Æ´Ï¶ó À¯Åë, ¹è¼Û°úÁ¤ °í·ÁÇÏ¿© Ä£È¯°æ Ä·ÆäÀÎ¿¡ µ¿ÂüÇÒ ¼ö ÀÖµµ·Ï ³ë·ÂÇÏ´Â ÄÃ¸®°¡ µÇ°Ú½À´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, 'ÁÖ¹®°ÇÀÌ 1°Ç ÀÌ»óÀÎµ¥ ÇÑ¹ø¿¡ ¹­¾î¼­(ÇÕÇØ¼­) ¹è¼ÛÇØ ÁÖ½Ç ¼ö ÀÖ³ª¿ä?', '¡á ¹­À½ ¹è¼Û ºÒ°¡
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', 'ÁÖ¹®°ÇÀÌ 1°Ç ÀÌ»óÀÎµ¥ ÇÑ¹ø¿¡ ¹­¾î¼­(ÇÕÇØ¼­) ¹è¼ÛÇØ ÁÖ½Ç ¼ö ÀÖ³ª¿ä?', '¡á ¹­À½ ¹è¼Û ºÒ°¡
 
 
 ÄÃ¸®¿¡¼­´Â ÁÖ¹®¹øÈ£ ±âÁØÀ¸·Î Æ÷Àå ¹× ¹è¼Ûºñ°¡ ¹ß»ıÇÕ´Ï´Ù.
@@ -124,16 +124,16 @@ values (seq_board.nextval, 2, 20, 'ÁÖ¹®°ÇÀÌ 1°Ç ÀÌ»óÀÎµ¥ ÇÑ¹ø¿¡ ¹­¾î¼­(ÇÕÇØ¼­) ¹
 
 ¢Ã ¼¿ÇÁÃë¼Ò°¡ ºÒ°¡ÇÑ °æ¿ì, ¸¶ÄÏÄÃ¸® °í°´Çàº¹¼¾ÅÍ Ä«Ä«¿ÀÅåÀ¸·Î Á¢¼ö ºÎÅ¹µå¸³´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '	ÀÌ ÁÖ¼ÒÁö°¡ ¹è¼Û °¡´ÉÇÑÁö, ¾î¶»°Ô ¹è¼ÛµÇ´Â Áö¿ªÀÎÁö ±Ã±İÇÕ´Ï´Ù.', '¡á ³ªÀÇ ¹è¼ÛÁö, ¹è¼Û À¯Çü È®ÀÎÇÏ±â
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '	ÀÌ ÁÖ¼ÒÁö°¡ ¹è¼Û °¡´ÉÇÑÁö, ¾î¶»°Ô ¹è¼ÛµÇ´Â Áö¿ªÀÎÁö ±Ã±İÇÕ´Ï´Ù.', '¡á ³ªÀÇ ¹è¼ÛÁö, ¹è¼Û À¯Çü È®ÀÎÇÏ±â
 
 
 (PC) »ó´Ü [¹è¼ÛÁö¿ª °Ë»ö] or »çÀÌµå ¸Ş´º¿¡ [¹è¼Û ¾È³»] Å¬¸¯ÇÏ¿© ÁÖ¼ÒÁö ±âÀç ÈÄ Á¶È¸
 
 (¸ğ¹ÙÀÏ) ¸¶ÀÌÄÃ¸® > ¹è¼Û ¾È³» Å¬¸¯ÇÏ¿© ÁÖ¼ÒÁö ±âÀç ÈÄ Á¶È¸', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '»ûº°Áö¿ªÀÎµ¥, ÅÃ¹è¹è¼ÛÀ¸·Î ¼ö·É¹Ş°í ½Í¾î¿ä ( ÅÃ¹èÁö¿ª ¡æ »ûº°¹è¼Û Èñ¸Á )', '¡á »ûº°/ÅÃ¹è Áß, Æ¯Á¤ ¹è¼ÛÀ¯Çü ÁöÁ¤ ºÒ°¡
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '»ûº°Áö¿ªÀÎµ¥, ÅÃ¹è¹è¼ÛÀ¸·Î ¼ö·É¹Ş°í ½Í¾î¿ä ( ÅÃ¹èÁö¿ª ¡æ »ûº°¹è¼Û Èñ¸Á )', '¡á »ûº°/ÅÃ¹è Áß, Æ¯Á¤ ¹è¼ÛÀ¯Çü ÁöÁ¤ ºÒ°¡
 
 ÄÃ¸®´Â Áö¿ª¿¡ µû¶ó ¹è¼Û¹æ¹ıÀÌ ´Ù¸¨´Ï´Ù.
 
@@ -158,16 +158,16 @@ values (seq_board.nextval, 2, 20, '»ûº°Áö¿ªÀÎµ¥, ÅÃ¹è¹è¼ÛÀ¸·Î ¼ö·É¹Ş°í ½Í¾î¿ä ( 
 
 ¦¦ ºÎ»ê/¿ï»ê : 18½Ã~22½Ã', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '	¹è¼ÛÁö¿ª °Ë»ö ½Ã, ¹è¼Û ºÒ°¡Áö¿ªÀ¸·Î Á¶È¸ µË´Ï´Ù.', '	¡á ¹è¼ÛºÒ°¡ Áö¿ª ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '	¹è¼ÛÁö¿ª °Ë»ö ½Ã, ¹è¼Û ºÒ°¡Áö¿ªÀ¸·Î Á¶È¸ µË´Ï´Ù.', '	¡á ¹è¼ÛºÒ°¡ Áö¿ª ¾È³»
 
 
 - ½Åµµ½Ã/½Å±Ô Áö¹ø µîÀ¸·Î ÀÏºÎ ¹è¼Û ºÒ°¡Áö¿ªÀÌ È®ÀÎ µÉ ¼ö ÀÖÀ¸¸ç ÀÌ·± °æ¿ì 1:1°Ô½ÃÆÇÀ¸·Î ¹è¼ÛºÒ°¡ Áö¿ªÀÇ ÁÖ¼Ò¸¦ ÇÔ²² ±âÀçÇÏ¿© ¹®ÀÇ ³²°ÜÁÖ½Ã±â¸¦ ºÎÅ¹µå¸³´Ï´Ù.
 
 - ÄÃ¸®¿¡¼­ »ç¿ëÇÏ´Â ÅÃ¹è´Â ´çÀÏ Ãâ°í, ´çÀÏ ¹è¼ÛÇÏ´Â ÇüÅÂ·Î¼­ ¸¸ÀÏ ´çÀÏ¹è¼ÛÀ» Áö¿øÇÏÁö ¾Ê´Â Áö¿ªÀº ¹è¼ÛÀÌ ºÒ°¡ÇÕ´Ï´Ù. ( ex. ÁÖ¹® ÈÄ, ´ÙÀ½´ÙÀ½³¯ ¹è¼ÛµÇ´Â Áö¿ª X )', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '	(ÅÃ¹è¹è¼Û) ÅÃ¹èÁö¿ªÀÎµ¥ ¹è¼ÛÀÌ ¾ğÁ¦ µÇ³ª¿ä?', '¡á ÅÃ¹èÁö¿ª ¹è¼ÛÀÏÁ¤ ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '	(ÅÃ¹è¹è¼Û) ÅÃ¹èÁö¿ªÀÎµ¥ ¹è¼ÛÀÌ ¾ğÁ¦ µÇ³ª¿ä?', '¡á ÅÃ¹èÁö¿ª ¹è¼ÛÀÏÁ¤ ¾È³»
 
 
 ÅÃ¹è¹è¼ÛÀÇ °æ¿ì, ´çÀÏ ¹ã 10½Ã±îÁö ÁÖ¹®ÇÏ½Ã¸é ´ÙÀ½³¯ ¹ã 12½ÃÀü±îÁö ¹è¼ÛÇØµå¸®°í ÀÖ½À´Ï´Ù.
@@ -189,8 +189,8 @@ values (seq_board.nextval, 2, 20, '	(ÅÃ¹è¹è¼Û) ÅÃ¹èÁö¿ªÀÎµ¥ ¹è¼ÛÀÌ ¾ğÁ¦ µÇ³ª¿ä?'
 
 ¦¦ ºÎ»ê/¿ï»ê : 18½Ã~22½Ã', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 20, '	»ûº°¹è¼Û/ ÅÃ¹è¹è¼ÛÀÌ ¹«¾ùÀÎ°¡¿ä?', '¸¶ÄÏÄÃ¸®´Â °í°´´Ô ¹è¼ÛÁö¿ª¿¡ µû¶ó »ûº°¹è¼Û°ú ÅÃ¹è¹è¼ÛÀ¸·Î ±¸ºĞÇÏ¿© »óÇ°À» ¹è¼ÛÇÕ´Ï´Ù.
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¹è¼Û/Æ÷Àå', '	»ûº°¹è¼Û/ ÅÃ¹è¹è¼ÛÀÌ ¹«¾ùÀÎ°¡¿ä?', '¸¶ÄÏÄÃ¸®´Â °í°´´Ô ¹è¼ÛÁö¿ª¿¡ µû¶ó »ûº°¹è¼Û°ú ÅÃ¹è¹è¼ÛÀ¸·Î ±¸ºĞÇÏ¿© »óÇ°À» ¹è¼ÛÇÕ´Ï´Ù.
 
 
 
@@ -248,8 +248,8 @@ values (seq_board.nextval, 2, 20, '	»ûº°¹è¼Û/ ÅÃ¹è¹è¼ÛÀÌ ¹«¾ùÀÎ°¡¿ä?', '¸¶ÄÏÄÃ¸®
 ', 'TimeShop');
 
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ÄÃ¸® »ç¿ë °èÁ¤ÀÌ ¿©·¯ °³ÀÎµ¥, ¸ğµÎ Ä«Ä«¿ÀÅåÀ¸·Î ¿¬µ¿ÇØ¼­ ÇÕÄ¡°í ½Í½À´Ï´Ù.', '¡á ±âÁ¸ ¾ÆÀÌµğ 1°³¸¸ ¿¬µ¿ °¡´É
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ÄÃ¸® »ç¿ë °èÁ¤ÀÌ ¿©·¯ °³ÀÎµ¥, ¸ğµÎ Ä«Ä«¿ÀÅåÀ¸·Î ¿¬µ¿ÇØ¼­ ÇÕÄ¡°í ½Í½À´Ï´Ù.', '¡á ±âÁ¸ ¾ÆÀÌµğ 1°³¸¸ ¿¬µ¿ °¡´É
 
 - Ä«Ä«¿À °£Æí ·Î±×ÀÎÀº ±âÁ¸ »ç¿ë ¾ÆÀÌµğ Áß, ¿¬µ¿ ¿øÇÏ½Ã´Â ÇÑ ¾ÆÀÌµğ¸¸ ¼±ÅÃÇÏ¿© ¿¬µ¿ÀÌ °¡´ÉÇÕ´Ï´Ù.
 
@@ -268,14 +268,14 @@ values (seq_board.nextval, 2, 'È¸¿ø', '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) °øµ¿Çö°ü ºñ¹Ğ¹øÈ£ °°À
 : ¹è¼Û ±â»ç´Ô²²¼­ °í°´´ÔÀÇ ¹®¾ÕÀ¸·Î ¾ÈÀüÈ÷ ¹è¼ÛÇØµå¸± ¼ö ÀÖµµ·Ï ¼ö·ÉÁö¿¡ °øµ¿Çö°ü ÃâÀÔ¹æ¹ı µî¿¡ ´ëÇØ »ó¼¼È÷ ³²°ÜÁÖ½Ã±æ ºÎÅ¹µå¸³´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ¼ö·ÉÁö¸¦ ¹Ù²Ù°í ½Í¾î¿ä', '¡á ¹è¼ÛÁö º¯°æ ¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ¼ö·ÉÁö¸¦ ¹Ù²Ù°í ½Í¾î¿ä', '¡á ¹è¼ÛÁö º¯°æ ¹æ¹ı
 
 - ¹è¼ÛÁö ¼öÁ¤Àº [¸¶ÀÌÄÃ¸®>¹è¼ÛÁö °ü¸®] ¿¡¼­ Á÷Á¢ ¼öÁ¤ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '	(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) Ä«Ä«¿ÀÅåÀ¸·Î ±âÁ¸ ¾ÆÀÌµğ ¿¬µ¿Çß´Âµ¥, È¸¿øÁ¤º¸¸¦ ¹Ù²Ù°í ½Í¾î¿ä', '¡á ÁÖ¼Ò/È¸¿øÁ¤º¸ ¼öÁ¤ ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '	(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) Ä«Ä«¿ÀÅåÀ¸·Î ±âÁ¸ ¾ÆÀÌµğ ¿¬µ¿Çß´Âµ¥, È¸¿øÁ¤º¸¸¦ ¹Ù²Ù°í ½Í¾î¿ä', '¡á ÁÖ¼Ò/È¸¿øÁ¤º¸ ¼öÁ¤ ¾È³»
 
 - ¾Æ·¡ °æ·Î¸¦ ÅëÇØ È¸¿øÁ¤º¸¸¦ Á÷Á¢ º¯°æÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
 
@@ -294,8 +294,8 @@ values (seq_board.nextval, 2, 10, '	(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) Ä«Ä«¿ÀÅåÀ¸·Î ±âÁ¸ ¾ÆÀÌµğ
 
 ¦¦ »ûº° : ¹è¼ÛÀÏ Àü³¯¹ã 11½Ã / ÅÃ¹è : ¹è¼ÛÀÏ Àü³¯ ¹ã 10½Ã', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ÄÃ¸®¾Û¿¡¼­ Ä«Ä«¿ÀÅå ·Î±×ÀÎÀÌ º¸ÀÌÁö ¾Ê¾Æ¿ä', '¡á »ç¿ë ±â±âÀÇ ¿î¿µÃ¼Á¦¿¡ µû¶ó ³ëÃâ ¿©ºÎ »óÀÌÇÔ
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ÄÃ¸®¾Û¿¡¼­ Ä«Ä«¿ÀÅå ·Î±×ÀÎÀÌ º¸ÀÌÁö ¾Ê¾Æ¿ä', '¡á »ç¿ë ±â±âÀÇ ¿î¿µÃ¼Á¦¿¡ µû¶ó ³ëÃâ ¿©ºÎ »óÀÌÇÔ
 
 - ¾Èµå·ÎÀÌµå app(¾Û) / ¸ğ¹ÙÀÏ À¥ : Ä«Ä«¿À °£Æí ·Î±×ÀÎ ³ëÃâ
 
@@ -309,8 +309,8 @@ values (seq_board.nextval, 2, 10, '(Ä«Ä«¿À°£Æí ·Î±×ÀÎ) ÄÃ¸®¾Û¿¡¼­ Ä«Ä«¿ÀÅå ·Î±×À
 - IOS APP¿¡¼­´Â »ç¿ëºÒ°¡ ¡æ ÄÃ¸® ¸ğ¹ÙÀÏ À¥À¸·Î ¿ìÈ¸ÇÏ¿© ·Î±×ÀÎ °¡´É
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '	È¸¿ø Å»Åğ¸¦ ÇÏ°í ½Í½À´Ï´Ù.', '¡á Å»Åğ ¹æ¹ı ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '	È¸¿ø Å»Åğ¸¦ ÇÏ°í ½Í½À´Ï´Ù.', '¡á Å»Åğ ¹æ¹ı ¾È³»
 
 
 - ¾Æ·¡ °æ·Î¸¦ ÅëÇØ Å»ÅğÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
@@ -337,15 +337,14 @@ values (seq_board.nextval, 2, 10, '	È¸¿ø Å»Åğ¸¦ ÇÏ°í ½Í½À´Ï´Ù.', '¡á Å»Åğ ¹æ¹ı ¾
 4) º»ÀÎ È®ÀÎ¿¡ ´ëÇÑ ±â·Ï (Á¤º¸Åë½Å ÀÌ¿ëÃËÁø ¹× Á¤º¸º¸È£ µî¿¡ °üÇÑ ¹ı·ü) : º¸À¯±â°£ 6°³¿ù
 5) ÀÎÅÍ³İ ·Î±×±â·ÏÀÚ·á, Á¢¼ÓÁö ÃßÀûÀÚ·á (Åë½Åºñ¹Ğº¸È£¹ı) : º¸À¯±â°£ 3°³¿ù', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, 'È¸¿ø Å»Åğ ÈÄ, Àç°¡ÀÔÀÌ °¡´ÉÇÑ°¡¿ä?', '¡á È¸¿ø Àç°¡ÀÔ ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', 'È¸¿ø Å»Åğ ÈÄ, Àç°¡ÀÔÀÌ °¡´ÉÇÑ°¡¿ä?', '¡á È¸¿ø Àç°¡ÀÔ ¾È³»
 
 
 - È¸¿øÅ»Åğ ÈÄ, 30ÀÏ ÀÌ³»¿¡´Â µ¿ÀÏÇÑ ¿¬¶ôÃ³·Î °¡ÀÔÀÌ ºÒ°¡ÇÕ´Ï´Ù.
 ', 'TimeShop');
-
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, '	ÁÖ¹®ÇÏÁö ¾Ê¾Ò´Âµ¥, ÁÖ¹®¿Ï·á ¸Ş½ÃÁö ¶Ç´Â ¹è¼Û¿Ï·á ¸Ş½ÃÁö¸¦ ¹Ş¾Ò½À´Ï´Ù.', '¡á ÁÖ¹®/¹è¼Û¿Ï·á ¸Ş½ÃÁö ¿À¼ö½Å
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', '	ÁÖ¹®ÇÏÁö ¾Ê¾Ò´Âµ¥, ÁÖ¹®¿Ï·á ¸Ş½ÃÁö ¶Ç´Â ¹è¼Û¿Ï·á ¸Ş½ÃÁö¸¦ ¹Ş¾Ò½À´Ï´Ù.', '¡á ÁÖ¹®/¹è¼Û¿Ï·á ¸Ş½ÃÁö ¿À¼ö½Å
 
 - ÁöÀÎºĞ²²¼­ °í°´´Ô²² ¼±¹°ÇÏ½Ã´Â °æ¿ì, ¼ö·ÉÀÚ ¿¬¶ôÃ³·Î ¹è¼Û¿Ï·á ¸Ş½ÃÁö°¡ ¹ß¼Û µË´Ï´Ù.
 
@@ -356,38 +355,38 @@ values (seq_board.nextval, 2, 10, '	ÁÖ¹®ÇÏÁö ¾Ê¾Ò´Âµ¥, ÁÖ¹®¿Ï·á ¸Ş½ÃÁö ¶Ç´Â ¹è¼Û
 ¢Ã »ó¼¼ È®ÀÎÀÌ ÇÊ¿äÇÏ½Å °æ¿ì¿¡´Â ¸¶ÄÏÄÃ¸® °í°´Çàº¹¼¾ÅÍ Ä«Ä«¿ÀÅåÀ¸·Î Á¢¼ö ºÎÅ¹µå¸³´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 10, 'È¸¿ø°¡ÀÔ¿¡ Á¦ÇÑÀÌ ÀÖ³ª¿ä?', '¡á È¸¿ø°¡ÀÔ Á¶°Ç
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'È¸¿ø', 'È¸¿ø°¡ÀÔ¿¡ Á¦ÇÑÀÌ ÀÖ³ª¿ä?', '¡á È¸¿ø°¡ÀÔ Á¶°Ç
 
 
 - ¸¶ÄÏÄÃ¸® È¸¿ø °¡ÀÔ ½Ã, º°µµÀÇ Á¶°ÇÀº ¾øÀ¸¸ç ¹«·áÀÎ Á¡ Âü°í ¹Ù¶ø´Ï´Ù.
 
 - È¸¿ø°¡ÀÔ ÈÄ ´Ù¾çÇÑ ÇıÅÃ°ú »óÇ°À» ¸¸³ªº¸¼¼¿ä!', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÄÃ¸®ÆĞ½º) Ãë¼Ò´Â ¾î¶»°Ô ÇÏ³ª¿ä?', '¡á Ãë¼Ò¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÄÃ¸®ÆĞ½º) Ãë¼Ò´Â ¾î¶»°Ô ÇÏ³ª¿ä?', '¡á Ãë¼Ò¹æ¹ı
 
 - ÄÃ¸®ÆĞ½º Ãë¼Ò´Â [¸¶ÀÌÄÃ¸®>ÄÃ¸®ÆĞ½º]¿¡¼­ Á÷Á¢ Ãë¼Ò °¡´ÉÇÕ´Ï´Ù.
 
 - ´Ù¸¸, Ã¹ °áÁ¦ÀÏ ±âÁØ 7ÀÏ ÀÌ³» ¹«·á¹è¼Û ÇıÅÃÀ» ¹ŞÁö ¾ÊÀº °æ¿ì¿¡¸¸ Ãë¼Ò/È¯ºÒÀÌ °¡´ÉÇÏ¸ç »ç¿ëÀÌ·ÂÀÌ ÀÖÀ¸½Ç °æ¿ì¿¡´Â ºÒ°¡ÇÑ Á¡ Âü°í ¹Ù¶ø´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '(ÄÃ¸®ÆĞ½º) ¼­ºñ½º ÀÌ¿ë ±âÁØÀÌ ÀÖ³ª¿ä?', '	¡á ÄÃ¸®ÆĞ½º ¼­ºñ½º ÀÌ¿ë ±âÁØ
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '(ÄÃ¸®ÆĞ½º) ¼­ºñ½º ÀÌ¿ë ±âÁØÀÌ ÀÖ³ª¿ä?', '	¡á ÄÃ¸®ÆĞ½º ¼­ºñ½º ÀÌ¿ë ±âÁØ
 
 - ½Ç°áÁ¦±İ¾×ÀÌ 15,000¿ø ÀÌ»óÀÏ °æ¿ì, ÀÚµ¿À¸·Î ¹«·á¹è¼Û ÇıÅÃÀÌ Àû¿ëµË´Ï´Ù.
 
 - »ûº°¹è¼ÛÁö¿ª¿¡¼­¸¸ »ç¿ë °¡´ÉÇÕ´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÄÃ¸®ÆĞ½º) ½Å¿ëÄ«µå ÀÜ°í/ÇÑµµ ºÎÁ·À¸·Î Á¤±â °áÁ¦°¡ µÇÁö ¾Ê¾Ò½À´Ï´Ù.', '¡á °áÁ¦ ½ÇÆĞ ½Ã
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÄÃ¸®ÆĞ½º) ½Å¿ëÄ«µå ÀÜ°í/ÇÑµµ ºÎÁ·À¸·Î Á¤±â °áÁ¦°¡ µÇÁö ¾Ê¾Ò½À´Ï´Ù.', '¡á °áÁ¦ ½ÇÆĞ ½Ã
 
 - ½Å¿ëÄ«µåÀÇ ÀÜ°í/ÇÑµµ ºÎÁ·À¸·ÎÀÇ °áÁ¦°¡ ½ÇÆĞÇÏ´Â °æ¿ì °í°´´Ô²² º°µµ ¾È³»¸¦ µå¸®°í ÀÖ½À´Ï´Ù.
 
 - Á¤±â °áÁ¦ÀÏ ±âÁØ 5ÀÏÈÄ¿¡µµ °áÁ¦°¡ ½ÇÆĞÇÑ °æ¿ì ÀÚµ¿À¸·Î ÄÃ¸®ÆĞ½º´Â Ãë¼Ò µË´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÄÃ¸®ÆĞ½º) ½Å¿ëÄ«µå°¡ Á¤º¸°¡ º¯°æÀÌ ÀÖ¾î ±³Ã¼ÇÏ°íÀÚ ÇÏ´Âµ¥ ¾î¶»°Ô °áÁ¦¹æ¹ıÀ» ¹Ù²Ü ¼ö ÀÖ³ª¿ä?', '	¡á °áÁ¦¼ö´Ü º¯°æ
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÄÃ¸®ÆĞ½º) ½Å¿ëÄ«µå°¡ Á¤º¸°¡ º¯°æÀÌ ÀÖ¾î ±³Ã¼ÇÏ°íÀÚ ÇÏ´Âµ¥ ¾î¶»°Ô °áÁ¦¹æ¹ıÀ» ¹Ù²Ü ¼ö ÀÖ³ª¿ä?', '	¡á °áÁ¦¼ö´Ü º¯°æ
 
 - »õ·Î¿î ½Å¿ëÄ«µå¸¦ ÅëÇØ ÄÃ¸®ÆĞ½º¸¦ Àç±¸¸ÅÇÏ½Ã°Ô µÇ½Ã¸é ÀÚµ¿À¸·Î °áÁ¦¼ö´ÜÀÌ º¯°æµË´Ï´Ù.
 
@@ -400,8 +399,8 @@ values (seq_board.nextval, 2, 30, '	(ÄÃ¸®ÆĞ½º) ½Å¿ëÄ«µå°¡ Á¤º¸°¡ º¯°æÀÌ ÀÖ¾î ±³Ã
 
 ¢Ã Àû¸³±İ ¹× ÄíÆù Àû¿ëÀÌ ºÒ°¡ÇÑ »óÇ°ÀÔ´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '(ÄÃ¸®ÆĞ½º) ÀÌ»çÇÏ¸é¼­,Áö¿ªÀÌ ÅÃ¹èÁö¿ªÀ¸·Î ¹Ù²î¾ú½À´Ï´Ù. µ¿ÀÏÇÏ°Ô »ç¿ë ÇÒ ¼ö ÀÖ³ª¿ä?', '¡á ÄÃ¸®ÆĞ½º »ç¿ë°¡´É Áö¿ª
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '(ÄÃ¸®ÆĞ½º) ÀÌ»çÇÏ¸é¼­,Áö¿ªÀÌ ÅÃ¹èÁö¿ªÀ¸·Î ¹Ù²î¾ú½À´Ï´Ù. µ¿ÀÏÇÏ°Ô »ç¿ë ÇÒ ¼ö ÀÖ³ª¿ä?', '¡á ÄÃ¸®ÆĞ½º »ç¿ë°¡´É Áö¿ª
 
 - ÇØ´ç ¼­ºñ½º´Â »ûº°¹è¼Û Áö¿ª¿¡¼­¸¸ Àû¿ë°¡´É ÇÕ´Ï´Ù.
 
@@ -416,15 +415,15 @@ values (seq_board.nextval, 2, 30, '(ÄÃ¸®ÆĞ½º) ÀÌ»çÇÏ¸é¼­,Áö¿ªÀÌ ÅÃ¹èÁö¿ªÀ¸·Î ¹Ù²
 
 ¢Ã Ã¹ °áÁ¦ÀÏ ±âÁØ 7ÀÏ ÀÌÈÄ, Ãë¼Ò ºÒ°¡´ÉÇÏ³ª ³²Àº ±âÇÑ µ¿¾È ÄÃ¸®ÆĞ½º ÇıÅÃÀ» ¹ŞÀ» ¼ö ÀÖ½À´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÆÛÇÃ¹Ú½º) ±Ô°İÀº ¾î¶»°Ô µÇ³ª¿ä?', '¡á ÆÛÇÃ¹Ú½º ±Ô°İ
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÆÛÇÃ¹Ú½º) ±Ô°İÀº ¾î¶»°Ô µÇ³ª¿ä?', '¡á ÆÛÇÃ¹Ú½º ±Ô°İ
 
 - ¿Ü°æ : °¡·Î 46 x ¼¼·Î 36 x ³ôÀÌ 35 ( cm )
 
 - ¿ë·® : 47.2L', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÆÛÇÃ¹Ú½º) ±³È¯/È¯ºÒ ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù', '	¡á ÆÛÇÃ¹Ú½º ±³È¯/È¯ºÒ ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÆÛÇÃ¹Ú½º) ±³È¯/È¯ºÒ ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù', '	¡á ÆÛÇÃ¹Ú½º ±³È¯/È¯ºÒ ¾È³»
 
 - Á¦Ç°ÀÇ Æ¯¼º»ó ÀÏºÎ ½Ç¹äÀÌ ³ª¿Í ÀÖ°Å³ª »ö»óÀÇ Â÷ÀÌ°¡ ¹ß»ıÇÒ ¼ö ÀÖ½À´Ï´Ù.
 
@@ -433,8 +432,8 @@ values (seq_board.nextval, 2, 30, '	(ÆÛÇÃ¹Ú½º) ±³È¯/È¯ºÒ ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù', '	¡
 - ´Ù¸¸ ¼ö·É ´ç½Ã ÈÑ¼Õ/¿À¿°/ÀÌ¿°/°íÀå µîÀÇ ºÒ·®ÀÌ È®ÀÎ µÇ½Ç °æ¿ì ÄÃ¸® °í°´Çàº¹¼¾ÅÍ Ä«Ä«¿ÀÅå ¹®ÀÇ·Î Á¢¼ö ºÎÅ¹µå¸³´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '	(ÆÛÇÃ¹Ú½º) ¹Ú½º·Î ¹è¼ÛµÇ´Â °æ¿ì´Â ¹¹ÁÒ?', '¡á Ç°ÁúÀúÇÏ ¿ì·Á·Î º°µµ Æ÷ÀåÀç ¹è¼Û
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '	(ÆÛÇÃ¹Ú½º) ¹Ú½º·Î ¹è¼ÛµÇ´Â °æ¿ì´Â ¹¹ÁÒ?', '¡á Ç°ÁúÀúÇÏ ¿ì·Á·Î º°µµ Æ÷ÀåÀç ¹è¼Û
 
 - »§ÀÌ³ª ¹Ù³ª³ª, ÀÙÃ¤¼Ò µî°ú °°ÀÌ ³Ã±â Á¢ÃËÀ¸·Î Ç°ÁúÀúÇÏ°¡ ¿ì·ÁµÇ´Â »ó¿Â »óÇ° ¹×
 
@@ -444,8 +443,8 @@ values (seq_board.nextval, 2, 30, '	(ÆÛÇÃ¹Ú½º) ¹Ú½º·Î ¹è¼ÛµÇ´Â °æ¿ì´Â ¹¹ÁÒ?', '¡
 
 ÆÛÇÃ ¹Ú½º¿¡ ´ã±âÁö ¾ÊÀ» °æ¿ì ´Üµ¶ ¹è¼ÛÀ» ÇÏ°í ÀÖ´Â Á¡ Âü°í ºÎÅ¹ µå¸³´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 30, '(ÆÛÇÃ¹Ú½º) ÆÛÇÃ¹Ú½º´Â ¼ö°Å¿ëÀÎ°¡¿ä?', '	¡á ¹Ì¼ö°Å »óÇ°
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '»óÇ°', '(ÆÛÇÃ¹Ú½º) ÆÛÇÃ¹Ú½º´Â ¼ö°Å¿ëÀÎ°¡¿ä?', '	¡á ¹Ì¼ö°Å »óÇ°
 
 - ÄÃ¸® ÆÛÇÃ¹Ú½º´Â ¼¼Ã´/È¸¼ö °úÁ¤¿¡¼­ ¹ß»ı µÇ´Â ¼¼Àç»ç¿ë µîÀÇ È¯°æ¿¡ ¾ÈÁÁÀº ºÎºĞµé, ±×¸®°í Àç»ç¿ë ½Ã À§»ıÀ» °í·ÁÇßÀ» ¶§
 
@@ -453,8 +452,8 @@ values (seq_board.nextval, 2, 30, '(ÆÛÇÃ¹Ú½º) ÆÛÇÃ¹Ú½º´Â ¼ö°Å¿ëÀÎ°¡¿ä?', '	¡á ¹Ì
 
 - º°µµ ¼ö°Å´Â ÁøÇàµÇÁö ¾Ê±â¶§¹®¿¡ ÁÖ¹® ÈÄ ¹® ¾Õ¿¡ ³õ¾ÆÁÖ½Ã°í, ¼ö·É ÈÄ¿¡´Â Àß Á¢¾î º¸°üÇØÁÖ½Ã¸é µÇ½Ê´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 40, '»óÇ° ¹®ÀÇ´Â ¾îµğ¼­ ÀÛ¼ºÇÒ ¼ö ÀÖ³ª¿ä?', '¡á »óÇ° ¹®ÀÇ ÀÛ¼º ¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¼­ºñ½º ÀÌ¿ë', '»óÇ° ¹®ÀÇ´Â ¾îµğ¼­ ÀÛ¼ºÇÒ ¼ö ÀÖ³ª¿ä?', '¡á »óÇ° ¹®ÀÇ ÀÛ¼º ¹æ¹ı
 
 
 - ÇÏ±â °æ·Î¸¦ ÅëÇØ »óÇ°¿¡ ´ëÇÑ ±Ã±İÇÑ Á¡À» ³²°ÜÁÖ½Ã¸é, ¿µ¾÷ÀÏ ±âÁØ 1~2ÀÏ ³»¿¡ ´äº¯ µå¸®°Ú½À´Ï´Ù.
@@ -472,8 +471,8 @@ values (seq_board.nextval, 2, 40, '»óÇ° ¹®ÀÇ´Â ¾îµğ¼­ ÀÛ¼ºÇÒ ¼ö ÀÖ³ª¿ä?', '¡á »ó
 ¢Ã ±³È¯/È¯ºÒ/¹è¼Û/ÄíÆù»ç¿ë µî¿¡ ´ëÇÑ ¹®ÀÇ´Â °í°´¼¾ÅÍ·Î ¹®ÀÇ ³²°ÜÁÖ½Ã¸é ½Å¼ÓÈ÷ µµ¿òµå¸®°Ú½À´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 40, '1:1 °Ô½ÃÆÇÀ¸·Î ¹®ÀÇ ³²±â´Â ¹æ¹ıÀº ¾ø³ª¿ä?', '¡á 1:1°Ô½ÃÆÇ »ó´ã ¹®ÀÇ ¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¼­ºñ½º ÀÌ¿ë', '1:1 °Ô½ÃÆÇÀ¸·Î ¹®ÀÇ ³²±â´Â ¹æ¹ıÀº ¾ø³ª¿ä?', '¡á 1:1°Ô½ÃÆÇ »ó´ã ¹®ÀÇ ¹æ¹ı
 
 
 - ÇÏ±â °æ·Î¸¦ ÅëÇØ ¹®ÀÇ/ºÒ¸¸ ³»¿ëÀ» ³²°ÜÁÖ½Ã¸é »ó´ã»ç È®ÀÎÇÏ¿© ºü¸£°Ô µµ¿ò µå¸®µµ·Ï ÇÏ°Ú½À´Ï´Ù.
@@ -488,8 +487,8 @@ values (seq_board.nextval, 2, 40, '1:1 °Ô½ÃÆÇÀ¸·Î ¹®ÀÇ ³²±â´Â ¹æ¹ıÀº ¾ø³ª¿ä?', '
 
 ¢Ã Á¦Ç° ÇÏÀÚ/ Á¦Ç° ÀÌ»ó µîÀ¸·Î ¹İÇ°(È¯ºÒ)ÀÌ ÇÊ¿äÇÑ °æ¿ì »çÁø°ú ÇÔ²² ±¸Ã¼ÀûÀº ³»¿ëÀ» ³²°ÜÁÖ¼¼¿ä', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 40, '	Ç°Àı µÈ »óÇ°Àº ¾ğÁ¦ ÀçÀÔ°í µÇ³ª¿ä?', '¡á ÀçÀÔ°í ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¼­ºñ½º ÀÌ¿ë', '	Ç°Àı µÈ »óÇ°Àº ¾ğÁ¦ ÀçÀÔ°í µÇ³ª¿ä?', '¡á ÀçÀÔ°í ¾È³»
 
 - Ç°Àı »óÇ°µéÀº °¢°¢ ÀçÀÔ°í ±â°£ÀÌ ´Ş¶ó Á¤È®ÇÑ ¾È³»°¡ ¾î·Æ½À´Ï´Ù.
 
@@ -510,8 +509,8 @@ values (seq_board.nextval, 2, 40, '	Ç°Àı µÈ »óÇ°Àº ¾ğÁ¦ ÀçÀÔ°í µÇ³ª¿ä?', '¡á ÀçÀ
 - ¾ß°£ ¼ö½Åµ¿ÀÇ ¹Ì¼³Á¤ ½Ã, ¾ß°£ ÀÔ°í°Ç¿¡ ´ëÇÏ¿© ½ÇÁ¦ ÀÔ°í½Ã°£ º¸´Ù ´Ê°Ô ¾Ë¸²ÀÌ ¹ß¼Û µÉ ¼ö ÀÖ½À´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 40, 'È¨ÆäÀÌÁö ÆË¾÷Ã¢À» ²À ÇØÁ¦ ÇØ¾ßÇÏ³ª¿ä?', '	¡á ÆË¾÷ Â÷´Ü ÇØÁ¦ ¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¼­ºñ½º ÀÌ¿ë', 'È¨ÆäÀÌÁö ÆË¾÷Ã¢À» ²À ÇØÁ¦ ÇØ¾ßÇÏ³ª¿ä?', '	¡á ÆË¾÷ Â÷´Ü ÇØÁ¦ ¹æ¹ı
 
 
 ÄÃ¸®¿¡¼­´Â °í°´´Ô²² À¯¿ëÇÏ°í Áß¿äÇÑ Á¤º¸¸¦ ÆË¾÷Ã¢À» ÅëÇØ ¾È³» µå¸®°í ÀÖ½À´Ï´Ù.
@@ -535,8 +534,8 @@ values (seq_board.nextval, 2, 40, 'È¨ÆäÀÌÁö ÆË¾÷Ã¢À» ²À ÇØÁ¦ ÇØ¾ßÇÏ³ª¿ä?', '	¡á 
 ¢Ã À©µµ¿ì XP ¼­ºñ½ºÆÑ2 (SP2) ÀÎ °æ¿ì, ÆË¾÷Â÷´ÜÀÌ ¼³Á¤µÇ¾î º¸ÀÌÁö ¾ÊÀ» ¼ö ÀÖ½À´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 40, 'Àå¹Ù±¸´Ï¿¡ ´ãÀº »óÇ°µéÀº °è¼Ó º¸Á¸µÇ³ª¿ä?', '¡á Àå¹Ù±¸´Ï ´ã±â ÀúÀå À¯È¿±â°£ ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, '¼­ºñ½º ÀÌ¿ë', 'Àå¹Ù±¸´Ï¿¡ ´ãÀº »óÇ°µéÀº °è¼Ó º¸Á¸µÇ³ª¿ä?', '¡á Àå¹Ù±¸´Ï ´ã±â ÀúÀå À¯È¿±â°£ ¾È³»
 
 
 - »óÇ°À» ´ãÀº ½ÃÁ¡ºÎÅÍ ÃÖ´ë 90ÀÏ°£ ÀúÀå °¡´É
@@ -545,8 +544,8 @@ values (seq_board.nextval, 2, 40, 'Àå¹Ù±¸´Ï¿¡ ´ãÀº »óÇ°µéÀº °è¼Ó º¸Á¸µÇ³ª¿ä?', '
 90ÀÏ µ¿¾È ±¸¸ÅÇÏÁö ¾ÊÀ» °æ¿ì, ¼øÂ÷·Î Àå¹Ù±¸´Ï¿¡¼­ ÀÚµ¿ ¼Ò¸êµÇ¿À´Ï ÀÌ¿ë¿¡ Âü°í ºÎÅ¹µå¸³´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 50, 'ÁÖ¹®À» Ãë¼Ò ÇÏ°í ½Í½À´Ï´Ù.', '¡á ÁÖ¹®Ãë¼Ò ¹æ¹ı ¾È³»
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'Ãë¼Ò/±³È¯/È¯ºÒ', 'ÁÖ¹®À» Ãë¼Ò ÇÏ°í ½Í½À´Ï´Ù.', '¡á ÁÖ¹®Ãë¼Ò ¹æ¹ı ¾È³»
 
 - ÁÖ¹® Ãë¼Ò´Â ¹è¼Û ´Ü°èº°·Î »óÀÌÇÏ¿À´Ï ¾Æ·¡ ³»¿ë Âü°í ¹Ù¶ø´Ï´Ù.
 
@@ -563,8 +562,8 @@ values (seq_board.nextval, 2, 50, 'ÁÖ¹®À» Ãë¼Ò ÇÏ°í ½Í½À´Ï´Ù.', '¡á ÁÖ¹®Ãë¼Ò ¹æ¹
 
 ¢Ã ÁÖ¹®»óÇ°ÀÇ ºÎºĞ Ãë¼Ò´Â ºÒ°¡ÇÕ´Ï´Ù. ÀüÃ¼ Ãë¼Ò ÀÌ ÈÄ, Àç±¸¸Å ¹Ù¶ø´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 50, 'È¯ºÒ ¾È³»´Â ¹Ş¾Ò´Âµ¥, ¾ÆÁ÷ Ä«µå»ç¿¡¼­´Â Ãë¼Ò°¡ ¾ÈµÇ¾ú¾î¿ä', '¡á Ä«µå Ãë¼Ò ½Ã, À¯ÀÇ»çÇ×
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'Ãë¼Ò/±³È¯/È¯ºÒ', 'È¯ºÒ ¾È³»´Â ¹Ş¾Ò´Âµ¥, ¾ÆÁ÷ Ä«µå»ç¿¡¼­´Â Ãë¼Ò°¡ ¾ÈµÇ¾ú¾î¿ä', '¡á Ä«µå Ãë¼Ò ½Ã, À¯ÀÇ»çÇ×
 
 
 - ÃÖÁ¾ Ä«µå È¯ºÒÀÇ °æ¿ì Ä«µå»ç »çÁ¤À¸·Î ÀÎÇØ È¯ºÒÁ¢¼öÀÏ·ÎºÎÅÍ ¿µ¾÷ÀÏ ±âÁØ 3~5ÀÏ °¡·® ¼Ò¿ä µÉ ¼ö ÀÖ½À´Ï´Ù.
@@ -577,8 +576,8 @@ values (seq_board.nextval, 2, 50, 'È¯ºÒ ¾È³»´Â ¹Ş¾Ò´Âµ¥, ¾ÆÁ÷ Ä«µå»ç¿¡¼­´Â Ãë¼Ò°
 ¢Ã ÀÚ¼¼ÇÑ »çÇ×Àº Ä«µå»ç¿¡ ¹®ÀÇ ºÎÅ¹µå¸®¸ç, 7ÀÏ ÀÌÈÄ¿¡µµ È¯ºÒÀÌ µÇÁö ¾ÊÀº °æ¿ì °í°´¼¾ÅÍ·Î ¹®ÀÇ ºÎÅ¹µå¸³´Ï´Ù.
 ', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 50, '»óÇ°ºÒ·®ÀÎ °æ¿ì, ±³È¯(¹İÇ°) ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù.', '¡á »óÇ°¿¡ ¹®Á¦°¡ ÀÖ´Â °æ¿ì
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'Ãë¼Ò/±³È¯/È¯ºÒ', '»óÇ°ºÒ·®ÀÎ °æ¿ì, ±³È¯(¹İÇ°) ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù.', '¡á »óÇ°¿¡ ¹®Á¦°¡ ÀÖ´Â °æ¿ì
 
 
 - ¹ŞÀ¸½Å »óÇ°ÀÌ Ç¥½Ã¡¤±¤°í ³»¿ë ¶Ç´Â °è¾à ³»¿ë°ú ´Ù¸¥ °æ¿ì¿¡´Â »óÇ°À» ¹ŞÀº ³¯ºÎÅÍ 3°³¿ù ÀÌ³», ±× »ç½ÇÀ» ¾Ë°Ô µÈ ³¯ºÎÅÍ 30ÀÏ ÀÌ³»¿¡ ±³È¯ ¹× È¯ºÒÀ» ¿äÃ»ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
@@ -588,8 +587,8 @@ values (seq_board.nextval, 2, 50, '»óÇ°ºÒ·®ÀÎ °æ¿ì, ±³È¯(¹İÇ°) ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù
 
 ¡Ø »óÇ°¿¡ ¹®Á¦°¡ ÀÖ´Â °ÍÀ¸·Î È®ÀÎµÇ¸é ¹è¼Ûºñ´Â ÄÃ¸®°¡ ºÎ´ãÇÕ´Ï´Ù.', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 50, '´Ü¼øº¯½É/ÁÖ¹®Âø¿À·Î ÀÎÇÑ, ±³È¯(¹İÇ°) ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù.', '¡á ´Ü¼ø º¯½É, ÁÖ¹® Âø¿ÀÀÇ °æ¿ì
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'Ãë¼Ò/±³È¯/È¯ºÒ', '´Ü¼øº¯½É/ÁÖ¹®Âø¿À·Î ÀÎÇÑ, ±³È¯(¹İÇ°) ±âÁØÀÌ ±Ã±İÇÕ´Ï´Ù.', '¡á ´Ü¼ø º¯½É, ÁÖ¹® Âø¿ÀÀÇ °æ¿ì
 
 
 [½Å¼±/ ³ÃÀå/ ³Ãµ¿ ½ÄÇ°]
@@ -608,8 +607,8 @@ values (seq_board.nextval, 2, 50, '´Ü¼øº¯½É/ÁÖ¹®Âø¿À·Î ÀÎÇÑ, ±³È¯(¹İÇ°) ±âÁØÀÌ ±
 
 (ÁÖ¹® °Ç ¹è¼Ûºñ¸¦ °áÁ¦ÇÏ¼ÌÀ» °æ¿ì 3,000¿ø)', 'TimeShop');
 
-insert into tbl_board (bno, bgno, categoryNo, title, content, writer)
-values (seq_board.nextval, 2, 50, '±³È¯(¹İÇ°) ¾î¶»°Ô ÁøÇà µÇ³ª¿ä?', '¡á ±³È¯(¹İÇ°) ÁøÇà ¹æ¹ı
+insert into tbl_board (bno, bgno, category, title, content, writer)
+values (seq_board.nextval, 2, 'Ãë¼Ò/±³È¯/È¯ºÒ', '±³È¯(¹İÇ°) ¾î¶»°Ô ÁøÇà µÇ³ª¿ä?', '¡á ±³È¯(¹İÇ°) ÁøÇà ¹æ¹ı
 
 
 - ¹ŞÀ¸½Å »óÇ°À» ±³È¯(¹İÇ°) ÇÏ½Ç °æ¿ì, ±³È¯ »çÀ¯+¹®Á¦°¡ ¹ß»ıÇÑ ºÎºĞÀ» È®ÀÎÇÒ ¼ö ÀÖ´Â »çÁø°ú ÇÔ²² °í°´¼¾ÅÍ·Î ¹®ÀÇ ¹Ù¶ø´Ï´Ù.
@@ -625,8 +624,8 @@ values (seq_board.nextval, 2, 50, '±³È¯(¹İÇ°) ¾î¶»°Ô ÁøÇà µÇ³ª¿ä?', '¡á ±³È¯(¹İÇ
 
 
 --°øÁö»çÇ×
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [µ¥ºñ¸¶ÀÌ¾î] Áö´Ï¾î½º ½ºÆİÁö ±×¸° 1EA ¿Ü 10°Ç (2022 3. 8 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [µ¥ºñ¸¶ÀÌ¾î] Áö´Ï¾î½º ½ºÆİÁö ±×¸° 1EA ¿Ü 10°Ç (2022 3. 8 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[µ¥ºñ¸¶ÀÌ¾î] Áö´Ï¾î½º ½ºÆİÁö ±×¸° 1EA ¿Ü 10°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -648,8 +647,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [µ¥ºñ¸¶ÀÌ¾î] Áö´Ï¾î½º ½ºÆİÁö ±×¸
 TimeShop µå¸²
 ', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¸Åä¹Ù] ¹ÙÁú Æä½ºÅä ¿Ü 4°Ç (2022 3. 7 ~)', '
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¸¸Åä¹Ù] ¹ÙÁú Æä½ºÅä ¿Ü 4°Ç (2022 3. 7 ~)', '
 °í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¸¸Åä¹Ù] ¹ÙÁú Æä½ºÅä ¿Ü 4°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
@@ -671,8 +670,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¸Åä¹Ù] ¹ÙÁú Æä½ºÅä ¿Ü 4°Ç (202
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.06 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.06 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
 
 ¸¶ÄÏÄÃ¸® ±Ù¹«ÀÚ ÄÚ·Î³ª 19 È®Áø ÆÇÁ¤À» ¹Ş¾Æ ¾È³» ¸»¾¸µå¸³´Ï´Ù.
 
@@ -717,8 +716,8 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.0
 °¨»çÇÕ´Ï´Ù.
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [³ó½É] »õ¿ì±ø 90g ¿Ü 16°Ç (2022 3. 3 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [³ó½É] »õ¿ì±ø 90g ¿Ü 16°Ç (2022 3. 3 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[³ó½É] »õ¿ì±ø 90g ¿Ü 16°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -739,8 +738,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [³ó½É] »õ¿ì±ø 90g ¿Ü 16°Ç (2022 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ãß¾ïÀÇ ±¹¹ÎÇĞ±³ ¶±ººÀÌ] ÄÅººÀÌ ¿Ü 11 Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Ãß¾ïÀÇ ±¹¹ÎÇĞ±³ ¶±ººÀÌ] ÄÅººÀÌ ¿Ü 11 Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Ãß¾ïÀÇ ±¹¹ÎÇĞ±³ ¶±ººÀÌ] ÄÅººÀÌ ¿Ü 11 Á¾" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -760,8 +759,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ãß¾ïÀÇ ±¹¹ÎÇĞ±³ ¶±ººÀÌ] ÄÅººÀÌ 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¼Àº¹°¿¡] ±¹»ê ÃÌµÎºÎ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¸¼Àº¹°¿¡] ±¹»ê ÃÌµÎºÎ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¸¼Àº¹°¿¡] ±¹»ê ÃÌµÎºÎ" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -782,8 +781,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¼Àº¹°¿¡] ±¹»ê ÃÌµÎºÎ (2022 3. 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¹ÙÀÌÅ»¿¡¼¾¼È] µ¿°á°ÇÁ¶ ¹Ì³ë½º ¿Ü 26°Ç (2022 3. 8 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¹ÙÀÌÅ»¿¡¼¾¼È] µ¿°á°ÇÁ¶ ¹Ì³ë½º ¿Ü 26°Ç (2022 3. 8 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¹ÙÀÌÅ»¿¡¼¾¼È] µ¿°á°ÇÁ¶ ¹Ì³ë½º ¿Ü 26°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -803,8 +802,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¹ÙÀÌÅ»¿¡¼¾¼È] µ¿°á°ÇÁ¶ ¹Ì³ë½º ¿
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İº¯°æ°øÁö] [La bocca] ÇÁ¶û½º µğÀúÆ® ¼¼Æ® ¿Ü 76°Ç (2022. 3. 7 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İº¯°æ°øÁö] [La bocca] ÇÁ¶û½º µğÀúÆ® ¼¼Æ® ¿Ü 76°Ç (2022. 3. 7 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[La bocca] ÇÁ¶û½º µğÀúÆ® ¼¼Æ® ¿Ü 76°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -824,8 +823,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İº¯°æ°øÁö] [La bocca] ÇÁ¶û½º µğÀúÆ® ¼¼Æ® ¿Ü
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [µ¨¸®Ä¡¿À] ¸ñÃÊÀ° ¾È½É ½ºÅ×ÀÌÅ© ¿Ü 13°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [µ¨¸®Ä¡¿À] ¸ñÃÊÀ° ¾È½É ½ºÅ×ÀÌÅ© ¿Ü 13°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[µ¨¸®Ä¡¿À] ¸ñÃÊÀ° ¾È½É ½ºÅ×ÀÌÅ© ¿Ü 13°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -845,8 +844,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [µ¨¸®Ä¡¿À] ¸ñÃÊÀ° ¾È½É ½ºÅ×ÀÌÅ© 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎÇÏ°øÁö] [KF365] Æ¯¶õ 2Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎÇÏ°øÁö] [KF365] Æ¯¶õ 2Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[KF365] Æ¯¶õ 2Á¾" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -866,8 +865,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎÇÏ°øÁö] [KF365] Æ¯¶õ 2Á¾ (2022 3. 10 ~)'
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿ìµå¾Øºê¸¯] ¿Ã¸®ºê Ä¡¾Æ¹ÙÅ¸ ¿Ü 9°Ç (2022 3. 14 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¿ìµå¾Øºê¸¯] ¿Ã¸®ºê Ä¡¾Æ¹ÙÅ¸ ¿Ü 9°Ç (2022 3. 14 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¿ìµå¾Øºê¸¯] ¿Ã¸®ºê Ä¡¾Æ¹ÙÅ¸ ¿Ü 9°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -888,8 +887,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿ìµå¾Øºê¸¯] ¿Ã¸®ºê Ä¡¾Æ¹ÙÅ¸ ¿Ü 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÇŞ¹İ] ¼Ü¹İ 4Á¾ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ÇŞ¹İ] ¼Ü¹İ 4Á¾ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ÇŞ¹İ] ¼Ü¹İ 4Á¾" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -910,8 +909,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÇŞ¹İ] ¼Ü¹İ 4Á¾ (2022 3. 11 ~)',
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø]¸ğÂ¥·¼¶ó ÇÖµµ±× 4Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø]¸ğÂ¥·¼¶ó ÇÖµµ±× 4Á¾ (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Ç®¹«¿ø]¸ğÂ¥·¼¶ó ÇÖµµ±× 4Á¾" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -932,8 +931,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø]¸ğÂ¥·¼¶ó ÇÖµµ±× 4Á¾ (202
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¼±¹°¼¼Æ®] LOMA ³Ê¸®½Ì¼¤Çª1L+³Ê¸®½Ì ÄÁµğ¼Å³Ê 1L ¿Ü 57°Ç (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¼±¹°¼¼Æ®] LOMA ³Ê¸®½Ì¼¤Çª1L+³Ê¸®½Ì ÄÁµğ¼Å³Ê 1L ¿Ü 57°Ç (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¼±¹°¼¼Æ®] LOMA ³Ê¸®½Ì¼¤Çª1L+³Ê¸®½Ì ÄÁµğ¼Å³Ê 1L ¿Ü 57°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -956,8 +955,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¼±¹°¼¼Æ®] LOMA ³Ê¸®½Ì¼¤Çª1L+³Ê¸
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.10 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.10 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
 
 ¸¶ÄÏÄÃ¸® ±Ù¹«ÀÚ ÄÚ·Î³ª 19 È®Áø ÆÇÁ¤À» ¹Ş¾Æ ¾È³» ¸»¾¸µå¸³´Ï´Ù.
 
@@ -994,8 +993,8 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.1
 °¨»çÇÕ´Ï´Ù.
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] °¶·°½Ã S22 »çÀü¿¹¾à ÀÌº¥Æ® ´çÃ·ÀÚ ¾È³»', '¾È³çÇÏ¼¼¿ä °í°´´Ô, ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] °¶·°½Ã S22 »çÀü¿¹¾à ÀÌº¥Æ® ´çÃ·ÀÚ ¾È³»', '¾È³çÇÏ¼¼¿ä °í°´´Ô, ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
 
 
 
@@ -1030,8 +1029,8 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] °¶·°½Ã S22 »çÀü¿¹¾à ÀÌº¥Æ® ´çÃ·ÀÚ ¾È
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¾ÆÆ®À§µå¹Ì] À¯±â³óÂü¹ã 60G ¿Ü 2°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¾ÆÆ®À§µå¹Ì] À¯±â³óÂü¹ã 60G ¿Ü 2°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¾ÆÆ®À§µå¹Ì] À¯±â³óÂü¹ã 60G ¿Ü 2°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1053,8 +1052,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¾ÆÆ®À§µå¹Ì] À¯±â³óÂü¹ã 60G ¿Ü 2
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¶ÀÌ¸®Æ²Å¸ÀÌ°Å] ÇÎÅ©Æş ¾Æ±â»ó¾îÄÉÀÌÅ© (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¸¶ÀÌ¸®Æ²Å¸ÀÌ°Å] ÇÎÅ©Æş ¾Æ±â»ó¾îÄÉÀÌÅ© (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¸¶ÀÌ¸®Æ²Å¸ÀÌ°Å] ÇÎÅ©Æş ¾Æ±â»ó¾îÄÉÀÌÅ©" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1075,8 +1074,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¸¶ÀÌ¸®Æ²Å¸ÀÌ°Å] ÇÎÅ©Æş ¾Æ±â»ó¾î
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎÇÏ°øÁö] [¼³¼º¸ñÀå] ¹«Ç×»ıÁ¦ ÇÑ¿ì ¾î¸°ÀÌ À°Æ÷ (2022 3. 15 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎÇÏ°øÁö] [¼³¼º¸ñÀå] ¹«Ç×»ıÁ¦ ÇÑ¿ì ¾î¸°ÀÌ À°Æ÷ (2022 3. 15 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¼³¼º¸ñÀå] ¹«Ç×»ıÁ¦ ÇÑ¿ì ¾î¸°ÀÌ À°Æ÷" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1096,8 +1095,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎÇÏ°øÁö] [¼³¼º¸ñÀå] ¹«Ç×»ıÁ¦ ÇÑ¿ì ¾î¸°ÀÌ 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ºñºñµåÅ°Ä£] 4Á¾ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ºñºñµåÅ°Ä£] 4Á¾ (2022 3. 11 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ºñºñµåÅ°Ä£] 4Á¾" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1117,8 +1116,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ºñºñµåÅ°Ä£] 4Á¾ (2022 3. 11 ~)'
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] µö½º ÇØ¾ç½ÉÃş¼ö °ñµå 2L 1¹Ú½º(6°³ÀÔ) ¿Ü 2°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] µö½º ÇØ¾ç½ÉÃş¼ö °ñµå 2L 1¹Ú½º(6°³ÀÔ) ¿Ü 2°Ç (2022 3. 10 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "µö½º ÇØ¾ç½ÉÃş¼ö °ñµå 2L 1¹Ú½º(6°³ÀÔ) ¿Ü 2°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1138,8 +1137,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] µö½º ÇØ¾ç½ÉÃş¼ö °ñµå 2L 1¹Ú½º(6°
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÀÏ»ó»ıÈ°] ¾ÈÀüÇÑ Çâ±Õ ÄÚÅĞ°¡À§ ¿Ü 10°Ç (2022 3. 16 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ÀÏ»ó»ıÈ°] ¾ÈÀüÇÑ Çâ±Õ ÄÚÅĞ°¡À§ ¿Ü 10°Ç (2022 3. 16 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ÀÏ»ó»ıÈ°] ¾ÈÀüÇÑ Çâ±Õ ÄÚÅĞ°¡À§ ¿Ü 10°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1159,8 +1158,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÀÏ»ó»ıÈ°] ¾ÈÀüÇÑ Çâ±Õ ÄÚÅĞ°¡À§ 
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÁöÀ§ÇÈ] DOG ¿¡¾îµå¶óÀÌ »ç½¿°í±â 1kg ¿Ü 52°Ç (2022 3. 18 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ÁöÀ§ÇÈ] DOG ¿¡¾îµå¶óÀÌ »ç½¿°í±â 1kg ¿Ü 52°Ç (2022 3. 18 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ÁöÀ§ÇÈ] DOG ¿¡¾îµå¶óÀÌ »ç½¿°í±â 1kg ¿Ü 52°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1180,8 +1179,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÁöÀ§ÇÈ] DOG ¿¡¾îµå¶óÀÌ »ç½¿°í±â
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.15 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.15 ¾÷µ¥ÀÌÆ®', '¾È³çÇÏ¼¼¿ä. °í°´´Ô. ¸¶ÄÏÄÃ¸®ÀÔ´Ï´Ù.
 
 ¸¶ÄÏÄÃ¸® ±Ù¹«ÀÚ ÄÚ·Î³ª 19 È®Áø ÆÇÁ¤À» ¹Ş¾Æ ¾È³» ¸»¾¸µå¸³´Ï´Ù.
 
@@ -1194,26 +1193,6 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.1
 - 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.6(ÀÏ)~3.9(¼ö) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.6(ÀÏ)~3.9(¼ö) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.6(ÀÏ) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.8(È­) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.9(¼ö) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.6(ÀÏ)~3.9(¼ö) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.6(ÀÏ)~3.7(¿ù) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.11 (±İ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.4(±İ)~3.5(Åä) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­), 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.9(¼ö) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­) È­µµ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.12 (Åä) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.9(¼ö) Á×Àü ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
@@ -1231,62 +1210,7 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.1
 - 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
 - 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö)~3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.9(¼ö) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.13 (ÀÏ) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä)~3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.9(¼ö) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.14 (¿ù) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.7(¿ù)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ)~3.14(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.12(Åä) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ)~3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.14(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.14(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ)~3.14(¿ù) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.13(ÀÏ)~3.15(È­) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.15(È­) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.15(È­) ¼ÛÆÄ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ), 3.12(Åä), 3.14(¿ù) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.13(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö), 3.11(±İ), 3.12(Åä) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.9(¼ö)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.8(È­)~3.10(¸ñ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.11(±İ) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.11(±İ), 3.12(Åä), 3.14(¿ù) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.12(Åä) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.12(Åä) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
-- 3.15 (È­) ±Ù¹«ÀÚ 1ÀÎ È®Áø °á°ú Åëº¸ * ±Ù¹«ÀÏ : 3.10(¸ñ)~3.12(Åä) ±èÆ÷ ¼¾ÅÍ¿¡¼­ ±Ù¹«ÇÏ¼Ì½À´Ï´Ù.
+
 
 ÇØ´ç Á÷¿øÀº ±Ù¹« ½Ã ¹æ¿ª ´ç±¹ÀÇ ÁöÄ§¿¡ µû¶ó »ó½Ã ¸¶½ºÅ©¸¦ Âø¿ëÇÏ¿´½À´Ï´Ù. 
 
@@ -1306,8 +1230,8 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ±Ù¹«ÀÚ ÄÚ·Î³ª19 È®Áø °ü·Ã ¾È³»_ 03.1
 °¨»çÇÕ´Ï´Ù.
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿Â¸¾] ¾ö¸¶ÀÇ½ÄÅ¹ ±èÀÚ¹İ (2022 3. 18 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¿Â¸¾] ¾ö¸¶ÀÇ½ÄÅ¹ ±èÀÚ¹İ (2022 3. 18 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¿Â¸¾] ¾ö¸¶ÀÇ½ÄÅ¹ ±èÀÚ¹İ" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1326,8 +1250,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿Â¸¾] ¾ö¸¶ÀÇ½ÄÅ¹ ±èÀÚ¹İ (2022 3
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Áø¹Ì] °íÃßÀå/°£Àå ¿Ü 19 °Ç (2022 3. 16 ~)', '
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Áø¹Ì] °íÃßÀå/°£Àå ¿Ü 19 °Ç (2022 3. 16 ~)', '
 °í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Áø¹Ì] °íÃßÀå/°£Àå ¿Ü 19 °Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
@@ -1347,8 +1271,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Áø¹Ì] °íÃßÀå/°£Àå ¿Ü 19 °Ç (202
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿ÀÀÌ¹Â] ÇâºĞ³¶ ¹«È­°ú ¿Ü 2°Ç (2022 3. 19 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¿ÀÀÌ¹Â] ÇâºĞ³¶ ¹«È­°ú ¿Ü 2°Ç (2022 3. 19 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¿ÀÀÌ¹Â] ÇâºĞ³¶ ¹«È­°ú ¿Ü 2°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1367,8 +1291,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¿ÀÀÌ¹Â] ÇâºĞ³¶ ¹«È­°ú ¿Ü 2°Ç (2
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø´Ù³í] ¶°¸Ô´Â ¾×Æ¼ºñ¾Æ µş±â 80g*4ÀÔ ¿Ü 4°Ç (2022 3. 17 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø´Ù³í] ¶°¸Ô´Â ¾×Æ¼ºñ¾Æ µş±â 80g*4ÀÔ ¿Ü 4°Ç (2022 3. 17 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Ç®¹«¿ø´Ù³í] ¶°¸Ô´Â ¾×Æ¼ºñ¾Æ µş±â 80g*4ÀÔ ¿Ü 4°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1387,8 +1311,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Ç®¹«¿ø´Ù³í] ¶°¸Ô´Â ¾×Æ¼ºñ¾Æ µş±
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¾¾Å¬·¹¹ö] ¿Àºì¿¡ ±¸¿î ¸ÔÅÂ ¿Ü 7 °Ç (2022 3. 17 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [¾¾Å¬·¹¹ö] ¿Àºì¿¡ ±¸¿î ¸ÔÅÂ ¿Ü 7 °Ç (2022 3. 17 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[¾¾Å¬·¹¹ö] ¿Àºì¿¡ ±¸¿î ¸ÔÅÂ ¿Ü 7 °Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1408,8 +1332,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [¾¾Å¬·¹¹ö] ¿Àºì¿¡ ±¸¿î ¸ÔÅÂ ¿Ü 7
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÆäÀÌºê] ºí·»µå ¿øµÎ(ºí·¢ ºí·»µå) ¿Ü 12°Ç (2022 3. 21 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ÆäÀÌºê] ºí·»µå ¿øµÎ(ºí·¢ ºí·»µå) ¿Ü 12°Ç (2022 3. 21 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ÆäÀÌºê] ºí·»µå ¿øµÎ(ºí·¢ ºí·»µå) ¿Ü 12°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1429,8 +1353,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÆäÀÌºê] ºí·»µå ¿øµÎ(ºí·¢ ºí·»µå
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Áø½ÇµÈ¼Õ¸À] ÇÑ¿ì»ç°ñ µµ°¡´ÏÅÁ ¿Ü 2°Ç (2022 3. 19 ~)', '
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Áø½ÇµÈ¼Õ¸À] ÇÑ¿ì»ç°ñ µµ°¡´ÏÅÁ ¿Ü 2°Ç (2022 3. 19 ~)', '
 °í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Áø½ÇµÈ¼Õ¸À] ÇÑ¿ì»ç°ñ µµ°¡´ÏÅÁ ¿Ü 2°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
@@ -1451,8 +1375,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Áø½ÇµÈ¼Õ¸À] ÇÑ¿ì»ç°ñ µµ°¡´ÏÅÁ ¿
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÇÏ¼±Á¤] ´ÙÁø¸¶´Ã 150g¿Ü 1 °Ç (2022 3. 24 ~)', '
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [ÇÏ¼±Á¤] ´ÙÁø¸¶´Ã 150g¿Ü 1 °Ç (2022 3. 24 ~)', '
 °í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[ÇÏ¼±Á¤] ´ÙÁø¸¶´Ã 150g¿Ü 1°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
@@ -1472,8 +1396,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [ÇÏ¼±Á¤] ´ÙÁø¸¶´Ã 150g¿Ü 1 °Ç (2
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Kiri] ³¢¸® ºí·çº£¸® Å©¸²Ä¡Áî Âû¶± 6ÀÔ ¿Ü 8°Ç (2022 3. 22 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[°¡°İÀÎ»ó°øÁö] [Kiri] ³¢¸® ºí·çº£¸® Å©¸²Ä¡Áî Âû¶± 6ÀÔ ¿Ü 8°Ç (2022 3. 22 ~)', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä.
 
 "[Kiri] ³¢¸® ºí·çº£¸® Å©¸²Ä¡Áî Âû¶± 6ÀÔ ¿Ü 8°Ç" °¡°İÀ» Á¶Á¤ÇÏ°Ô µÇ¾î ¾È³»µå¸³´Ï´Ù. 
 
@@ -1492,8 +1416,8 @@ values(seq_board.nextval, 1, 0, '[°¡°İÀÎ»ó°øÁö] [Kiri] ³¢¸® ºí·çº£¸® Å©¸²Ä¡Áî Âû
 
 TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] Æ÷ÀåÀç È¸¼ö ¼­ºñ½º ¾È³»', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä. ¸¶ÄÏÄÃ¸® ÀÔ´Ï´Ù.
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] Æ÷ÀåÀç È¸¼ö ¼­ºñ½º ¾È³»', '°í°´´Ô, ¾È³çÇÏ¼¼¿ä. ¸¶ÄÏÄÃ¸® ÀÔ´Ï´Ù.
 
 ÄÃ¸®¿¡¼­´Â Ä£È¯°æ Æ÷ÀåÀç¿Í Áö¼Ó »ç¿ë°¡´ÉÇÑ Æ÷Àå¹æ¹ı¿¡ ´ëÇØ ¸¹Àº °í¹Î°ú ¿¬±¸¸¦ ÁøÇàÇÏ°í ÀÖ½À´Ï´Ù.
 
@@ -1512,8 +1436,8 @@ values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] Æ÷ÀåÀç È¸¼ö ¼­ºñ½º ¾È³»', '°í°´´Ô, ¾
 ¾ÕÀ¸·Îµµ »óÇ°ÀÇ Ç°ÁúÀ» À¯ÁöÇÏ¸ç ¾ÈÀüÇÏ°Ô ¹è¼Û µå¸± ¼ö ÀÖµµ·Ï Ä£È¯°æ Æ÷ÀåÀç ¹× Æ÷Àå¹ı¿¡ ´ëÇØ ´õ¿í ¿¬±¸ÇÏ´Â ÄÃ¸®°¡ µÇ°Ú½À´Ï´Ù.
  TimeShop µå¸²', 'TimeShop');
 
-insert into tbl_board(bno, bgno, categoryNo, title, content, writer)
-values(seq_board.nextval, 1, 0, '[¸¶ÄÏÄÃ¸®] ÅÃ¹è ¹è¼Û ÁÖ¹® ºÒ°¡ Áö¿ª ¾È³» (2022.3.16 ¾÷µ¥ÀÌÆ®)', '
+insert into tbl_board(bno, bgno, title, content, writer)
+values(seq_board.nextval, 1, '[¸¶ÄÏÄÃ¸®] ÅÃ¹è ¹è¼Û ÁÖ¹® ºÒ°¡ Áö¿ª ¾È³» (2022.3.16 ¾÷µ¥ÀÌÆ®)', '
 ¾È³çÇÏ¼¼¿ä.°í°´´Ô
 TimeShop ÀÔ´Ï´Ù.
 

@@ -2,52 +2,12 @@ set define off;
 
 
 
-select bno, title, content, writer, regdate, viewcnt, c.category
-	        	from(
-	        
-	                select rownum  as rn, bno, title, content, writer, regdate, viewcnt, b.categoryNo, c.category
-	                  
-	                from (select bno, title, content, writer, regdate, viewcnt, b.categoryNo, c.category
-                            from tbl_board b
-                            join tbl_board_category c
-                            on b.categoryNo = c.categoryNo
-                            where bgno = 2
-                            order by bno desc) b
-                    join tbl_board_category c
-                    on b.categoryNo = c.categoryNo
-	                where rownum <= #{pageNum} * #{amount}
-                    
-                    
-                    ) b
-                join tbl_board_category c
-                on b.categoryno = c.categoryno     				
-	        where rn > (#{pageNum} -1) * #{amount}
-	        order by rn;
-
-
-
-
-select bno, title, content, writer, regdate, viewcnt, c.category
-from tbl_board b
-join tbl_board_category c
-on b.categoryNo = c.categoryNo
-where bgno = 2
-order by bno desc;
-
-
-
-
-
-
-
-
-
 --board 테이블
 create table tbl_board(
     bno     number not null,        --게시물 번호
     bgno    number not null,        --게시판 분류번호
     title   varchar2(200) not null, --제목
-    categoryNo number not null, --카테고리
+    category varchar2(15) default '-', --카테고리
     content varchar2(4000),         --내용
     writer  varchar2(50) not null,  --이름
     regdate date default sysdate,   --작성일자
@@ -55,30 +15,6 @@ create table tbl_board(
     CONSTRAINT tbl_board_PK 
     PRIMARY KEY(bno) --게시물 기본키설정
 );
-
---board category 테이블
-create table tbl_board_category(
-    category varchar2(15),
-    categoryNo number PRIMARY KEY
-);
-
---외래키 설정
-alter table tbl_board
-add CONSTRAINT fk_board_categoryNo foreign KEY(categoryNo) REFERENCES tbl_board_category(categoryNo);
-
---카테고리
-insert into tbl_board_category(categoryNo, category)
-values (0, '-');
-insert into tbl_board_category(categoryNo, category)
-values (10, '회원');
-insert into tbl_board_category(categoryNo, category)
-values (20, '배송/포장');
-insert into tbl_board_category(categoryNo, category)
-values (30, '상품');
-insert into tbl_board_category(categoryNo, category)
-values (40, '서비스 이용');
-insert into tbl_board_category(categoryNo, category)
-values (50, '취소/교환/환불');
 
 
 --board 시퀀스 생성

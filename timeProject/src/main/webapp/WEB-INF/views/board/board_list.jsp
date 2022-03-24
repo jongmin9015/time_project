@@ -165,7 +165,7 @@
 	                                                <td width="50" nowrap align="center" style="color: #333; font-size: 12px;">${boardList.bno }</td>
 	                                                
 	                                                <td width="100" nowrap align="center" style="color: #333; font-size: 12px;">
-	                                                    ${boardCategoryVO.category }
+	                                                    ${boardList.category }
 	                                                </td>
 	                                                <td class="notice_table_contentTitle_td" style="width: 670px !important;">
 	                                                    <a href="#">
@@ -184,6 +184,11 @@
 	                    </table>
                    	</c:when>
                    	<c:when test="${pageMaker.cri.bgno == 3}">
+                   	<sec:authorize access="isAnonymous()">
+                   	로그인 후 사용해 주세요 
+                   	</sec:authorize>
+            		<sec:authorize access="isAuthenticated()">
+                   	
 	                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
 	                        <tr>
 	                            <td>
@@ -203,7 +208,7 @@
 	                                            <tr class="notice_table_second_tr">
 	                                                <td width="50" nowrap align="center">${boardList.bno }</td>
 	                                                <td width="100" nowrap align="center" class="notice_eng2">
-	                                                    ${boardCategoryVO.category }
+	                                                    ${boardList.category }
 	                                                </td>
 	                                                <td class="notice_table_contentTitle_td">
 	                                                    <a href="#">
@@ -228,6 +233,7 @@
 	                            </td>
 	                        </tr>
 	                    </table>
+	                </sec:authorize>
                    	</c:when>
                 </c:choose>
                     <div class="notice_page_inner">                    	
@@ -273,7 +279,11 @@
                             </td>
                             </c:when>
                         	<c:when test="${pageMaker.cri.bgno == 2}">
-                            
+                            <td class="notice_stxt">
+                                <input type="hidden" name="searchType" class="boardSearchType" value="W" <c:out value="${pageMaker.cri.bgno eq '2'?'checked':''}"/>>
+                                <input type="hidden" name="searchType" class="boardSearchType" value="T" <c:out value="${pageMaker.cri.bgno eq '2'?'checked':''}"/>>
+                                <input type="hidden" name="searchType" class="boardSearchType" value="C" <c:out value="${pageMaker.cri.bgno eq '2'?'checked':''}"/>>
+                            </td>
                             <td class="notice_search_bt">
                                 <a href=""><!--  onclick="return notice_search_frm()" -->
                                     <img src="/resources/images/notice/search.webp" alt="">
@@ -285,8 +295,9 @@
                         	<c:when test="${pageMaker.cri.bgno == 3}">
                             
                             <td class="notice_search_bt">
+                            <sec:authorize access="isAuthenticated()">
                                 <a href="#" class="bgno3_insert_Btn">글쓰기</a>
-                                
+                            </sec:authorize>
                             </td>
                             </c:when>
                         </c:choose>
@@ -295,7 +306,7 @@
                 </div>
                 
             </form>
-            <sec:authorize access="hasAuthority('role_member')">
+            <sec:authorize access="permitAll">
             <aside class="board_side_menu_bar">            
 	                <div class="board_side_menu_inner">
 	                    <h2>고객센터</h2>
@@ -415,6 +426,8 @@
     		//검색
     		$(".notice_search_bt a").on("click", function(e){
     			e.preventDefault();
+    			let checkTypeBgno = ${pageMaker.cri.bgno };
+    			
     			
     			let typeArr = [];
     			let type = null;
@@ -428,6 +441,10 @@
     			    			
     			/* 키워드 */
     			let keyword = $("input[name='notice_search[word]']").val();
+    			
+    			if(checkTypeBgno == '2' || checkTypeBgno == '3'){
+    				type = 'WTC';
+    			}
     			
     			/* 키워드, 검색종류 미선택시 */
     			if(!type && !keyword){
