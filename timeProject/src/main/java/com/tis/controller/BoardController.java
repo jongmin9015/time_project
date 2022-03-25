@@ -12,9 +12,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.tis.domain.BoardVO;
+import com.tis.domain.CategoryVO;
 import com.tis.domain.Criteria;
+import com.tis.domain.GoodsVO;
 import com.tis.domain.PageDTO;
 import com.tis.service.BoardService;
+import com.tis.service.CategoryService;
+import com.tis.service.GoodsService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -32,11 +36,12 @@ public class BoardController {
 	public void boardList(Model model, Criteria cri, @RequestParam("bgno")int bgno){		
 		cri.setBgno(bgno);
 		List<BoardVO> boardList = boardService.getBoardList(cri);
-		model.addAttribute("boardList", boardList);
-		
+		List<GoodsVO> boardGetGoodsList = boardService.boardGetGoodsList();
 		int total = boardService.getBoardTotal(cri);
 		PageDTO pageMake = new PageDTO(cri, total);
 		
+		model.addAttribute("goodsList", boardGetGoodsList);
+		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageMaker", pageMake);
 		
 		log.info("get board_list......................" + "board_list");
@@ -97,7 +102,6 @@ public class BoardController {
 		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardDelete");
 		return "redirect:/board/board_list";
-	}
-	
+	}	
 	
 }

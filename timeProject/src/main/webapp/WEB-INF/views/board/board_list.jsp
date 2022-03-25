@@ -86,6 +86,14 @@
                     </sec:authorize>
                 </h2>
                 </c:when>
+            	<c:when test="${pageMaker.cri.bgno == 0}">
+                <h2 class="notice_head_tit">
+                    상품 리스트 관리                    
+                    <sec:authorize access="hasAuthority('role_admin')">
+                    <a href="#" class="notice_admin_write_btn">상품 입력</a>
+                    </sec:authorize>
+                </h2>
+                </c:when>
             	<c:otherwise>
                 <h2 class="notice_head_tit">
                     1:1 문의
@@ -235,6 +243,55 @@
 	                    </table>
 	                </sec:authorize>
                    	</c:when>
+                   	<c:when test="${pageMaker.cri.bgno == 0}">                   	
+	            		<sec:authorize access="hasAuthority('role_admin')">
+		                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+		                        <tr>
+		                            <td>
+		                                <div class="notice_table_div">
+		                                    <table class="notice_table" width="100%" cellpadding="0" cellspacing="0">
+		                                        <thead>
+		                                            <tr class="notice_table_fir_tr">
+		                                                <th style="width= 20px;">이미지</th>
+		                                                <th>카테고리</th>
+		                                                <th>상품명</th>
+		                                                <th>상품가격</th>
+		                                                <th></th>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                        <c:forEach items="${goodsList }" var="goods">
+		                                            <tr class="notice_table_second_tr">
+		                                                <td nowrap align="center" style="height: 115px;">
+		                                                	<img src="/resources/images/shop/goods/${goods.goodsImage}" class="notice_goods_img" alt="#">
+		                                                </td>
+		                                                <td style="height: 115px;" nowrap align="center" class="notice_eng2">
+		                                                    ${goods.goodsCategory }
+		                                                </td>
+		                                                <td style="height: 115px;" width="100%" class="notice_table_contentTitle_td">
+		                                                    <a href="#">
+		                                                        <b class="notice_table_con_tit">
+		                                                        <a style="line-height: 80px;" href="${goods.goodsNo}" class="notice_goodsList_atag">${goods.goodsName }</a>
+		                                                        </b>
+		                                                    </a>
+		                                                </td>
+		                                                <td width="100" style="height: 115px;" nowrap align="center">
+		                                                    ${goods.goodsPrice}원
+		                                                </td>
+		                                                <td width="100" style="height: 115px;" nowrap align="center" class="notice_eng2">
+		                                                    <i class="fa-solid fa-x board_goodsList_delBtn"></i>
+		                                                </td>
+		                                                
+		                                            </tr>                                            
+		                                        </c:forEach>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+		                            </td>
+		                        </tr>
+		                    </table>
+		                </sec:authorize>
+                   	</c:when>
                 </c:choose>
                     <div class="notice_page_inner">                    	
                         <div class="notice_page_div">
@@ -294,9 +351,9 @@
                             </c:when>
                         	<c:when test="${pageMaker.cri.bgno == 3}">
                             
-                            <td class="notice_search_bt">
+                            <td class="notice_bt">
                             <sec:authorize access="isAuthenticated()">
-                                <a href="#" class="bgno3_insert_Btn">글쓰기</a>
+                                <a href="#" class="notice_admin_write_btn">글쓰기</a>
                             </sec:authorize>
                             </td>
                             </c:when>
@@ -306,7 +363,21 @@
                 </div>
                 
             </form>
-            <sec:authorize access="permitAll">
+            <sec:authorize access="isAnonymous()">
+            <aside class="board_side_menu_bar">            
+	                <div class="board_side_menu_inner">
+	                    <h2>고객센터</h2>
+	                    <div class="board_side_menu_list_inner">
+	                        <ul class="board_side_menu_list">
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항</a><span class="side_menu_arr"></span></li>
+	                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문</a><span class="side_menu_arr"></span></li>                         
+	                            	                            
+	                        </ul> 
+	                    </div>
+	                </div>	            
+            </aside>
+            </sec:authorize>
+            <sec:authorize access="hasAuthority('role_member')">
             <aside class="board_side_menu_bar">            
 	                <div class="board_side_menu_inner">
 	                    <h2>고객센터</h2>
@@ -324,12 +395,13 @@
             <sec:authorize access="hasAuthority('role_admin')">
             <aside class="board_side_menu_bar">            
 	                <div class="board_side_menu_inner">
-	                    <h2>고객센터</h2>
+	                    <h2>관리자 페이지</h2>
 	                    <div class="board_side_menu_list_inner">
 	                        <ul class="board_side_menu_list">
 		                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_notic ${pageMaker.cri.bgno eq '1'?'board_side_menu_click_aTag':'' }">공지 사항 관리</a><span class="side_menu_arr"></span></li>
 		                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_many ${pageMaker.cri.bgno eq '2'?'board_side_menu_click_aTag':'' }">자주 하는 질문 관리</a><span class="side_menu_arr"></span></li>
 		                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_inquiry ${pageMaker.cri.bgno eq '3'?'board_side_menu_click_aTag':'' }">1:1문의 관리</a><span class="side_menu_arr"></span></li>	                            
+		                            <li><a href="#" class="board_side_menu_list_Btn board_side_menu_list_Btn_goodsList ${pageMaker.cri.bgno eq '0'?'board_side_menu_click_aTag':'' }">상품리스트 관리</a><span class="side_menu_arr"></span></li>	                            
 		                            	                            
 	                        </ul> 
 	                    </div>
@@ -347,10 +419,20 @@
 			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
 			<input type="hidden" name="type" value="${pageMaker.cri.type }">
     	</form>
+    	<form id="boardGoodsMoveForm" method="get" action="/shop/goods/goods_detail">
+    	</form>
     </div>
     <script>
     	$(document).ready(function() {
-    		
+    		// 상품 상세 이동
+    		$(".notice_goodsList_atag").on("click", function(e) {
+    			let item_listForm = $("#boardGoodsMoveForm");
+    			e.preventDefault();
+    			item_listForm.append("<input type='hidden' name='goodsNo' value='" + $(this).attr("href") + "'>");
+    			item_listForm.attr("action","/shop/goods/goods_detail");
+    			item_listForm.submit();
+    			
+    		});
     		
     		/* 페이징 번호 이동 작업 */
     		$(".notice_page_div a").on("click", function(e) {
@@ -378,6 +460,7 @@
     		let inquiry = $(".board_side_menu_list_Btn_inquiry");
     		let admin = $(".board_side_menu_list_Btn_admin");
     		let back = $(".board_side_menu_list_Btn_back_admin");
+    		let goodsList = $(".board_side_menu_list_Btn_goodsList");
     		
     		
     		/* 서브메뉴 클릭 페이지 이동 */
@@ -409,6 +492,14 @@
     		});
     		
     		admin.on("click",function(e){   
+    			e.preventDefault();
+    			fromList.find("inpiut[name='keyword']").val('');
+    			fromList.find("inpiut[name='type']").val('');
+    			fromList.find("input[name='bgno']").val("0");
+    			fromList.submit();
+    		});
+    		
+    		 goodsList.on("click",function(e){   
     			e.preventDefault();
     			fromList.find("inpiut[name='keyword']").val('');
     			fromList.find("inpiut[name='type']").val('');

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tis.domain.BoardVO;
 import com.tis.domain.Criteria;
+import com.tis.domain.GoodsVO;
 
 public interface BoardService {
 	//게시글 목록
@@ -26,5 +27,8 @@ public interface BoardService {
 	
 	//조회수 올리기
 	int updateViewCnt(int bno);
+	
+	//관리 상품리스트
+	List<GoodsVO> boardGetGoodsList();
 	
 }

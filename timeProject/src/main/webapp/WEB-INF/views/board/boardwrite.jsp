@@ -21,6 +21,7 @@
     </div>
     <div id="warp">
         <div class="noticeView_inner">
+        <sec:authentication property="principal" var="pinfo"/>
         <c:choose>
         	<c:when test="${bgno == 1}">
 	            <div class="noticeView_tit_div">
@@ -40,7 +41,7 @@
         	<c:when test="${bgno == 3}">
 	            <div class="noticeView_tit_div">
 	                <h2 class="noticeView_tit">
-	                   	1:1문의 관리                    
+	                   	1:1문의 등록                    
 	                </h2>
 	            </div>
             </c:when>
@@ -71,7 +72,9 @@
                         </tr>
                         <tr>
                             <th scope="row">작성자</th>
-                            <td><input type="text" name="writer" class="noticeWrite_inp noticeWrite_inp_writer"></td>
+                            <sec:authorize access="isAuthenticated()">
+                            	<td><input type="text" name="writer" value="${pinfo.member.memberId}" readonly="readonly" class="noticeWrite_inp noticeWrite_inp_writer"></td>
+                            </sec:authorize>
                         </tr>                        
                         <tr>
                             <td colspan="2" class="noticeView_contents">

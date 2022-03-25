@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.tis.domain.BoardVO;
 import com.tis.domain.Criteria;
+import com.tis.domain.GoodsVO;
 import com.tis.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -61,7 +62,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.updateViewCnt(bno);
 	}
 
+	//관리 상품리스트
+	@Override
+	public List<GoodsVO> boardGetGoodsList() {
+		return boardMapper.boardGetGoodsList();
+	}
 
+	
 	
 	
 }
