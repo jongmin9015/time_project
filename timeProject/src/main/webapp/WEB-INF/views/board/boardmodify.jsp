@@ -21,24 +21,52 @@
     </div>
     <div id="warp">
         <div class="noticeView_inner">
-            <div class="noticeView_tit_div">
-                <h2 class="noticeView_tit">
-                    공지사항 수정
-                    <!-- <p class="noticeView_sub">
-                        컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.
-                    </p> -->
-                </h2>
-            </div>
+        <c:choose>
+        	<c:when test="${bgno == 1 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    공지사항 수정
+	                </h2>
+	            </div>
+	        </c:when>
+        	<c:when test="${bgno == 2 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    자주 하는 질문 수정
+	                </h2>
+	            </div>
+	        </c:when>
+        	<c:when test="${bgno == 3 }">
+	            <div class="noticeView_tit_div">
+	                <h2 class="noticeView_tit">
+	                    1:1문의 수정
+	                </h2>
+	            </div>
+	        </c:when>
+        </c:choose>
             <form method="post" id="noticewriter_frm">
                 <div class="noticeView_table_inner">
                     <table class="noticeView_table">
                         <tr>
                             <th scope="row" style="border: none;">제목</th>
-                            <td><input type="text" name="title" value="${boardView.title }" class="noticeWrite_inp noticeWrite_inp_title"></td>
+                            <td>
+                            	<input type="text" name="title" value="${boardView.title }" class="noticeWrite_inp noticeWrite_inp_title">
+                            	<c:choose>
+                            		<c:when test="${bgno != 1 }">                            			
+                            			<select name="category">
+		                            		<option value="회원" <c:out value="${boardView.category eq '회원'?'selected':''}"/>>회원</option>
+		                            		<option value="배송/포장" <c:out value="${boardView.category eq '배송/포장'?'selected':''}"/>>배송/포장</option>
+		                            		<option value="상품" <c:out value="${boardView.category eq '상품'?'selected':''}"/>>상품</option>
+		                            		<option value="서비스 이용" <c:out value="${boardView.category eq '서비스 이용'?'selected':''}"/>>서비스 이용</option>
+		                            		<option value="취소/교환/환불" <c:out value="${boardView.category eq '취소/교환/환불'?'selected':''}"/>>취소/교환/환불</option>
+		                            	</select>
+                            		</c:when>
+                            	</c:choose>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">작성자</th>
-                            <td><input type="text" name="writer" value="${boardView.writer }" class="noticeWrite_inp noticeWrite_inp_writer"></td>
+                            <td><input type="text" name="writer" value="${boardView.writer }" readonly="readonly" class="noticeWrite_inp noticeWrite_inp_writer"></td>
                         </tr>
                         <tr class="noticeView_etcArea">
                             <td colspan="2">
@@ -69,6 +97,7 @@
 
                 </div>
             </form>
+            
         </div>
     </div>
     <form id="infoForm" action="/board/boardmodify" method="get">

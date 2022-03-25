@@ -128,5 +128,10 @@
         OR   goodsContent LIKE '%' || #{keyword} || '%'	
 	</select>
 	
+	<!-- 게시글 상품리스트 관리 출력 -->
+	<!-- <select id="boardGetGoodsList" resultType="com.tis.domain.GoodsVO">
+		select *
+		from tbl_goods
+	</select> -->
 	
 </mapper>

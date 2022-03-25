@@ -28,4 +28,5 @@ public interface GoodsService {
 	
 	// 상품 검색 총 게시물 수
 	int getSearchListTotal(String keyword);
+	
 }

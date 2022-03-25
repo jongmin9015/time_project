@@ -4047,6 +4047,9 @@ input[name="deliveryMessage"] {
     vertical-align: middle;
     font-size: 12px;
 }
+.notice_goods_img{
+	width: 50px;
+}
 .notice_table_second_tr:first-child td{
     border-top: 1px solid #333;
 }
@@ -4063,9 +4066,19 @@ input[name="deliveryMessage"] {
     text-align: left;
     color: #999;
 }
+.notice_goodsList_atag{
+	color: #333;
+    font-size: 12px;
+}
 .notice_table_con_tit .notice_table_con_tit_atag{
     color: #333;
     font-size: 12px;
+}
+.board_goodsList_delBtn{
+	color: #ddd;
+}
+.board_goodsList_delBtn:hover{
+	color: #333;
 }
 
 /* notice 페이징 */

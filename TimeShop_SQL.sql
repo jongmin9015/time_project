@@ -1,7 +1,6 @@
 set define off;
 
 
-
 --board 테이블
 create table tbl_board(
     bno     number not null,        --게시물 번호
