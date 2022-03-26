@@ -15,6 +15,11 @@ public class BoardVO {
 	private int viewcnt;
 	private String category;
 	
+	private int nextno;
+	private int preno;
+	private String nexttit;
+	private String pretit;
+	
 	
 	//페이징 처리
 	private Criteria cri;
@@ -28,6 +33,14 @@ public class BoardVO {
 	public BoardVO(Criteria cri) {
 		this.cri = cri;
 	}
+	
+	//글 상세보기에서 이전글 다음글 위해 bgno 받음
+	public BoardVO(int bno, int bgno) {
+		this.bno = bno;
+		this.bgno = bgno;
+	}
+	
+	
 	
 	
 	

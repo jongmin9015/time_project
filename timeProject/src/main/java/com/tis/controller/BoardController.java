@@ -71,8 +71,8 @@ public class BoardController {
 		//조회수 증가
 		boardService.updateViewCnt(bno);
 		
-		BoardVO board = boardService.boardView(bno);
-		model.addAttribute("boardView", board);
+		BoardVO board = new BoardVO(bno, bgno);
+		model.addAttribute("boardView", boardService.boardView(board));
 		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardView");
 	}

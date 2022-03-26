@@ -14,7 +14,7 @@ public interface BoardMapper {
 	void boardWrite(BoardVO board);
 	
 	//게시글 조회
-	BoardVO boardView(int bno);
+	BoardVO boardView(BoardVO board);
 	
 	//게시글 수정
 	void boardmodify(BoardVO board);

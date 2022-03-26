@@ -57,13 +57,19 @@
 	</insert>
 	
 	<!-- 게시물 조회 -->
-	<select id="boardView" parameterType="int" resultType="com.tis.domain.BoardVO">
+	<select id="boardView" parameterType="com.tis.domain.BoardVO" resultType="com.tis.domain.BoardVO">
 		SELECT
-				bno,title,content,writer,regdate,viewcnt,category
+				b.*
 		FROM
-				tbl_board
+				(select bno, bgno, title, content, writer, regdate, viewcnt, category,
+						LEAD(bno, 1) OVER (ORDER BY bno DESC) AS nextno,
+        				LEAD(title, 1, '다음글이 없습니다') OVER (ORDER BY bno DESC) AS nexttit,
+        				LAG(bno, 1) OVER (ORDER BY bno DESC) AS preno,
+						LAG(title, 1, '이전글이 없습니다') OVER (ORDER BY bno DESC) AS pretit
+				from tbl_board
+				where bgno = #{bgno})b
 		where
-				bno = #{bno}
+				b.bno = #{bno}
 	</select>
 	
 	<!-- 게시물 수정 -->
