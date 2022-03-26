@@ -34,14 +34,6 @@ public class BoardVO {
 		this.cri = cri;
 	}
 	
-	//글 상세보기에서 이전글 다음글 위해 bgno 받음
-	public BoardVO(int bno, int bgno) {
-		this.bno = bno;
-		this.bgno = bgno;
-	}
-	
-	
-	
 	
 	
 }

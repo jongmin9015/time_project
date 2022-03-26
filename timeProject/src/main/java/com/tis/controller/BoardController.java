@@ -67,11 +67,12 @@ public class BoardController {
 	
 	//게시글 조회
 	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
-	public void boardGetView(Model model, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
+	public void boardGetView(Model model, BoardVO board, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
 		//조회수 증가
 		boardService.updateViewCnt(bno);
 		
-		BoardVO board = new BoardVO(bno, bgno);
+		board.setBno(bno);
+		board.setBgno(bgno);
 		model.addAttribute("boardView", boardService.boardView(board));
 		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardView");
@@ -79,9 +80,11 @@ public class BoardController {
 	
 	//게시글 수정 GET
 	@RequestMapping(value = "/boardmodify", method = RequestMethod.GET)
-	public void boardGetmodify(Model model, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
-		BoardVO board = boardService.boardView(bno);
-		model.addAttribute("boardView", board);
+	public void boardGetmodify(Model model, BoardVO board, @RequestParam("bno")int bno, @RequestParam("bgno")int bgno) {
+		
+		board.setBno(bno);
+		board.setBgno(bgno);
+		model.addAttribute("boardView", boardService.boardView(board));
 		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardmodify_GET");
 	}

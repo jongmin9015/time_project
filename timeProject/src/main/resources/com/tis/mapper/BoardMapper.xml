@@ -67,7 +67,7 @@
         				LAG(bno, 1) OVER (ORDER BY bno DESC) AS preno,
 						LAG(title, 1, '이전글이 없습니다') OVER (ORDER BY bno DESC) AS pretit
 				from tbl_board
-				where bgno = #{bgno})b
+				where bgno = #{bgno})b <!-- where bgno = #{bgno} -->
 		where
 				b.bno = #{bno}
 	</select>

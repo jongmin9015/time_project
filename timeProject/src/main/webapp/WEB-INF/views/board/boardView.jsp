@@ -119,7 +119,6 @@
     </div>
     <script>
     	let formView = $("#infoForm");
-    	/* /board/boardView?bno= */
     	/* 이전글 다음글 클릭 */
     	$(".noticeView_next_prev_move_btn").on("click", function(e){
     		e.preventDefault();
