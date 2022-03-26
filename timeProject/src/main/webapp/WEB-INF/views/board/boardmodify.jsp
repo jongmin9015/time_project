@@ -61,6 +61,9 @@
 		                            		<option value="취소/교환/환불" <c:out value="${boardView.category eq '취소/교환/환불'?'selected':''}"/>>취소/교환/환불</option>
 		                            	</select>
                             		</c:when>
+                            		<c:otherwise>                            		
+                            			<input type="hidden" name="category" value="-">
+                            		</c:otherwise>
                             	</c:choose>
                             </td>
                         </tr>
