@@ -14,7 +14,7 @@ public interface BoardService {
 	void boardWrite(BoardVO board);
 	
 	//게시물 조회
-	BoardVO boardView(int bno);
+	BoardVO boardView(BoardVO board);
 	
 	//게시물 수정
 	void boardmodify(BoardVO board);

@@ -99,11 +99,11 @@
                     <ul>
                         <li class="noticeView_prev clear">
                             <strong>이전글</strong>
-                            <a href="/board/boardView?bno=${boardView.bno-1}">[가격인상공지] [지위픽] DOG 에어드라이 사슴고기 1kg 외 52건 (2022 3. 18 ~)</a>
+                            <a href="${boardView.preno }" class="noticeView_next_prev_move_btn">${boardView.pretit }</a>
                         </li>
                         <li class="noticeView_next clear">
                             <strong>다음글</strong>
-                            <a href="/board/boardView?bno=${boardView.bno+1}">[가격인상공지] [온맘] 엄마의식탁 김자반 (2022 3. 18 ~)</a>
+                            <a href="${boardView.nextno }" class="noticeView_next_prev_move_btn">${boardView.nexttit }</a>
                         </li>
                     </ul>
                 </div>
@@ -119,7 +119,22 @@
     </div>
     <script>
     	let formView = $("#infoForm");
-    	
+    	/* /board/boardView?bno= */
+    	/* 이전글 다음글 클릭 */
+    	$(".noticeView_next_prev_move_btn").on("click", function(e){
+    		e.preventDefault();
+    		if($(this).text() == '이전글이 없습니다'){
+    			alert($(this).text());
+    			return false;
+    		}else if($(this).text() == '다음글이 없습니다'){
+    			alert($(this).text());
+    			return false;
+    		}
+    		formView.attr("action", "/board/boardView");
+    		formView.find("#bno").val($(this).attr("href"));
+    		formView.submit();
+    	});
+    			
     	/* 게시글 목록 버튼 */
     	$(".boardList_aTag_Btn").on("click", function(e){
     		formView.find("#bno").remove();

@@ -28,8 +28,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	//게시글 조회
 	@Override
-	public BoardVO boardView(int bno) {
-		return boardMapper.boardView(bno);
+	public BoardVO boardView(BoardVO board) {
+		return boardMapper.boardView(board);
 	}
 
 	//게시글 작성
