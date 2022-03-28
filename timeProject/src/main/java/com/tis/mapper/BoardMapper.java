@@ -30,4 +30,10 @@ public interface BoardMapper {
 	
 	//관리 상품리스트
 	List<GoodsVO> boardGetGoodsList();
+	
+	//상품등록
+	void goodsInsert(GoodsVO goods);
+	
+	//상품삭제
+	void goodsDelete(long goodsNo);
 }

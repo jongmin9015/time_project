@@ -7,18 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.tis.domain.BoardVO;
-import com.tis.domain.CategoryVO;
 import com.tis.domain.Criteria;
 import com.tis.domain.GoodsVO;
 import com.tis.domain.PageDTO;
 import com.tis.service.BoardService;
-import com.tis.service.CategoryService;
-import com.tis.service.GoodsService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,6 +24,7 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 	
 	private final BoardService boardService;
+	
 	
 	//게시글 목록
 	@RequestMapping(value = "/board_list", method = RequestMethod.GET)
@@ -105,6 +100,33 @@ public class BoardController {
 		model.addAttribute("bgno", bgno);
 		log.info("get board_list......................" + "boardDelete");
 		return "redirect:/board/board_list";
-	}	
+	}
+	
+	//상품 등록 GET
+	@RequestMapping(value="/boardGoodsInsert", method = RequestMethod.GET)
+	public void boardGoodsGetInsert(@RequestParam("bgno")int bgno, Model model) {
+		model.addAttribute("bgno", bgno);
+		log.info("get board_list......................" + "boardGoodsGetInsert_GET");
+	}
+	
+	//상품 등록 POST
+	@RequestMapping(value = "/boardGoodsInsert", method = RequestMethod.POST)	
+	public String boardGoodsInsert(Model model, GoodsVO goods, @RequestParam("bgno")int bgno) throws Exception{
+		
+		model.addAttribute("bgno", bgno);
+		boardService.boardGoodsInsert(goods);
+		
+		log.info("get board_list......................" + "boardmodify_POST");
+		return "redirect:/board/board_list?bno=0";
+	}
+	
+	//상품 삭제
+	@RequestMapping(value="/boardGoodsDelete")
+	public String boardGoodsDelete(Model model, long goodsNo, @RequestParam("bgno")int bgno) {
+		boardService.boardGoodsDelete(goodsNo);
+		model.addAttribute("bgno", bgno);
+		log.info("get board_list......................" + "boardGoodsDelete");
+		return "redirect:/board/board_list";
+	}
 	
 }

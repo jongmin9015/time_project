@@ -68,6 +68,18 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.boardGetGoodsList();
 	}
 
+	//상품등록
+	@Override
+	public void boardGoodsInsert(GoodsVO goods) {
+		boardMapper.goodsInsert(goods);
+	}
+
+	//상품삭제
+	@Override
+	public void boardGoodsDelete(long goodsNo) {
+		boardMapper.goodsDelete(goodsNo);
+	}
+
 	
 	
 	

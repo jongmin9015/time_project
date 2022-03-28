@@ -90,7 +90,10 @@
                 <h2 class="notice_head_tit">
                     상품 리스트 관리                    
                     <sec:authorize access="hasAuthority('role_admin')">
-                    <a href="#" class="notice_admin_write_btn">상품 입력</a>
+                    <a href="#" class="boardGoods_admin_insert_btn">상품 입력</a>
+                    <form id="boardGoodsInsertMove_frm" action="/board/boardGoodsInsert">
+                    	<input type="hidden" name="bgno" value="${pageMaker.cri.bgno}">
+                    </form>
                     </sec:authorize>
                 </h2>
                 </c:when>
@@ -279,7 +282,7 @@
 		                                                    ${goods.goodsPrice}원
 		                                                </td>
 		                                                <td width="100" style="height: 115px;" nowrap align="center" class="notice_eng2">
-		                                                    <i class="fa-solid fa-x board_goodsList_delBtn"></i>
+		                                                    <a href="${goods.goodsNo}" class="board_goodsList_delBtn_aTag"><i class="fa-solid fa-x board_goodsList_delBtn"></i></a>
 		                                                </td>
 		                                                
 		                                            </tr>                                            
@@ -424,6 +427,23 @@
     </div>
     <script>
     	$(document).ready(function() {
+    		//상품등록페이지 이동
+    		$(".boardGoods_admin_insert_btn").on("click", function(e){
+    			e.preventDefault();
+    			let moveFrm = $("#boardGoodsInsertMove_frm");
+    			moveFrm.find("input[name='goodsNo']").val().remove();
+    			moveFrm.submit();
+    		});
+    		
+    		$(".board_goodsList_delBtn_aTag").on("click",function(e){
+    			e.preventDefault();
+    			let moveFrm = $("#boardGoodsInsertMove_frm");
+    			moveFrm.append("<input type='hidden' name='goodsNo' value='" + $(this).attr("href") + "'>");
+    			moveFrm.attr("action", "/board/boardGoodsDelete");
+    			moveFrm.submit();
+    			
+    		});
+    		
     		// 상품 상세 이동
     		$(".notice_goodsList_atag").on("click", function(e) {
     			let item_listForm = $("#boardGoodsMoveForm");

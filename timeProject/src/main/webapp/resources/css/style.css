@@ -4000,7 +4000,7 @@ input[name="deliveryMessage"] {
     margin: 0 auto;
 }
 /* 관리자 글쓰기버튼 */
-.notice_admin_write_btn{
+.notice_admin_write_btn, .boardGoods_admin_insert_btn{
 	display: block;
     float: right;
     width: 150px;
@@ -4073,6 +4073,10 @@ input[name="deliveryMessage"] {
 .notice_table_con_tit .notice_table_con_tit_atag{
     color: #333;
     font-size: 12px;
+}
+.board_goodsList_delBtn_aTag{
+	color: #ddd;
+	text-decoration: none;
 }
 .board_goodsList_delBtn{
 	color: #ddd;
