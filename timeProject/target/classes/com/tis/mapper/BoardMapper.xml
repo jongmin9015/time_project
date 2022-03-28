@@ -105,5 +105,17 @@
 	<select id="boardGetGoodsList" resultType="com.tis.domain.GoodsVO">
 		select *
 		from tbl_goods
+		order by goodsNo desc
 	</select>
+	
+	<!-- 상품등록 goodsInsert -->
+	<insert id="goodsInsert" parameterType="com.tis.domain.GoodsVO"> 		
+		insert into tbl_goods(goodsNo, goodsCategory, goodsName, goodsContent, goodsPrice, goodsUnit, goodsWeight, goodsDelivery, goodsPackage, goodsAllergy, goodsImage)
+			values (seq_goods.nextval, #{goodsCategory}, #{goodsName}, #{goodsContent}, #{goodsPrice}, #{goodsUnit}, #{goodsWeight}, #{goodsDelivery}, #{goodsPackage}, #{goodsAllergy}, #{goodsImage})
+	</insert>
+	
+	<!-- 상품 삭제 -->
+	<delete id="goodsDelete" parameterType="com.tis.domain.GoodsVO">
+		delete from tbl_goods where goodsNo = #{goodsNo}
+	</delete>
 </mapper>

@@ -36,7 +36,9 @@
 	<tx:annotation-driven/>
 	
 	<!-- MultiPart Resolorver -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	
+	</bean>
 	
 	<!-- Aop Annotation -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>

@@ -31,4 +31,10 @@ public interface BoardService {
 	//관리 상품리스트
 	List<GoodsVO> boardGetGoodsList();
 	
+	//상품등록
+	void boardGoodsInsert(GoodsVO goods);
+	
+	//상품삭제
+	void boardGoodsDelete(long goodsNo);
+	
 }
