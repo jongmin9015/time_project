@@ -40,7 +40,7 @@
 	                	<li class="menu_login" id="login_user">	
 		                    <a href="#" class="link_menu" >${pinfo.member.memberName} 님</a>
 		                     <ul class="login_user_menu">
-               					  <li><a href="#">개인정보수정</a></li>
+               					  <li><a href="/member/memberPwCheck">개인정보수정</a></li>
                      			  <li> <a href="#">배송지관리</a></li>
                    				  <li><a href="/member/login/logout">로그아웃</a></li>
                			     </ul>

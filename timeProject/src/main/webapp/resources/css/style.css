@@ -1874,7 +1874,7 @@ select[id="orderList"]{
     font-size: 16px;
     cursor: pointer;
 }
-.login_signupBtn{
+.login_signupBtn, .memberPw_check_btn{
     display: block;
     border: 1px solid #5f0081;
     background-color: #fff;
@@ -1886,6 +1886,11 @@ select[id="orderList"]{
     height: 50px;
     font-size: 16px;
     line-height: 50px;
+}
+
+.memberPw_check_btn:hover{
+	background-color: #5f0080;
+	color: #fff;
 }
 /* login page 끝 */
 
