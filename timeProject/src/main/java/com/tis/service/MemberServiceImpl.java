@@ -44,5 +44,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.insertAuth(memberId);
 	}
 
+	//회원정보수정
+	@Override
+	public int updateMember(MemberVO member) {
+		return memberMapper.updateMember(member);
+	}
+
 
 }

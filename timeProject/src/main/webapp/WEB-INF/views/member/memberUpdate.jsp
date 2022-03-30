@@ -26,12 +26,12 @@
         	<h2 class="signup_h2">개인정보수정</h2>                 
             <div class="signup_forminner">
             	<div class="signup_formBox">                        
-                	<form action="/member/signup/signup_ok" name="signup_form" method="post" class="signup_form" autocomplete="off">
+                	<form name="signup_form" method="post" class="signup_form" autocomplete="off" onsubmit="return memberUpdate()">
                     	<table class="signup_formtable">
 	                         <tr>
 	                             <th>아이디<!-- <span class="signup_check">*</span> --></th>
 	                             <td>
-	                                 <input class="signup_input" type="text" name="memberId" id="memberId" value="<sec:authentication property='principal.member.memberId'/>" readonly="readonly">
+	                                 <input class="signup_input" type="text" name="memberId" id="memberId" value="${member.memberId }" readonly="readonly">
 	                                 <!-- <button type="button" class="signup_overlap signup_overlap_id" onclick="checkId()">중복확인</button> -->
 	                                 <!-- <input type="hidden" name="overLapId" value="n" disabled="disabled"> -->
 	                                 <!-- <button type="button" class="signup_overlap signup_overlap_id_ok" onclick="id_check()">중복확인</button><br> -->
@@ -68,21 +68,21 @@
                              <tr>
                                  <th>이름<span class="signup_check">*</span></th>
                                  <td>
-                                     <input class="signup_input" type="text" name="memberName" id="username" value="<sec:authentication property='principal.member.memberName'/>" readonly="readonly">                                    
+                                     <input class="signup_input" type="text" name="memberName" id="username" value="${member.memberName }">                                    
                                  </td>
                              </tr>
                              <tr>
                                  <th>이메일<span class="signup_check">*</span></th>
                                  <td>
-                                     <input class="signup_input" type="text" name="email" id="email" placeholder="예) timeproject@naver.com">
-                                     <!-- <button type="button" class="signup_overlap" onclick="checkEmail()">중복확인</button>                                  
-                                     <input type="hidden" name="emailOverlap" value="n" disabled="disabled">   -->                              
+                                     <input class="signup_input" type="text" name="email" id="email" placeholder="예) timeproject@naver.com" value="${member.email }" >
+                                     <button type="button" class="signup_overlap" onclick="checkEmail()">중복확인</button>                                  
+                                     <input type="hidden" name="emailOverlap" value="n" disabled="disabled">                            
                                  </td>
                              </tr>
                              <tr>
                                  <th>휴대폰<span class="signup_check">*</span></th>
                                  <td>
-                                     <input class="signup_input" type="tel" name="phone" id="phone" placeholder="숫자만 입력해주세요" maxlength="11">
+                                     <input class="signup_input" type="tel" name="phone" id="phone" placeholder="숫자만 입력해주세요" maxlength="11" value="${member.phone }">
                                      <button class="signup_cartBtnOff" type="button" onclick="phoneAuthh()">인증번호 받기</button>                                  
                                      <div class="phone_auth">
                                      <input class="signup_input" type="tel" name="phoneAuth" id="phone" placeholder="인증번호를 입력해주세요" maxlength="4">
@@ -153,7 +153,29 @@
             </div>
         </div>
     </div>  
-    
+    <div class="juso_background">
+        <div class="window">
+		       	<div class="signup_address_input_div">
+						<input type="hidden" name="zipcodeModal" class="zipcode" value="">
+						<p class="address_tit">
+							<span class="address_star">주소입력</span><br><br>	
+						</p>
+					<div class="address_search_main">
+						<input type="text" name="addressModal" class="address" readonly value="">
+						<button type="button" class="address_searchBtn" onclick="SignUpPost()">
+						<i class="fa-solid fa-magnifying-glass"></i> 주소 찾기</button>
+					</div>
+					<div class="address_search_sub">
+						<input type="text" name="addressSubModal" class="addressSub" placeholder="나머지 주소를 입력해주세요" data-max-length="79" value="">
+					</div>		
+					<div class="signup_address_btn_div" >
+						<button type="button" class="signup_address_closeBtn" id="close">취소</button>
+						<button type="button" class="signup_address_saveBtn" onclick="signupAddress()">저장</button>
+		
+					</div>
+            </div>
+        </div>
+    </div>
     
 
     <div id="footer">
