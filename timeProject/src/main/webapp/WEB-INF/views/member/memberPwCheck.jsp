@@ -35,7 +35,7 @@
                 <h3 class="login_h3">개인정보수정<br><span class="memberPw_check_span">비밀번호 재확인</span> </h3>
                           
                 <div class="login_formBox">
-                    <form action="/member/memberUpdate" method="post">                        
+                    <form method="post" >                        
                         <input class="login_formBox_input" type="text" id="id" name="memberId" value="<sec:authentication property='principal.member.memberId'/>"><br>
                         <input class="login_formBox_input" type="password" id="password" name="memberPw" placeholder="비밀번호를 입력해 주세요."><br>
                        	<c:if test="${not empty param.fail}">

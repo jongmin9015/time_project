@@ -386,6 +386,112 @@ function signUpBtn(){
     const form = document.querySelector('.signup_form').submit();
    
 };
+//회원정보수정 유효성
+function memberUpdate(){
+	
+	
+	const memberPw = document.querySelector('input[name="memberPw"]');
+	const memberPw2 = document.querySelector('input[name="memberPw2"]');  
+	const email = document.querySelector('input[name="email"]');
+	const emailOverlap = document.querySelector('input[name="emailOverlap"]'); 
+	const phone = document.querySelector('input[name="phone"]');
+	const phoneAuth = document.querySelector('input[name="phoneAuth"]'); 
+	const phoneAuthCheck = document.querySelector('input[name="phoneAuthCheck"]'); 
+	const address = document.querySelector('input[name="address"]');
+	const addressSub = document.querySelector('input[name="addressSub"]');
+	const zipcode = document.querySelector('input[name="zipcode"]');
+	const gender = document.querySelector('input[name="gender"]:checked'); 
+	const year = document.querySelector('input[name="birth_year"]'); 
+	const month = document.querySelector('input[name="birth_month"]'); 
+	const day = document.querySelector('input[name="birth_day"]'); 
+	const birth = document.querySelector('input[name="birth"]');
+	const addressModal = document.querySelector('input[name="addressModal"]');
+	const addressSubModal = document.querySelector('input[name="addressSubModal"]');
+	const zipcodeModal = document.querySelector('input[name="zipcodeModal"]');
+	const reg = /^[0-9]+$/;
+	
+	
+	
+	if(memberPw.value == ""){
+		alert("비밀번호를 입력하세요.");
+		memberPw.focus();
+		return false;
+	};
+	
+	if (memberPw.value != memberPw2.value) {
+		alert("비밀번호가 일치하지 않습니다..");
+		memberPw2.focus();
+		return false;
+	};
+	
+	
+	if (email.value == "") {
+		alert("이메일 주소를 입력하세요.");
+		email.focus();
+		return false;
+	};
+	if (emailOverlap.value == "n") {
+		alert("이메일 중복체크를 해주세요");
+		email.focus();
+		return false;
+	};
+	
+	if (phone.value == "") {
+		alert("핸드폰번호를 입력해주세요");
+		phone.focus();
+		return false;
+	};
+	if (phoneAuthCheck.value == "n") {
+		alert("핸드폰 인증을 해주세요");
+		phone.focus();
+		return false;
+	};
+	if (address.value == "") {
+		alert("주소를 입력해주세요");
+		return false;
+	};
+	if (!female.checked && !male.checked && !none.checked) {
+		alert("성별을 선택해 주세요.");
+		none.focus();
+		return false;
+	};
+	
+	if (!reg.test(year.value)) {
+		alert("생년월일은 숫자만 입력할 수 있습니다.");
+		year.focus();
+		return false;
+	};
+	
+	if (!reg.test(month.value)) {
+		alert("생년월일은 숫자만 입력할 수 있습니다.");
+		month.focus();
+		return false;
+	};
+	
+	if (!reg.test(day.value)) {
+		alert("생년월일은 숫자만 입력할 수 있습니다.");
+		day.focus();
+		return false;
+	};
+	
+	
+	
+	memberPw2.setAttribute('disabled', true);
+	phoneAuth.setAttribute('disabled', true);
+	year.setAttribute('disabled', true);
+	month.setAttribute('disabled', true);
+	day.setAttribute('disabled', true);
+	addressModal.setAttribute('disabled', true);
+	addressSubModal.setAttribute('disabled', true);
+	zipcodeModal.setAttribute('disabled', true);
+	
+	const birthValue = year.value + '-' + month.value + '-' + day.value;
+	console.log(birthValue);
+	birth.value = birthValue;
+	
+	const form = document.querySelector('.signup_form').submit();
+	
+};
 
 // 전체 선택
 function selectAll(selectAll) {

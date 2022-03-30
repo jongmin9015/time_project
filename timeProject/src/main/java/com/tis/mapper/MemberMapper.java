@@ -19,4 +19,7 @@ public interface MemberMapper {
 	
 	// 권한 부여
 	int insertAuth(String memberId);
+
+	//회원정보수정
+	int updateMember(MemberVO member);
 }

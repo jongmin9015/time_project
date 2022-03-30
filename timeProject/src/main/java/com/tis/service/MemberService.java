@@ -19,6 +19,7 @@ public interface MemberService {
 	// 권한 부여
 	int insertAuth(String memberId);
 	
-	
+	//회원정보 수정
+	int updateMember(MemberVO member);
 
 }
