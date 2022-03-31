@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.tis.domain.MemberVO;
 import com.tis.security.CustomUserDetailService;
@@ -80,9 +82,17 @@ public class MemberController {
 		String memberId = principal.getName();
 		member = memberService.getMemberWithId(memberId);
 		model.addAttribute("member", member);
+		log.info("member......................" + "memberView");
 	}
 	
 	//회원탈퇴
-	
+	@RequestMapping(value="/memberDelete")
+	public String memberDelete(Principal principal, SessionStatus sessionStatus) {
+		String memberId = principal.getName();
+		memberService.memberDelete(memberId);
+		if(sessionStatus.isComplete()==false) sessionStatus.isComplete();
+		SecurityContextHolder.clearContext();
+		return "redirect:/";
+	};
 	 
 }

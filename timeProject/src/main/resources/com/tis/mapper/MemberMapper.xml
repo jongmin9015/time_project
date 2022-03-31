@@ -77,4 +77,13 @@
 				birth = #{birth}
 			where memberId = #{memberId}
 	</update>
+	
+	<!-- 회원탈퇴 tbl_auth -->
+	<delete id="authDelete" parameterType="String">
+		delete from tbl_member_auth where memberId = #{memberId}
+	</delete>
+	<!-- 회원탈퇴 tbl_member -->
+	<delete id="memberDelete" parameterType="String">
+		delete from tbl_member where memberId = #{memberId}
+	</delete>
 </mapper>

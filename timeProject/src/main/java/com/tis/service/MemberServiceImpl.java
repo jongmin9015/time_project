@@ -49,6 +49,13 @@ public class MemberServiceImpl implements MemberService {
 	public int updateMember(MemberVO member) {
 		return memberMapper.updateMember(member);
 	}
+	
+	//회원탈퇴
+	@Override
+	public void memberDelete(String memberId) {
+		memberMapper.authDelete(memberId);
+		memberMapper.memberDelete(memberId);
+	}
 
 
 }

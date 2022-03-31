@@ -83,20 +83,10 @@
                              <tr>
                                  <th>성별</th>
                                	  <td class="signup_sex_input_td">
-                               	  	
-                                 	<label class="signup_select_input_label" onclick="genderRadioBtn(this)">
-                                          <input type="radio" name="gender" value="male" id="male" disabled <c:out value="${member.gender eq 'male'?'selected':''}"/>>
-                                          <span class="gender_span">남자</span>
-                                     </label>
-                                 	<label class="signup_select_input_label" onclick="genderRadioBtn(this)">
-                                          <input type="radio" name="gender" value="female" id="female" disabled <c:out value="${member.gender eq 'female'?'selected':''}"/>>
-                                          <span class="gender_span">여자</span>
-                                     </label>
-                                 	<label class="signup_select_input_label	" onclick="genderRadioBtn(this)">
-                                          <input type="radio" name="gender" value="none" id="none" disabled <c:out value="${member.gender eq 'none'?'selected':''}"/>>
-                                          <span class="gender_span">선택안함</span> 
-                                     </label>                                          
-                                	 </td>
+                               	  	${member.gender eq 'male'?'남자':''}
+                               	  	${member.gender eq 'female'?'여자':''}
+                               	  	${member.gender eq 'none'?'선택안함':''}                                 	                                         
+                                	</td>
                              </tr>
                              <tr>
                                  <th>생년월일</th>
@@ -127,6 +117,13 @@
     <div id="footer">
    		<%@ include file="../includes/footer.jsp"  %>
     </div>
-
+	<form action="/" id="indexMoveFrm">
+		
+	</form>
+	<script>
+		$(".signup_submitBtn").on("click", function(){
+			$("#indexMoveFrm").submit();
+		})
+	</script>
 </body>
 </html>

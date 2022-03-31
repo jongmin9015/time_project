@@ -16,6 +16,25 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <title>memberUpdate</title>
+    <style>
+		/* 탈퇴하기 버튼 */
+    	.member_info_del{
+    		background-color: #fff;
+		    border: 1px solid #5f0080;
+		    color: #333;
+		    width: 120px;
+		    height: 46px;
+		    font-size: 13px;
+		    font-weight: 700;
+		    border-radius: 5px;
+		    margin: 30px 0 100px 0;
+		    cursor: pointer;
+    	}
+    	.member_info_del:hover{
+    		color: #fff;
+    		background-color: #5f0080;
+    	}
+    </style>
 </head>
 <body>
     <div id="header">
@@ -184,6 +203,7 @@
 
 </body>
 <script>
+
 	
 	function show(){
 	    document.querySelector(".juso_background").className = "juso_background show";
@@ -255,8 +275,16 @@
 	});  
  	
 
- 	
-
+ 	$(".member_info_del").on("click", function(){
+ 		var result = confirm('탈퇴 하시겠습니까?');
+ 		
+ 		if(result){	
+ 			location.replace('/member/memberDelete');
+ 		}else{
+ 			return false;
+ 		}
+ 	});
+	
  	
  	
 
