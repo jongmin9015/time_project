@@ -22,4 +22,7 @@ public interface MemberService {
 	//회원정보 수정
 	int updateMember(MemberVO member);
 
+	//회원탈퇴
+	void memberDelete(String memberId);
+
 }
